@@ -1870,8 +1870,8 @@ display(df_[df_['cluster_id'] == 49])
 # COMMAND ----------
 
 import time
-while True:
-    time.sleep(10)
+# while True:
+#     time.sleep(10)
 
 # COMMAND ----------
 

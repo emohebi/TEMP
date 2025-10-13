@@ -1,0 +1,5331 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Credit Transfer Analysis Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                h1 { color: #2c3e50; border-bottom: 2px solid #3498db; }
+                h2 { color: #34495e; margin-top: 30px; }
+                h3 { color: #7f8c8d; }
+                table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+                th { background-color: #3498db; color: white; padding: 10px; text-align: left; }
+                td { padding: 8px; border-bottom: 1px solid #ddd; }
+                tr:hover { background-color: #f5f5f5; }
+                .full { background-color: #d4edda; }
+                .conditional { background-color: #fff3cd; }
+                .partial { background-color: #f8d7da; }
+                .summary-box { background-color: #f0f0f0; padding: 15px; border-radius: 5px; margin: 20px 0; }
+                .progress-bar { width: 100%; height: 20px; background-color: #e0e0e0; border-radius: 10px; }
+                .progress-fill { height: 100%; background-color: #3498db; border-radius: 10px; }
+                .skill-badge { display: inline-block; padding: 3px 8px; margin: 2px; background-color: #e3f2fd; border-radius: 12px; font-size: 12px; }
+                .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+                .stat-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+                .stat-value { font-size: 24px; font-weight: bold; color: #3498db; }
+                .stat-label { color: #7f8c8d; font-size: 14px; }
+                /* New styles for detailed analysis */
+                .detail-table { font-size: 14px; }
+                .score-component { 
+                    display: inline-block; 
+                    padding: 2px 6px; 
+                    margin: 2px;
+                    background: #f0f0f0;
+                    border-radius: 4px;
+                    font-size: 12px;
+                }
+                .match-quality-high { color: #27ae60; font-weight: bold; }
+                .match-quality-medium { color: #f39c12; }
+                .match-quality-low { color: #e74c3c; }
+                .reasoning-box {
+                    background: #fafafa;
+                    padding: 8px;
+                    border-left: 3px solid #3498db;
+                    margin: 5px 0;
+                    font-size: 13px;
+                }
+                .edge-case-warning {
+                    background: #fff3cd;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 11px;
+                    margin: 2px 0;
+                }
+                /* Add these styles to the existing <style> section */
+                .skill-mapping-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 20px 0;
+                    font-size: 13px;
+                }
+                .skill-mapping-table th {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 10px;
+                    text-align: left;
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+                .skill-mapping-table td {
+                    padding: 8px;
+                    border: 1px solid #e0e0e0;
+                    vertical-align: top;
+                }
+                .mapping-direct {
+                    background-color: #d4edda;
+                    color: #155724;
+                    font-weight: bold;
+                }
+                .mapping-partial {
+                    background-color: #fff3cd;
+                    color: #856404;
+                    font-weight: bold;
+                }
+                .mapping-unmapped {
+                    background-color: #f8d7da;
+                    color: #721c24;
+                    font-weight: bold;
+                }
+                .skill-level-badge {
+                    display: inline-block;
+                    padding: 2px 6px;
+                    margin-left: 5px;
+                    background: #6c757d;
+                    color: white;
+                    border-radius: 3px;
+                    font-size: 10px;
+                }
+            </style>
+        </head>
+        <body>
+        
+<h1>Credit Transfer Analysis Report</h1>
+<p><strong>Generated:</strong> 2025-10-09 17:18:28</p>
+<p><strong>VET Qualification:</strong> BSB50120 - Diploma of Business</p>
+<p><strong>University Program:</strong> 933AA - Diploma of Business</p>
+<div class='summary-box'>
+<h2>Skill Extraction Summary</h2>
+<div class='stats-grid'>
+<div class='stat-card'>
+<div class='stat-value'>498</div>
+<div class='stat-label'>VET Skills Extracted</div>
+</div>
+<div class='stat-card'>
+<div class='stat-value'>409</div>
+<div class='stat-label'>University Skills Extracted</div>
+</div>
+<div class='stat-card'>
+<div class='stat-value'>12</div>
+<div class='stat-label'>Common Skills</div>
+</div>
+</div>
+</div>
+<div class='summary-box'>
+<h2>Executive Summary</h2>
+<p><strong>Total Recommendations:</strong> 29</p>
+<p><strong>Average Alignment Score:</strong> 72.9%</p>
+<h3>Recommendation Distribution</h3>
+<p>Full Credit: 2 (6.9%)</p>
+<div class='progress-bar'><div class='progress-fill' style='width: 6.896551724137931%;'></div></div>
+<p>Conditional: 0 (0.0%)</p>
+<div class='progress-bar'><div class='progress-fill' style='width: 0.0%;'></div></div>
+<p>Partial: 27 (93.1%)</p>
+<div class='progress-bar'><div class='progress-fill' style='width: 93.10344827586206%;'></div></div>
+</div>
+<h2>Credit Transfer Recommendations</h2>
+<table>
+<thead><tr>
+<th>VET Units</th>
+<th>Uni Course</th>
+<th>Uni Study Level</th>
+<th>Skills Count</th>
+<th>Alignment</th>
+<th>Confidence</th>
+<th>Type</th>
+<th>Conditions</th>
+</tr></thead>
+<tbody>
+<tr class='full'>
+<td>SIRXMGT005: Lead the development of business opportunities</td>
+<td>11169: Organisational Communications, Culture and Change</td>
+<td>Advanced</td>
+<td>15 → 12</td>
+<td>84.5%</td>
+<td>89.6%</td>
+<td>FULL</td>
+<td>None</td>
+</tr>
+<tr class='full'>
+<td>BSBMKG550: Promote products and services to international markets</td>
+<td>11182: International Marketing</td>
+<td>Advanced</td>
+<td>15 → 15</td>
+<td>82.9%</td>
+<td>89.8%</td>
+<td>FULL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others</td>
+<td>11170: Business Communication</td>
+<td>Intermediate</td>
+<td>15 → 15</td>
+<td>80.0%</td>
+<td>87.3%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBSTR603: Develop business continuity plans</td>
+<td>12046: BGL Internship A</td>
+<td>Advanced</td>
+<td>15 → 12</td>
+<td>78.5%</td>
+<td>86.7%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBSTR603: Develop business continuity plans</td>
+<td>11009: Business Decision Making</td>
+<td>Introductory</td>
+<td>15 → 15</td>
+<td>78.0%</td>
+<td>88.5%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets</td>
+<td>11183: Strategic Marketing Management</td>
+<td>Advanced</td>
+<td>15 → 15</td>
+<td>77.8%</td>
+<td>87.6%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets</td>
+<td>12053: Integrated Marketing Communication</td>
+<td>Introductory</td>
+<td>15 → 15</td>
+<td>77.7%</td>
+<td>88.5%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBSTR603: Develop business continuity plans</td>
+<td>9628: International Business Study Tour</td>
+<td>Intermediate</td>
+<td>15 → 15</td>
+<td>76.8%</td>
+<td>88.7%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets</td>
+<td>12047: BGL Internship B</td>
+<td>Advanced</td>
+<td>15 → 12</td>
+<td>76.7%</td>
+<td>85.7%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets</td>
+<td>12157: Social Marketing - Marketing for Good</td>
+<td>Intermediate</td>
+<td>15 → 13</td>
+<td>76.6%</td>
+<td>90.3%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBHRM529: Coordinate separation and termination processes</td>
+<td>12206: International Business Study Tour</td>
+<td>Advanced</td>
+<td>15 → 15</td>
+<td>76.2%</td>
+<td>85.0%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others</td>
+<td>11319: Negotiation</td>
+<td>Advanced</td>
+<td>15 → 15</td>
+<td>75.9%</td>
+<td>87.7%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others</td>
+<td>12048: BGL Internship C</td>
+<td>Advanced</td>
+<td>15 → 13</td>
+<td>75.2%</td>
+<td>87.2%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others</td>
+<td>11173: Professional Evidence</td>
+<td>Advanced</td>
+<td>15 → 15</td>
+<td>74.9%</td>
+<td>84.1%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBOPS404: Implement customer service strategies</td>
+<td>12205: Quantitative Methods</td>
+<td>Introductory</td>
+<td>15 → 15</td>
+<td>74.5%</td>
+<td>90.0%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets</td>
+<td>11179: Digital Marketing</td>
+<td>Advanced</td>
+<td>15 → 15</td>
+<td>73.9%</td>
+<td>87.8%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG549: Profile and analyse consumer behaviour for international markets</td>
+<td>11176: Marketing Fundamentals</td>
+<td>Introductory</td>
+<td>15 → 15</td>
+<td>71.8%</td>
+<td>87.2%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBTWK503: Manage meetings</td>
+<td>11174: Introduction to Management</td>
+<td>Introductory</td>
+<td>15 → 12</td>
+<td>71.5%</td>
+<td>88.8%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBTWK401: Build and maintain business relationships</td>
+<td>9531: Small Business Management</td>
+<td>Intermediate</td>
+<td>15 → 15</td>
+<td>69.6%</td>
+<td>86.3%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>SIRXMKT006: Develop a social media strategy</td>
+<td>12158: Big Data and Marketing Analytics</td>
+<td>Advanced</td>
+<td>15 → 14</td>
+<td>68.8%</td>
+<td>87.6%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBTWK401: Build and maintain business relationships</td>
+<td>11379: Social Enterprise</td>
+<td>Intermediate</td>
+<td>15 → 15</td>
+<td>68.6%</td>
+<td>88.3%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG549: Profile and analyse consumer behaviour for international markets</td>
+<td>11011: Professional Orientation</td>
+<td>Introductory</td>
+<td>15 → 15</td>
+<td>68.1%</td>
+<td>87.4%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others</td>
+<td>11172: Business Research Methods</td>
+<td>Introductory</td>
+<td>15 → 15</td>
+<td>67.2%</td>
+<td>85.4%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG549: Profile and analyse consumer behaviour for international markets</td>
+<td>11175: Introduction to Economics</td>
+<td>Introductory</td>
+<td>15 → 12</td>
+<td>66.1%</td>
+<td>86.5%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBHRM525: Manage recruitment and onboarding</td>
+<td>12049: BGL Internship D</td>
+<td>Advanced</td>
+<td>12 → 15</td>
+<td>66.1%</td>
+<td>82.0%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBHRM525: Manage recruitment and onboarding</td>
+<td>12209: Professional Orientation</td>
+<td>Introductory</td>
+<td>12 → 15</td>
+<td>66.0%</td>
+<td>82.4%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG549: Profile and analyse consumer behaviour for international markets</td>
+<td>11178: Consumer and Buyer Behaviour</td>
+<td>Intermediate</td>
+<td>15 → 12</td>
+<td>65.2%</td>
+<td>88.1%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBSUS511: Develop workplace policies and procedures for sustainability</td>
+<td>11257: Law and Society</td>
+<td>Introductory</td>
+<td>15 → 12</td>
+<td>64.4%</td>
+<td>87.0%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+<tr class='partial'>
+<td>BSBTWK401: Build and maintain business relationships</td>
+<td>11235: Introduction to Politics and Government</td>
+<td>Introductory</td>
+<td>15 → 15</td>
+<td>61.4%</td>
+<td>88.8%</td>
+<td>PARTIAL</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h2>Detailed Match Analysis</h2>
+<table>
+<thead><tr>
+<th>VET → Uni</th>
+<th>Match Type</th>
+<th>Level Alignment</th>
+<th>Quality Factors</th>
+<th>Edge Cases</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='full'>
+<td>SIRXMGT005: Lead the development of business opportunities<br>→<br>11169</td>
+<td>
+<strong>Direct:</strong> 5/12<br>
+<strong>Partial:</strong> 7/12<br>
+<strong>Unmapped:</strong> 0
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 71%</small><br>
+<small>quality: 87%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 89.6%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Good skill coverage<br>All critical skills covered<br>→ Complete requirements met
+</td>
+</tr>
+<tr class='full'>
+<td>BSBMKG550: Promote products and services to international markets<br>→<br>11182</td>
+<td>
+<strong>Direct:</strong> 6/15<br>
+<strong>Partial:</strong> 8/15<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 67%</small><br>
+<small>quality: 87%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 89.8%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Complete requirements met
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others<br>→<br>11170</td>
+<td>
+<strong>Direct:</strong> 4/15<br>
+<strong>Partial:</strong> 10/15<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 60%</small><br>
+<small>quality: 86%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 87.3%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBSTR603: Develop business continuity plans<br>→<br>12046</td>
+<td>
+<strong>Direct:</strong> 2/12<br>
+<strong>Partial:</strong> 10/12<br>
+<strong>Unmapped:</strong> 0
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 58%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 86.7%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>All critical skills covered<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBSTR603: Develop business continuity plans<br>→<br>11009</td>
+<td>
+<strong>Direct:</strong> 3/15<br>
+<strong>Partial:</strong> 11/15<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 57%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 88.5%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets<br>→<br>11183</td>
+<td>
+<strong>Direct:</strong> 4/15<br>
+<strong>Partial:</strong> 9/15<br>
+<strong>Unmapped:</strong> 2
+</td>
+<td>
+<div style='color: yellow'>
+<strong>Adequate</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.1<br>
+<small>Minor gap of 0.1 levels - bridgeable</small>
+</div>
+</td>
+<td>
+<small>overall: 57%</small><br>
+<small>quality: 86%</small><br>
+<small>level: 99%</small><br>
+<small>context: 95%</small><br>
+<strong>Confidence: 87.6%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>2 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets<br>→<br>12053</td>
+<td>
+<strong>Direct:</strong> 4/15<br>
+<strong>Partial:</strong> 9/15<br>
+<strong>Unmapped:</strong> 2
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 57%</small><br>
+<small>quality: 86%</small><br>
+<small>level: 100%</small><br>
+<small>context: 91%</small><br>
+<strong>Confidence: 88.5%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>2 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBSTR603: Develop business continuity plans<br>→<br>9628</td>
+<td>
+<strong>Direct:</strong> 4/15<br>
+<strong>Partial:</strong> 8/15<br>
+<strong>Unmapped:</strong> 3
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 53%</small><br>
+<small>quality: 84%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 88.7%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>3 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets<br>→<br>12047</td>
+<td>
+<strong>Direct:</strong> 2/12<br>
+<strong>Partial:</strong> 9/12<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 54%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 85.7%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets<br>→<br>12157</td>
+<td>
+<strong>Direct:</strong> 2/13<br>
+<strong>Partial:</strong> 10/13<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 54%</small><br>
+<small>quality: 84%</small><br>
+<small>level: 100%</small><br>
+<small>context: 95%</small><br>
+<strong>Confidence: 90.3%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBHRM529: Coordinate separation and termination processes<br>→<br>12206</td>
+<td>
+<strong>Direct:</strong> 2/15<br>
+<strong>Partial:</strong> 12/15<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 53%</small><br>
+<small>quality: 82%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 85.0%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others<br>→<br>11319</td>
+<td>
+<strong>Direct:</strong> 2/15<br>
+<strong>Partial:</strong> 12/15<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 53%</small><br>
+<small>quality: 85%</small><br>
+<small>level: 100%</small><br>
+<small>context: 91%</small><br>
+<strong>Confidence: 87.7%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others<br>→<br>12048</td>
+<td>
+<strong>Direct:</strong> 2/13<br>
+<strong>Partial:</strong> 9/13<br>
+<strong>Unmapped:</strong> 2
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 50%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 87.2%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>2 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBCRT511: Develop critical thinking in others<br>→<br>11173</td>
+<td>
+<strong>Direct:</strong> 1/15<br>
+<strong>Partial:</strong> 13/15<br>
+<strong>Unmapped:</strong> 1
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 50%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 100%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 84.1%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>1 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBOPS404: Implement customer service strategies<br>→<br>12205</td>
+<td>
+<strong>Direct:</strong> 3/15<br>
+<strong>Partial:</strong> 9/15<br>
+<strong>Unmapped:</strong> 3
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 50%</small><br>
+<small>quality: 84%</small><br>
+<small>level: 100%</small><br>
+<small>context: 91%</small><br>
+<strong>Confidence: 90.0%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>3 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG550: Promote products and services to international markets<br>→<br>11179</td>
+<td>
+<strong>Direct:</strong> 3/15<br>
+<strong>Partial:</strong> 9/15<br>
+<strong>Unmapped:</strong> 3
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 5.0<br>
+Uni Req: 5.0<br>
+<small>VET skills exceed requirement by 0.0 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 50%</small><br>
+<small>quality: 86%</small><br>
+<small>level: 100%</small><br>
+<small>context: 81%</small><br>
+<strong>Confidence: 87.8%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>3 minor gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBMKG549: Profile and analyse consumer behaviour for international markets<br>→<br>11176</td>
+<td>
+<strong>Direct:</strong> 2/15<br>
+<strong>Partial:</strong> 9/15<br>
+<strong>Unmapped:</strong> 4
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 2.5<br>
+Uni Req: 2.3<br>
+<small>VET skills exceed requirement by 0.2 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 43%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 97%</small><br>
+<small>context: 100%</small><br>
+<strong>Confidence: 87.2%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>4 significant gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBTWK503: Manage meetings<br>→<br>11174</td>
+<td>
+<strong>Direct:</strong> 3/12<br>
+<strong>Partial:</strong> 5/12<br>
+<strong>Unmapped:</strong> 4
+</td>
+<td>
+<div style='color: green'>
+<strong>Exceeds</strong><br>
+VET Avg: 2.4<br>
+Uni Req: 2.3<br>
+<small>VET skills exceed requirement by 0.1 levels</small>
+</div>
+</td>
+<td>
+<small>overall: 46%</small><br>
+<small>quality: 84%</small><br>
+<small>level: 100%</small><br>
+<small>context: 77%</small><br>
+<strong>Confidence: 88.8%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>4 significant gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>BSBTWK401: Build and maintain business relationships<br>→<br>9531</td>
+<td>
+<strong>Direct:</strong> 2/15<br>
+<strong>Partial:</strong> 8/15<br>
+<strong>Unmapped:</strong> 5
+</td>
+<td>
+<div style='color: yellow'>
+<strong>Adequate</strong><br>
+VET Avg: 2.3<br>
+Uni Req: 2.3<br>
+<small>Minor gap of 0.1 levels - bridgeable</small>
+</div>
+</td>
+<td>
+<small>overall: 40%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 100%</small><br>
+<small>context: 86%</small><br>
+<strong>Confidence: 86.3%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>5 significant gaps<br>→ Supplementary study needed
+</td>
+</tr>
+<tr class='partial'>
+<td>SIRXMKT006: Develop a social media strategy<br>→<br>12158</td>
+<td>
+<strong>Direct:</strong> 1/14<br>
+<strong>Partial:</strong> 9/14<br>
+<strong>Unmapped:</strong> 4
+</td>
+<td>
+<div style='color: yellow'>
+<strong>Adequate</strong><br>
+VET Avg: 2.7<br>
+Uni Req: 2.9<br>
+<small>Minor gap of 0.2 levels - bridgeable</small>
+</div>
+</td>
+<td>
+<small>overall: 39%</small><br>
+<small>quality: 83%</small><br>
+<small>level: 100%</small><br>
+<small>context: 80%</small><br>
+<strong>Confidence: 87.6%</strong>
+</td>
+<td style='font-size: 12px;'>
+None detected
+</td>
+<td style='font-size: 12px;'>
+Mostly partial matches<br>Limited coverage<br>4 significant gaps<br>→ Supplementary study needed
+</td>
+</tr>
+</tbody></table>
+<h2>Detailed Skill Mappings by Recommendation</h2>
+<p>Individual skill mapping analysis for each credit transfer recommendation.</p>
+<h3>Recommendation #1: SIRXMGT005: Lead the development of business opportunities → 11169</h3>
+<p><strong>Course:</strong> Organisational Communications, Culture and Change | 
+<strong>Score:</strong> 84.5% | 
+<strong>Type:</strong> FULL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIRXMGT005</td>
+<td>strategic communication<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>business communication planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.9%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIRXMGT005</td>
+<td>strategic communication<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>communication strategy adaptation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>91.6%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIRXMGT005</td>
+<td>strategic communication<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>cultural communication strategy selection<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>89.1%</td>
+<td>High match (sem: 89%, lvl: 100%, ctx: 100%, cmb: 93%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIRXMGT005</td>
+<td>project scheduling<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>project plan development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>88.5%</td>
+<td>High match (sem: 88%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIRXMGT005</td>
+<td>plan evaluation and revision<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>reflective project evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.1%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMGT005</td>
+<td>business opportunity identification<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>conflict opportunity analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.4%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMGT005</td>
+<td>creative problem solving<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>conflict resolution facilitation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.3%</td>
+<td>Moderate match (sem: 69%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMGT005</td>
+<td>strategic communication<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>intercultural communication effectiveness<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.1%</td>
+<td>Moderate match (sem: 74%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMGT005</td>
+<td>strategic communication<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>multimodal professional communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.0%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMGT005</td>
+<td>strategic communication<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>negotiation facilitation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.0%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMGT005</td>
+<td>creative problem solving<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>self‑directed initiative<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.9%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMGT005</td>
+<td>resource allocation<span class='skill-level-badge'>L5</span></td>
+<td>11169</td>
+<td>workload organization management<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>80.0%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>budgeting and financial planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>business plan development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>feasibility analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>financial viability analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>market trend research</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>marketing rollout coordination</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>performance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>risk assessment</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMGT005</td>
+<td>stakeholder consultation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 5 | 
+Partial: 7 | 
+Unmapped: 9
+</div>
+<h3>Recommendation #2: BSBMKG550: Promote products and services to international markets → 11182</h3>
+<p><strong>Course:</strong> International Marketing | 
+<strong>Score:</strong> 82.9% | 
+<strong>Type:</strong> FULL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>cross‑cultural marketing strategy<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.0%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>cross‑cultural stakeholder communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>90.2%</td>
+<td>High match (sem: 90%, lvl: 100%, ctx: 100%, cmb: 94%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>global product planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>84.7%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>international promotional strategy<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>international advertising planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>89.3%</td>
+<td>High match (sem: 89%, lvl: 100%, ctx: 100%, cmb: 93%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>international market analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>92.2%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>international marketing plan development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>92.0%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>competitive advantage assessment<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.7%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>critical thinking in marketing<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.9%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>cultural adaptation analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.9%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>distribution channel design<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>75.7%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>marketing information systems management<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.1%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>marketing research design<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.8%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>multi‑country data analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.1%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>11182</td>
+<td>pricing strategy development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.8%</td>
+<td>Moderate match (sem: 74%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11182</td>
+<td>entrepreneurial venture evaluation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>budget and timeline management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>client relationship management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>feedback gathering</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>performance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>promotional activity coordination</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>recommendation development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>regulatory compliance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>resource allocation planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>stakeholder engagement</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 6 | 
+Partial: 8 | 
+Unmapped: 10
+</div>
+<h3>Recommendation #3: BSBCRT511: Develop critical thinking in others → 11170</h3>
+<p><strong>Course:</strong> Business Communication | 
+<strong>Score:</strong> 80.0% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>critical analysis skills<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>88.2%</td>
+<td>High match (sem: 88%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>inclusive stakeholder collaboration<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>stakeholder interaction handling<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>87.3%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>verbal communication application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.1%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>written communication application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>90.2%</td>
+<td>High match (sem: 90%, lvl: 100%, ctx: 100%, cmb: 94%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>analytical reasoning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>84.1%</td>
+<td>Moderate match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>business presentation creation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.9%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>creative communication design<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>83.8%</td>
+<td>Moderate match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>crisis communication management<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.7%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.7%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>ethical decision making<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.8%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>global perspective communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.6%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>textual research analysis<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>research problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.2%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>style guide compliance<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>82.4%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11170</td>
+<td>sustainable practice communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.3%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11170</td>
+<td>technology adoption evaluation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>active listening questioning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>creative thinking development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>feedback provision</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning environment design</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning needs analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning outcomes monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>persuasive oral communication</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>recommendation development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>systems planning implementation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 4 | 
+Partial: 10 | 
+Unmapped: 11
+</div>
+<h3>Recommendation #4: BSBSTR603: Develop business continuity plans → 12046</h3>
+<p><strong>Course:</strong> BGL Internship A | 
+<strong>Score:</strong> 78.5% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>technical report writing<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>professional written communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.5%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>problem solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>workplace problem analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.1%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>knowledge management coordination<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>adaptive complexity management<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.7%</td>
+<td>Moderate match (sem: 74%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>initiative and enterprise<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>collaborative team engagement<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.9%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>continuity framework development<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>continuous learning adaptation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.6%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>initiative and enterprise<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>creative solution design<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.4%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>plan evaluation and improvement<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>critical workplace evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>80.3%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>problem solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>ethical decision making<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.3%</td>
+<td>Moderate match (sem: 69%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>critical function identification<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>global professional perspective<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.7%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>plan evaluation and improvement<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>reflective practice development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.7%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>technical report writing<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>research methodology utilization<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.6%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>problem solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12046</td>
+<td>theoretical knowledge application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.4%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>business impact assessment</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>disaster recovery planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>numerical data analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>oral stakeholder briefing</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>risk assessment analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>risk treatment planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>self‑management autonomy</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>stakeholder communication management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 10 | 
+Unmapped: 8
+</div>
+<h3>Recommendation #5: BSBSTR603: Develop business continuity plans → 11009</h3>
+<p><strong>Course:</strong> Business Decision Making | 
+<strong>Score:</strong> 78.0% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>problem solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>creative problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.3%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>numerical data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>financial data analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.9%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>business impact assessment<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>stakeholder impact assessment<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>84.9%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>numerical data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>big‑data interpretation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.7%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>plan evaluation and improvement<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>budget development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.3%</td>
+<td>Moderate match (sem: 74%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>critical function identification<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>cost classification application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.5%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>business impact assessment<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>cost‑benefit analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.7%</td>
+<td>Moderate match (sem: 74%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>problem solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>critical thinking application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>82.6%</td>
+<td>Moderate match (sem: 83%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>stakeholder communication management<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.8%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>risk treatment planning<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>decision‑making under uncertainty<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.9%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>technical report writing<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>financial reporting interpretation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.8%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>critical function identification<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>information source evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.5%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>numerical data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11009</td>
+<td>spreadsheet modelling<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.9%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11009</td>
+<td>adaptive learning mindset</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>continuity framework development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>disaster recovery planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>initiative and enterprise</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>knowledge management coordination</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>oral stakeholder briefing</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>risk assessment analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>self‑management autonomy</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 3 | 
+Partial: 11 | 
+Unmapped: 8
+</div>
+<h3>Recommendation #6: BSBMKG550: Promote products and services to international markets → 11183</h3>
+<p><strong>Course:</strong> Strategic Marketing Management | 
+<strong>Score:</strong> 77.8% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>creative problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>87.2%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>critical marketing evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>92.1%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>100.0%</td>
+<td>High match (sem: 100%, lvl: 100%, ctx: 100%, cmb: 100%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>marketing portfolio development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.0%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>complexity adaptation skills<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>75.3%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>digital marketing integration<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.6%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>global market assessment<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>83.2%</td>
+<td>Moderate match (sem: 83%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>innovation decision making<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.3%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>market opportunity analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.6%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>promotional activity coordination<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>professional written communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.1%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>stakeholder engagement<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>stakeholder value creation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>82.7%</td>
+<td>Moderate match (sem: 83%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international promotional strategy<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>strategic marketing planning<span class='skill-level-badge'>L6</span></td>
+<td><strong>Partial</strong></td>
+<td>84.2%</td>
+<td>Moderate match (sem: 84%, lvl: 80%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>11183</td>
+<td>strategic thinking application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.9%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11183</td>
+<td>global citizenship awareness</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11183</td>
+<td>technology adoption evaluation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>budget and timeline management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>client relationship management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>feedback gathering</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>performance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>recommendation development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>regulatory compliance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>resource allocation planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 4 | 
+Partial: 9 | 
+Unmapped: 9
+</div>
+<h3>Recommendation #7: BSBMKG550: Promote products and services to international markets → 12053</h3>
+<p><strong>Course:</strong> Integrated Marketing Communication | 
+<strong>Score:</strong> 77.7% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>creative problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>87.2%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>100.0%</td>
+<td>High match (sem: 100%, lvl: 100%, ctx: 100%, cmb: 100%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>marketing communication analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>87.6%</td>
+<td>High match (sem: 88%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>strategic IMC evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>84.7%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>audience segmentation analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.9%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international promotional strategy<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>brand messaging design<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.3%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>promotional activity coordination<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>collaborative campaign development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>84.0%</td>
+<td>Moderate match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>critical thinking analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.5%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>digital marketing tool utilization<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.0%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>integrated marketing planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>84.0%</td>
+<td>Moderate match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international promotional strategy<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>media channel selection<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.4%</td>
+<td>Moderate match (sem: 69%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>recommendation development<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>promotion program development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.0%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12053</td>
+<td>research methodology application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.0%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12053</td>
+<td>reflective practice</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12053</td>
+<td>self‑directed learning</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>budget and timeline management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>client relationship management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>feedback gathering</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>international market planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>performance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>regulatory compliance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>resource allocation planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>stakeholder engagement</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 4 | 
+Partial: 9 | 
+Unmapped: 10
+</div>
+<h3>Recommendation #8: BSBSTR603: Develop business continuity plans → 9628</h3>
+<p><strong>Course:</strong> International Business Study Tour | 
+<strong>Score:</strong> 76.8% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>initiative and enterprise<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>entrepreneurial creativity<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>87.7%</td>
+<td>High match (sem: 88%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>initiative and enterprise<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>entrepreneurial initiative<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>94.4%</td>
+<td>High match (sem: 94%, lvl: 100%, ctx: 100%, cmb: 96%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>self‑management autonomy<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>self‑directed learning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.1%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBSTR603</td>
+<td>technical report writing<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>written communication reporting<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.0%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>problem solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>conflict resolution negotiation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.3%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>critical function identification<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>critical thinking analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>80.3%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>critical function identification<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>cultural context analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.0%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>plan evaluation and improvement<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>financial analysis evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.9%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>stakeholder communication management<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>global citizenship communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>75.3%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>initiative and enterprise<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>leadership in teams<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.0%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>technical report writing<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>market investigation research<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.8%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBSTR603</td>
+<td>oral stakeholder briefing<span class='skill-level-badge'>L5</span></td>
+<td>9628</td>
+<td>oral communication presentation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>83.8%</td>
+<td>Moderate match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9628</td>
+<td>adaptability to ambiguity</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9628</td>
+<td>cross‑cultural teamwork</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9628</td>
+<td>international trade application</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>business impact assessment</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>continuity framework development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>disaster recovery planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>knowledge management coordination</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>numerical data analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>risk assessment analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBSTR603</td>
+<td>risk treatment planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 4 | 
+Partial: 8 | 
+Unmapped: 10
+</div>
+<h3>Recommendation #9: BSBMKG550: Promote products and services to international markets → 12047</h3>
+<p><strong>Course:</strong> BGL Internship B | 
+<strong>Score:</strong> 76.7% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>stakeholder engagement<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>stakeholder communication management<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>91.9%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>workplace problem analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.7%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>adaptability to ambiguity<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.5%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>creative solution design<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.2%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>critical reflective practice<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.2%</td>
+<td>Moderate match (sem: 74%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>cultural perspective awareness<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>75.7%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>ethical decision making<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.2%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>knowledge synthesis reporting<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.3%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>regulatory compliance monitoring<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>professional integrity maintenance<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.6%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>research methodology utilization<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.3%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12047</td>
+<td>theoretical knowledge application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.5%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12047</td>
+<td>continuous professional learning</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>budget and timeline management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>client relationship management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>feedback gathering</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>international market planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>international promotional strategy</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>performance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>promotional activity coordination</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>recommendation development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 9 | 
+Unmapped: 11
+</div>
+<h3>Recommendation #10: BSBMKG550: Promote products and services to international markets → 12157</h3>
+<p><strong>Course:</strong> Social Marketing - Marketing for Good | 
+<strong>Score:</strong> 76.6% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>stakeholder engagement<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>policy stakeholder engagement<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>94.9%</td>
+<td>High match (sem: 95%, lvl: 100%, ctx: 100%, cmb: 97%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>problem‑based learning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.7%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international promotional strategy<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>branding strategy development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.6%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>promotional activity coordination<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>collaborative team work<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.0%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>client relationship management<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>customer value proposition<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.6%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>design‑thinking ideation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.3%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>ethical issue evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.7%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international market planning<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>market segmentation planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>83.5%</td>
+<td>Moderate match (sem: 83%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>recommendation development<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>prototype development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.6%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>service design analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.2%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>social marketing theory<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>80.7%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 30%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>recommendation development<span class='skill-level-badge'>L5</span></td>
+<td>12157</td>
+<td>sustainable practice advocacy<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.2%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12157</td>
+<td>conflict negotiation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>budget and timeline management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>feedback gathering</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>marketing data analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>performance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>regulatory compliance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>resource allocation planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 10 | 
+Unmapped: 8
+</div>
+<h3>Recommendation #11: BSBHRM529: Coordinate separation and termination processes → 12206</h3>
+<p><strong>Course:</strong> International Business Study Tour | 
+<strong>Score:</strong> 76.2% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBHRM529</td>
+<td>problem‑solving implementation<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>creative problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>85.7%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBHRM529</td>
+<td>policy communication delivery<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>professional communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.0%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>cross‑functional teamwork<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>collaborative team negotiation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.7%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>problem‑solving implementation<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>conflict resolution facilitation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.6%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>problem‑solving implementation<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>critical thinking application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.0%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>cross‑functional teamwork<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>cross-cultural business analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.2%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>trend analysis reporting<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>cultural practice critique<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.0%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>cross‑functional teamwork<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>global adaptability<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.3%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>problem‑solving implementation<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>global issue awareness<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.9%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>policy development coordination<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>international leadership evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.6%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>policy development coordination<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>knowledge integration<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.5%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBHRM529</td>
+<td>training needs identification<span class='skill-level-badge'>L5</span></td>
+<td>12206</td>
+<td>reflective practice development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.7%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12206</td>
+<td>ethical sustainability appraisal</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>exit data depersonalisation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>exit interview facilitation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>feedback gathering techniques</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>legislative compliance analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>outplacement assistance delivery</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>process improvement recommendation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>redundancy planning coordination</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>stakeholder consultation facilitation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBHRM529</td>
+<td>workforce data analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 12 | 
+Unmapped: 10
+</div>
+<h3>Recommendation #12: BSBCRT511: Develop critical thinking in others → 11319</h3>
+<p><strong>Course:</strong> Negotiation | 
+<strong>Score:</strong> 75.9% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>critical thinking application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>92.5%</td>
+<td>High match (sem: 93%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>inclusive stakeholder collaboration<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>stakeholder engagement negotiation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>87.3%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>conflict resolution planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.2%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>creative thinking development<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>creative problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>84.3%</td>
+<td>Moderate match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.7%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>textual research analysis<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>cultural analysis negotiation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>82.0%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>ethical decision making<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.8%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>learning needs analysis<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>lifelong learning adaptation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>75.4%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>textual research analysis<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>negotiation research analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.2%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 30%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>negotiation strategy development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>82.0%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>power dynamics assessment<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.7%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>11319</td>
+<td>professional standards adherence<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>80.7%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11319</td>
+<td>negotiation theory application</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>active listening questioning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>feedback provision</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning environment design</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning outcomes monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>persuasive oral communication</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>recommendation development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>systems planning implementation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>team coaching</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 12 | 
+Unmapped: 9
+</div>
+<h3>Recommendation #13: BSBCRT511: Develop critical thinking in others → 12048</h3>
+<p><strong>Course:</strong> BGL Internship C | 
+<strong>Score:</strong> 75.2% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>creative thinking development<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>creative thinking<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>94.9%</td>
+<td>High match (sem: 95%, lvl: 100%, ctx: 100%, cmb: 97%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>critical thinking<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>94.0%</td>
+<td>High match (sem: 94%, lvl: 100%, ctx: 100%, cmb: 96%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>complex problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.7%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>textual research analysis<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>critical evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>80.1%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>ethical decision making<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.9%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>textual research analysis<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>knowledge synthesis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.0%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>learning needs analysis<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>lifelong learning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.4%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>professional integrity<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.1%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>reflective practice<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.1%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>self‑awareness development<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.7%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>systems planning implementation<span class='skill-level-badge'>L5</span></td>
+<td>12048</td>
+<td>theory application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.4%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12048</td>
+<td>global cultural awareness</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12048</td>
+<td>spreadsheet modeling</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>active listening questioning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>feedback provision</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>inclusive stakeholder collaboration</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning environment design</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning outcomes monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>persuasive oral communication</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>recommendation development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>strategic written communication</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 9 | 
+Unmapped: 11
+</div>
+<h3>Recommendation #14: BSBCRT511: Develop critical thinking in others → 11173</h3>
+<p><strong>Course:</strong> Professional Evidence | 
+<strong>Score:</strong> 74.9% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>professional communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.8%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>strategic written communication<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>business knowledge application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>75.5%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>learning needs analysis<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>career readiness assessment<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>75.8%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>critical thinking facilitation<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>critical reflection practice<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>82.0%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>ethical integrity demonstration<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.7%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>legal compliance awareness<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>global citizenship awareness<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.4%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>learning needs analysis<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>impact analysis evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.6%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>inclusive stakeholder collaboration<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>interdisciplinary knowledge integration<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>69.4%</td>
+<td>Moderate match (sem: 69%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>learning needs analysis<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>lifelong learning planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.3%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>learning outcomes monitoring<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>reflective practice documentation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>73.0%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBCRT511</td>
+<td>textual research analysis<span class='skill-level-badge'>L5</span></td>
+<td>11173</td>
+<td>research methodology application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.4%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11173</td>
+<td>professional identity development</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>active listening questioning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>feedback provision</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>learning environment design</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>persuasive oral communication</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>systems planning implementation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBCRT511</td>
+<td>team coaching</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 1 | 
+Partial: 13 | 
+Unmapped: 7
+</div>
+<h3>Recommendation #15: BSBOPS404: Implement customer service strategies → 12205</h3>
+<p><strong>Course:</strong> Quantitative Methods | 
+<strong>Score:</strong> 74.5% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBOPS404</td>
+<td>numerical data interpretation<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>quantitative data analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>87.5%</td>
+<td>High match (sem: 88%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBOPS404</td>
+<td>team collaboration facilitation<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>team collaboration<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>96.3%</td>
+<td>High match (sem: 96%, lvl: 100%, ctx: 100%, cmb: 98%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBOPS404</td>
+<td>formal written communication<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>technical communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.9%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>numerical data interpretation<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>business data visualization<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.9%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>service delivery diagnosis<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>business problem solving<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.0%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>service delivery diagnosis<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>decision support analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.0%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>numerical data interpretation<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>index number calculation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>78.5%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>digital information management<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>information systems awareness<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>81.5%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 30%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>budget resource allocation<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>linear programming optimization<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>70.7%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>numerical data interpretation<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>probability concepts interpretation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.0%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>strategic service planning<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>sample design selection<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>72.3%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBOPS404</td>
+<td>numerical data interpretation<span class='skill-level-badge'>L5</span></td>
+<td>12205</td>
+<td>statistical forecasting application<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.6%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12205</td>
+<td>continuous learning mindset</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12205</td>
+<td>regression modelling</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12205</td>
+<td>spreadsheet modelling</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBOPS404</td>
+<td>complaint resolution execution</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBOPS404</td>
+<td>customer needs analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBOPS404</td>
+<td>customer satisfaction monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBOPS404</td>
+<td>effective oral communication</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBOPS404</td>
+<td>improvement option development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBOPS404</td>
+<td>service performance reporting</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBOPS404</td>
+<td>stakeholder consultation facilitation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 3 | 
+Partial: 9 | 
+Unmapped: 11
+</div>
+<h3>Recommendation #16: BSBMKG550: Promote products and services to international markets → 11179</h3>
+<p><strong>Course:</strong> Digital Marketing | 
+<strong>Score:</strong> 73.9% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>promotional activity coordination<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>collaborative campaign planning<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>86.7%</td>
+<td>High match (sem: 87%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>cross‑cultural communication<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>100.0%</td>
+<td>High match (sem: 100%, lvl: 100%, ctx: 100%, cmb: 100%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG550</td>
+<td>stakeholder engagement<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>stakeholder engagement management<span class='skill-level-badge'>L5</span></td>
+<td><strong>Direct</strong></td>
+<td>98.5%</td>
+<td>High match (sem: 98%, lvl: 100%, ctx: 100%, cmb: 99%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>AI driven analytics<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.4%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>recommendation development<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>content creation design<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>71.2%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>data‑driven decision making<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>77.1%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international promotional strategy<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>digital marketing strategy<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>83.0%</td>
+<td>Moderate match (sem: 83%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>digital marketing tool utilization<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.1%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>recommendation development<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>emerging trend adaptation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>76.3%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>evaluation of marketing mix<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>ethical marketing evaluation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>83.2%</td>
+<td>Moderate match (sem: 83%, lvl: 100%, ctx: 30%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>marketing data analysis<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>online consumer analysis<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>79.5%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG550</td>
+<td>international promotional strategy<span class='skill-level-badge'>L5</span></td>
+<td>11179</td>
+<td>online presence optimisation<span class='skill-level-badge'>L5</span></td>
+<td><strong>Partial</strong></td>
+<td>74.9%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11179</td>
+<td>cultural competency application</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11179</td>
+<td>indigenous knowledge integration</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11179</td>
+<td>technology adoption learning</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>budget and timeline management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>client relationship management</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>feedback gathering</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>international market planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>performance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>problem‑solving analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG550</td>
+<td>regulatory compliance monitoring</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 3 | 
+Partial: 9 | 
+Unmapped: 11
+</div>
+<h3>Recommendation #17: BSBMKG549: Profile and analyse consumer behaviour for international markets → 11176</h3>
+<p><strong>Course:</strong> Marketing Fundamentals | 
+<strong>Score:</strong> 71.8% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBMKG549</td>
+<td>positioning strategy formulation<span class='skill-level-badge'>L3</span></td>
+<td>11176</td>
+<td>marketing strategy design<span class='skill-level-badge'>L3</span></td>
+<td><strong>Direct</strong></td>
+<td>85.6%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBMKG549</td>
+<td>positioning strategy formulation<span class='skill-level-badge'>L3</span></td>
+<td>11176</td>
+<td>strategic marketing analysis<span class='skill-level-badge'>L3</span></td>
+<td><strong>Direct</strong></td>
+<td>84.7%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>digital data analysis<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>creative technology utilization<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>72.0%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>consumer profiling development<span class='skill-level-badge'>L3</span></td>
+<td>11176</td>
+<td>customer value creation<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>71.9%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>target market identification<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>domestic market analysis<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>79.8%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>target market identification<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>international market analysis<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>75.6%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>marketing plan review<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>marketing plan development<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>91.9%</td>
+<td>Moderate match (sem: 92%, lvl: 80%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>stakeholder presentation delivery<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>professional written communication<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>75.4%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>stakeholder presentation delivery<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>stakeholder impact assessment<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>79.2%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>legislative requirements assessment<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>supply chain assessment<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>78.4%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 86%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBMKG549</td>
+<td>stakeholder presentation delivery<span class='skill-level-badge'>L2</span></td>
+<td>11176</td>
+<td>team negotiation<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>70.2%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11176</td>
+<td>conflict resolution facilitation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11176</td>
+<td>ethical professional conduct</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11176</td>
+<td>ethical sustainability evaluation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11176</td>
+<td>Indigenous cultural engagement</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG549</td>
+<td>budgetary calculation execution</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG549</td>
+<td>consumer behaviour research</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG549</td>
+<td>cultural influence assessment</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG549</td>
+<td>needs and interest analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG549</td>
+<td>numerical trend interpretation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBMKG549</td>
+<td>self‑management alignment</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 9 | 
+Unmapped: 12
+</div>
+<h3>Recommendation #18: BSBTWK503: Manage meetings → 11174</h3>
+<p><strong>Course:</strong> Introduction to Management | 
+<strong>Score:</strong> 71.5% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBTWK503</td>
+<td>planning and organising<span class='skill-level-badge'>L3</span></td>
+<td>11174</td>
+<td>operational planning<span class='skill-level-badge'>L3</span></td>
+<td><strong>Direct</strong></td>
+<td>92.4%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBTWK503</td>
+<td>oral communication<span class='skill-level-badge'>L2</span></td>
+<td>11174</td>
+<td>oral management communication<span class='skill-level-badge'>L2</span></td>
+<td><strong>Direct</strong></td>
+<td>93.6%</td>
+<td>High match (sem: 94%, lvl: 100%, ctx: 100%, cmb: 96%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBTWK503</td>
+<td>oral communication<span class='skill-level-badge'>L2</span></td>
+<td>11174</td>
+<td>written management communication<span class='skill-level-badge'>L2</span></td>
+<td><strong>Direct</strong></td>
+<td>85.6%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK503</td>
+<td>problem solving in meetings<span class='skill-level-badge'>L3</span></td>
+<td>11174</td>
+<td>business decision making<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>75.5%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK503</td>
+<td>outcome reporting<span class='skill-level-badge'>L2</span></td>
+<td>11174</td>
+<td>career reflection planning<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>70.4%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK503</td>
+<td>facilitating participation<span class='skill-level-badge'>L3</span></td>
+<td>11174</td>
+<td>leadership facilitation<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>80.8%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK503</td>
+<td>enterprise initiative<span class='skill-level-badge'>L2</span></td>
+<td>11174</td>
+<td>management theory application<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>73.3%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 83%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK503</td>
+<td>planning and organising<span class='skill-level-badge'>L3</span></td>
+<td>11174</td>
+<td>strategic decision making<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>79.4%</td>
+<td>Moderate match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11174</td>
+<td>advantages‑disadvantages evaluation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11174</td>
+<td>cross‑cultural issue analysis</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11174</td>
+<td>global perspective integration</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>11174</td>
+<td>management factor analysis</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK503</td>
+<td>agenda development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK503</td>
+<td>briefing minute‑taker</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK503</td>
+<td>chairing meetings</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK503</td>
+<td>complex text interpretation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK503</td>
+<td>documentation distribution</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK503</td>
+<td>meeting coordination</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 3 | 
+Partial: 5 | 
+Unmapped: 13
+</div>
+<h3>Recommendation #19: BSBTWK401: Build and maintain business relationships → 9531</h3>
+<p><strong>Course:</strong> Small Business Management | 
+<strong>Score:</strong> 69.6% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>BSBTWK401</td>
+<td>relationship strategy formulation<span class='skill-level-badge'>L3</span></td>
+<td>9531</td>
+<td>business strategy development<span class='skill-level-badge'>L3</span></td>
+<td><strong>Direct</strong></td>
+<td>86.3%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-direct'>
+<td>BSBTWK401</td>
+<td>written business communication<span class='skill-level-badge'>L2</span></td>
+<td>9531</td>
+<td>professional business communication<span class='skill-level-badge'>L2</span></td>
+<td><strong>Direct</strong></td>
+<td>92.2%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>communication channel management<span class='skill-level-badge'>L2</span></td>
+<td>9531</td>
+<td>adaptability to change<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>72.1%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>negotiation solution development<span class='skill-level-badge'>L3</span></td>
+<td>9531</td>
+<td>best practice synthesis<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>75.9%</td>
+<td>Moderate match (sem: 76%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>analytical problem solving<span class='skill-level-badge'>L3</span></td>
+<td>9531</td>
+<td>critical thinking analysis<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>80.0%</td>
+<td>Moderate match (sem: 80%, lvl: 100%, ctx: 30%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>stakeholder feedback solicitation<span class='skill-level-badge'>L2</span></td>
+<td>9531</td>
+<td>cross‑cultural stakeholder engagement<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>80.7%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>networking opportunity identification<span class='skill-level-badge'>L2</span></td>
+<td>9531</td>
+<td>entrepreneurial idea generation<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>72.2%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>networking opportunity identification<span class='skill-level-badge'>L2</span></td>
+<td>9531</td>
+<td>experiential learning facilitation<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>73.0%</td>
+<td>Moderate match (sem: 73%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>networking opportunity identification<span class='skill-level-badge'>L2</span></td>
+<td>9531</td>
+<td>innovation incubation<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>70.9%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>BSBTWK401</td>
+<td>networking opportunity identification<span class='skill-level-badge'>L2</span></td>
+<td>9531</td>
+<td>technology evaluation adoption<span class='skill-level-badge'>L2</span></td>
+<td><strong>Partial</strong></td>
+<td>70.6%</td>
+<td>Moderate match (sem: 71%, lvl: 100%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9531</td>
+<td>business resilience building</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9531</td>
+<td>ethical Indigenous engagement</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9531</td>
+<td>global business perspective</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9531</td>
+<td>research and data synthesis</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>9531</td>
+<td>small business case analysis</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK401</td>
+<td>active listening techniques</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK401</td>
+<td>barrier identification analysis</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK401</td>
+<td>business relationship development</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK401</td>
+<td>planning network activities</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>BSBTWK401</td>
+<td>professional network participation</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 2 | 
+Partial: 8 | 
+Unmapped: 13
+</div>
+<h3>Recommendation #20: SIRXMKT006: Develop a social media strategy → 12158</h3>
+<p><strong>Course:</strong> Big Data and Marketing Analytics | 
+<strong>Score:</strong> 68.8% | 
+<strong>Type:</strong> PARTIAL</p>
+<table class='skill-mapping-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Mapping Type</th>
+<th>Similarity</th>
+<th>Reasoning</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>statistical analysis execution<span class='skill-level-badge'>L3</span></td>
+<td><strong>Direct</strong></td>
+<td>85.8%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>automated analytics implementation<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>81.9%</td>
+<td>Moderate match (sem: 82%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>big data analysis<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>81.4%</td>
+<td>Moderate match (sem: 81%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>emerging trend analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>customer insight development<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>72.5%</td>
+<td>Moderate match (sem: 72%, lvl: 100%, ctx: 100%, cmb: 82%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>data visualization design<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>74.9%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>machine learning modeling<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>69.7%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>strategy evaluation<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>marketing decision making<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>75.0%</td>
+<td>Moderate match (sem: 75%, lvl: 100%, ctx: 100%, cmb: 84%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>metrics data management<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>83.6%</td>
+<td>Moderate match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>qualitative analysis application<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>77.3%</td>
+<td>Moderate match (sem: 77%, lvl: 100%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIRXMKT006</td>
+<td>performance data analysis<span class='skill-level-badge'>L3</span></td>
+<td>12158</td>
+<td>ROI optimization analysis<span class='skill-level-badge'>L3</span></td>
+<td><strong>Partial</strong></td>
+<td>69.7%</td>
+<td>Moderate match (sem: 70%, lvl: 100%, ctx: 100%, cmb: 80%)</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12158</td>
+<td>data‑driven marketing strategy</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12158</td>
+<td>ethical big data assessment</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12158</td>
+<td>global perspective thinking</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>12158</td>
+<td>privacy security evaluation</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMKT006</td>
+<td>content strategy design</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMKT006</td>
+<td>continuous improvement planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMKT006</td>
+<td>crisis management planning</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMKT006</td>
+<td>engagement tracking</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMKT006</td>
+<td>KPI establishment</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>SIRXMKT006</td>
+<td>legal compliance integration</td>
+<td>-</td>
+<td>-</td>
+<td><strong>Unmapped</strong></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<div class='summary-box' style='margin-bottom: 30px;'>
+<strong>Mapping Summary:</strong> 
+Direct: 1 | 
+Partial: 9 | 
+Unmapped: 16
+</div>
+<p><em>No skill mapping data available. Ensure semantic clustering is enabled in the analysis.</em></p>
+<h2>Top Extracted Skills</h2>
+<h3>VET Skills (Top 20)</h3>
+<div>
+<span class='skill-badge'>promotional activity coordination</span>
+<span class='skill-badge'>chairing meetings</span>
+<span class='skill-badge'>business plan development</span>
+<span class='skill-badge'>budget planning</span>
+<span class='skill-badge'>financial data analysis</span>
+<span class='skill-badge'>gross pay calculation</span>
+<span class='skill-badge'>market data analysis</span>
+<span class='skill-badge'>international market planning</span>
+<span class='skill-badge'>customer needs analysis</span>
+<span class='skill-badge'>resource requirement analysis</span>
+<span class='skill-badge'>operational plan development</span>
+<span class='skill-badge'>requirements analysis</span>
+<span class='skill-badge'>customer requirements consultation</span>
+<span class='skill-badge'>strategic business planning</span>
+<span class='skill-badge'>project scope definition</span>
+<span class='skill-badge'>supplier performance monitoring</span>
+<span class='skill-badge'>ethical risk assessment</span>
+<span class='skill-badge'>policy analysis</span>
+<span class='skill-badge'>sustainability policy development</span>
+<span class='skill-badge'>stakeholder engagement</span>
+</div>
+<h3>University Skills (Top 20)</h3>
+<div>
+<span class='skill-badge'>business problem solving</span>
+<span class='skill-badge'>collaborative team work</span>
+<span class='skill-badge'>financial data analysis</span>
+<span class='skill-badge'>quantitative data analysis</span>
+<span class='skill-badge'>social marketing theory</span>
+<span class='skill-badge'>business presentation creation</span>
+<span class='skill-badge'>decision support analysis</span>
+<span class='skill-badge'>spreadsheet modelling</span>
+<span class='skill-badge'>design‑thinking ideation</span>
+<span class='skill-badge'>cost‑benefit analysis</span>
+<span class='skill-badge'>cross‑cultural communication</span>
+<span class='skill-badge'>oral communication presentation</span>
+<span class='skill-badge'>written communication reporting</span>
+<span class='skill-badge'>effective cross-cultural communication</span>
+<span class='skill-badge'>regression modelling</span>
+<span class='skill-badge'>service design analysis</span>
+<span class='skill-badge'>big data analysis</span>
+<span class='skill-badge'>verbal communication application</span>
+<span class='skill-badge'>written communication application</span>
+<span class='skill-badge'>spreadsheet modelling</span>
+</div>
+
+        </body>
+        </html>
+        
