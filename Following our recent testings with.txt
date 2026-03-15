@@ -1,0 +1,116 @@
+Following our recent testings with extraction and structuring, my proposal to revise the approach hopes to set out a clear, testable design for how Units of Competency should link to Skills, and what data should be owned by each object. The intent is to give you enough precision to model, prototype, and pressure test this with the original TGA all skills dataset.
+
+1. Design intent 
+We need to support a taxonomy where:
+•	Skills are portable and stable across Training Packages and releases (and expand this into university and occupations), and
+•	VET context is preserved, not flattened away during deduplication (which would make credit based use cases unachievable).
+
+The key principle I am proposing as a revised way to what we have been testing is is:
+Deduplicate skill labels, not teaching/context evidence.
+This requires an explicit separation between Skill, Unit, and the Unit→Skill link.
+
+2. Core modelling proposal 
+Do not link Units directly to Skills with a simple foreign key.
+Instead, introduce an explicit linking (working name: Skill Assertion).
+
+Unit of Competency
+        |
+        |  teaches / assesses
+        |
+Skill Assertion (new link object)
+        |
+        |
+      Skill
+This is where education specific meaning sits.
+
+3. Ownership boundaries
+A. Skill 
+Skill objects should be unit agnostic and survive curriculum change.
+Skill owns:
+•	Persistent skill identifier (stable across releases)
+•	Preferred skill label
+•	Alternative labels / synonyms 
+•	Definition / scope note (context independent)
+•	Skill category (e.g. cognitive, technical)
+•	Skill record management metadata
+Explicitly not on Skill:
+•	Level
+•	Keywords
+•	Practical vs theoretical delivery
+•	Assessment detail
+These vary by unit and would break portability if embedded.
+
+B. Unit of Competency 
+Units data remains.
+Unit owns (none of this we make):
+•	Unit code and title
+•	Training Package and release
+•	Elements and Performance Criteria
+•	Assessment conditions
+•	AQF level
+•	Nominal hours / volume of learning
+
+C. Unit–Skill link (Skill Assertion)
+This is the critical layer and should be the focus of testing.
+Link owns:
+•	Teaching context (PRACTICAL / THEORETICAL / HYBRID)
+•	Level of engagement (ASSIST / APPLY / ENABLE / FOLLOW)
+•	Evidence text (snippet from the unit)
+•	Keywords as used in that unit
+•	Confidence score from extraction
+This answers:
+How, and to what depth, is this skill taught in this unit?
+
+
+4. How this supports clean deduplication
+With this structure:
+•	One Risk Assessment skill exists once
+•	Multiple assertions capture variation: 
+o	Unit A → PRACTICAL / APPLY
+o	Unit B → THEORETICAL / ASSIST
+o	Unit C → HYBRID / ENABLE
+We avoid:
+•	Creating multiple “Risk Assessment (Practical)” skills
+•	Inflating the taxonomy
+•	Losing teaching context during merge
+
+5. What to test next 
+Organisational modelling
+1.	Model a three object schema 
+o	Skill
+o	Unit
+o	SkillAssertion (link)
+2.	Ensure: 
+o	Skill IDs are persistent
+o	Assertions can be many to many
+o	Context and level are only on the link
+3.	Consider how to store: 
+o	Multiple contexts per skill (e.g. distributions vs raw assertions)
+o	Versioning and status at the Skill level
+
+Data deduplication
+1.	Run deduplication only on Skill label candidates 
+o	Exact match → auto merge
+o	Normalised variants → candidate merge, for human validation and testing (potentially test on a small number to seek clarity before continuing) – I can give you criteria for this if useful
+2.	Preserve all rows as Skill Assertions 
+o	Do not collapse context, level, or evidence
+3.	Test: 
+o	One skill with many assertions across units
+o	Same skill appearing with different contexts and levels
+4.	Validate examples: 
+o	Same label, different category (possible skill split)
+o	Long multi word skills flagged for review
+
+6. Acceptance criteria for the prototype
+We should be able to:
+•	Ask: “Where is this skill taught practically?”
+•	Ask: “At what depth is this skill typically taught?”
+•	Change or remove a unit without breaking the skill
+•	Add a new Training Package and link to existing skills
+If the model can do that, I think this is working well
+
+7. Ongoing design questions 
+Please flag issues, options and advice on:
+•	How to summarise multiple assertions (mode vs distribution)
+•	Thresholds for auto merge vs human review
+•	Data management of the potential schema
