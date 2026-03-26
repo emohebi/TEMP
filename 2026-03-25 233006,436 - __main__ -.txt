@@ -1,0 +1,338 @@
+2026-03-25 23:30:06,436 - __main__ - INFO - Starting pipeline execution...
+2026-03-25 23:30:06,437 - src.pipeline - INFO - ======================================================================
+2026-03-25 23:30:06,438 - src.pipeline - INFO -   SKILL ASSERTION PIPELINE
+2026-03-25 23:30:06,438 - src.pipeline - INFO -   Skill → Assertion → Unit → Qualification → Occupation
+2026-03-25 23:30:06,438 - src.pipeline - INFO -   + Ability Archetypes with Progression Ladders
+2026-03-25 23:30:06,439 - src.pipeline - INFO - ======================================================================
+2026-03-25 23:30:06,464 - src.pipeline - INFO - 
+[1/7] Preprocessing...
+2026-03-25 23:30:06,464 - src.data_processing.preprocessor - INFO - Preprocessing 20000 rows (each row → potential SkillAssertion)
+2026-03-25 23:30:06,599 - src.data_processing.preprocessor - INFO - After preprocessing: 20000 rows retained
+2026-03-25 23:30:06,602 - src.data_processing.preprocessor - INFO -   Unique skill names: 16821
+2026-03-25 23:30:06,604 - src.data_processing.preprocessor - INFO -   Unique unit codes: 1393
+2026-03-25 23:30:06,605 - src.data_processing.preprocessor - INFO -   Context distribution: {'PRACTICAL': 17067, 'HYBRID': 2329, 'THEORETICAL': 604}
+2026-03-25 23:30:06,606 - src.data_processing.preprocessor - INFO -   Level range: 1-4
+2026-03-25 23:30:06,606 - src.pipeline - INFO - 
+[2/7] Loading concordance from: ./data/unit_qual_occp_tga.xlsx
+2026-03-25 23:30:06,668 - src.data_processing.concordance - INFO - Loading concordance from: ./data/unit_qual_occp_tga.xlsx
+2026-03-25 23:30:11,203 - src.data_processing.concordance - INFO - Detected columns: {'code': 'code', 'code_name': 'code_name', 'qualification_code': 'qualification_code', 'qualification_title': 'qualification_title', 'anzsco_code': 'anzsco_code', 'anzsco_title': 'anzsco_title'}
+2026-03-25 23:30:12,551 - src.data_processing.concordance - INFO - Concordance loaded:
+2026-03-25 23:30:12,552 - src.data_processing.concordance - INFO -   Units with titles: 18044
+2026-03-25 23:30:12,553 - src.data_processing.concordance - INFO -   Qualifications: 1136
+2026-03-25 23:30:12,553 - src.data_processing.concordance - INFO -   Occupations (ANZSCO): 448
+2026-03-25 23:30:12,555 - src.pipeline - INFO - 
+[3/7] Reassigning proficiency levels (LVL facet-based)...
+2026-03-25 23:30:13,496 - src.facets.level_reassigner - INFO - Precomputed LVL facet embeddings: 7 levels
+2026-03-25 23:30:13,498 - src.facets.level_reassigner - INFO - ============================================================
+2026-03-25 23:30:13,498 - src.facets.level_reassigner - INFO - LEVEL REASSIGNMENT (LVL facet-based)
+2026-03-25 23:30:13,498 - src.facets.level_reassigner - INFO - ============================================================
+2026-03-25 23:30:13,514 - src.facets.level_reassigner - INFO - Total rows: 20000, Unique (skill, unit) pairs: 19908
+2026-03-25 23:30:13,851 - src.facets.level_reassigner - INFO - Encoding 19908 unique (skill, unit) pairs...
+2026-03-25 23:39:52,392 - src.facets.level_reassigner - INFO - Pair embeddings shape: (19908, 2048)
+2026-03-25 23:39:52,394 - src.facets.level_reassigner - INFO - Computing similarity against 7 LVL facet descriptions...
+2026-03-25 23:39:52,587 - src.facets.level_reassigner - INFO - Direct assignment: 784 pairs, Ambiguous (queued for LLM): 19124 pairs
+2026-03-25 23:39:52,588 - src.facets.level_reassigner - INFO - LLM re-ranking 19124 ambiguous level assignments...
+2026-03-25 23:44:52,208 - src.facets.level_reassigner - INFO - LLM resolved 19124/19124 ambiguous level assignments
+2026-03-25 23:44:52,553 - src.facets.level_reassigner - INFO - ============================================================
+2026-03-25 23:44:52,554 - src.facets.level_reassigner - INFO - LEVEL REASSIGNMENT RESULTS
+2026-03-25 23:44:52,554 - src.facets.level_reassigner - INFO -   Total rows:        20000
+2026-03-25 23:44:52,555 - src.facets.level_reassigner - INFO -   Levels changed:    15064 (75.3%)
+2026-03-25 23:44:52,555 - src.facets.level_reassigner - INFO -   Avg confidence:    0.786
+2026-03-25 23:44:52,555 - src.facets.level_reassigner - INFO -   Level distribution: {1: 1215, 2: 582, 3: 15056, 4: 1136, 5: 1400, 6: 507, 7: 104}
+2026-03-25 23:44:52,556 - src.facets.level_reassigner - INFO - ============================================================
+2026-03-25 23:44:52,556 - src.pipeline - INFO - 
+[4/7] Deduplicating skill labels...
+2026-03-25 23:44:52,557 - src.dedup.deduplicator - INFO - SkillDeduplicator: threshold=0.9, genai=True
+2026-03-25 23:44:52,557 - src.dedup.deduplicator - INFO - ============================================================
+2026-03-25 23:44:52,557 - src.dedup.deduplicator - INFO - SKILL LABEL DEDUPLICATION
+2026-03-25 23:44:52,558 - src.dedup.deduplicator - INFO - ============================================================
+2026-03-25 23:44:52,563 - src.dedup.deduplicator - INFO - Total rows: 20000, Unique skill names: 16821
+2026-03-25 23:44:52,564 - src.dedup.deduplicator - INFO - Generating embeddings for unique skill names...
+2026-03-25 23:53:32,400 - src.dedup.deduplicator - INFO - Embeddings shape: (16821, 2048)
+2026-03-25 23:53:32,402 - src.dedup.deduplicator - INFO - Computing similarity and clustering at threshold 0.9...
+Clustering: 100%|██████████| 17/17 [00:19<00:00,  1.15s/it]2026-03-25 23:53:51,947 - src.dedup.deduplicator - INFO - Found 5276 skill clusters from 16821 unique names
+2026-03-25 23:53:51,947 - src.dedup.deduplicator - INFO - Validating 921 multi-name clusters with GenAI...
+
+2026-03-25 23:53:52,138 - src.dedup.deduplicator - WARNING - GenAI validation batch failed: The decoder prompt (length 97695) is longer than the maximum model length of 10240. Make sure that `max_model_len` is no smaller than the number of text tokens.. Keeping clusters as-is.
+2026-03-25 23:53:53,403 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:53,404 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Conflict Resolution","Conflict Management","Conflict Resolution Management","Workplace Conflict Resolution","Conflict Resolution Strategy","Conflict Resolution Analysis","Conflict Negotiation Management","Conflict Problem Solving","Workplace Cultural Conflict Resolution","Conflict Mitigation Strategy","Conflict Resolution Facilitation","Group Conflict Resolution","Group Conflict Negotiation Facilitation","Group Conflict Management Facilitation","Group Formation Conflict Resolution"]}]}
+2026-03-25 23:53:53,883 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:53,884 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Conflict Resolution","Conflict Management","Conflict Resolution Management","Workplace Conflict Resolution","Conflict Resolution Strategy","Conflict Resolution Analysis","Conflict Negotiation Management","Conflict Problem Solving","Workplace Cultural Conflict Resolution","Conflict Mitigation Strategy","Conflict Resolution Facilitation","Group Conflict Resolution","Group Conflict Negotiation Facilitation","Group Conflict Management Facilitation","Group Formation Conflict Resolution"]}]}
+2026-03-25 23:53:54,364 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:54,365 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Conflict Resolution","Conflict Management","Conflict Resolution Management","Workplace Conflict Resolution","Conflict Resolution Strategy","Conflict Resolution Analysis","Conflict Negotiation Management","Conflict Problem Solving","Workplace Cultural Conflict Resolution","Conflict Mitigation Strategy","Conflict Resolution Facilitation","Group Conflict Resolution","Group Conflict Negotiation Facilitation","Group Conflict Management Facilitation","Group Formation Conflict Resolution"]}]}
+2026-03-25 23:53:54,844 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:54,846 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Conflict Resolution","Conflict Management","Conflict Resolution Management","Workplace Conflict Resolution","Conflict Resolution Strategy","Conflict Resolution Analysis","Conflict Negotiation Management","Conflict Problem Solving","Workplace Cultural Conflict Resolution","Conflict Mitigation Strategy","Conflict Resolution Facilitation","Group Conflict Resolution","Group Conflict Negotiation Facilitation","Group Conflict Management Facilitation","Group Formation Conflict Resolution"]}]}
+2026-03-25 23:53:55,272 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:55,273 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Time Management","Timeline Management","Project Scheduling","Program Schedule Management","Propagation Schedule Management","Growing-On Program Schedule Management","Propagation Program Scheduling","Revegetation Works Scheduling Strategy","Community Project Scheduling Management","Project Schedule Management","Landscape Project Schedule Management","Project Timeline Management","Project Schedule Adjustment Strategy","Report Presentation Time Management","Timeframe Management","Revegetation Program Schedule Management","Project Financial Schedule Evaluation","Project Financial Schedule Assessment","Project Financial Analysis","Project Financial Scheduling","Project Schedule Strategy"]]]}
+2026-03-25 23:53:55,893 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:55,895 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Time Management","Timeline Management","Project Scheduling","Program Schedule Management","Propagation Schedule Management","Growing-On Program Schedule Management","Propagation Program Scheduling","Revegetation Works Scheduling Strategy","Community Project Scheduling Management","Project Schedule Management","Landscape Project Schedule Management","Project Timeline Management","Project Schedule Adjustment Strategy","Report Presentation Time Management","Timeframe Management","Revegetation Program Schedule Management","Project Financial Schedule Evaluation","Project Financial Schedule Assessment","Project Financial Analysis","Project Financial Scheduling","Project Schedule Strategy"]]]}
+2026-03-25 23:53:56,515 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:56,516 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Time Management","Timeline Management","Project Scheduling","Program Schedule Management","Propagation Schedule Management","Growing-On Program Schedule Management","Propagation Program Scheduling","Revegetation Works Scheduling Strategy","Community Project Scheduling Management","Project Schedule Management","Landscape Project Schedule Management","Project Timeline Management","Project Schedule Adjustment Strategy","Report Presentation Time Management","Timeframe Management","Revegetation Program Schedule Management","Project Financial Schedule Evaluation","Project Financial Schedule Assessment","Project Financial Analysis","Project Financial Scheduling","Project Schedule Strategy"]]]}
+2026-03-25 23:53:57,137 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:57,138 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Time Management","Timeline Management","Project Scheduling","Program Schedule Management","Propagation Schedule Management","Growing-On Program Schedule Management","Propagation Program Scheduling","Revegetation Works Scheduling Strategy","Community Project Scheduling Management","Project Schedule Management","Landscape Project Schedule Management","Project Timeline Management","Project Schedule Adjustment Strategy","Report Presentation Time Management","Timeframe Management","Revegetation Program Schedule Management","Project Financial Schedule Evaluation","Project Financial Schedule Assessment","Project Financial Analysis","Project Financial Scheduling","Project Schedule Strategy"]]]}
+2026-03-25 23:53:57,758 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:53:57,760 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Time Management","Timeline Management","Project Scheduling","Program Schedule Management","Propagation Schedule Management","Growing-On Program Schedule Management","Propagation Program Scheduling","Revegetation Works Scheduling Strategy","Community Project Scheduling Management","Project Schedule Management","Landscape Project Schedule Management","Project Timeline Management","Project Schedule Adjustment Strategy","Report Presentation Time Management","Timeframe Management","Revegetation Program Schedule Management","Project Financial Schedule Evaluation","Project Financial Schedule Assessment","Project Financial Analysis","Project Financial Scheduling","Project Schedule Strategy"]]]}
+2026-03-25 23:54:00,639 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:00,640 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Project Cost Estimation", "Cost Estimation", "Budget Management", "Project Budget Management", "Project Cost Management", "Resource Requirement Strategy", "Budget Development", "Budget Formulation Strategy", "Budget Estimation", "Research Trial Cost Estimation", "Harvest Resource Management", "Propagation Production Requirement Analysis", "Maintenance Budget Management", "Maintenance Cost Estimation", "Equipment Budget Management", "Program Cost Estimation", "Production Resource Requirement Assessment", "Harvest Resource Estimation", "Production Resource Estimation", "Production Cost Estimation", "Production Resource Requirement Analysis", "Work Site Cost Estimation", "Project Resource Capability Assessment", "Cost Evaluation", "Resource Estimation", "Infrastructure Cost Estimation", "Program Resource Assessment", "Event Budgeting", "Service Cost Estimation", "Program Budget Management", "Resource Cost Estimation", "Cost Comparison Analysis", "Construction Resource Estimation", "Construction Resource Requirement Assessment", "Jointing Resource Estimation", "Construction Measurement Estimation", "Project Cost Factor Analysis", "Project Cost Analysis", "Project Cost Research", "Project Cost Structure Analysis", "Project Resource Requirement Assessment", "Project Cost Pricing Analysis", "Project Resource Requirement Analysis", "Project Cost Communication", "Budgetary Decision Making", "Budget Cost Estimation", "Budget Recommendation Advisory", "Budgeting Knowledge", "Budget Allocation Strategy", "Project Cost Reporting", "Budget Recommendation Formulation", "Budgetary Strategy", "Construction Cost Estimation", "Program Budget Strategy", "Fundraising Budget Management", "Program Resource Requirement Assessment", "Capital Cost Forecasting", "Project Cost Assessment", "Project Resource Estimation", "Event Budget Management", "Proposal Cost Estimation"]]]}
+2026-03-25 23:54:02,690 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:02,691 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Project Cost Estimation", "Cost Estimation", "Budget Management", "Project Budget Management", "Project Cost Management", "Resource Requirement Strategy", "Budget Development", "Budget Formulation Strategy", "Budget Estimation", "Research Trial Cost Estimation", "Harvest Resource Management", "Propagation Production Requirement Analysis", "Maintenance Budget Management", "Maintenance Cost Estimation", "Equipment Budget Management", "Program Cost Estimation", "Production Resource Requirement Assessment", "Harvest Resource Estimation", "Production Resource Estimation", "Production Cost Estimation", "Production Resource Requirement Analysis", "Work Site Cost Estimation", "Project Resource Capability Assessment", "Cost Evaluation", "Resource Estimation", "Infrastructure Cost Estimation", "Program Resource Assessment", "Event Budgeting", "Service Cost Estimation", "Program Budget Management", "Resource Cost Estimation", "Cost Comparison Analysis", "Construction Resource Estimation", "Construction Resource Requirement Assessment", "Jointing Resource Estimation", "Construction Measurement Estimation", "Project Cost Factor Analysis", "Project Cost Analysis", "Project Cost Research", "Project Cost Structure Analysis", "Project Resource Requirement Assessment", "Project Cost Pricing Analysis", "Project Resource Requirement Analysis", "Project Cost Communication", "Budgetary Decision Making", "Budget Cost Estimation", "Budget Recommendation Advisory", "Budgeting Knowledge", "Budget Allocation Strategy", "Project Cost Reporting", "Budget Recommendation Formulation", "Budgetary Strategy", "Construction Cost Estimation", "Program Budget Strategy", "Fundraising Budget Management", "Program Resource Requirement Assessment", "Capital Cost Forecasting", "Project Cost Assessment", "Project Resource Estimation", "Event Budget Management", "Proposal Cost Estimation"]]]}
+2026-03-25 23:54:04,740 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:04,741 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Project Cost Estimation", "Cost Estimation", "Budget Management", "Project Budget Management", "Project Cost Management", "Resource Requirement Strategy", "Budget Development", "Budget Formulation Strategy", "Budget Estimation", "Research Trial Cost Estimation", "Harvest Resource Management", "Propagation Production Requirement Analysis", "Maintenance Budget Management", "Maintenance Cost Estimation", "Equipment Budget Management", "Program Cost Estimation", "Production Resource Requirement Assessment", "Harvest Resource Estimation", "Production Resource Estimation", "Production Cost Estimation", "Production Resource Requirement Analysis", "Work Site Cost Estimation", "Project Resource Capability Assessment", "Cost Evaluation", "Resource Estimation", "Infrastructure Cost Estimation", "Program Resource Assessment", "Event Budgeting", "Service Cost Estimation", "Program Budget Management", "Resource Cost Estimation", "Cost Comparison Analysis", "Construction Resource Estimation", "Construction Resource Requirement Assessment", "Jointing Resource Estimation", "Construction Measurement Estimation", "Project Cost Factor Analysis", "Project Cost Analysis", "Project Cost Research", "Project Cost Structure Analysis", "Project Resource Requirement Assessment", "Project Cost Pricing Analysis", "Project Resource Requirement Analysis", "Project Cost Communication", "Budgetary Decision Making", "Budget Cost Estimation", "Budget Recommendation Advisory", "Budgeting Knowledge", "Budget Allocation Strategy", "Project Cost Reporting", "Budget Recommendation Formulation", "Budgetary Strategy", "Construction Cost Estimation", "Program Budget Strategy", "Fundraising Budget Management", "Program Resource Requirement Assessment", "Capital Cost Forecasting", "Project Cost Assessment", "Project Resource Estimation", "Event Budget Management", "Proposal Cost Estimation"]]]}
+2026-03-25 23:54:06,793 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:06,794 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Project Cost Estimation", "Cost Estimation", "Budget Management", "Project Budget Management", "Project Cost Management", "Resource Requirement Strategy", "Budget Development", "Budget Formulation Strategy", "Budget Estimation", "Research Trial Cost Estimation", "Harvest Resource Management", "Propagation Production Requirement Analysis", "Maintenance Budget Management", "Maintenance Cost Estimation", "Equipment Budget Management", "Program Cost Estimation", "Production Resource Requirement Assessment", "Harvest Resource Estimation", "Production Resource Estimation", "Production Cost Estimation", "Production Resource Requirement Analysis", "Work Site Cost Estimation", "Project Resource Capability Assessment", "Cost Evaluation", "Resource Estimation", "Infrastructure Cost Estimation", "Program Resource Assessment", "Event Budgeting", "Service Cost Estimation", "Program Budget Management", "Resource Cost Estimation", "Cost Comparison Analysis", "Construction Resource Estimation", "Construction Resource Requirement Assessment", "Jointing Resource Estimation", "Construction Measurement Estimation", "Project Cost Factor Analysis", "Project Cost Analysis", "Project Cost Research", "Project Cost Structure Analysis", "Project Resource Requirement Assessment", "Project Cost Pricing Analysis", "Project Resource Requirement Analysis", "Project Cost Communication", "Budgetary Decision Making", "Budget Cost Estimation", "Budget Recommendation Advisory", "Budgeting Knowledge", "Budget Allocation Strategy", "Project Cost Reporting", "Budget Recommendation Formulation", "Budgetary Strategy", "Construction Cost Estimation", "Program Budget Strategy", "Fundraising Budget Management", "Program Resource Requirement Assessment", "Capital Cost Forecasting", "Project Cost Assessment", "Project Resource Estimation", "Event Budget Management", "Proposal Cost Estimation"]]]}
+2026-03-25 23:54:08,846 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:08,847 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Project Cost Estimation", "Cost Estimation", "Budget Management", "Project Budget Management", "Project Cost Management", "Resource Requirement Strategy", "Budget Development", "Budget Formulation Strategy", "Budget Estimation", "Research Trial Cost Estimation", "Harvest Resource Management", "Propagation Production Requirement Analysis", "Maintenance Budget Management", "Maintenance Cost Estimation", "Equipment Budget Management", "Program Cost Estimation", "Production Resource Requirement Assessment", "Harvest Resource Estimation", "Production Resource Estimation", "Production Cost Estimation", "Production Resource Requirement Analysis", "Work Site Cost Estimation", "Project Resource Capability Assessment", "Cost Evaluation", "Resource Estimation", "Infrastructure Cost Estimation", "Program Resource Assessment", "Event Budgeting", "Service Cost Estimation", "Program Budget Management", "Resource Cost Estimation", "Cost Comparison Analysis", "Construction Resource Estimation", "Construction Resource Requirement Assessment", "Jointing Resource Estimation", "Construction Measurement Estimation", "Project Cost Factor Analysis", "Project Cost Analysis", "Project Cost Research", "Project Cost Structure Analysis", "Project Resource Requirement Assessment", "Project Cost Pricing Analysis", "Project Resource Requirement Analysis", "Project Cost Communication", "Budgetary Decision Making", "Budget Cost Estimation", "Budget Recommendation Advisory", "Budgeting Knowledge", "Budget Allocation Strategy", "Project Cost Reporting", "Budget Recommendation Formulation", "Budgetary Strategy", "Construction Cost Estimation", "Program Budget Strategy", "Fundraising Budget Management", "Program Resource Requirement Assessment", "Capital Cost Forecasting", "Project Cost Assessment", "Project Resource Estimation", "Event Budget Management", "Proposal Cost Estimation"]]]}
+2026-03-25 23:54:11,309 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:11,311 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Tree Species Identification", "Tree Botanical Identification", "Tree Identification Reference Utilization", "Tree Identification Assurance", "Tree Disease Classification Analysis", "Tree Botanical Terminology Usage", "Tree Identification Reference Comparison", "Tree Species Classification", "Tree Taxonomic Identification", "Tree Species Selection Assessment"]}
+2026-03-25 23:54:11,704 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:11,706 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Tree Species Identification", "Tree Botanical Identification", "Tree Identification Reference Utilization", "Tree Identification Assurance", "Tree Disease Classification Analysis", "Tree Botanical Terminology Usage", "Tree Identification Reference Comparison", "Tree Species Classification", "Tree Taxonomic Identification", "Tree Species Selection Assessment"]}]}
+2026-03-25 23:54:12,093 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-25 23:54:12,094 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Tree Species Identification", "Tree Botanical Identification", "Tree Id
+
+... [*** WARNING: max output size exceeded, skipping output. ***] ...
+
+26-03-26 00:03:32,106 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Veterinary Dental Imaging Management", "Veterinary Dental Film Management", "Veterinary Dental Image Development", "Veterinary Dental Radiographic Configuration"]}]]
+2026-03-26 00:03:38,986 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:38,987 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Foal Nursing Management", "Aseptic Foal Nursing"]}
+2026-03-26 00:03:39,125 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:39,126 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Foal Nursing Management", "Aseptic Foal Nursing"]}
+2026-03-26 00:03:41,880 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:41,881 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Production Target Management","Integrated Production Target Management"]]]
+2026-03-26 00:03:43,686 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:43,688 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Practice Policy Adherence Evaluation", "Practice Policy Evaluation"], ["Practice Policy Implementation Strategy"]}]]
+2026-03-26 00:03:50,786 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:50,787 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Euthanasia Method Evaluation"], ["Euthanasia Site Evaluation"]]]
+2026-03-26 00:03:50,913 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:50,914 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Euthanasia Method Evaluation"], ["Euthanasia Site Evaluation"]]]
+2026-03-26 00:03:51,040 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:51,041 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Euthanasia Method Evaluation"], ["Euthanasia Site Evaluation"]]]
+2026-03-26 00:03:51,167 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:51,168 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Euthanasia Method Evaluation"], ["Euthanasia Site Evaluation"]]]
+2026-03-26 00:03:52,210 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:52,211 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Technology Incident Management", "Animal Technology Breach Management"]]]
+2026-03-26 00:03:52,331 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:52,332 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Technology Incident Management", "Animal Technology Breach Management"]]]
+2026-03-26 00:03:52,452 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:52,453 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Technology Incident Management", "Animal Technology Breach Management"]]]
+2026-03-26 00:03:52,573 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:03:52,574 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Technology Incident Management", "Animal Technology Breach Management"]]]
+2026-03-26 00:04:03,916 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:03,917 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Data Entry Accuracy", "Companion Animal Data Accuracy Evaluation"]]]
+2026-03-26 00:04:04,043 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:04,044 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Data Entry Accuracy", "Companion Animal Data Accuracy Evaluation"]]]
+2026-03-26 00:04:04,170 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:04,171 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Data Entry Accuracy", "Companion Animal Data Accuracy Evaluation"]]]
+2026-03-26 00:04:04,296 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:04,298 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Data Entry Accuracy", "Companion Animal Data Accuracy Evaluation"]]]
+2026-03-26 00:04:04,423 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:04,424 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Animal Data Entry Accuracy", "Companion Animal Data Accuracy Evaluation"]]]
+2026-03-26 00:04:14,698 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:14,699 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Hoof Boot Fit Evaluation", "Hoof Boot Fit Assessment"]]]
+2026-03-26 00:04:15,074 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:15,076 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Hoof Boot Fit Evaluation", "Hoof Boot Fit Assessment"]]]
+2026-03-26 00:04:17,797 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:17,798 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Horse Clipping Area Assessment", "Equine Clipping Area Design"]}]]
+2026-03-26 00:04:19,417 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:19,419 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Vertical Garden Material Assessment"], ["Vertical Garden Quantity Assessment"], ["Vertical Garden Plan Assessment"], ["Vertical Garden Equipment Evaluation"], ["Vertical Garden Design Interpretation"], ["Vertical Garden Load Assessment"], ["Vertical Garden Media Assessment"], ["Vertical Garden Plant Assessment"], ["Vertical Garden Site Assessment"], ["Vertical Garden Spatial Strategy"]}]}
+2026-03-26 00:04:26,814 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:26,815 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Roof Garden Soil Evaluation", "Roof Garden Soil Management"]]]
+2026-03-26 00:04:26,928 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:26,930 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Roof Garden Soil Evaluation", "Roof Garden Soil Management"]]]
+2026-03-26 00:04:27,156 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:27,158 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Roof Garden Soil Evaluation", "Roof Garden Soil Management"]]]
+2026-03-26 00:04:28,260 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:28,261 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Hydroponic Installation Issue Communication", "Hydroponic System Issue Communication"]}]]
+2026-03-26 00:04:28,991 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:28,992 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Hydroponic Environment Dimension Assessment", "Hydroponic Environmental Control Definition", "Hydroponic Environmental Parameter Oversight", "Hydroponic System Environmental Oversight", "Hydroponic Environmental Control Evaluation"]}
+2026-03-26 00:04:29,642 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:29,643 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Hydroponic Environment Dimension Assessment", "Hydroponic Environmental Control Definition", "Hydroponic Environmental Parameter Oversight", "Hydroponic System Environmental Oversight", "Hydroponic Environmental Control Evaluation"]}
+2026-03-26 00:04:29,968 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:29,969 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Hydroponic Environment Dimension Assessment", "Hydroponic Environmental Control Definition", "Hydroponic Environmental Parameter Oversight", "Hydroponic System Environmental Oversight", "Hydroponic Environmental Control Evaluation"]}
+2026-03-26 00:04:30,543 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:30,544 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Habitat Relationship Analysis", "Habitat Linkage Assessment"]]]
+2026-03-26 00:04:39,530 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:39,531 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Structure Assessment", "Operational Structure Assessment"]}]]
+2026-03-26 00:04:40,189 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:40,191 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Indigenous Work Practices Analysis", "Indigenous Work Practices Assessment"]]]
+2026-03-26 00:04:45,390 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:45,391 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Dairy Waste Impact Assessment", "Dairy Waste Risk Assessment"]]]
+2026-03-26 00:04:45,515 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:45,516 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Dairy Waste Impact Assessment", "Dairy Waste Risk Assessment"]]]
+2026-03-26 00:04:45,640 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:45,641 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Dairy Waste Impact Assessment", "Dairy Waste Risk Assessment"]]]
+2026-03-26 00:04:49,138 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:49,139 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Soil Salinity Assessment", "Irrigation Soil Salinity Assessment"], ["Soil Salinity Interpretation"]}]]
+2026-03-26 00:04:55,665 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:55,666 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Biodiversity Data Quality Assessment", "Biodiversity Data Validation"]]]
+2026-03-26 00:04:55,910 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:55,911 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Biodiversity Data Quality Assessment", "Biodiversity Data Validation"]]]
+2026-03-26 00:04:56,155 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:56,157 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Biodiversity Data Quality Assessment", "Biodiversity Data Validation"]]]
+2026-03-26 00:04:57,442 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:04:57,443 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Resource Plan Compliance Assessment", "Strategic Plan Compliance Assessment"]]]
+2026-03-26 00:05:19,376 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:19,378 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Electrical Ppe Evaluation", "Electrical Ppe Management"]]]
+2026-03-26 00:05:21,661 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:21,663 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Fencing Material Cost Estimation"], ["Fencing Material Quantity Estimation"]]]
+2026-03-26 00:05:23,315 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:23,316 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Low Voltage System Verification", "Extra Low Voltage Component Verification"]]]
+2026-03-26 00:05:26,231 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:26,232 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Pollen Preservation Management", "Pollen Storage Management"]]]
+2026-03-26 00:05:28,001 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:28,002 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Queen Bee Insemination Schedule Management", "Queen Bee Artificial Insemination"]}]]
+2026-03-26 00:05:28,487 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:28,488 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Infected Premises Ppe Management"], ["Infected Premises Reporting Oversight"], ["Infected Premises Communication Coordination"], ["Infected Premises Safety Oversight"], ["Infected Premises Log Management"], ["Infected Premises Risk Assessment"], ["Infected Premises Emergency Management"]}]}
+2026-03-26 00:05:33,431 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:33,433 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Bee Smoker Smoke Management", "Bee Smoker Effect Oversight", "Bee Smoker Fuel Management", "Bee Smoker Water Management", "Bee Smoker Bellows Management", "Bee Smoker Fire Response", "Bee Smoker Inspection", "Bee Smoker Fire Prevention Strategy", "Bee Smoker Procedure Interpretation"]}
+2026-03-26 00:05:33,865 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:33,866 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Bee Smoker Smoke Management", "Bee Smoker Effect Oversight", "Bee Smoker Fuel Management", "Bee Smoker Water Management", "Bee Smoker Bellows Management", "Bee Smoker Fire Response", "Bee Smoker Inspection", "Bee Smoker Fire Prevention Strategy", "Bee Smoker Procedure Interpretation"]}
+2026-03-26 00:05:34,299 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:34,300 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Bee Smoker Smoke Management", "Bee Smoker Effect Oversight", "Bee Smoker Fuel Management", "Bee Smoker Water Management", "Bee Smoker Bellows Management", "Bee Smoker Fire Response", "Bee Smoker Inspection", "Bee Smoker Fire Prevention Strategy", "Bee Smoker Procedure Interpretation"]}
+2026-03-26 00:05:34,732 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:34,733 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Bee Smoker Smoke Management", "Bee Smoker Effect Oversight", "Bee Smoker Fuel Management", "Bee Smoker Water Management", "Bee Smoker Bellows Management", "Bee Smoker Fire Response", "Bee Smoker Inspection", "Bee Smoker Fire Prevention Strategy", "Bee Smoker Procedure Interpretation"]}
+2026-03-26 00:05:35,165 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:35,167 - src.interfaces.vllm_interface - WARNING - Response was: 
+final{"groups": [["Bee Smoker Smoke Management", "Bee Smoker Effect Oversight", "Bee Smoker Fuel Management", "Bee Smoker Water Management", "Bee Smoker Bellows Management", "Bee Smoker Fire Response", "Bee Smoker Inspection", "Bee Smoker Fire Prevention Strategy", "Bee Smoker Procedure Interpretation"]}
+2026-03-26 00:05:35,893 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:35,894 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Beekeeping Waste Disposal Management", "Honey Bee Waste Management"]}]]
+2026-03-26 00:05:36,045 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:36,046 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Beekeeping Waste Disposal Management", "Honey Bee Waste Management"]}]]
+2026-03-26 00:05:36,196 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:36,197 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Beekeeping Waste Disposal Management", "Honey Bee Waste Management"]}]]
+2026-03-26 00:05:36,346 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:36,347 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Beekeeping Waste Disposal Management", "Honey Bee Waste Management"]}]]
+2026-03-26 00:05:36,496 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:36,498 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Beekeeping Waste Disposal Management", "Honey Bee Waste Management"]}]]
+2026-03-26 00:05:36,498 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:36,498 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Pollen Pest Risk Management", "Pollen Safety Risk Mitigation"]]]
+2026-03-26 00:05:36,630 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:36,631 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Pollen Pest Risk Management", "Pollen Safety Risk Mitigation"]]]
+2026-03-26 00:05:36,905 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:36,906 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Pollen Pest Risk Management", "Pollen Safety Risk Mitigation"]]]
+2026-03-26 00:05:37,037 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:37,038 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Pollen Pest Risk Management", "Pollen Safety Risk Mitigation"]]]
+2026-03-26 00:05:46,051 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:46,052 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Control Activity Effectiveness Evaluation", "Control Activity Performance Oversight"]}]]
+2026-03-26 00:05:46,749 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:46,750 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Control Activity Effectiveness Evaluation", "Control Activity Performance Oversight"]}]]
+2026-03-26 00:05:50,769 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:50,770 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Grain Storage Pest Management", "Stored Grain Integrated Pest Management"]]]
+2026-03-26 00:05:51,067 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:51,069 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Grain Storage Pest Management", "Stored Grain Integrated Pest Management"]}]]
+2026-03-26 00:05:51,194 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:51,195 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Grain Storage Pest Management", "Stored Grain Integrated Pest Management"]]]
+2026-03-26 00:05:55,073 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:55,075 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Fumigation Emergency Response Strategy", "Fumigation Emergency Management"]}]]
+2026-03-26 00:05:58,646 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:58,647 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Chemical Evaluation", "Chemical Function Assessment"]}]]
+2026-03-26 00:05:59,010 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:05:59,012 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[{"groups": [["Chemical Evaluation", "Chemical Function Assessment"]}]]
+2026-03-26 00:06:04,772 - src.interfaces.vllm_interface - WARNING - Failed to parse JSON response: Expecting value: line 1 column 1 (char 0)
+2026-03-26 00:06:04,773 - src.interfaces.vllm_interface - WARNING - Response was: 
+final[["Marketing Performance Evaluation", "Marketing Performance Assessment"]]]
+2026-03-26 00:06:13,719 - src.dedup.deduplicator - INFO - After GenAI validation: 5280 clusters
+2026-03-26 00:06:47,721 - src.dedup.deduplicator - INFO - ============================================================
+2026-03-26 00:06:47,723 - src.dedup.deduplicator - INFO - DEDUPLICATION RESULTS
+2026-03-26 00:06:47,723 - src.dedup.deduplicator - INFO -   Unique names input:    16821
+2026-03-26 00:06:47,724 - src.dedup.deduplicator - INFO -   Skills output:         5280
+2026-03-26 00:06:47,724 - src.dedup.deduplicator - INFO -   Single-name skills:    4361
+2026-03-26 00:06:47,724 - src.dedup.deduplicator - INFO -   Merged clusters:       919
+2026-03-26 00:06:47,724 - src.dedup.deduplicator - INFO -   Alternative labels:    11541
+2026-03-26 00:06:47,725 - src.dedup.deduplicator - INFO -   Assertions (all rows): 20000
+2026-03-26 00:06:47,725 - src.dedup.deduplicator - INFO - ============================================================
+2026-03-26 00:06:47,726 - src.pipeline - INFO - 
+[5/7] Assigning facets to deduplicated skills...
+2026-03-26 00:06:47,726 - src.pipeline - INFO -   Remaining facets (LVL already done): ['NAT', 'TRF', 'COG', 'ASCED']
+2026-03-26 00:06:47,742 - src.pipeline - INFO - Generating skill embeddings (single pass for facets + archetypes)...
+2026-03-26 00:06:47,743 - src.pipeline - INFO - Generating primary skill embeddings for 5280 unique skills...
+2026-03-26 00:09:34,173 - src.pipeline - INFO - Primary embeddings shape: (5280, 2048)
+2026-03-26 00:09:34,174 - src.pipeline - INFO - Generating ASCED-enriched embeddings for 5280 unique skills...
+2026-03-26 00:12:17,776 - src.pipeline - INFO - ASCED embeddings shape: (5280, 2048)
+2026-03-26 00:12:17,909 - src.facets.facet_assigner - INFO - FacetAssigner: facets=['NAT', 'TRF', 'COG', 'ASCED', 'LVL'], llm=True
+2026-03-26 00:12:17,910 - src.pipeline - INFO -   Assigning non-ASCED facets ['NAT', 'TRF', 'COG'] with skill text embeddings...
+2026-03-26 00:12:17,911 - src.facets.facet_assigner - INFO - Assigning 3 facets (['NAT', 'TRF', 'COG']) to 5280 skills
+Facet similarity: 100%|██████████| 5280/5280 [00:01<00:00, 4411.12it/s]2026-03-26 00:12:22,902 - src.facets.facet_assigner - INFO - LLM re-ranking 5280 skills for NAT
