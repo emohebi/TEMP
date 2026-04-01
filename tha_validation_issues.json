@@ -1,336 +1,516 @@
 {
   "statistics": {
-    "total_skills": 6023,
-    "assigned": 6023,
+    "total_skills": 6021,
+    "assigned": 6021,
     "unassigned": 0,
-    "total_issues": 12,
+    "total_issues": 16,
     "issue_breakdown": {
-      "LOW_CONFIDENCE": 2,
-      "TIGHT_MARGIN": 10
+      "LOW_CONFIDENCE": 10,
+      "TIGHT_MARGIN": 6
     },
-    "active_thas": 146,
-    "empty_thas": 27
+    "active_thas": 210,
+    "empty_thas": 93
   },
   "issues": [
     {
-      "skill_id": "SKL-03294-05bd5c",
-      "skill_name": "Seed Data Documentation",
-      "definition": "Enters seed data into records following provided instructions to ensure accurate documentation.",
+      "skill_id": "SKL-00134-5be60d",
+      "skill_name": "Root Ball Binding Management",
+      "definition": "Secures root ball using suitable binding material to retain soil moisture before transport and planting.",
       "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.SIM",
-      "assigned_tha_name": "Simulation & Modelling",
+      "assigned_tha": "THA.SEC.EVT",
+      "assigned_tha_name": "Event & Function Coordination",
       "confidence": 0.07,
       "top_candidates": [
         {
-          "code": "THA.SEC.SIM",
-          "name": "Simulation & Modelling",
-          "similarity": 0.6677089333534241,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.FOR",
-          "name": "Forensic Analysis & Investigation",
-          "similarity": 0.6573426127433777,
-          "rank": 2
-        },
-        {
-          "code": "THA.SEC.SMP",
-          "name": "Sampling & Laboratory Technique",
-          "similarity": 0.6399365663528442,
-          "rank": 3
-        },
-        {
-          "code": "THA.SEC.SRV",
-          "name": "Surveying & Spatial Measurement",
-          "similarity": 0.6357170343399048,
-          "rank": 4
-        },
-        {
           "code": "THA.SEC.EVT",
-          "name": "Event Planning & Coordination",
-          "similarity": 0.627008318901062,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.FOR: Seed Data Documentation involves accurately entering predefined data into records, which is primarily an information management and documentation task. It does not involve creating or running computational models, which is the core of Simulation & Modelling. A better fit is THA.SEC.FOR (Forensic Analysis & Investigation) or THA.SEC.SMP (Sampling & Laboratory Technique) as they both involve precise data handling and documentation, but the most appropriate is THA.SEC.FOR because forensic work often requires meticulous recording of seed or reference data for later analysis."
-    },
-    {
-      "skill_id": "SKL-04978-65015c",
-      "skill_name": "Biodynamic Production Strategy",
-      "definition": "Creates and executes biodynamic production plans integrating organic farming strategies within hybrid operations.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.DSP",
-      "assigned_tha_name": "Dispensing & Dosage Preparation",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.DSP",
-          "name": "Dispensing & Dosage Preparation",
-          "similarity": 0.5825690031051636,
+          "name": "Event & Function Coordination",
+          "similarity": 0.6441824436187744,
           "rank": 1
         },
         {
-          "code": "THA.SEC.MKT",
-          "name": "Marketing & Promotion",
-          "similarity": 0.5786011815071106,
+          "code": "THA.SEC.COR",
+          "name": "Custodial Supervision & Detainee Management",
+          "similarity": 0.6401245594024658,
           "rank": 2
         },
         {
-          "code": "THA.SEC.PFM",
-          "name": "Performance & Presentation Arts",
-          "similarity": 0.5735400915145874,
+          "code": "THA.SEC.PRM",
+          "name": "Process Monitoring & Control",
+          "similarity": 0.6270027160644531,
           "rank": 3
         },
         {
-          "code": "THA.SEC.SMP",
-          "name": "Sampling & Laboratory Technique",
-          "similarity": 0.5726760029792786,
+          "code": "THA.SEC.VTL",
+          "name": "Physiological Monitoring & Recording",
+          "similarity": 0.6254950165748596,
           "rank": 4
-        },
-        {
-          "code": "THA.SEC.MDA",
-          "name": "Media Production & Content Creation",
-          "similarity": 0.5669562220573425,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PFM: Biodynamic Production Strategy involves planning and executing agricultural production methods, integrating organic and biodynamic practices. This is fundamentally about agricultural management, process design, and sustainable production, not about measuring or preparing chemical or medicinal mixtures. The assigned ability THA.SEC.DSP (Dispensing & Dosage Preparation) focuses on precise formulation and dispensing of substances, which does not align with the strategic and agronomic nature of the skill."
-    },
-    {
-      "skill_id": "SKL-00298-c9f3c8",
-      "skill_name": "Landscape Propagation Definition",
-      "definition": "Specifies appropriate propagation and planting methods, documenting procedures for implementation in horticultural projects.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.SRV",
-      "assigned_tha_name": "Surveying & Spatial Measurement",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.SRV",
-          "name": "Surveying & Spatial Measurement",
-          "similarity": 0.6789828538894653,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.GIS",
-          "name": "Geospatial Analysis & Mapping",
-          "similarity": 0.6658065319061279,
-          "rank": 2
-        },
-        {
-          "code": "THA.SEC.PFM",
-          "name": "Performance & Presentation Arts",
-          "similarity": 0.6231022477149963,
-          "rank": 3
-        },
-        {
-          "code": "THA.SEC.SIM",
-          "name": "Simulation & Modelling",
-          "similarity": 0.6196537017822266,
-          "rank": 4
-        },
-        {
-          "code": "THA.SEC.FOR",
-          "name": "Forensic Analysis & Investigation",
-          "similarity": 0.611112117767334,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Surveying & Spatial Measurement: 0.679) and #2 (Geospatial Analysis & Mapping: 0.666) is only 0.013",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.GIS: Landscape propagation involves selecting planting methods, preparing soil, and managing horticultural implementation, which are practical horticulture tasks rather than measuring or mapping spaces. The skill aligns better with abilities related to planning, design, and spatial analysis of land use. The top candidate, Surveying & Spatial Measurement, focuses on measuring and mapping, which is only tangentially related. Geospatial Analysis & Mapping (THA.SEC.GIS) better captures the need to analyze site conditions, plan propagation layouts, and integrate spatial data for horticultural projects."
-    },
-    {
-      "skill_id": "SKL-00469-fc3943",
-      "skill_name": "Indigenous Customs Recordkeeping",
-      "definition": "Documents community's traditional customs relevant to tasks by researching, interviewing, and logging findings.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.FOR",
-      "assigned_tha_name": "Forensic Analysis & Investigation",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.FOR",
-          "name": "Forensic Analysis & Investigation",
-          "similarity": 0.6321113109588623,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.PFM",
-          "name": "Performance & Presentation Arts",
-          "similarity": 0.6037406325340271,
-          "rank": 2
-        },
-        {
-          "code": "THA.SEC.MON",
-          "name": "Monitoring & Surveillance",
-          "similarity": 0.5877361297607422,
-          "rank": 3
-        },
-        {
-          "code": "THA.SEC.EVT",
-          "name": "Event Planning & Coordination",
-          "similarity": 0.5770308971405029,
-          "rank": 4
-        },
-        {
-          "code": "THA.SEC.SRV",
-          "name": "Surveying & Spatial Measurement",
-          "similarity": 0.5697531700134277,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Forensic Analysis & Investigation: 0.632) and #2 (Performance & Presentation Arts: 0.604) is only 0.028",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PFM: Indigenous Customs Recordkeeping involves researching, interviewing community members, and documenting cultural practices. This aligns more with gathering and presenting information, cultural documentation, and community engagement rather than forensic evidence handling. The skill fits better under Performance & Presentation Arts, which covers documentation, storytelling, and presentation of cultural content."
-    },
-    {
-      "skill_id": "SKL-01072-1ec462",
-      "skill_name": "Turf Industry Terminology",
-      "definition": "Employs sector-specific terminology in team communications to ensure precise understanding.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.SRV",
-      "assigned_tha_name": "Surveying & Spatial Measurement",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.SRV",
-          "name": "Surveying & Spatial Measurement",
-          "similarity": 0.6468631029129028,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.GIS",
-          "name": "Geospatial Analysis & Mapping",
-          "similarity": 0.6228721141815186,
-          "rank": 2
-        },
-        {
-          "code": "THA.SEC.EST",
-          "name": "Estimation & Costing",
-          "similarity": 0.5971629619598389,
-          "rank": 3
-        },
-        {
-          "code": "THA.SEC.EVT",
-          "name": "Event Planning & Coordination",
-          "similarity": 0.595955491065979,
-          "rank": 4
-        },
-        {
-          "code": "THA.SEC.FOR",
-          "name": "Forensic Analysis & Investigation",
-          "similarity": 0.5829416513442993,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Surveying & Spatial Measurement: 0.647) and #2 (Geospatial Analysis & Mapping: 0.623) is only 0.024",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.GIS: The skill 'Turf Industry Terminology' involves using industry-specific language for clear communication, which is about terminology management and knowledge of sector jargon, not about measuring or mapping physical spaces. The Surveying & Spatial Measurement ability focuses on technical measurement tasks, making it a poor fit. The better match is THA.SEC.GIS \u2014 Geospatial Analysis & Mapping, as it more closely relates to handling spatial data and terminology within the turf industry, which often relies on GIS and related vocabularies."
-    },
-    {
-      "skill_id": "SKL-02785-73a6a2",
-      "skill_name": "Supervisor Consultation",
-      "definition": "Seeks guidance from supervisor to align tasks and resolve issues during work.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.PAT",
-      "assigned_tha_name": "Client & Patient Assessment",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.PAT",
-          "name": "Client & Patient Assessment",
-          "similarity": 0.6796538233757019,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.EVT",
-          "name": "Event Planning & Coordination",
-          "similarity": 0.6683942675590515,
-          "rank": 2
-        },
-        {
-          "code": "THA.SEC.MON",
-          "name": "Monitoring & Surveillance",
-          "similarity": 0.6658636331558228,
-          "rank": 3
         },
         {
           "code": "THA.SEC.CPL",
           "name": "Care Planning & Case Management",
-          "similarity": 0.6412146091461182,
-          "rank": 4
-        },
-        {
-          "code": "THA.SEC.CPN",
-          "name": "Counselling & Psychosocial Support",
-          "similarity": 0.6280397176742554,
+          "similarity": 0.6135785579681396,
           "rank": 5
         }
       ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Client & Patient Assessment: 0.680) and #2 (Event Planning & Coordination: 0.668) is only 0.011",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.CPL: Supervisor Consultation involves seeking guidance, clarification, or direction from a manager to align work tasks and resolve issues. This is fundamentally about communication, decision\u2011making support, and managerial interaction, not about assessing client or patient conditions. The assigned ability THA.SEC.PAT (Client & Patient Assessment) focuses on evaluating client needs, which does not match the nature of the skill."
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PRM: Root Ball Binding Management involves preparing and securing a plant's root ball for transport and planting, which is a horticultural or logistical task related to handling living material, not planning or coordinating events. The skill aligns more with process monitoring, control, or practical handling of biological material rather than event coordination."
     },
     {
-      "skill_id": "SKL-02964-54c4aa",
-      "skill_name": "Horticultural Communication",
-      "definition": "Provides clear guidance to staff on plantation upkeep and plant production system maintenance.",
+      "skill_id": "SKL-00309-ae596f",
+      "skill_name": "Planting Bed Preparation Management",
+      "definition": "Prepares planting beds by clearing, loosening soil, and arranging rows for crops.",
       "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.PFM",
-      "assigned_tha_name": "Performance & Presentation Arts",
-      "confidence": 0.45,
+      "assigned_tha": "THA.SEC.CLN",
+      "assigned_tha_name": "Cleaning & Sanitisation",
+      "confidence": 0.07,
       "top_candidates": [
         {
-          "code": "THA.SEC.PFM",
-          "name": "Performance & Presentation Arts",
-          "similarity": 0.6536936163902283,
+          "code": "THA.SEC.CLN",
+          "name": "Cleaning & Sanitisation",
+          "similarity": 0.6074180603027344,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.EST",
+          "name": "Quantity Estimation & Takeoff",
+          "similarity": 0.5945615768432617,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.SMP",
+          "name": "Sample Collection & Laboratory Technique",
+          "similarity": 0.590824544429779,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.CHL",
+          "name": "Cultural Heritage & Land Management",
+          "similarity": 0.5815763473510742,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.WTR",
+          "name": "Water & Waste Treatment",
+          "similarity": 0.5775968432426453,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.CHL: Planting Bed Preparation Management involves soil preparation, clearing debris, loosening soil, and arranging rows for crops. This is fundamentally about land and soil management, not about cleaning surfaces or equipment. The assigned THA.SEC.CLN (Cleaning & Sanitisation) focuses on hygiene procedures, which does not align with the core activities of preparing planting beds. A more appropriate match is THA.SEC.CHL (Cultural Heritage & Land Management), which covers land management tasks and soil preparation relevant to agricultural settings."
+    },
+    {
+      "skill_id": "SKL-02181-8a13ca",
+      "skill_name": "Reptile Equipment Evaluation",
+      "definition": "Selects and uses appropriate equipment to safely catch, handle, and restrain reptiles.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.INS",
+      "assigned_tha_name": "Visual & Dimensional Inspection",
+      "confidence": 0.07,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.INS",
+          "name": "Visual & Dimensional Inspection",
+          "similarity": 0.6822311878204346,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.PRV",
+          "name": "Asset Valuation & Market Appraisal",
+          "similarity": 0.6803255081176758,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.VTL",
+          "name": "Physiological Monitoring & Recording",
+          "similarity": 0.6502753496170044,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.SMP",
+          "name": "Sample Collection & Laboratory Technique",
+          "similarity": 0.6458286046981812,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.CAS",
+          "name": "Health Status Assessment & Triage",
+          "similarity": 0.6451137065887451,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PRV: Choosing and using equipment for catching, handling, and restraining reptiles is about selecting tools, understanding their function, and applying safe handling techniques. This aligns with the ability to evaluate, select, and operate equipment (e.g., asset valuation, tool selection, safety procedures) rather than merely inspecting items visually. THA.SEC.INS focuses on visual and dimensional inspection, which does not capture the decision\u2011making and safety aspects of equipment selection. A better fit is THA.SEC.PRV (Asset Valuation & Market Appraisal), which involves assessing the suitability and value of equipment for a specific purpose."
+    },
+    {
+      "skill_id": "SKL-02317-c09056",
+      "skill_name": "Media Policy Advisory",
+      "definition": "Clarifies facility media and social media policies to staff, ensuring compliant communication practices.",
+      "trf_code": "TRF.OCC",
+      "assigned_tha": "THA.OCC.VID",
+      "assigned_tha_name": "Video Production & Editing",
+      "confidence": 0.07,
+      "top_candidates": [
+        {
+          "code": "THA.OCC.VID",
+          "name": "Video Production & Editing",
+          "similarity": 0.6710036993026733,
+          "rank": 1
+        },
+        {
+          "code": "THA.OCC.GFX",
+          "name": "Graphic Design & Visual Communication",
+          "similarity": 0.6591658592224121,
+          "rank": 2
+        },
+        {
+          "code": "THA.OCC.PHO",
+          "name": "Photography & Image Editing",
+          "similarity": 0.6565151214599609,
+          "rank": 3
+        },
+        {
+          "code": "THA.OCC.HPC",
+          "name": "Health Promotion & Community Education",
+          "similarity": 0.6464486718177795,
+          "rank": 4
+        },
+        {
+          "code": "THA.OCC.TRA",
+          "name": "Travel Booking & Itinerary Planning",
+          "similarity": 0.6381458640098572,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.HPC: Media Policy Advisory involves interpreting and communicating organizational media and social media policies, which is fundamentally about policy guidance, compliance, and communication strategy. This aligns with abilities related to policy development, communications, or community education, not the technical creation of video content. The assigned THA.OCC.VID (Video Production & Editing) focuses on shooting, editing, and producing video, which does not cover policy advisory tasks."
+    },
+    {
+      "skill_id": "SKL-02371-b49424",
+      "skill_name": "Animal Coat De Matting Management",
+      "definition": "Safely removes mats using brushes, combs, and de\u2011matting tools during grooming sessions.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.CLN",
+      "assigned_tha_name": "Cleaning & Sanitisation",
+      "confidence": 0.07,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.CLN",
+          "name": "Cleaning & Sanitisation",
+          "similarity": 0.6604089140892029,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.SMP",
+          "name": "Sample Collection & Laboratory Technique",
+          "similarity": 0.6224188804626465,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.COR",
+          "name": "Custodial Supervision & Detainee Management",
+          "similarity": 0.6097347140312195,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.STE",
+          "name": "Sterilisation & Decontamination",
+          "similarity": 0.6093873381614685,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.WTR",
+          "name": "Water & Waste Treatment",
+          "similarity": 0.5966815948486328,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG: Animal coat de\u2011matting is a grooming technique focused on handling animal fur, not on cleaning facilities, surfaces, or equipment. The skill aligns with personal care and animal handling rather than environmental hygiene. A more appropriate THA would be one related to animal handling or grooming, such as a hypothetical THA.ANV.GRM (Animal Grooming) or THA.ANV.HND (Animal Handling). Since none of the listed candidates directly cover grooming, the closest fit among the provided options would be THA.SEC.CLN (Cleaning & Sanitisation) only because it involves cleaning fur, but it is still a poor match. Therefore, the assigned THA is incorrect and a better fit would be a grooming\u2011specific ability if available."
+    },
+    {
+      "skill_id": "SKL-03515-5b3e7c",
+      "skill_name": "Concrete Mix Design",
+      "definition": "Calculates mix proportions by matching cement, aggregate, and water ratios to project strength specifications.",
+      "trf_code": "TRF.OCC",
+      "assigned_tha": "THA.OCC.CNP",
+      "assigned_tha_name": "Concrete Pumping & Placement",
+      "confidence": 0.07,
+      "top_candidates": [
+        {
+          "code": "THA.OCC.CNP",
+          "name": "Concrete Pumping & Placement",
+          "similarity": 0.7938960790634155,
+          "rank": 1
+        },
+        {
+          "code": "THA.OCC.SHC",
+          "name": "Shotcrete & Spray Concrete Application",
+          "similarity": 0.7403869032859802,
+          "rank": 2
+        },
+        {
+          "code": "THA.OCC.GRC",
+          "name": "Grading, Compaction & Finishing",
+          "similarity": 0.7003918886184692,
+          "rank": 3
+        },
+        {
+          "code": "THA.OCC.EAF",
+          "name": "Exposed Aggregate & Decorative Concrete",
+          "similarity": 0.6991570591926575,
+          "rank": 4
+        },
+        {
+          "code": "THA.OCC.STL",
+          "name": "Steel Fixing & Reinforcement",
+          "similarity": 0.6922738552093506,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.ENG.CMD: Concrete Mix Design is a technical engineering task focused on calculating material proportions to achieve required strength, not on operating equipment for placement. It aligns better with a design or engineering ability rather than concrete pumping. The top candidate THA.OCC.CNP (Concrete Pumping & Placement) describes equipment operation, which does not match the skill's focus on mix proportioning."
+    },
+    {
+      "skill_id": "SKL-05619-41e635",
+      "skill_name": "Agricultural Data Integration Management",
+      "definition": "Integrates agricultural datasets into operational workflows to inform business decisions and processes.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.CYB",
+      "assigned_tha_name": "Cybersecurity & Information Protection",
+      "confidence": 0.07,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.CYB",
+          "name": "Cybersecurity & Information Protection",
+          "similarity": 0.5868460536003113,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.SRV",
+          "name": "Server & Cloud Administration",
+          "similarity": 0.5865063667297363,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.SCD",
+          "name": "SCADA & DCS Operations",
+          "similarity": 0.586449921131134,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.EVT",
+          "name": "Event & Function Coordination",
+          "similarity": 0.5797140002250671,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.VTL",
+          "name": "Physiological Monitoring & Recording",
+          "similarity": 0.566985011100769,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.SRV: Agricultural Data Integration Management focuses on aggregating and integrating agricultural datasets into business workflows, which is primarily about data handling, integration, and business process support. This aligns more with data management, integration, and possibly analytics rather than cybersecurity. The assigned THA.SEC.CYB (Cybersecurity & Information Protection) emphasizes security measures, threat detection, and data protection, which is not the core of the skill. A better fit would be a THA related to data integration or information systems management, but among the given candidates the closest is THA.SEC.SRV (Server & Cloud Administration) which covers managing data platforms and integration services."
+    },
+    {
+      "skill_id": "SKL-05761-ee7ffb",
+      "skill_name": "Vertical Garden Media Assessment",
+      "definition": "Consults horticulture specialists to assess media properties and choose appropriate plants.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.PRV",
+      "assigned_tha_name": "Asset Valuation & Market Appraisal",
+      "confidence": 0.07,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.PRV",
+          "name": "Asset Valuation & Market Appraisal",
+          "similarity": 0.6095529794692993,
           "rank": 1
         },
         {
           "code": "THA.SEC.MDA",
-          "name": "Media Production & Content Creation",
-          "similarity": 0.6533527970314026,
+          "name": "Digital Media Editing & Production",
+          "similarity": 0.6020463705062866,
           "rank": 2
         },
         {
-          "code": "THA.SEC.EVT",
-          "name": "Event Planning & Coordination",
-          "similarity": 0.6481509208679199,
+          "code": "THA.SEC.INS",
+          "name": "Visual & Dimensional Inspection",
+          "similarity": 0.596738874912262,
           "rank": 3
+        },
+        {
+          "code": "THA.SEC.VTL",
+          "name": "Physiological Monitoring & Recording",
+          "similarity": 0.5828731060028076,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.3DM",
+          "name": "3D Modelling & Visualisation",
+          "similarity": 0.5803059935569763,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.INS: The skill 'Vertical Garden Media Assessment' involves consulting horticulture specialists to evaluate soil/media properties and select suitable plants, which is a horticultural and environmental assessment activity. The assigned THA.SEC.PRV (Asset Valuation & Market Appraisal) focuses on financial valuation of assets, not on evaluating growing media or plant suitability. A more appropriate match is THA.SEC.INS (Visual & Dimensional Inspection) which covers inspection and assessment of physical characteristics, or THA.SEC.MDA (Digital Media Editing & Production) if the focus is on media content, but the inspection focus aligns better with assessing media properties."
+    },
+    {
+      "skill_id": "SKL-05969-3b05c6",
+      "skill_name": "Agronomy Oral Communication",
+      "definition": "Leads clear oral discussions with team members on plant taxonomy, morphology, and growth stages.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.INT",
+      "assigned_tha_name": "Interpreting & Translation",
+      "confidence": 0.07,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.INT",
+          "name": "Interpreting & Translation",
+          "similarity": 0.6182445883750916,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.PRS",
+          "name": "Sales & Persuasion Technique",
+          "similarity": 0.6175598502159119,
+          "rank": 2
         },
         {
           "code": "THA.SEC.MKT",
           "name": "Marketing & Promotion",
-          "similarity": 0.6410017609596252,
+          "similarity": 0.5917744040489197,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.LGL",
+          "name": "Legal Research & Advocacy",
+          "similarity": 0.5895392298698425,
           "rank": 4
         },
         {
-          "code": "THA.SEC.SRV",
-          "name": "Surveying & Spatial Measurement",
-          "similarity": 0.6205300092697144,
+          "code": "THA.SEC.SMP",
+          "name": "Sample Collection & Laboratory Technique",
+          "similarity": 0.5810518264770508,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.070 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PRS: The skill involves leading clear oral discussions about agronomy topics, which is fundamentally about communicating scientific information effectively. This aligns with the ability to convey and present information, not with interpreting or translating between languages. A better fit is THA.SEC.PRS (Sales & Persuasion Technique) or a communication-focused ability, but among the given candidates, THA.SEC.PRS is the most appropriate."
+    },
+    {
+      "skill_id": "SKL-02399-22db0b",
+      "skill_name": "Animal Feeding Instruction",
+      "definition": "Demonstrates proper feeding techniques to clients, guiding them through step\u2011by\u2011step practice.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.DSP",
+      "assigned_tha_name": "Dispensing & Formulation",
+      "confidence": 0.12,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.DSP",
+          "name": "Dispensing & Formulation",
+          "similarity": 0.6072786450386047,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.VTL",
+          "name": "Physiological Monitoring & Recording",
+          "similarity": 0.605254054069519,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.SMP",
+          "name": "Sample Collection & Laboratory Technique",
+          "similarity": 0.6030932068824768,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.CLN",
+          "name": "Cleaning & Sanitisation",
+          "similarity": 0.5864958167076111,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.CAS",
+          "name": "Health Status Assessment & Triage",
+          "similarity": 0.5864174962043762,
+          "rank": 5
+        }
+      ],
+      "issue_type": "LOW_CONFIDENCE",
+      "severity": 80,
+      "reason": "Best match similarity 0.120 is below threshold 0.4",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.CAS: Animal Feeding Instruction involves teaching clients how to correctly feed animals, focusing on handling, dosage, timing, and safety. This is fundamentally about client education, animal care, and proper feeding practices, not about measuring or preparing chemical formulations. The assigned THA.SEC.DSP (Dispensing & Formulation) pertains to compounding and dispensing medications, which does not align with feeding instruction. A more appropriate match is THA.SEC.CAS (Health Status Assessment & Triage) or THA.SEC.VTL (Physiological Monitoring & Recording) because feeding is part of assessing an animal's health and monitoring intake. The top candidate THA.SEC.CAS better captures the health\u2011assessment aspect of feeding."
+    },
+    {
+      "skill_id": "SKL-00381-468b71",
+      "skill_name": "Crop Container Stacking Optimisation",
+      "definition": "Stacks containers strategically to protect crops, arranging loads to reduce impact and loss.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.EST",
+      "assigned_tha_name": "Quantity Estimation & Takeoff",
+      "confidence": 0.45,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.EST",
+          "name": "Quantity Estimation & Takeoff",
+          "similarity": 0.5979626178741455,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.INS",
+          "name": "Visual & Dimensional Inspection",
+          "similarity": 0.5867592096328735,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.ROB",
+          "name": "Robotics Programming & Operation",
+          "similarity": 0.5821260213851929,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.SMP",
+          "name": "Sample Collection & Laboratory Technique",
+          "similarity": 0.5707931518554688,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.COR",
+          "name": "Custodial Supervision & Detainee Management",
+          "similarity": 0.5683038234710693,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Performance & Presentation Arts: 0.654) and #2 (Media Production & Content Creation: 0.653) is only 0.000",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.MDA: Horticultural Communication involves giving clear guidance on plant care and production systems, which is fundamentally about conveying technical information and instructions. This aligns with abilities related to media production, content creation, or event planning where communication and instructional design are key, not with performing arts. The Performance & Presentation Arts ability focuses on artistic performance, direction, and production, which does not match the practical, instructional nature of horticultural communication."
+      "reason": "Gap between #1 (Quantity Estimation & Takeoff: 0.598) and #2 (Visual & Dimensional Inspection: 0.587) is only 0.011",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.INS: The skill involves planning how to stack containers to protect crops, which is primarily about visual assessment, spatial arrangement, and ensuring structural stability. This aligns more with Visual & Dimensional Inspection (THA.SEC.INS) than with Quantity Estimation & Takeoff, which focuses on calculating material quantities and costs. The skill does not center on estimating quantities, so the current assignment is not a good fit."
     },
     {
-      "skill_id": "SKL-03298-d152a3",
-      "skill_name": "Digital Media Editing",
-      "definition": "Edits photos, video, or audio with entry\u2011level software to meet specific project goals.",
+      "skill_id": "SKL-00435-555ac1",
+      "skill_name": "Indigenous Bias Reflection",
+      "definition": "Critically examines personal assumptions, identifying and adjusting biases during theoretical analysis.",
       "trf_code": "TRF.BRD",
       "assigned_tha": "THA.BRD.INF",
       "assigned_tha_name": "Information Management & Research",
@@ -339,218 +519,218 @@
         {
           "code": "THA.BRD.INF",
           "name": "Information Management & Research",
-          "similarity": 0.6249792575836182,
+          "similarity": 0.5436958074569702,
           "rank": 1
-        },
-        {
-          "code": "THA.BRD.RPT",
-          "name": "Technical Reporting & Documentation",
-          "similarity": 0.5964202880859375,
-          "rank": 2
-        },
-        {
-          "code": "THA.BRD.PRC",
-          "name": "Process Design & Optimisation",
-          "similarity": 0.5761115550994873,
-          "rank": 3
         },
         {
           "code": "THA.BRD.DAT",
           "name": "Data Analysis & Interpretation",
-          "similarity": 0.5752087831497192,
-          "rank": 4
-        },
-        {
-          "code": "THA.BRD.TRN",
-          "name": "Training & Knowledge Transfer",
-          "similarity": 0.5723812580108643,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Information Management & Research: 0.625) and #2 (Technical Reporting & Documentation: 0.596) is only 0.029",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.RPT: Digital Media Editing involves using software to manipulate visual and audio content, which is primarily a creative and technical production skill. It aligns more closely with Technical Reporting & Documentation, where the creation and presentation of media outputs are central, rather than the abstract tasks of sourcing and managing information. The Information Management & Research ability focuses on data gathering, evaluation, and knowledge systems, which does not capture the hands\u2011on editing work."
-    },
-    {
-      "skill_id": "SKL-04262-619830",
-      "skill_name": "Financial Systems Integration Management",
-      "definition": "Integrates financial and operational systems to improve performance management aligned with enterprise needs.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.NET",
-      "assigned_tha_name": "Network & Infrastructure Management",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.NET",
-          "name": "Network & Infrastructure Management",
-          "similarity": 0.7100390195846558,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.CYB",
-          "name": "Cybersecurity & Information Protection",
-          "similarity": 0.6752233505249023,
+          "similarity": 0.542670488357544,
           "rank": 2
         },
         {
-          "code": "THA.SEC.BIM",
-          "name": "Building Information Modelling",
-          "similarity": 0.6666525602340698,
+          "code": "THA.BRD.NEG",
+          "name": "Negotiation & Conflict Resolution",
+          "similarity": 0.5216479897499084,
           "rank": 3
         },
         {
-          "code": "THA.SEC.AUT",
-          "name": "Automation & Control Systems",
-          "similarity": 0.6478830575942993,
+          "code": "THA.BRD.STK",
+          "name": "Stakeholder & Relationship Management",
+          "similarity": 0.5155360698699951,
           "rank": 4
         },
         {
-          "code": "THA.SEC.EVT",
-          "name": "Event Planning & Coordination",
-          "similarity": 0.6460534334182739,
+          "code": "THA.BRD.RCM",
+          "name": "Recruitment & Workforce Planning",
+          "similarity": 0.5043541789054871,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Network & Infrastructure Management: 0.710) and #2 (Cybersecurity & Information Protection: 0.675) is only 0.035",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.AUT: Financial Systems Integration Management focuses on linking financial and operational software platforms, data flow, and performance reporting. This is primarily about systems integration, data architecture, and business process alignment, not about configuring or maintaining network hardware or telecom infrastructure. A better fit is a THA related to Systems Integration, Business Process Management, or Enterprise Architecture, which is not listed among the top candidates. The closest among the provided options is THA.SEC.AUT (Automation & Control Systems) because integration often involves automating data exchange between systems, but even that is a stretch. Therefore the current assignment to Network & Infrastructure Management is not appropriate."
+      "reason": "Gap between #1 (Information Management & Research: 0.544) and #2 (Data Analysis & Interpretation: 0.543) is only 0.001",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.NEG: Indigenous Bias Reflection involves critically examining personal assumptions and adjusting biases, which is fundamentally about self\u2011awareness, critical thinking, and ethical reflection rather than the technical processes of locating, organizing, or evaluating information. The skill aligns more closely with abilities that address personal insight, ethical judgment, or stakeholder interaction. The top candidate THA.BRD.INF focuses on information sourcing and management, which does not capture the reflective, bias\u2011identifying nature of the skill. The second candidate THA.BRD.DAT (Data Analysis & Interpretation) is also a poor fit, as it emphasizes quantitative analysis rather than reflective critique. A better match is THA.BRD.NEG (Negotiation & Conflict Resolution) or THA.BRD.STK (Stakeholder & Relationship Management), but the most appropriate is THA.BRD.NEG because reflecting on bias is essential for effective negotiation and conflict resolution, especially when dealing with diverse perspectives."
     },
     {
-      "skill_id": "SKL-05443-d79ea6",
-      "skill_name": "Shrub And Tree Planting",
-      "definition": "Plants trees or shrubs by positioning them in prepared holes and securing them properly.",
+      "skill_id": "SKL-01000-8c8bc0",
+      "skill_name": "Remote Bushcraft Survival",
+      "definition": "Applies basic bushcraft techniques to secure shelter, water, and fire in survival scenarios.",
       "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.SRV",
-      "assigned_tha_name": "Surveying & Spatial Measurement",
+      "assigned_tha": "THA.SEC.CHL",
+      "assigned_tha_name": "Cultural Heritage & Land Management",
       "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.SEC.SRV",
-          "name": "Surveying & Spatial Measurement",
-          "similarity": 0.6294947862625122,
+          "code": "THA.SEC.CHL",
+          "name": "Cultural Heritage & Land Management",
+          "similarity": 0.593593418598175,
           "rank": 1
-        },
-        {
-          "code": "THA.SEC.GIS",
-          "name": "Geospatial Analysis & Mapping",
-          "similarity": 0.5959537029266357,
-          "rank": 2
-        },
-        {
-          "code": "THA.SEC.PFM",
-          "name": "Performance & Presentation Arts",
-          "similarity": 0.5928765535354614,
-          "rank": 3
-        },
-        {
-          "code": "THA.SEC.WTR",
-          "name": "Water & Waste Treatment",
-          "similarity": 0.5633612275123596,
-          "rank": 4
-        },
-        {
-          "code": "THA.SEC.EVT",
-          "name": "Event Planning & Coordination",
-          "similarity": 0.5621880888938904,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Surveying & Spatial Measurement: 0.629) and #2 (Geospatial Analysis & Mapping: 0.596) is only 0.034",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.GIS: Shrub and tree planting is a hands\u2011on horticultural activity focused on preparing planting sites, handling plant material, and ensuring proper placement and stabilization. It aligns with abilities related to land management, environmental stewardship, or horticulture, not with measuring or mapping spaces. The Surveying & Spatial Measurement ability involves using GPS, GIS, and surveying tools to capture spatial data, which is not central to the act of planting. A better fit is the Geospatial Analysis & Mapping ability (THA.SEC.GIS) because planting often requires interpreting site plans, mapping planting layouts, and using GIS data to determine optimal locations, making it more relevant than pure surveying."
-    },
-    {
-      "skill_id": "SKL-05978-97acaf",
-      "skill_name": "Plant Indigenous Knowledge Consultation",
-      "definition": "Consults cultural authorities or supervisors during recognition activities to integrate indigenous knowledge appropriately.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.PAT",
-      "assigned_tha_name": "Client & Patient Assessment",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.PAT",
-          "name": "Client & Patient Assessment",
-          "similarity": 0.5591598153114319,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.GIS",
-          "name": "Geospatial Analysis & Mapping",
-          "similarity": 0.5487194061279297,
-          "rank": 2
         },
         {
           "code": "THA.SEC.FOR",
-          "name": "Forensic Analysis & Investigation",
-          "similarity": 0.5446430444717407,
+          "name": "Forensic & Evidence Analysis",
+          "similarity": 0.574662446975708,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.VTL",
+          "name": "Physiological Monitoring & Recording",
+          "similarity": 0.5608179569244385,
           "rank": 3
         },
         {
-          "code": "THA.SEC.SRV",
-          "name": "Surveying & Spatial Measurement",
-          "similarity": 0.541934072971344,
+          "code": "THA.SEC.CAS",
+          "name": "Health Status Assessment & Triage",
+          "similarity": 0.5589583516120911,
           "rank": 4
         },
         {
-          "code": "THA.SEC.SMP",
-          "name": "Sampling & Laboratory Technique",
-          "similarity": 0.5305905342102051,
+          "code": "THA.SEC.DGN",
+          "name": "Technical Drawing & Drafting",
+          "similarity": 0.5499051809310913,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Client & Patient Assessment: 0.559) and #2 (Geospatial Analysis & Mapping: 0.549) is only 0.010",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.CUL: The skill involves consulting cultural authorities to incorporate indigenous knowledge, which is about engaging with community stakeholders, understanding cultural contexts, and facilitating knowledge exchange. This aligns more with abilities related to stakeholder engagement, cultural liaison, or community consultation rather than assessing client health or medical needs. THA.SEC.PAT focuses on health assessments, which does not match the nature of this skill."
+      "reason": "Gap between #1 (Cultural Heritage & Land Management: 0.594) and #2 (Forensic & Evidence Analysis: 0.575) is only 0.019",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.VTL: Remote Bushcraft Survival focuses on practical wilderness skills\u2014securing shelter, water, and fire\u2014rather than managing cultural heritage sites or protocols. The ability that best captures these competencies is one related to environmental interaction, fieldcraft, or survival techniques, not Cultural Heritage & Land Management. The second candidate, THA.SEC.FOR (Forensic & Evidence Analysis), is also a poor fit, as it deals with evidence handling, not survival. The third candidate, THA.SEC.VTL (Physiological Monitoring & Recording), is closer because bushcraft often requires monitoring one's physiological state, but it still misses the core skill of wilderness survival. The most appropriate fit would be an ability centered on 'Field Survival & Environmental Adaptation' if such existed. Given the available options, THA.SEC.VTL is the better fit among them."
     },
     {
-      "skill_id": "SKL-00410-60006a",
-      "skill_name": "Cultural Work Practice Design",
-      "definition": "Designs workplace practices that integrate Aboriginal/TSI cultural considerations for employee inclusion.",
+      "skill_id": "SKL-02201-00eeda",
+      "skill_name": "Animal Injury Assessment",
+      "definition": "Assesses animal injuries, administers first aid, and determines need for veterinary care.",
       "trf_code": "TRF.BRD",
-      "assigned_tha": "THA.BRD.PRC",
-      "assigned_tha_name": "Process Design & Optimisation",
-      "confidence": 0.55,
+      "assigned_tha": "THA.BRD.RSK",
+      "assigned_tha_name": "Risk Assessment & Mitigation",
+      "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.BRD.PRC",
-          "name": "Process Design & Optimisation",
-          "similarity": 0.7110142707824707,
+          "code": "THA.BRD.RSK",
+          "name": "Risk Assessment & Mitigation",
+          "similarity": 0.5863797664642334,
           "rank": 1
-        },
-        {
-          "code": "THA.BRD.PRJ",
-          "name": "Project Planning & Coordination",
-          "similarity": 0.6891331076622009,
-          "rank": 2
-        },
-        {
-          "code": "THA.BRD.TRN",
-          "name": "Training & Knowledge Transfer",
-          "similarity": 0.6561385989189148,
-          "rank": 3
-        },
-        {
-          "code": "THA.BRD.INF",
-          "name": "Information Management & Research",
-          "similarity": 0.6543455719947815,
-          "rank": 4
         },
         {
           "code": "THA.BRD.WHS",
           "name": "Workplace Health & Safety Management",
-          "similarity": 0.6517957448959351,
+          "similarity": 0.5840249061584473,
+          "rank": 2
+        },
+        {
+          "code": "THA.BRD.QMS",
+          "name": "Quality Assurance & Improvement",
+          "similarity": 0.5767759084701538,
+          "rank": 3
+        },
+        {
+          "code": "THA.BRD.RPT",
+          "name": "Technical Reporting & Documentation",
+          "similarity": 0.5746729969978333,
+          "rank": 4
+        },
+        {
+          "code": "THA.BRD.INF",
+          "name": "Information Management & Research",
+          "similarity": 0.5711484551429749,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Process Design & Optimisation: 0.711) and #2 (Project Planning & Coordination: 0.689) is only 0.022",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.PRJ: Designing workplace practices that embed Aboriginal/TSI cultural considerations is fundamentally about planning, coordinating, and implementing culturally inclusive initiatives, not merely optimizing existing processes. While process design touches workflow, the core activity is project planning and coordination of cultural integration efforts. Therefore, THA.BRD.PRJ (Project Planning & Coordination) aligns better with the skill's focus on designing inclusive work practices."
+      "reason": "Gap between #1 (Risk Assessment & Mitigation: 0.586) and #2 (Workplace Health & Safety Management: 0.584) is only 0.002",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.WHS: Assessing animal injuries and providing first aid is primarily about evaluating the health condition of the animal and deciding on care, which aligns with health and safety management rather than generic risk assessment. The skill focuses on immediate health outcomes and care decisions, making Workplace Health & Safety Management a more appropriate THA."
+    },
+    {
+      "skill_id": "SKL-02298-83818a",
+      "skill_name": "Animal Feed Substitution Strategy",
+      "definition": "Plans and implements feed substitutions, consulting supervisors/vets to replace natural feed with approved alternatives.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.DSP",
+      "assigned_tha_name": "Dispensing & Formulation",
+      "confidence": 0.45,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.DSP",
+          "name": "Dispensing & Formulation",
+          "similarity": 0.5806939601898193,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.MKT",
+          "name": "Marketing & Promotion",
+          "similarity": 0.5472800731658936,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.SMP",
+          "name": "Sample Collection & Laboratory Technique",
+          "similarity": 0.5427517294883728,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.PRM",
+          "name": "Process Monitoring & Control",
+          "similarity": 0.5299685001373291,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.WTR",
+          "name": "Water & Waste Treatment",
+          "similarity": 0.5285859107971191,
+          "rank": 5
+        }
+      ],
+      "issue_type": "TIGHT_MARGIN",
+      "severity": 60,
+      "reason": "Gap between #1 (Dispensing & Formulation: 0.581) and #2 (Marketing & Promotion: 0.547) is only 0.033",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.MKT: The skill involves planning and implementing feed substitutions, which is about evaluating feed ingredients, cost, nutrition, and consulting with supervisors or vets. This aligns more with strategic planning, resource management, and possibly marketing of alternative feeds rather than the technical act of measuring and dispensing mixtures. The Dispensing & Formulation ability focuses on precise preparation of medications or chemical formulations, which does not capture the broader decision\u2011making and substitution planning aspects of the skill."
+    },
+    {
+      "skill_id": "SKL-03392-8e1f30",
+      "skill_name": "Camera Positioning Evaluation",
+      "definition": "Selects appropriate camera and positions it accurately to capture required photographs.",
+      "trf_code": "TRF.BRD",
+      "assigned_tha": "THA.BRD.QMS",
+      "assigned_tha_name": "Quality Assurance & Improvement",
+      "confidence": 0.45,
+      "top_candidates": [
+        {
+          "code": "THA.BRD.QMS",
+          "name": "Quality Assurance & Improvement",
+          "similarity": 0.6070199608802795,
+          "rank": 1
+        },
+        {
+          "code": "THA.BRD.PFM",
+          "name": "Performance Management & Coaching",
+          "similarity": 0.5914641618728638,
+          "rank": 2
+        },
+        {
+          "code": "THA.BRD.RPT",
+          "name": "Technical Reporting & Documentation",
+          "similarity": 0.5818262100219727,
+          "rank": 3
+        },
+        {
+          "code": "THA.BRD.TRD",
+          "name": "Training Design & Delivery",
+          "similarity": 0.5759445428848267,
+          "rank": 4
+        },
+        {
+          "code": "THA.BRD.INF",
+          "name": "Information Management & Research",
+          "similarity": 0.571802020072937,
+          "rank": 5
+        }
+      ],
+      "issue_type": "TIGHT_MARGIN",
+      "severity": 60,
+      "reason": "Gap between #1 (Quality Assurance & Improvement: 0.607) and #2 (Performance Management & Coaching: 0.591) is only 0.016",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.PFM: Camera positioning is a practical, hands\u2011on skill that involves visual perception, spatial awareness, and the physical act of setting up equipment. These aspects align with the ability to perform tasks and manipulate tools, not with quality assurance processes. The assigned THA (Quality Assurance & Improvement) focuses on monitoring standards, auditing, and continuous improvement, which does not capture the core competencies of camera setup. A better fit is the Performance Management & Coaching ability, which includes overseeing task execution, providing guidance, and ensuring correct procedural performance, making it more relevant to evaluating and directing camera positioning."
     }
   ]
 }
