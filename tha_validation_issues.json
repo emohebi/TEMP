@@ -1,1321 +1,556 @@
 {
   "statistics": {
-    "total_skills": 6029,
-    "assigned": 6029,
+    "total_skills": 6023,
+    "assigned": 6023,
     "unassigned": 0,
-    "total_issues": 29,
+    "total_issues": 12,
     "issue_breakdown": {
-      "LOW_CONFIDENCE": 18,
-      "TIGHT_MARGIN": 11
+      "LOW_CONFIDENCE": 2,
+      "TIGHT_MARGIN": 10
     },
-    "active_thas": 71,
-    "empty_thas": 1
+    "active_thas": 146,
+    "empty_thas": 27
   },
   "issues": [
     {
-      "skill_id": "SKL-02515-5578e8",
-      "skill_name": "Tree Plan Export Management",
-      "definition": "Selects drawing files, opens them, and saves in required external software format.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.MAR",
-      "assigned_tha_name": "Maritime & Vessel Operations",
-      "confidence": 0.04,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.6457469463348389,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6319687366485596,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.627669095993042,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.6161155700683594,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.HVY",
-          "name": "Heavy Equipment & Plant Operation",
-          "similarity": 0.608468770980835,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.040 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.MNG: The skill involves handling digital drawing files and exporting them to external software formats, which is a data management and software operation task. It does not involve any maritime, vessel, or water-based activities. Therefore, assigning it to THA.OCC.MAR (Maritime & Vessel Operations) is inappropriate."
-    },
-    {
-      "skill_id": "SKL-02544-4c2fd3",
-      "skill_name": "Legal Oral Advocacy",
-      "definition": "Presents oral evidence and reports, tailoring arguments to jurisdictional rules and client requirements.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.SPR",
-      "assigned_tha_name": "Sport & Fitness Instruction",
-      "confidence": 0.04,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.6196502447128296,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5864760279655457,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.5800378322601318,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.5769070386886597,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.567907452583313,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.040 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: Legal oral advocacy involves presenting arguments, evidence, and persuasive communication within a legal context. This aligns with abilities related to communication, advocacy, or legal practice, not with coaching or instructing physical activities. The assigned THA.OCC.SPR (Sport & Fitness Instruction) is unrelated to legal advocacy."
-    },
-    {
-      "skill_id": "SKL-03283-3d68a0",
-      "skill_name": "Aboriginal Cultural Rights Management",
-      "definition": "Administers ownership and IP rights by documenting and registering Aboriginal cultural information and materials.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.04,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5743861198425293,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.5610805749893188,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.5449403524398804,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5443982481956482,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.5398657917976379,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.040 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: The skill 'Aboriginal Cultural Rights Management' involves legal, cultural, and archival work\u2014documenting, registering, and managing intellectual property and ownership of cultural information. This aligns with administrative, legal, or information management abilities, not with handling biological specimens. The assigned ability THA.OCC.BIO (Biological & Specimen Processing) is unrelated. A better fit would be an ability related to legal/administrative or cultural heritage management, such as THA.OCC.LGL (Legal & Regulatory Services) or THA.OCC.ARC (Archival & Records Management) if available."
-    },
-    {
-      "skill_id": "SKL-04960-cb178a",
-      "skill_name": "Native Title Advisory Organisation Assessment",
-      "definition": "Guides applicants through each step of the native title claim process, preparing documentation and timelines.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.04,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5874344110488892,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.580622673034668,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.5804545879364014,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.SFC",
-          "name": "Surface Finishing & Coating",
-          "similarity": 0.5708449482917786,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.5698353052139282,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.040 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: The skill involves guiding applicants through legal and administrative processes for native title claims, which is clearly a governance, legal, or community liaison activity. It has no relation to handling biological specimens or any laboratory work. Therefore the assigned THA.OCC.BIO is inappropriate."
-    },
-    {
-      "skill_id": "SKL-03106-94397c",
-      "skill_name": "Equine Dispute Resolution Strategy",
-      "definition": "Evaluates legal remedies and enforcement options in hybrid settings to plan dispute resolution strategies.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.SPR",
-      "assigned_tha_name": "Sport & Fitness Instruction",
-      "confidence": 0.05,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5756452083587646,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.FIR",
-          "name": "Emergency & First Response",
-          "similarity": 0.5438107252120972,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5358572006225586,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.5346387028694153,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.5330163836479187,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.050 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.FIR: The skill 'Equine Dispute Resolution Strategy' involves evaluating legal remedies and enforcement options in hybrid (likely equine industry) settings to plan dispute resolution strategies. This is a legal, analytical, and negotiation activity, not related to sport or fitness instruction. The assigned THA.OCC.SPR (Sport & Fitness Instruction) is unrelated. A better fit is THA.OCC.FIR (Emergency & First Response) which, while still not perfect, aligns more with handling urgent conflict situations and response planning, or possibly a legal/administrative ability not listed. Given the top candidates, THA.OCC.FIR is the next most appropriate."
-    },
-    {
-      "skill_id": "SKL-04919-2bc2d4",
-      "skill_name": "Indigenous Records Confidentiality Management",
-      "definition": "Maintains strict confidentiality and neutrality when consulting with Traditional Owners and Cultural Authorities.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.05,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6285326480865479,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.PHA",
-          "name": "Pharmaceutical & Chemical Handling",
-          "similarity": 0.5547707080841064,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.EQM",
-          "name": "Specialist Equipment Maintenance",
-          "similarity": 0.5432735085487366,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.538932204246521,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.538745641708374,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.050 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.PHA: The skill 'Indigenous Records Confidentiality Management' involves maintaining confidentiality and neutrality with Traditional Owners and Cultural Authorities, which is about information governance, cultural sensitivity, and ethical handling of records. This does not involve any biological specimen processing, pharmaceutical handling, equipment maintenance, clinical procedures, or personal care. Therefore, the assigned THA.OCC.BIO is unrelated. The better fit among the listed candidates is THA.OCC.PHA (Pharmaceutical & Chemical Handling) only insofar as it deals with handling sensitive materials, but even that is a stretch. A more appropriate THA would be one related to information management or cultural liaison, which is not among the top candidates. Hence, the best available match is THA.OCC.PHA, though ideally a different THA category should be used."
-    },
-    {
-      "skill_id": "SKL-00406-4291a1",
-      "skill_name": "Indigenous Change Assessment",
-      "definition": "Analyzes community data to detect recent social or cultural changes in Aboriginal/Torres Strait Islander groups.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
+      "skill_id": "SKL-03294-05bd5c",
+      "skill_name": "Seed Data Documentation",
+      "definition": "Enters seed data into records following provided instructions to ensure accurate documentation.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.SIM",
+      "assigned_tha_name": "Simulation & Modelling",
       "confidence": 0.07,
       "top_candidates": [
         {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5668880939483643,
+          "code": "THA.SEC.SIM",
+          "name": "Simulation & Modelling",
+          "similarity": 0.6677089333534241,
           "rank": 1
         },
         {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5643104314804077,
+          "code": "THA.SEC.FOR",
+          "name": "Forensic Analysis & Investigation",
+          "similarity": 0.6573426127433777,
           "rank": 2
         },
         {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.5499591827392578,
+          "code": "THA.SEC.SMP",
+          "name": "Sampling & Laboratory Technique",
+          "similarity": 0.6399365663528442,
           "rank": 3
         },
         {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.5441038012504578,
+          "code": "THA.SEC.SRV",
+          "name": "Surveying & Spatial Measurement",
+          "similarity": 0.6357170343399048,
           "rank": 4
         },
         {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.537105917930603,
+          "code": "THA.SEC.EVT",
+          "name": "Event Planning & Coordination",
+          "similarity": 0.627008318901062,
           "rank": 5
         }
       ],
       "issue_type": "LOW_CONFIDENCE",
       "severity": 80,
       "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: Indigenous Change Assessment involves analyzing community data to identify social or cultural shifts, which is a research, data analysis, and community engagement activity. It does not involve handling or processing biological specimens, so THA.OCC.BIO is not appropriate. A better fit would be a THA related to research, data analysis, or community services, such as a hypothetical THA.RESEARCH.ANALYSIS or THA.SOC.COMMUNITY, but among the given candidates the closest is THA.OCC.SPR (Sport & Fitness Instruction) which still does not match well. Since none of the listed candidates are suitable, the correct assignment should be to a research/analysis THA, not the biological processing category."
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.FOR: Seed Data Documentation involves accurately entering predefined data into records, which is primarily an information management and documentation task. It does not involve creating or running computational models, which is the core of Simulation & Modelling. A better fit is THA.SEC.FOR (Forensic Analysis & Investigation) or THA.SEC.SMP (Sampling & Laboratory Technique) as they both involve precise data handling and documentation, but the most appropriate is THA.SEC.FOR because forensic work often requires meticulous recording of seed or reference data for later analysis."
     },
     {
-      "skill_id": "SKL-00603-635132",
-      "skill_name": "Mulesing Operational Strategy Coordination",
-      "definition": "Coordinates operation plans by assessing required supplies, ordering equipment, and scheduling optimal time of day.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
+      "skill_id": "SKL-04978-65015c",
+      "skill_name": "Biodynamic Production Strategy",
+      "definition": "Creates and executes biodynamic production plans integrating organic farming strategies within hybrid operations.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.DSP",
+      "assigned_tha_name": "Dispensing & Dosage Preparation",
       "confidence": 0.07,
       "top_candidates": [
         {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6523802280426025,
+          "code": "THA.SEC.DSP",
+          "name": "Dispensing & Dosage Preparation",
+          "similarity": 0.5825690031051636,
           "rank": 1
         },
         {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.6421563029289246,
+          "code": "THA.SEC.MKT",
+          "name": "Marketing & Promotion",
+          "similarity": 0.5786011815071106,
           "rank": 2
         },
         {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.6143154501914978,
+          "code": "THA.SEC.PFM",
+          "name": "Performance & Presentation Arts",
+          "similarity": 0.5735400915145874,
           "rank": 3
         },
         {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.6142706274986267,
+          "code": "THA.SEC.SMP",
+          "name": "Sampling & Laboratory Technique",
+          "similarity": 0.5726760029792786,
           "rank": 4
         },
         {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.6115700602531433,
+          "code": "THA.SEC.MDA",
+          "name": "Media Production & Content Creation",
+          "similarity": 0.5669562220573425,
           "rank": 5
         }
       ],
       "issue_type": "LOW_CONFIDENCE",
       "severity": 80,
       "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.MAR: The skill involves planning and coordinating operational logistics (supplies, equipment, scheduling) for a mulesing operation, which is a management and coordination task, not the handling of biological specimens. The assigned ability THA.OCC.BIO focuses on processing biological materials, which does not match the coordination aspect. A better fit is THA.OCC.MAR (Maritime & Vessel Operations) or a more general operations coordination category, but among the candidates the closest is THA.OCC.MAR, which also deals with operational planning and logistics."
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PFM: Biodynamic Production Strategy involves planning and executing agricultural production methods, integrating organic and biodynamic practices. This is fundamentally about agricultural management, process design, and sustainable production, not about measuring or preparing chemical or medicinal mixtures. The assigned ability THA.SEC.DSP (Dispensing & Dosage Preparation) focuses on precise formulation and dispensing of substances, which does not align with the strategic and agronomic nature of the skill."
     },
     {
-      "skill_id": "SKL-02214-f6a5d1",
-      "skill_name": "Horse Enterprise Dispute Resolution",
-      "definition": "Identifies applicable legal remedies and enforcement mechanisms to resolve disputes in hybrid settings.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.SPR",
-      "assigned_tha_name": "Sport & Fitness Instruction",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.5825260877609253,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.5619043111801147,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.5596338510513306,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.554597020149231,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.541548490524292,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.MAR: The skill 'Horse Enterprise Dispute Resolution' involves legal analysis, negotiation, and enforcement of remedies in hybrid (likely business or agricultural) contexts, not physical training or sport instruction. The assigned THA (Sport & Fitness Instruction) is unrelated. A better fit is THA.OCC.MAR (Maritime & Vessel Operations) which, while not perfect, is the highest similarity among candidates and aligns more with operational and regulatory aspects of managing enterprises, similar to dispute resolution in complex operational settings."
-    },
-    {
-      "skill_id": "SKL-03110-9663af",
-      "skill_name": "Horse Sale Outcome Evaluation",
-      "definition": "Assesses sale/show results with team, identifies gaps, and recommends planning enhancements.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.SPR",
-      "assigned_tha_name": "Sport & Fitness Instruction",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5452519655227661,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5413533449172974,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.5244122743606567,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.5172747373580933,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.5132443904876709,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.BUS.ANA: Evaluating horse sale outcomes involves analyzing business results, market performance, and strategic planning, which aligns with business analysis and management rather than coaching or instructing physical activities. The skill fits better under a business or analytical ability, not Sport & Fitness Instruction."
-    },
-    {
-      "skill_id": "SKL-04143-df4a45",
-      "skill_name": "Indigenous Landscape Documentation Oversight",
-      "definition": "Documents Indigenous cultural landscapes using ecological, anthropological, and archaeological terminology for heritage records.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6297762393951416,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.6189430356025696,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.SFC",
-          "name": "Surface Finishing & Coating",
-          "similarity": 0.5964651703834534,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5824147462844849,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.5822923183441162,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.EDU.RSR: Indigenous Landscape Documentation Oversight involves recording cultural, ecological, and archaeological information, which is primarily a documentation, research, and heritage management activity. The assigned ability THA.OCC.BIO focuses on handling biological specimens, which does not align with the skill's emphasis on documentation and cultural landscape analysis. A more appropriate fit would be an ability related to documentation, research, or heritage management, such as THA.EDU.RSR (Research & Documentation) or a similar knowledge-based ability."
-    },
-    {
-      "skill_id": "SKL-04152-f6bab6",
-      "skill_name": "Sacred Materials Permission Management",
-      "definition": "Secures approvals from relevant Aboriginal and Torres Strait Islander cultural authorities to access sacred materials.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6798715591430664,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.6433647274971008,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.PHA",
-          "name": "Pharmaceutical & Chemical Handling",
-          "similarity": 0.6418487429618835,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.EQM",
-          "name": "Specialist Equipment Maintenance",
-          "similarity": 0.6176964044570923,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.6098731160163879,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: The skill involves obtaining cultural permissions for sacred materials, which is about stakeholder engagement, cultural protocol, and ethical governance, not about handling or processing biological specimens. The Biological & Specimen Processing ability focuses on lab work with tissues and samples, which does not align with permission management. A better fit would be an ability related to cultural liaison, community engagement, or governance. Among the given candidates, none directly match, but the closest thematic fit is THA.OCC.TXL (Textile & Garment Production) only because it can involve cultural material handling, though still not ideal. Therefore, the assigned code is incorrect and a more appropriate ability is not listed among the top candidates."
-    },
-    {
-      "skill_id": "SKL-04966-da4995",
-      "skill_name": "Indigenous Ceremonial Gender Protocol Assessment",
-      "definition": "Identifies gender-specific consultation requirements and material access protocols in hybrid settings.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5862477421760559,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.5676724314689636,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5618742108345032,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.5566391944885254,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.5427985787391663,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.CLN: The skill 'Indigenous Ceremonial Gender Protocol Assessment' involves understanding cultural gender protocols and consultation requirements, which is about cultural knowledge, community engagement, and respectful practice, not handling biological specimens. The assigned ability THA.OCC.BIO (Biological & Specimen Processing) is unrelated. A better fit is THA.OCC.CLN (Clinical & Therapeutic Procedures) which covers protocol assessment and gender-specific considerations in care settings, aligning more closely with consultation and protocol assessment."
-    },
-    {
-      "skill_id": "SKL-05106-062f73",
-      "skill_name": "Hand Eye Coordination",
-      "definition": "Uses coordinated hand\u2011eye movements and body\u2011weight shifts while actively riding to keep the bike stable.",
-      "trf_code": "TRF.BRD",
-      "assigned_tha": "THA.BRD.SCM",
-      "assigned_tha_name": "Supply Chain & Logistics Coordination",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.BRD.SCM",
-          "name": "Supply Chain & Logistics Coordination",
-          "similarity": 0.6586717367172241,
-          "rank": 1
-        },
-        {
-          "code": "THA.BRD.LDR",
-          "name": "Leadership & People Management",
-          "similarity": 0.6307284235954285,
-          "rank": 2
-        },
-        {
-          "code": "THA.BRD.TRN",
-          "name": "Training & Knowledge Transfer",
-          "similarity": 0.609818696975708,
-          "rank": 3
-        },
-        {
-          "code": "THA.BRD.NEG",
-          "name": "Negotiation & Conflict Resolution",
-          "similarity": 0.6085036993026733,
-          "rank": 4
-        },
-        {
-          "code": "THA.BRD.WHS",
-          "name": "Workplace Health & Safety Management",
-          "similarity": 0.6000694632530212,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.WHS: Hand Eye Coordination is a physical/psychomotor skill involving precise motor control, not a business process like supply chain coordination. The ability should reflect motor skills, physical coordination, or safety, not logistics."
-    },
-    {
-      "skill_id": "SKL-05983-aae77b",
-      "skill_name": "Indigenous Oral Tradition Oversight",
-      "definition": "Analyzes oral histories, linking kinship patterns to cultural landscapes, and reports findings to supervisors.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.07,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5622540712356567,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5572433471679688,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.54957515001297,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.5307019948959351,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.52655428647995,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.070 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: The skill 'Indigenous Oral Tradition Oversight' involves analyzing oral histories, interpreting cultural narratives, and reporting findings. This is fundamentally a knowledge work activity centered on cultural research, communication, and heritage management. It does not involve handling or processing biological specimens, which is the core of THA.OCC.BIO. A more appropriate THA would be one related to knowledge work, research, or cultural heritage, such as THA.KWR.REC (Research & Knowledge Creation) or THA.CUL.HER (Cultural Heritage Management) if available. Since those are not listed among the top candidates, the best of the provided options is THA.OCC.SPR (Sport & Fitness Instruction) which is still a poor fit, indicating the taxonomy may need a more suitable category. Therefore the current assignment is incorrect."
-    },
-    {
-      "skill_id": "SKL-05021-74a358",
-      "skill_name": "Mulesing Legislation Compliance Assessment",
-      "definition": "Reviews applicable laws and welfare standards, then implements procedures to ensure full compliance.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.12,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6363077163696289,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.6182245016098022,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.EQM",
-          "name": "Specialist Equipment Maintenance",
-          "similarity": 0.6145816445350647,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.6125934720039368,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.6114209294319153,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.120 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.LGL: Mulesing legislation compliance involves understanding and applying animal welfare laws and industry standards, which is a regulatory and compliance activity, not the handling of biological specimens. The assigned ability THA.OCC.BIO focuses on physical processing of biological materials, which does not match the skill's emphasis on legal review and procedural implementation."
-    },
-    {
-      "skill_id": "SKL-01734-74afd3",
-      "skill_name": "Bioregional Investigative Team Coordination",
-      "definition": "Organizes and directs investigative team, securing resources and guiding information extraction.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.15,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.7034686803817749,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.6412822008132935,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.6321726441383362,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.6241447925567627,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.6189593076705933,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.150 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: The skill 'Bioregional Investigative Team Coordination' involves organizing and directing an investigative team, securing resources, and guiding information extraction. This is fundamentally a coordination, management, and investigative function, not the handling or processing of biological specimens. The assigned THA.OCC.BIO focuses on the physical processing of biological materials, which does not align with the core activities described. A more appropriate fit would be a THA related to investigative or coordination roles, such as a 'Forensic Investigation & Evidence Management' or 'Operational Coordination' ability, if available. Among the listed candidates, none directly match, but the closest thematic fit would be THA.OCC.MNG (Mining & Extraction Operations) only insofar as it involves extraction, though it still centers on physical extraction rather than investigative coordination. Therefore, the current assignment is incorrect and a better-suited ability should be selected from the taxonomy."
-    },
-    {
-      "skill_id": "SKL-05644-e321bc",
-      "skill_name": "Arboricultural Legal Analysis",
-      "definition": "Identifies and applies arboriculture-specific legal terms when drafting reports and advising clients.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.15,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6303876638412476,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.6121145486831665,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.6121079921722412,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.6074601411819458,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.606964647769928,
-          "rank": 5
-        }
-      ],
-      "issue_type": "LOW_CONFIDENCE",
-      "severity": 80,
-      "reason": "Best match similarity 0.150 is below threshold 0.4",
-      "llm_reasoning": "\u2717 WRONG: Arboricultural Legal Analysis involves interpreting and applying legal terminology related to tree management, land use, environmental compliance, and client advisory. This is fundamentally a legal and regulatory skill, not a biological specimen handling activity. The assigned THA (Biological & Specimen Processing) pertains to physical handling of biological samples, which does not align with legal analysis. A more appropriate THA would be one covering legal, regulatory, or compliance functions, such as a THA related to legal analysis, regulatory compliance, or professional advisory work."
-    },
-    {
-      "skill_id": "SKL-00688-a161e8",
-      "skill_name": "Feedlot Visitor Management",
-      "definition": "Registers and verifies each feedlot visitor, signing them in according to enterprise and industry protocols.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
+      "skill_id": "SKL-00298-c9f3c8",
+      "skill_name": "Landscape Propagation Definition",
+      "definition": "Specifies appropriate propagation and planting methods, documenting procedures for implementation in horticultural projects.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.SRV",
+      "assigned_tha_name": "Surveying & Spatial Measurement",
       "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6344372630119324,
+          "code": "THA.SEC.SRV",
+          "name": "Surveying & Spatial Measurement",
+          "similarity": 0.6789828538894653,
           "rank": 1
         },
         {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.6258518099784851,
+          "code": "THA.SEC.GIS",
+          "name": "Geospatial Analysis & Mapping",
+          "similarity": 0.6658065319061279,
           "rank": 2
         },
         {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.6111254692077637,
+          "code": "THA.SEC.PFM",
+          "name": "Performance & Presentation Arts",
+          "similarity": 0.6231022477149963,
           "rank": 3
         },
         {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.6077629327774048,
+          "code": "THA.SEC.SIM",
+          "name": "Simulation & Modelling",
+          "similarity": 0.6196537017822266,
           "rank": 4
         },
         {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.6061930656433105,
+          "code": "THA.SEC.FOR",
+          "name": "Forensic Analysis & Investigation",
+          "similarity": 0.611112117767334,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Biological & Specimen Processing: 0.634) and #2 (Vehicle Operation & Maintenance: 0.626) is only 0.009",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.VHC: Registering and verifying feedlot visitors is an administrative and security task, not the handling of biological specimens. The skill aligns better with Vehicle Operation & Maintenance because feedlots often involve managing vehicle access and ensuring safe movement of trucks and equipment. Therefore, THA.OCC.VHC is a more appropriate fit."
+      "reason": "Gap between #1 (Surveying & Spatial Measurement: 0.679) and #2 (Geospatial Analysis & Mapping: 0.666) is only 0.013",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.GIS: Landscape propagation involves selecting planting methods, preparing soil, and managing horticultural implementation, which are practical horticulture tasks rather than measuring or mapping spaces. The skill aligns better with abilities related to planning, design, and spatial analysis of land use. The top candidate, Surveying & Spatial Measurement, focuses on measuring and mapping, which is only tangentially related. Geospatial Analysis & Mapping (THA.SEC.GIS) better captures the need to analyze site conditions, plan propagation layouts, and integrate spatial data for horticultural projects."
     },
     {
-      "skill_id": "SKL-02078-e13e52",
-      "skill_name": "Winemaking Process Strategy",
-      "definition": "Designs winemaking process by matching wine style, grape quality/quantity, and production goals.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
+      "skill_id": "SKL-00469-fc3943",
+      "skill_name": "Indigenous Customs Recordkeeping",
+      "definition": "Documents community's traditional customs relevant to tasks by researching, interviewing, and logging findings.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.FOR",
+      "assigned_tha_name": "Forensic Analysis & Investigation",
       "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6271662712097168,
+          "code": "THA.SEC.FOR",
+          "name": "Forensic Analysis & Investigation",
+          "similarity": 0.6321113109588623,
           "rank": 1
         },
         {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.6124375462532043,
+          "code": "THA.SEC.PFM",
+          "name": "Performance & Presentation Arts",
+          "similarity": 0.6037406325340271,
           "rank": 2
         },
         {
-          "code": "THA.OCC.PHA",
-          "name": "Pharmaceutical & Chemical Handling",
-          "similarity": 0.5841588973999023,
+          "code": "THA.SEC.MON",
+          "name": "Monitoring & Surveillance",
+          "similarity": 0.5877361297607422,
           "rank": 3
         },
         {
-          "code": "THA.OCC.MAC",
-          "name": "Machining & Precision Manufacturing",
-          "similarity": 0.578549861907959,
+          "code": "THA.SEC.EVT",
+          "name": "Event Planning & Coordination",
+          "similarity": 0.5770308971405029,
           "rank": 4
         },
         {
-          "code": "THA.OCC.SFC",
-          "name": "Surface Finishing & Coating",
-          "similarity": 0.5778436660766602,
+          "code": "THA.SEC.SRV",
+          "name": "Surveying & Spatial Measurement",
+          "similarity": 0.5697531700134277,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Biological & Specimen Processing: 0.627) and #2 (Textile & Garment Production: 0.612) is only 0.015",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.TXL: Designing a winemaking process involves planning, coordinating, and optimizing production steps rather than directly handling biological specimens. The skill aligns more with process planning and production management, which fits the Textile & Garment Production ability (THA.OCC.TXL) that covers organized production workflows and process design. Biological & Specimen Processing is about direct specimen handling, not strategic process design."
+      "reason": "Gap between #1 (Forensic Analysis & Investigation: 0.632) and #2 (Performance & Presentation Arts: 0.604) is only 0.028",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PFM: Indigenous Customs Recordkeeping involves researching, interviewing community members, and documenting cultural practices. This aligns more with gathering and presenting information, cultural documentation, and community engagement rather than forensic evidence handling. The skill fits better under Performance & Presentation Arts, which covers documentation, storytelling, and presentation of cultural content."
     },
     {
-      "skill_id": "SKL-02251-a52880",
-      "skill_name": "Clinical Pathology Compliance Assurance",
-      "definition": "Reviews veterinary nursing practices against current legislation to ensure compliance and document findings.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
+      "skill_id": "SKL-01072-1ec462",
+      "skill_name": "Turf Industry Terminology",
+      "definition": "Employs sector-specific terminology in team communications to ensure precise understanding.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.SRV",
+      "assigned_tha_name": "Surveying & Spatial Measurement",
       "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.7261451482772827,
+          "code": "THA.SEC.SRV",
+          "name": "Surveying & Spatial Measurement",
+          "similarity": 0.6468631029129028,
           "rank": 1
         },
         {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.7205999493598938,
+          "code": "THA.SEC.GIS",
+          "name": "Geospatial Analysis & Mapping",
+          "similarity": 0.6228721141815186,
           "rank": 2
         },
         {
-          "code": "THA.OCC.EQM",
-          "name": "Specialist Equipment Maintenance",
-          "similarity": 0.673504114151001,
+          "code": "THA.SEC.EST",
+          "name": "Estimation & Costing",
+          "similarity": 0.5971629619598389,
           "rank": 3
         },
         {
-          "code": "THA.OCC.PHA",
-          "name": "Pharmaceutical & Chemical Handling",
-          "similarity": 0.6653069257736206,
+          "code": "THA.SEC.EVT",
+          "name": "Event Planning & Coordination",
+          "similarity": 0.595955491065979,
           "rank": 4
         },
         {
-          "code": "THA.OCC.AVN",
-          "name": "Aviation & Aircraft Systems",
-          "similarity": 0.6284644603729248,
+          "code": "THA.SEC.FOR",
+          "name": "Forensic Analysis & Investigation",
+          "similarity": 0.5829416513442993,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Biological & Specimen Processing: 0.726) and #2 (Clinical & Therapeutic Procedures: 0.721) is only 0.006",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.CLN: The skill involves reviewing nursing practices for legal compliance and documenting findings, which is primarily an audit, regulatory, and quality assurance activity rather than hands\u2011on handling of biological specimens. It aligns better with the ability to manage clinical processes, ensure standards, and oversee therapeutic procedures, making THA.OCC.CLN (Clinical & Therapeutic Procedures) a more appropriate fit."
+      "reason": "Gap between #1 (Surveying & Spatial Measurement: 0.647) and #2 (Geospatial Analysis & Mapping: 0.623) is only 0.024",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.GIS: The skill 'Turf Industry Terminology' involves using industry-specific language for clear communication, which is about terminology management and knowledge of sector jargon, not about measuring or mapping physical spaces. The Surveying & Spatial Measurement ability focuses on technical measurement tasks, making it a poor fit. The better match is THA.SEC.GIS \u2014 Geospatial Analysis & Mapping, as it more closely relates to handling spatial data and terminology within the turf industry, which often relies on GIS and related vocabularies."
     },
     {
       "skill_id": "SKL-02785-73a6a2",
       "skill_name": "Supervisor Consultation",
       "definition": "Seeks guidance from supervisor to align tasks and resolve issues during work.",
       "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.MON",
-      "assigned_tha_name": "Monitoring & Surveillance",
+      "assigned_tha": "THA.SEC.PAT",
+      "assigned_tha_name": "Client & Patient Assessment",
       "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.SEC.MON",
-          "name": "Monitoring & Surveillance",
-          "similarity": 0.6929837465286255,
+          "code": "THA.SEC.PAT",
+          "name": "Client & Patient Assessment",
+          "similarity": 0.6796538233757019,
           "rank": 1
         },
         {
-          "code": "THA.SEC.PAT",
-          "name": "Client & Patient Assessment",
-          "similarity": 0.6745505332946777,
+          "code": "THA.SEC.EVT",
+          "name": "Event Planning & Coordination",
+          "similarity": 0.6683942675590515,
           "rank": 2
+        },
+        {
+          "code": "THA.SEC.MON",
+          "name": "Monitoring & Surveillance",
+          "similarity": 0.6658636331558228,
+          "rank": 3
         },
         {
           "code": "THA.SEC.CPL",
           "name": "Care Planning & Case Management",
-          "similarity": 0.6636244654655457,
-          "rank": 3
-        },
-        {
-          "code": "THA.SEC.SEC",
-          "name": "Security & Protective Services",
-          "similarity": 0.6470763683319092,
+          "similarity": 0.6412146091461182,
           "rank": 4
         },
         {
-          "code": "THA.SEC.INS",
-          "name": "Inspection & Testing",
-          "similarity": 0.6288990378379822,
+          "code": "THA.SEC.CPN",
+          "name": "Counselling & Psychosocial Support",
+          "similarity": 0.6280397176742554,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Monitoring & Surveillance: 0.693) and #2 (Client & Patient Assessment: 0.675) is only 0.018",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.PAT: Supervisor Consultation is about seeking guidance, decision\u2011making support, and alignment of tasks, which aligns with assessment, planning, and coordination rather than passive observation. The skill fits better with Client & Patient Assessment (THA.SEC.PAT) because it involves evaluating needs and seeking input to inform actions, or with Care Planning & Case Management (THA.SEC.CPL) for coordinating work. The current assignment to Monitoring & Surveillance is a poor fit as it implies passive observation, not active consultation."
+      "reason": "Gap between #1 (Client & Patient Assessment: 0.680) and #2 (Event Planning & Coordination: 0.668) is only 0.011",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.CPL: Supervisor Consultation involves seeking guidance, clarification, or direction from a manager to align work tasks and resolve issues. This is fundamentally about communication, decision\u2011making support, and managerial interaction, not about assessing client or patient conditions. The assigned ability THA.SEC.PAT (Client & Patient Assessment) focuses on evaluating client needs, which does not match the nature of the skill."
     },
     {
-      "skill_id": "SKL-02847-ccb8d0",
-      "skill_name": "Animal Training Consultation",
-      "definition": "Provides tailored training recommendations to clients, matching enrichment activities to each animal\u2019s needs.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.SPR",
-      "assigned_tha_name": "Sport & Fitness Instruction",
+      "skill_id": "SKL-02964-54c4aa",
+      "skill_name": "Horticultural Communication",
+      "definition": "Provides clear guidance to staff on plantation upkeep and plant production system maintenance.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.PFM",
+      "assigned_tha_name": "Performance & Presentation Arts",
       "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.7211053371429443,
+          "code": "THA.SEC.PFM",
+          "name": "Performance & Presentation Arts",
+          "similarity": 0.6536936163902283,
           "rank": 1
         },
         {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.6737636923789978,
+          "code": "THA.SEC.MDA",
+          "name": "Media Production & Content Creation",
+          "similarity": 0.6533527970314026,
           "rank": 2
         },
         {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.6339226961135864,
+          "code": "THA.SEC.EVT",
+          "name": "Event Planning & Coordination",
+          "similarity": 0.6481509208679199,
           "rank": 3
         },
         {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6171722412109375,
+          "code": "THA.SEC.MKT",
+          "name": "Marketing & Promotion",
+          "similarity": 0.6410017609596252,
           "rank": 4
         },
         {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.6125333309173584,
+          "code": "THA.SEC.SRV",
+          "name": "Surveying & Spatial Measurement",
+          "similarity": 0.6205300092697144,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Sport & Fitness Instruction: 0.721) and #2 (Personal Care & Beauty Services: 0.674) is only 0.047",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.BIO: Animal Training Consultation involves assessing animal behavior, designing enrichment and training plans, and advising owners. This aligns more with biological, specimen, or therapeutic procedures rather than coaching human sport or fitness activities. The skill focuses on animal welfare and behavior, not human physical exercise, so the Sport & Fitness Instruction category is a poor fit."
+      "reason": "Gap between #1 (Performance & Presentation Arts: 0.654) and #2 (Media Production & Content Creation: 0.653) is only 0.000",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.MDA: Horticultural Communication involves giving clear guidance on plant care and production systems, which is fundamentally about conveying technical information and instructions. This aligns with abilities related to media production, content creation, or event planning where communication and instructional design are key, not with performing arts. The Performance & Presentation Arts ability focuses on artistic performance, direction, and production, which does not match the practical, instructional nature of horticultural communication."
     },
     {
-      "skill_id": "SKL-02914-0c6dc7",
-      "skill_name": "Dog Resource Update Management",
-      "definition": "Integrates stakeholder feedback and research findings to continuously revise and maintain dog handling resources.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.6472399234771729,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.626216471195221,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.6249915957450867,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.6217272281646729,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.6187853813171387,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Biological & Specimen Processing: 0.647) and #2 (Vehicle Operation & Maintenance: 0.626) is only 0.021",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.EDU: The skill involves updating and maintaining dog handling resources based on stakeholder feedback and research, which is primarily an information management, training, and instructional design activity. It does not involve handling or processing biological specimens, nor does it involve operating vehicles or other physical operations. Therefore, the Biological & Specimen Processing ability is a poor fit."
-    },
-    {
-      "skill_id": "SKL-03104-192a23",
-      "skill_name": "Equine Service Invoice Management",
-      "definition": "Processes and finalizes invoices, confirming transaction details and service arrangements for accurate billing.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.EQM",
-      "assigned_tha_name": "Specialist Equipment Maintenance",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.6339571475982666,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.EQM",
-          "name": "Specialist Equipment Maintenance",
-          "similarity": 0.629416823387146,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.6126419305801392,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5893168449401855,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.CLN",
-          "name": "Clinical & Therapeutic Procedures",
-          "similarity": 0.5793046951293945,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Vehicle Operation & Maintenance: 0.634) and #2 (Specialist Equipment Maintenance: 0.629) is only 0.005",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.PCS: Equine Service Invoice Management involves handling billing, confirming transaction details, and finalizing invoices for equine services. This is fundamentally an administrative and financial task, not the maintenance or technical servicing of equipment. The assigned ability THA.OCC.EQM (Specialist Equipment Maintenance) focuses on inspecting, cleaning, servicing, and calibrating equipment, which does not align with invoicing duties. A more appropriate fit is THA.OCC.VHC (Vehicle Operation & Maintenance) only if the invoicing is tied to vehicle services, but the skill description does not mention vehicles. The best match among the candidates is THA.OCC.PCS (Personal Care & Beauty Services) because equine service invoicing is part of service provision and client interaction, which aligns with managing service arrangements and billing. However, the closest ability overall is THA.OCC.VHC due to its higher similarity score, but it still does not capture the invoicing nature. Given the options, the most suitable is THA.OCC.PCS."
-    },
-    {
-      "skill_id": "SKL-03836-9710ea",
-      "skill_name": "E Business Tool Start Up Management",
-      "definition": "Executes prescribed equipment start-up steps, verifying settings and safety before operation.",
+      "skill_id": "SKL-03298-d152a3",
+      "skill_name": "Digital Media Editing",
+      "definition": "Edits photos, video, or audio with entry\u2011level software to meet specific project goals.",
       "trf_code": "TRF.BRD",
-      "assigned_tha": "THA.BRD.INN",
-      "assigned_tha_name": "Innovation & Creative Problem Solving",
+      "assigned_tha": "THA.BRD.INF",
+      "assigned_tha_name": "Information Management & Research",
       "confidence": 0.45,
       "top_candidates": [
         {
-          "code": "THA.BRD.INN",
-          "name": "Innovation & Creative Problem Solving",
-          "similarity": 0.6586401462554932,
+          "code": "THA.BRD.INF",
+          "name": "Information Management & Research",
+          "similarity": 0.6249792575836182,
           "rank": 1
+        },
+        {
+          "code": "THA.BRD.RPT",
+          "name": "Technical Reporting & Documentation",
+          "similarity": 0.5964202880859375,
+          "rank": 2
         },
         {
           "code": "THA.BRD.PRC",
           "name": "Process Design & Optimisation",
-          "similarity": 0.6497194766998291,
+          "similarity": 0.5761115550994873,
+          "rank": 3
+        },
+        {
+          "code": "THA.BRD.DAT",
+          "name": "Data Analysis & Interpretation",
+          "similarity": 0.5752087831497192,
+          "rank": 4
+        },
+        {
+          "code": "THA.BRD.TRN",
+          "name": "Training & Knowledge Transfer",
+          "similarity": 0.5723812580108643,
+          "rank": 5
+        }
+      ],
+      "issue_type": "TIGHT_MARGIN",
+      "severity": 60,
+      "reason": "Gap between #1 (Information Management & Research: 0.625) and #2 (Technical Reporting & Documentation: 0.596) is only 0.029",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.RPT: Digital Media Editing involves using software to manipulate visual and audio content, which is primarily a creative and technical production skill. It aligns more closely with Technical Reporting & Documentation, where the creation and presentation of media outputs are central, rather than the abstract tasks of sourcing and managing information. The Information Management & Research ability focuses on data gathering, evaluation, and knowledge systems, which does not capture the hands\u2011on editing work."
+    },
+    {
+      "skill_id": "SKL-04262-619830",
+      "skill_name": "Financial Systems Integration Management",
+      "definition": "Integrates financial and operational systems to improve performance management aligned with enterprise needs.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.NET",
+      "assigned_tha_name": "Network & Infrastructure Management",
+      "confidence": 0.45,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.NET",
+          "name": "Network & Infrastructure Management",
+          "similarity": 0.7100390195846558,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.CYB",
+          "name": "Cybersecurity & Information Protection",
+          "similarity": 0.6752233505249023,
           "rank": 2
         },
         {
-          "code": "THA.BRD.FIN",
-          "name": "Financial Management & Budgeting",
-          "similarity": 0.6490213871002197,
+          "code": "THA.SEC.BIM",
+          "name": "Building Information Modelling",
+          "similarity": 0.6666525602340698,
           "rank": 3
+        },
+        {
+          "code": "THA.SEC.AUT",
+          "name": "Automation & Control Systems",
+          "similarity": 0.6478830575942993,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.EVT",
+          "name": "Event Planning & Coordination",
+          "similarity": 0.6460534334182739,
+          "rank": 5
+        }
+      ],
+      "issue_type": "TIGHT_MARGIN",
+      "severity": 60,
+      "reason": "Gap between #1 (Network & Infrastructure Management: 0.710) and #2 (Cybersecurity & Information Protection: 0.675) is only 0.035",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.AUT: Financial Systems Integration Management focuses on linking financial and operational software platforms, data flow, and performance reporting. This is primarily about systems integration, data architecture, and business process alignment, not about configuring or maintaining network hardware or telecom infrastructure. A better fit is a THA related to Systems Integration, Business Process Management, or Enterprise Architecture, which is not listed among the top candidates. The closest among the provided options is THA.SEC.AUT (Automation & Control Systems) because integration often involves automating data exchange between systems, but even that is a stretch. Therefore the current assignment to Network & Infrastructure Management is not appropriate."
+    },
+    {
+      "skill_id": "SKL-05443-d79ea6",
+      "skill_name": "Shrub And Tree Planting",
+      "definition": "Plants trees or shrubs by positioning them in prepared holes and securing them properly.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.SRV",
+      "assigned_tha_name": "Surveying & Spatial Measurement",
+      "confidence": 0.45,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.SRV",
+          "name": "Surveying & Spatial Measurement",
+          "similarity": 0.6294947862625122,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.GIS",
+          "name": "Geospatial Analysis & Mapping",
+          "similarity": 0.5959537029266357,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.PFM",
+          "name": "Performance & Presentation Arts",
+          "similarity": 0.5928765535354614,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.WTR",
+          "name": "Water & Waste Treatment",
+          "similarity": 0.5633612275123596,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.EVT",
+          "name": "Event Planning & Coordination",
+          "similarity": 0.5621880888938904,
+          "rank": 5
+        }
+      ],
+      "issue_type": "TIGHT_MARGIN",
+      "severity": 60,
+      "reason": "Gap between #1 (Surveying & Spatial Measurement: 0.629) and #2 (Geospatial Analysis & Mapping: 0.596) is only 0.034",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.GIS: Shrub and tree planting is a hands\u2011on horticultural activity focused on preparing planting sites, handling plant material, and ensuring proper placement and stabilization. It aligns with abilities related to land management, environmental stewardship, or horticulture, not with measuring or mapping spaces. The Surveying & Spatial Measurement ability involves using GPS, GIS, and surveying tools to capture spatial data, which is not central to the act of planting. A better fit is the Geospatial Analysis & Mapping ability (THA.SEC.GIS) because planting often requires interpreting site plans, mapping planting layouts, and using GIS data to determine optimal locations, making it more relevant than pure surveying."
+    },
+    {
+      "skill_id": "SKL-05978-97acaf",
+      "skill_name": "Plant Indigenous Knowledge Consultation",
+      "definition": "Consults cultural authorities or supervisors during recognition activities to integrate indigenous knowledge appropriately.",
+      "trf_code": "TRF.SEC",
+      "assigned_tha": "THA.SEC.PAT",
+      "assigned_tha_name": "Client & Patient Assessment",
+      "confidence": 0.45,
+      "top_candidates": [
+        {
+          "code": "THA.SEC.PAT",
+          "name": "Client & Patient Assessment",
+          "similarity": 0.5591598153114319,
+          "rank": 1
+        },
+        {
+          "code": "THA.SEC.GIS",
+          "name": "Geospatial Analysis & Mapping",
+          "similarity": 0.5487194061279297,
+          "rank": 2
+        },
+        {
+          "code": "THA.SEC.FOR",
+          "name": "Forensic Analysis & Investigation",
+          "similarity": 0.5446430444717407,
+          "rank": 3
+        },
+        {
+          "code": "THA.SEC.SRV",
+          "name": "Surveying & Spatial Measurement",
+          "similarity": 0.541934072971344,
+          "rank": 4
+        },
+        {
+          "code": "THA.SEC.SMP",
+          "name": "Sampling & Laboratory Technique",
+          "similarity": 0.5305905342102051,
+          "rank": 5
+        }
+      ],
+      "issue_type": "TIGHT_MARGIN",
+      "severity": 60,
+      "reason": "Gap between #1 (Client & Patient Assessment: 0.559) and #2 (Geospatial Analysis & Mapping: 0.549) is only 0.010",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.CUL: The skill involves consulting cultural authorities to incorporate indigenous knowledge, which is about engaging with community stakeholders, understanding cultural contexts, and facilitating knowledge exchange. This aligns more with abilities related to stakeholder engagement, cultural liaison, or community consultation rather than assessing client health or medical needs. THA.SEC.PAT focuses on health assessments, which does not match the nature of this skill."
+    },
+    {
+      "skill_id": "SKL-00410-60006a",
+      "skill_name": "Cultural Work Practice Design",
+      "definition": "Designs workplace practices that integrate Aboriginal/TSI cultural considerations for employee inclusion.",
+      "trf_code": "TRF.BRD",
+      "assigned_tha": "THA.BRD.PRC",
+      "assigned_tha_name": "Process Design & Optimisation",
+      "confidence": 0.55,
+      "top_candidates": [
+        {
+          "code": "THA.BRD.PRC",
+          "name": "Process Design & Optimisation",
+          "similarity": 0.7110142707824707,
+          "rank": 1
         },
         {
           "code": "THA.BRD.PRJ",
           "name": "Project Planning & Coordination",
-          "similarity": 0.6404123306274414,
-          "rank": 4
-        },
-        {
-          "code": "THA.BRD.SCM",
-          "name": "Supply Chain & Logistics Coordination",
-          "similarity": 0.6402795314788818,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Innovation & Creative Problem Solving: 0.659) and #2 (Process Design & Optimisation: 0.650) is only 0.009",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.PRC: The skill 'E Business Tool Start Up Management' involves executing prescribed equipment start-up steps, verifying settings and safety before operation. This is a procedural, operational task focused on correctly initiating and managing equipment, which aligns with process design, optimisation, and safe execution rather than generating new ideas or creative problem solving. The Innovation & Creative Problem Solving ability emphasizes novel ideas and creative approaches, which is not central to this skill. The better fit is THA.BRD.PRC \u2014 Process Design & Optimisation, as it captures the systematic, procedural nature of start-up management."
-    },
-    {
-      "skill_id": "SKL-04478-a68a7d",
-      "skill_name": "Grape Quality Assessment",
-      "definition": "Conducts systematic wine evaluations by following standardized tasting protocols to assess quality.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.BIO",
-      "assigned_tha_name": "Biological & Specimen Processing",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5789604187011719,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.TXL",
-          "name": "Textile & Garment Production",
-          "similarity": 0.54390549659729,
+          "similarity": 0.6891331076622009,
           "rank": 2
         },
         {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.5225186347961426,
+          "code": "THA.BRD.TRN",
+          "name": "Training & Knowledge Transfer",
+          "similarity": 0.6561385989189148,
           "rank": 3
         },
         {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5192584991455078,
+          "code": "THA.BRD.INF",
+          "name": "Information Management & Research",
+          "similarity": 0.6543455719947815,
           "rank": 4
         },
         {
-          "code": "THA.OCC.MNG",
-          "name": "Mining & Extraction Operations",
-          "similarity": 0.5185051560401917,
+          "code": "THA.BRD.WHS",
+          "name": "Workplace Health & Safety Management",
+          "similarity": 0.6517957448959351,
           "rank": 5
         }
       ],
       "issue_type": "TIGHT_MARGIN",
       "severity": 60,
-      "reason": "Gap between #1 (Biological & Specimen Processing: 0.579) and #2 (Textile & Garment Production: 0.544) is only 0.035",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.OCC.SPR: Grape quality assessment involves sensory evaluation, tasting, and judging wine, which aligns with sensory analysis and quality control rather than handling biological specimens. The skill fits better under a category related to sensory evaluation, quality assessment, or food & beverage production. Among the candidates, THA.OCC.SPR (Sport & Fitness Instruction) is still not ideal, but it is the closest to a role involving sensory instruction and assessment. A more appropriate THA would be one for Food & Beverage Production or Sensory Evaluation if available."
-    },
-    {
-      "skill_id": "SKL-05185-ddf982",
-      "skill_name": "Employment Terms Advisory",
-      "definition": "Briefs new employees on applicable awards, agreements, and pay rates, handling related administration.",
-      "trf_code": "TRF.SEC",
-      "assigned_tha": "THA.SEC.EST",
-      "assigned_tha_name": "Estimation & Costing",
-      "confidence": 0.45,
-      "top_candidates": [
-        {
-          "code": "THA.SEC.EST",
-          "name": "Estimation & Costing",
-          "similarity": 0.6680524349212646,
-          "rank": 1
-        },
-        {
-          "code": "THA.SEC.CPL",
-          "name": "Care Planning & Case Management",
-          "similarity": 0.6625868082046509,
-          "rank": 2
-        },
-        {
-          "code": "THA.SEC.PAT",
-          "name": "Client & Patient Assessment",
-          "similarity": 0.6541783213615417,
-          "rank": 3
-        },
-        {
-          "code": "THA.SEC.HOS",
-          "name": "Hospitality & Service Operations",
-          "similarity": 0.6475098133087158,
-          "rank": 4
-        },
-        {
-          "code": "THA.SEC.ANM",
-          "name": "Animal Care & Handling",
-          "similarity": 0.6291534900665283,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Estimation & Costing: 0.668) and #2 (Care Planning & Case Management: 0.663) is only 0.005",
-      "llm_reasoning": "\u2717 WRONG \u2192 THA.SEC.HOS: Employment Terms Advisory involves explaining awards, agreements, and pay rates and handling related administration. This is fundamentally about HR policy communication, employee onboarding, and compliance, not about estimating quantities, costs, or resources. The Estimation & Costing ability (THA.SEC.EST) does not capture these administrative and advisory functions."
-    },
-    {
-      "skill_id": "SKL-02213-1ff35c",
-      "skill_name": "Equine Contract Management",
-      "definition": "Drafts contracts for business activities, ensuring compliance with contractual law requirements.",
-      "trf_code": "TRF.OCC",
-      "assigned_tha": "THA.OCC.VHC",
-      "assigned_tha_name": "Vehicle Operation & Maintenance",
-      "confidence": 0.5895839333534241,
-      "top_candidates": [
-        {
-          "code": "THA.OCC.VHC",
-          "name": "Vehicle Operation & Maintenance",
-          "similarity": 0.5895839333534241,
-          "rank": 1
-        },
-        {
-          "code": "THA.OCC.SPR",
-          "name": "Sport & Fitness Instruction",
-          "similarity": 0.5822992324829102,
-          "rank": 2
-        },
-        {
-          "code": "THA.OCC.MAR",
-          "name": "Maritime & Vessel Operations",
-          "similarity": 0.5716098546981812,
-          "rank": 3
-        },
-        {
-          "code": "THA.OCC.BIO",
-          "name": "Biological & Specimen Processing",
-          "similarity": 0.5709049105644226,
-          "rank": 4
-        },
-        {
-          "code": "THA.OCC.PCS",
-          "name": "Personal Care & Beauty Services",
-          "similarity": 0.568853497505188,
-          "rank": 5
-        }
-      ],
-      "issue_type": "TIGHT_MARGIN",
-      "severity": 60,
-      "reason": "Gap between #1 (Vehicle Operation & Maintenance: 0.590) and #2 (Sport & Fitness Instruction: 0.582) is only 0.007",
-      "llm_reasoning": "\u2717 WRONG: Equine Contract Management involves drafting and reviewing contracts related to equine business activities, which is a legal and administrative function. It does not involve operating, inspecting, or maintaining vehicles, nor does it relate to sports instruction, maritime work, biological processing, or personal care. The skill aligns better with a transferable ability focused on legal, regulatory, or business administration tasks, such as a 'Legal & Regulatory Compliance' or 'Business & Administrative Services' ability, rather than any of the listed occupational abilities."
+      "reason": "Gap between #1 (Process Design & Optimisation: 0.711) and #2 (Project Planning & Coordination: 0.689) is only 0.022",
+      "llm_reasoning": "\u2717 WRONG \u2192 THA.BRD.PRJ: Designing workplace practices that embed Aboriginal/TSI cultural considerations is fundamentally about planning, coordinating, and implementing culturally inclusive initiatives, not merely optimizing existing processes. While process design touches workflow, the core activity is project planning and coordination of cultural integration efforts. Therefore, THA.BRD.PRJ (Project Planning & Coordination) aligns better with the skill's focus on designing inclusive work practices."
     }
   ]
 }
