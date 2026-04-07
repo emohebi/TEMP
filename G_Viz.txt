@@ -1,0 +1,49 @@
+3.	Below are the list of indicators and variables used to calculate them for our weekly MO’s update regarding Fuel shock:
+a.	Recruitment rate (RR): 
+-	Definition: proportion of employers either currently recruiting or who had recruited in the previous month
+-	How to calculate: dividing the number of employers who recruited or were attempting to recruit by the number of employers that responded to the survey question (excluding ‘unsure’ responses)
+-	Business rules: excluding ‘unsure’ responses
+-	Variable used: RecruitShort
+-	Formula: RR =  (RecruitShort=Yes) / (RecruitShort=Yes + RecruitShort=No)
+b.	Recruitment difficulty rate (RD):
+-	Definition: proportion of recruiting employers who experienced difficulty hiring
+-	How to calculate: the number of employers who recruited or are recruiting and reported difficulty, divided by all employers who recruited or are recruiting (excluding ‘unsure’ responses). 
+-	Business rules: excluding ‘unsure’ responses
+-	Variable used: Difficulty
+-	Formula: RD = (Difficulty=Yes) / (Difficulty=Yes + Difficulty=No)
+c.	Future staffing outlook (FSI – future staff increase)
+-	Definition: proportion of employers expecting to increase staffing levels over the next 3 months
+-	How to calculate: the number of employers who expect to increase staff over the next 3 months divided by all employers.
+-	Business rules: includes ‘unsure’ responses in the denominator (the only indicator that does)
+-	Variables used: FutStaffChange
+-	Formula: FSI = (FutStaffChange = Increase) / FutStaffChange <>’’ (ie not blank)
+d.	Costs as Greatest Concern (Cost_concern). 
+-	Definition: proportion of employers whose greatest concern over the next 3 months is Costs (which includes the cost of fuel)
+-	How to calculate: the number of employers whose greatest concern is Costs divided by all employers (excluding ‘unsure’ or blank responses).
+-	Business rules: excluding both ‘unsure’ and blank responses from the denominator
+-	Variables used: FutConcern
+-	Formula: Cost_concern = (FutConcern = Costs) / FutConcern <>(Unsure or ’’)
+
+Please note, for all calculation above, the sum of weight is used instead of the count for records. For example:
+RR = [Sum(weight), filter (RecruitShort=Yes) ]/ [Sum(weight), filter (RecruitShort=Yes & RecruitShort=No)]
+
+With the weight variable is defined as below:
+4.	Variables for weight (data is weighted, so this variable is summed when calculating proportions)
+a.	Weight – the “official” weight variable, but only updated once a month
+b.	LatestWeight – will be used for the most recent data, but not currently in a dataset on the data lake.
+
+
+Other variables we are going to use to explore impacting regions, industries and business types include:
+5.	Variables for time
+a.	Week: Data will be released weekly, with this variable being the date for the end of the week
+b.	Month: For broader monthly analysis, but rarely used as the most recent data will be wanted
+c.	Year = 2026 – only data for this year will be used
+6.	Variables available for geographical analysis
+a.	State – State / territory
+b.	GCC – Capital city / rest of state for each individual state & territory
+c.	CCRoS – Capital city / rest of state for Australia (as a whole)
+d.	ARIA – remoteness variable
+e.	SA4 – SA4, but there probably won’t be sufficient sample to be able to analyse at this level
+7.	Variables available for business size analysis: BusinessSize 
+8.	Variable used for industry: Industry06 – industry division (at the ANZSIC 1 digit level)
+
