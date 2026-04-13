@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VET Skill Ability Explorer</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #f4f6f9; --c-surface: #ffffff; --c-border: #e2e6ed;
+  --c-text: #1a1f36; --c-text2: #5a6072; --c-text3: #8892a4;
+  --c-accent: #0f6b5e; --c-accent-light: #e8f5f1; --c-accent2: #1e3a5f;
+  --c-tag-bg: #eef1f6; --c-tag-text: #3d4663;
+  --radius: 10px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--c-bg); color: var(--c-text); line-height: 1.55; }
+
+/* ═══ HEADER ═══ */
+.hdr { background: linear-gradient(135deg, var(--c-accent2) 0%, #0d2137 100%); color: #fff; }
+.hdr-inner { max-width: 1300px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.hdr-brand { display: flex; align-items: center; gap: 14px; }
+.hdr-icon { width: 42px; height: 42px; background: var(--c-accent); border-radius: 10px; display: grid; place-items: center; font-size: 1.2rem; }
+.hdr h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -.02em; }
+.hdr-sub { font-size: .82rem; opacity: .75; font-weight: 400; }
+.hdr-stats { display: flex; gap: 20px; font-size: .8rem; opacity: .85; }
+.hdr-stats b { font-weight: 600; }
+
+.shell { max-width: 1300px; margin: 0 auto; padding: 20px 24px 60px; }
+
+/* ═══ TABLE PANEL ═══ */
+.table-panel {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.table-toolbar {
+  padding: 14px 18px; border-bottom: 1px solid var(--c-border);
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.search-box { flex: 1; min-width: 220px; position: relative; }
+.search-box i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--c-text3); }
+.search-box input {
+  width: 100%; padding: 9px 12px 9px 36px;
+  border: 2px solid var(--c-border); border-radius: var(--radius);
+  font: inherit; font-size: .88rem;
+}
+.search-box input:focus { outline: none; border-color: var(--c-accent); }
+.toolbar-stat { font-size: .82rem; color: var(--c-text3); white-space: nowrap; }
+
+.sc-tbl { width: 100%; border-collapse: collapse; }
+.sc-tbl th {
+  text-align: left; padding: 10px 14px; font-size: .72rem;
+  text-transform: uppercase; letter-spacing: .5px;
+  color: var(--c-text3); border-bottom: 2px solid var(--c-border);
+  background: var(--c-bg); white-space: nowrap; position: sticky; top: 0; z-index: 2;
+}
+
+/* Sub-cluster rows */
+.sc-row { cursor: pointer; transition: background .1s; }
+.sc-row:hover { background: #f8f9fb; }
+.sc-row td { padding: 12px 14px; border-bottom: 1px solid var(--c-border); vertical-align: middle; }
+.sc-row.expanded { background: var(--c-accent-light); }
+.sc-row.expanded td { border-bottom-color: var(--c-accent); }
+
+.sc-chevron { transition: transform .2s; display: inline-block; color: var(--c-text3); font-size: .85rem; }
+.sc-row.expanded .sc-chevron { transform: rotate(90deg); color: var(--c-accent); }
+
+.sc-label { font-weight: 600; font-size: .88rem; color: var(--c-accent2); }
+.sc-count { font-size: .82rem; color: var(--c-text2); text-align: center; }
+
+/* Progression dots */
+.prog-bar { display: flex; align-items: center; gap: 2px; }
+.prog-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .6rem; font-weight: 700; color: white; background: #d1d9e6; flex-shrink: 0;
+}
+.prog-dot.on { background: var(--c-accent); }
+.prog-dot.gap { background: transparent; border: 2px dashed #d1d9e6; color: var(--c-text3); }
+.prog-conn { height: 2px; width: 8px; background: #d1d9e6; flex-shrink: 0; }
+.prog-conn.on { background: var(--c-accent); }
+.prog-conn.gap { background: transparent; border-top: 2px dashed #d1d9e6; }
+
+.prog-badge {
+  font-size: .66rem; padding: 2px 8px; border-radius: 10px; font-weight: 600; white-space: nowrap;
+}
+.prog-badge.full { background: #dcfce7; color: #166534; }
+.prog-badge.partial { background: #fef9c3; color: #854d0e; }
+.prog-badge.flat { background: var(--c-bg); color: var(--c-text3); }
+.prog-badge.sparse { background: #fce4ec; color: #c2185b; }
+
+/* Expanded skill rows */
+.sk-drawer { display: none; }
+.sk-drawer.open { display: table-row; }
+.sk-drawer td { padding: 0; background: #fafbfc; }
+.sk-inner { padding: 6px 14px 14px 44px; }
+.sk-tbl { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.sk-tbl th {
+  text-align: left; padding: 6px 8px; font-size: .66rem;
+  text-transform: uppercase; letter-spacing: .4px;
+  color: var(--c-text3); border-bottom: 1.5px solid var(--c-border);
+}
+.sk-tbl td { padding: 7px 8px; border-bottom: 1px solid var(--c-border); }
+.sk-row { cursor: pointer; transition: background .1s; }
+.sk-row:hover { background: #e8f5f1; }
+.sk-row.active { background: var(--c-accent-light); font-weight: 600; }
+.sk-name { color: var(--c-accent2); font-weight: 500; }
+.lvl-badge {
+  display: inline-block; padding: 1px 7px; border-radius: 8px;
+  font-size: .7rem; font-weight: 700; color: white;
+  background: var(--c-accent); min-width: 24px; text-align: center;
+}
+
+/* ═══ SLIDE-OUT DRAWER ═══ */
+.drawer-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.3);
+  z-index: 900; opacity: 0; pointer-events: none;
+  transition: opacity .2s ease;
+}
+.drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
+.drawer {
+  position: fixed; top: 0; right: 0;
+  width: 620px; max-width: 95vw; height: 100vh;
+  background: var(--c-surface); z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform .25s ease;
+  display: flex; flex-direction: column;
+}
+.drawer.open { transform: translateX(0); }
+
+.drawer-head {
+  padding: 18px 22px; border-bottom: 1px solid var(--c-border);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-shrink: 0;
+}
+.drawer-head-left { flex: 1; min-width: 0; }
+.drawer-skill-name { font-size: 1.15rem; font-weight: 700; color: var(--c-accent2); line-height: 1.3; }
+.drawer-skill-id { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--c-text3); margin-top: 2px; }
+.drawer-close {
+  background: none; border: none; font-size: 1.3rem; cursor: pointer;
+  color: var(--c-text3); padding: 4px; margin-left: 12px; flex-shrink: 0;
+}
+.drawer-close:hover { color: var(--c-text); }
+
+.drawer-body { flex: 1; overflow-y: auto; padding: 22px; }
+
+.d-section { margin-bottom: 20px; }
+.d-label {
+  font-size: .7rem; font-weight: 600; color: var(--c-text3);
+  text-transform: uppercase; letter-spacing: .5px;
+  margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+  padding-bottom: 4px; border-bottom: 1px solid var(--c-bg);
+}
+.d-def {
+  font-size: .85rem; color: var(--c-text2); line-height: 1.6;
+  padding: 10px 12px; background: var(--c-bg); border-radius: 8px;
+}
+
+.alt-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.alt-tag {
+  display: inline-block; padding: 3px 9px; border-radius: 6px;
+  font-size: .75rem; background: #fff7ed; color: #92400e;
+}
+
+.kw-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.kw-tag {
+  display: inline-block; padding: 3px 9px; border-radius: 6px;
+  font-size: .75rem; background: var(--c-tag-bg); color: var(--c-tag-text);
+}
+
+.dim-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 5px 0; border-bottom: 1px solid var(--c-bg);
+}
+.dim-row:last-child { border-bottom: none; }
+.dim-key { font-size: .8rem; color: var(--c-text2); }
+.dim-val { font-size: .8rem; font-weight: 600; color: var(--c-text); }
+
+.assert-tbl { width: 100%; border-collapse: collapse; font-size: .78rem; }
+.assert-tbl th {
+  text-align: left; padding: 8px 6px; font-size: .68rem;
+  text-transform: uppercase; letter-spacing: .4px;
+  color: var(--c-text3); border-bottom: 2px solid var(--c-border); white-space: nowrap;
+}
+.assert-tbl td { padding: 8px 6px; border-bottom: 1px solid var(--c-border); vertical-align: top; }
+.assert-tbl tr:hover td { background: var(--c-bg); }
+.assert-tbl .mono { font-family: 'JetBrains Mono', monospace; font-size: .72rem; }
+.assert-ev { color: var(--c-text2); font-size: .76rem; line-height: 1.4; }
+
+.err { color: #c62828; padding: 20px; font-size: .9rem; }
+
+@media (max-width: 700px) {
+  .drawer { width: 100vw; }
+  .hdr-stats { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-brand">
+      <div class="hdr-icon"><i class="bi bi-bar-chart-steps"></i></div>
+      <div>
+        <h1>Skill Ability Explorer</h1>
+        <p class="hdr-sub">Transferable human abilities with progression ladders — click a skill for full details</p>
+      </div>
+    </div>
+    <div class="hdr-stats" id="headerStats"></div>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="table-panel">
+    <div class="table-toolbar">
+      <div class="search-box">
+        <i class="bi bi-search"></i>
+        <input type="text" id="scSearch" placeholder="Search abilities or skills…" autocomplete="off">
+      </div>
+      <span class="toolbar-stat" id="statLabel"></span>
+    </div>
+    <table class="sc-tbl">
+      <thead>
+        <tr>
+          <th style="width:28px"></th>
+          <th>Ability</th>
+          <th style="text-align:center">Skills</th>
+          <th>Progression</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody id="scBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Slide-out drawer overlay -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+<!-- Slide-out drawer -->
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div class="drawer-head-left">
+      <div class="drawer-skill-name" id="drawerName"></div>
+      <div class="drawer-skill-id" id="drawerId"></div>
+    </div>
+    <button class="drawer-close" onclick="closeDrawer()"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<script src="skill_search_data.js" onerror="document.getElementById('scBody').innerHTML='<tr><td colspan=5 class=err>Failed to load data file. Ensure <b>skill_search_data.js</b> is in the same directory.</td></tr>'"></script>
+<script>
+let data = null;
+let skillIndex = new Map();
+let unitIndex = new Map();
+let allSubClusters = [];
+let filteredClusters = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+  const check = setInterval(() => {
+    if (typeof ASSERTION_DATA !== 'undefined') { clearInterval(check); init(ASSERTION_DATA); }
+  }, 80);
+  setTimeout(() => clearInterval(check), 8000);
+});
+
+function init(d) {
+  data = d;
+
+  // Build skill index
+  data.skills.forEach(s => skillIndex.set(s.skill_id, s));
+
+  // Build unit index
+  (data.units || []).forEach(u => unitIndex.set(u.unit_code, u));
+
+  // Flatten all ability groups from all TRF groups into one list
+  allSubClusters = [];
+  (data.archetypes || []).forEach(arch => {
+    (arch.sub_clusters || []).forEach(sc => {
+      // Resolve skill details from skill index
+      const skills = (sc.skill_ids || []).map(sid => skillIndex.get(sid)).filter(Boolean);
+      allSubClusters.push({
+        cluster_id: sc.cluster_id,
+        label: sc.label,
+        trf_group: arch.label || '',
+        total_skills: sc.total_skills || skills.length,
+        progression_type: sc.progression_type,
+        level_span: sc.level_span || [0, 0],
+        level_gaps: sc.level_gaps || [],
+        progression: sc.progression || [],
+        skills: skills,
+      });
+    });
+  });
+
+  // Sort by total_skills descending
+  allSubClusters.sort((a, b) => b.total_skills - a.total_skills);
+  filteredClusters = allSubClusters;
+
+  renderHeader();
+  renderTable();
+
+  document.getElementById('scSearch').addEventListener('input', debounce(onSearch, 200));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+}
+
+function renderHeader() {
+  const m = data.metadata;
+  let html = '';
+  html += `<span><b>${m.total_skills.toLocaleString()}</b> Skills</span>`;
+  html += `<span><b>${m.total_assertions.toLocaleString()}</b> Assertions</span>`;
+  html += `<span><b>${m.total_units.toLocaleString()}</b> Units</span>`;
+  html += `<span><b>${allSubClusters.length}</b> Abilities</span>`;
+  if (m.total_qualifications) html += `<span><b>${m.total_qualifications.toLocaleString()}</b> Quals</span>`;
+  if (m.total_occupations) html += `<span><b>${m.total_occupations.toLocaleString()}</b> Occs</span>`;
+  document.getElementById('headerStats').innerHTML = html;
+}
+
+// ══════════════════════════════════════════════════════════
+//  TABLE RENDERING
+// ══════════════════════════════════════════════════════════
+
+function renderTable() {
+  const tbody = document.getElementById('scBody');
+  const totalSkills = filteredClusters.reduce((s, c) => s + c.total_skills, 0);
+  document.getElementById('statLabel').textContent =
+    `${filteredClusters.length} abilities · ${totalSkills} skills`;
+
+  let html = '';
+  for (const sc of filteredClusters) {
+    // Ability row
+    html += `<tr class="sc-row" data-cid="${sc.cluster_id}" onclick="toggleCluster('${sc.cluster_id}')">`;
+    html += `<td><span class="sc-chevron"><i class="bi bi-chevron-right"></i></span></td>`;
+    html += `<td><span class="sc-label">${esc(sc.label)}</span><span style="font-size:.7rem;color:var(--c-text3);margin-left:8px">${esc(sc.trf_group)}</span></td>`;
+    html += `<td class="sc-count">${sc.total_skills}</td>`;
+    html += `<td>${renderProgBar(sc)}</td>`;
+    html += `<td><span class="prog-badge ${sc.progression_type}">${sc.progression_type}</span></td>`;
+    html += `</tr>`;
+
+    // Skill drawer (sorted by level)
+    const sorted = [...sc.skills].sort((a, b) => {
+      const la = getLevelInt(a);
+      const lb = getLevelInt(b);
+      return la - lb;
+    });
+
+    html += `<tr class="sk-drawer" data-drawer="${sc.cluster_id}"><td colspan="5"><div class="sk-inner">`;
+    html += `<table class="sk-tbl"><thead><tr><th>Skill</th><th>Level</th><th style="text-align:center">Assertions</th></tr></thead><tbody>`;
+    for (const sk of sorted) {
+      const lvl = getLevelInt(sk);
+      html += `<tr class="sk-row" data-sid="${sk.skill_id}" onclick="openSkill('${sk.skill_id}',event)">`;
+      html += `<td class="sk-name">${esc(sk.preferred_label)}</td>`;
+      html += `<td><span class="lvl-badge">${lvl}</span></td>`;
+      html += `<td style="font-size:.78rem;color:var(--c-text3);text-align:center">${sk.assertion_count || (sk.assertions || []).length}</td>`;
+      html += `</tr>`;
+    }
+    html += `</tbody></table></div></td></tr>`;
+  }
+
+  tbody.innerHTML = html;
+}
+
+function renderProgBar(sc) {
+  const minL = sc.level_span[0] || 1;
+  const maxL = sc.level_span[1] || 7;
+  const prog = sc.progression || [];
+  const lvls = new Set(prog.map(r => r.level));
+  const gaps = new Set(sc.level_gaps || []);
+
+  let h = '<div class="prog-bar">';
+  for (let l = minL; l <= maxL; l++) {
+    if (l > minL) {
+      const cls = (lvls.has(l - 1) && lvls.has(l)) ? 'on' : (gaps.has(l) || gaps.has(l - 1)) ? 'gap' : '';
+      h += `<div class="prog-conn ${cls}"></div>`;
+    }
+    const r = prog.find(x => x.level === l);
+    if (r) h += `<div class="prog-dot on" title="L${l} ${r.level_name}: ${r.skill_count}">${l}</div>`;
+    else if (gaps.has(l)) h += `<div class="prog-dot gap" title="Gap">${l}</div>`;
+    else h += `<div class="prog-dot">${l}</div>`;
+  }
+  h += '</div>';
+  return h;
+}
+
+function toggleCluster(cid) {
+  const row = document.querySelector(`.sc-row[data-cid="${cid}"]`);
+  const drawer = document.querySelector(`.sk-drawer[data-drawer="${cid}"]`);
+  const wasOpen = drawer.classList.contains('open');
+  document.querySelectorAll('.sc-row').forEach(r => r.classList.remove('expanded'));
+  document.querySelectorAll('.sk-drawer').forEach(d => d.classList.remove('open'));
+  if (!wasOpen) { row.classList.add('expanded'); drawer.classList.add('open'); }
+}
+
+// ══════════════════════════════════════════════════════════
+//  SKILL DRAWER
+// ══════════════════════════════════════════════════════════
+
+function openSkill(sid, ev) {
+  ev.stopPropagation();
+  const skill = skillIndex.get(sid);
+  if (!skill) return;
+
+  // Mark active row
+  document.querySelectorAll('.sk-row').forEach(r => r.classList.remove('active'));
+  document.querySelector(`.sk-row[data-sid="${sid}"]`)?.classList.add('active');
+
+  // Populate header
+  document.getElementById('drawerName').textContent = skill.preferred_label;
+  document.getElementById('drawerId').textContent = skill.skill_id;
+
+  // Populate body
+  let h = '';
+
+  // Definition
+  if (skill.definition)
+    h += `<div class="d-section"><div class="d-label"><i class="bi bi-info-circle"></i> Definition</div><div class="d-def">${esc(skill.definition)}</div></div>`;
+
+  // Dimensions (Nature + Transferability + Cognitive Complexity)
+  const facets = skill.facets || {};
+  const nat = facets.NAT;
+  const trf = facets.TRF;
+  const cog = facets.COG;
+  if (nat || trf || cog) {
+    h += `<div class="d-section"><div class="d-label"><i class="bi bi-tags"></i> Dimensions</div>`;
+    if (nat) h += `<div class="dim-row"><span class="dim-key">Nature</span><span class="dim-val">${esc(nat.name)}</span></div>`;
+    if (trf) h += `<div class="dim-row"><span class="dim-key">Transferability</span><span class="dim-val">${esc(trf.name)}</span></div>`;
+    if (cog) h += `<div class="dim-row"><span class="dim-key">Cognitive Complexity</span><span class="dim-val">${esc(cog.name)}</span></div>`;
+    h += `</div>`;
+  }
+
+  // Alternative titles
+  const alts = skill.alternative_labels || [];
+  if (alts.length)
+    h += `<div class="d-section"><div class="d-label"><i class="bi bi-card-heading"></i> Alternative Titles (${alts.length})</div><div class="alt-tags">${alts.map(a => `<span class="alt-tag">${esc(a)}</span>`).join('')}</div></div>`;
+
+  // Context Keywords (collected from all assertions)
+  const assertions = skill.assertions || [];
+  const kwSet = new Set();
+  for (const a of assertions) {
+    if (Array.isArray(a.keywords)) {
+      a.keywords.forEach(k => { if (k) kwSet.add(k); });
+    }
+  }
+  const keywords = [...kwSet];
+  if (keywords.length) {
+    h += `<div class="d-section"><div class="d-label"><i class="bi bi-key"></i> Context Keywords (${keywords.length})</div>`;
+    h += `<div class="kw-tags">${keywords.map(k => `<span class="kw-tag">${esc(k)}</span>`).join('')}</div></div>`;
+  }
+
+  // Assertions table
+  if (assertions.length) {
+    h += `<div class="d-section"><div class="d-label"><i class="bi bi-link-45deg"></i> Assertions (${assertions.length})</div>`;
+    h += `<table class="assert-tbl"><thead><tr><th>Unit Code</th><th>Unit Name</th><th>Level</th><th>Evidence</th><th>Qual</th><th>Occ</th></tr></thead><tbody>`;
+    for (const a of assertions) {
+      const u = unitIndex.get(a.unit_code);
+      const unitName = u ? u.unit_title : '';
+      h += `<tr>`;
+      h += `<td class="mono">${a.unit_code}</td>`;
+      h += `<td style="font-size:.76rem;color:var(--c-text2)">${esc(unitName)}</td>`;
+      h += `<td style="font-size:.76rem">${a.level_of_engagement}</td>`;
+      h += `<td class="assert-ev">${esc(a.evidence)}</td>`;
+      h += `<td class="mono">${(a.qualification_codes || []).join(', ')}</td>`;
+      h += `<td class="mono">${(a.occupation_codes || []).join(', ')}</td>`;
+      h += `</tr>`;
+    }
+    h += `</tbody></table></div>`;
+  }
+
+  document.getElementById('drawerBody').innerHTML = h;
+
+  // Open drawer
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('open');
+}
+
+function closeDrawer() {
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('open');
+  document.querySelectorAll('.sk-row').forEach(r => r.classList.remove('active'));
+}
+
+// ══════════════════════════════════════════════════════════
+//  SEARCH
+// ══════════════════════════════════════════════════════════
+
+function onSearch() {
+  const q = document.getElementById('scSearch').value.toLowerCase().trim();
+  if (!q) {
+    filteredClusters = allSubClusters;
+  } else {
+    filteredClusters = allSubClusters.filter(sc => {
+      if (sc.label.toLowerCase().includes(q)) return true;
+      return sc.skills.some(s =>
+        s.preferred_label.toLowerCase().includes(q) ||
+        (s.alternative_labels || []).some(a => a.toLowerCase().includes(q)) ||
+        s.skill_id.toLowerCase().includes(q)
+      );
+    });
+  }
+  renderTable();
+}
+
+// ══════════════════════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════════════════════
+
+function getLevelInt(skill) {
+  // Try LVL facet first, then level_distribution, then default
+  const facets = skill.facets || {};
+  if (facets.LVL && facets.LVL.code) {
+    const m = String(facets.LVL.code).match(/(\d+)/);
+    if (m) return parseInt(m[1]);
+  }
+  // Use most common level from distribution
+  const dist = skill.level_distribution || {};
+  const entries = Object.entries(dist);
+  if (entries.length) {
+    entries.sort((a, b) => b[1] - a[1]);
+    const lvlStr = entries[0][0];
+    const m = lvlStr.match(/(\d+)/);
+    if (m) return parseInt(m[1]);
+  }
+  return 3;
+}
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
+}
+</script>
+</body>
+</html>
