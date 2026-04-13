@@ -1,0 +1,18 @@
+1. Name of the dashboard:
+RECRUITMENT EXPERIENCES AND OUTLOOK SURVEY
+Fuel Shock Monitoring
+
+
+2. On top of the 4 cards for the 4 indicators, please add:
+
+Key recruitment indicators over the week
+
+3. Adding 3 cards for 3 business size on top of the 4 indicator cards. This allow the selection of each business size to see how those indicators may change.
+
+4. Replace Time series heading by Key recruitment indicators since February 2026
+
+5. Bring the full cost distribution donut chart to above Cost impact – which industry … and replace the heading “full cost distribution….” by “Employers’ greatest future concern”. The time slicer should go right after the heading. This is to show when cost being the top 1 concern, then drill down to where and who cited cost the most.
+
+6. The cost by business size: please calculate the % as among those citing costs as concern. The reason being that our survey was dominant by majority small and medium businesses, so a small number of larger businesses citing cost may account for a high %, which may be misleading. So the % should be = # of employers for each business size/total number of employers having cost as greatest concern.
+
+ 
