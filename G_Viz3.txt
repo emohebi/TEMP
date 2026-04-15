@@ -1,0 +1,5 @@
+The total impacted (66%) and the 2 not impacted categories (8% & 27%, summing to 34%) are calculated from the “FuelAffectedDetail” variable, excluding Unsure responses.
+
+The severe, moderate and minor impact categories are calculated from the “FuelLevel” variable in such a way that they sum to the total impacted value (66%). So, excluding Unsure responses again, severe impact makes up 13% of (weighted) responses to the “FuelLevel” variable, and is therefore reduced to 9% for the final graph (as in 66% of 13%).
+
+The “how employers impacted” graph is much more simple – for each of the variables it’s just Yes as a proportion of Yes + No.
