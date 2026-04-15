@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recruitment Experiences and Outlook Survey — Fuel Shock Monitoring</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #0c1117; --surface: #161b22; --surface2: #1c2330; --border: #30363d;
+  --text: #e6edf3; --text-dim: #8b949e;
+  --accent1: #58a6ff; --accent2: #f78166; --accent3: #3fb950; --accent4: #d2a8ff; --accent5: #ffa657;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+.grain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.03; pointer-events: none; z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+header { padding: 48px 48px 32px; border-bottom: 1px solid var(--border); background: linear-gradient(180deg, #111720 0%, var(--bg) 100%); }
+header h1 { font-family: 'Space Mono', monospace; font-size: 24px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: linear-gradient(135deg, var(--accent1), var(--accent4)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header p { color: var(--text-dim); margin-top: 8px; font-size: 14px; }
+.container { max-width: 1400px; margin: 0 auto; padding: 32px 48px 64px; }
+
+/* Business size selector */
+.size-section-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 10px; }
+.size-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
+.size-card { background: var(--surface); border: 2px solid var(--border); border-radius: 12px; padding: 16px 20px; cursor: pointer; text-align: center; transition: border-color 0.2s, background 0.2s; }
+.size-card:hover { border-color: var(--accent1); }
+.size-card.active { border-color: var(--accent1); background: var(--surface2); }
+.size-card .sz-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.8px; }
+.size-card .sz-count { font-family: 'Space Mono', monospace; font-size: 24px; font-weight: 700; color: var(--accent1); margin-top: 4px; }
+
+/* KPI */
+.kpi-heading { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); margin-bottom: 12px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+.kpi-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden; }
+.kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.kpi-card:nth-child(1)::before { background: var(--accent1); }
+.kpi-card:nth-child(2)::before { background: var(--accent2); }
+.kpi-card:nth-child(3)::before { background: var(--accent3); }
+.kpi-card:nth-child(4)::before { background: var(--accent5); }
+.kpi-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--text-dim); margin-bottom: 8px; font-weight: 500; }
+.kpi-value { font-family: 'Space Mono', monospace; font-size: 36px; font-weight: 700; }
+.kpi-card:nth-child(1) .kpi-value { color: var(--accent1); }
+.kpi-card:nth-child(2) .kpi-value { color: var(--accent2); }
+.kpi-card:nth-child(3) .kpi-value { color: var(--accent3); }
+.kpi-card:nth-child(4) .kpi-value { color: var(--accent5); }
+.kpi-sub { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+/* Panels */
+.chart-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-bottom: 24px; }
+.chart-panel h2 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.chart-panel .subtitle { font-size: 12px; color: var(--text-dim); margin-bottom: 20px; }
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.section-header { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; margin: 40px 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); color: var(--accent4); }
+
+/* Bars */
+.bar-row { display: flex; align-items: center; margin-bottom: 10px; font-size: 13px; }
+.bar-label { width: 280px; min-width: 280px; text-align: right; padding-right: 16px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; height: 28px; background: var(--surface2); border-radius: 4px; position: relative; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; display: flex; align-items: center; padding-left: 10px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: var(--bg); min-width: fit-content; }
+.bar-fill.zero { background: none !important; color: var(--text-dim); padding-left: 8px; }
+.bar-n { width: 70px; min-width: 70px; text-align: center; font-size: 11px; color: var(--text-dim); font-family: 'Space Mono', monospace; }
+
+/* Concern table */
+.concern-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+.concern-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); color: var(--text-dim); font-weight: 500; text-transform: uppercase; font-size: 11px; letter-spacing: 0.8px; }
+.concern-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.concern-table tr:hover { background: var(--surface2); }
+
+/* Note */
+.note-box { background: var(--surface2); border-left: 3px solid var(--accent1); padding: 16px 20px; border-radius: 0 8px 8px 0; margin: 24px 0; font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.size-note { background: var(--surface2); border-left: 3px solid var(--accent5); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 0 0 12px; font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+.size-note em { color: var(--accent5); font-style: normal; font-weight: 700; }
+canvas { max-height: 360px; }
+
+/* Slider */
+.slider-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin-bottom: 24px; }
+.slider-panel h2 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.slider-panel .subtitle { font-size: 12px; color: var(--text-dim); margin-bottom: 16px; }
+.slider-dates { display: flex; justify-content: space-between; align-items: center; font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: var(--accent1); margin-bottom: 8px; }
+.slider-dates .date-badge { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 4px 12px; }
+.range-track-wrap { position: relative; height: 40px; margin: 0 4px; }
+.range-track-wrap .track-bg { position: absolute; top: 16px; left: 0; right: 0; height: 6px; background: var(--surface2); border-radius: 3px; }
+.range-track-wrap .track-fill { position: absolute; top: 16px; height: 6px; border-radius: 3px; background: var(--accent1); transition: left 0.05s, width 0.05s; }
+.range-track-wrap input[type=range] { position: absolute; top: 0; left: 0; width: 100%; height: 40px; -webkit-appearance: none; appearance: none; background: transparent; pointer-events: none; margin: 0; }
+.range-track-wrap input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent1); cursor: grab; pointer-events: auto; box-shadow: 0 0 0 4px rgba(88,166,255,0.15); }
+.range-track-wrap input[type=range]::-webkit-slider-thumb:hover { box-shadow: 0 0 0 6px rgba(88,166,255,0.25); }
+.range-track-wrap input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent1); cursor: grab; pointer-events: auto; }
+.slider-meta { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 8px; }
+.slider-pill { display: inline-block; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; background: var(--surface2); color: var(--text-dim); border: 1px solid var(--border); }
+.slider-pill strong { color: var(--accent1); }
+.slider-reset { font-size: 12px; color: var(--accent1); cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; text-decoration: underline; text-underline-offset: 2px; }
+.slider-reset:hover { color: var(--accent4); }
+
+@media (max-width: 900px) {
+  .kpi-row, .size-row { grid-template-columns: repeat(2, 1fr); }
+  .chart-row { grid-template-columns: 1fr; }
+  header, .container { padding-left: 20px; padding-right: 20px; }
+  .bar-label { width: 160px; min-width: 160px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<header>
+  <h1>Recruitment Experiences and Outlook Survey</h1>
+  <p>Fuel Shock Monitoring</p>
+</header>
+
+<div class="container">
+  <div class="note-box" id="noteBox"></div>
+
+  <!-- Business Size selector -->
+  <div class="section-header" style="margin-top:20px;">Key recruitment indicators last week</div>
+  <div class="size-section-label">Business size</div>
+  <div class="size-row" id="sizeRow"></div>
+
+  <!-- KPI Cards -->
+  <div class="kpi-heading">Key recruitment indicators over the week</div>
+  <div class="kpi-row" id="kpiRow"></div>
+
+  <!-- Time Series (mod 4) -->
+  <div class="section-header">Key recruitment indicators since February 2026</div>
+  <div class="chart-row">
+    <div class="chart-panel">
+      <h2>Costs as Greatest Concern</h2>
+      <div class="subtitle">Proportion citing Costs as greatest concern (excl. unsure &amp; blank)</div>
+      <canvas id="chartCost"></canvas>
+    </div>
+    <div class="chart-panel">
+      <h2>Recruitment Rate · Difficulty Rate · Future Staffing</h2>
+      <div class="subtitle">RR (excl. unsure) · RD (excl. unsure) · FSI (incl. unsure in denom.)</div>
+      <canvas id="chartTriple"></canvas>
+    </div>
+  </div>
+
+  <!-- Concern Distribution (mod 5 — moved above cost impact) -->
+  <div class="section-header">Employers' greatest future concern</div>
+
+  <!-- Date range slider (mod 5 — right after heading) -->
+  <div class="slider-panel">
+    <h2>Date range filter</h2>
+    <div class="subtitle">Drag the handles to select a date window. The concern distribution and cost impact bars below will recalculate across the selected weeks.</div>
+    <div class="slider-dates">
+      <span class="date-badge" id="sliderStartLabel">—</span>
+      <span style="color:var(--text-dim);font-size:12px;font-weight:400;">to</span>
+      <span class="date-badge" id="sliderEndLabel">—</span>
+    </div>
+    <div class="range-track-wrap">
+      <div class="track-bg"></div>
+      <div class="track-fill" id="trackFill"></div>
+      <input type="range" id="sliderMin" min="0" max="100" value="0" step="1">
+      <input type="range" id="sliderMax" min="0" max="100" value="100" step="1">
+    </div>
+    <div class="slider-meta">
+      <span class="slider-pill" id="sliderPill"><strong>—</strong> weeks selected</span>
+      <button class="slider-reset" id="sliderReset">Reset to full range</button>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-panel">
+      <h2>Concern distribution</h2>
+      <div class="subtitle">All categories (excl. unsure &amp; blank), weighted</div>
+      <canvas id="chartConcernPie"></canvas>
+    </div>
+    <div class="chart-panel">
+      <h2>Concern breakdown</h2>
+      <div class="subtitle">Weighted share of each concern category</div>
+      <table class="concern-table" id="concernTable">
+        <thead><tr><th>Concern</th><th>Weighted %</th><th>N</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Fuel and Supply Disruptions Impact -->
+  <div class="section-header">Fuel and supply disruptions impact</div>
+
+  <div class="chart-panel">
+    <h2>Employer impacts from fuel costs and supply disruptions</h2>
+    <div class="subtitle">Weighted proportions from FuelAffectedDetail and FuelLevel (excl. unsure)</div>
+    <div id="fuelLegend" style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:12px;font-size:12px;"></div>
+    <div style="position:relative;width:100%;height:220px;">
+      <canvas id="chartFuel"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-panel">
+    <div class="subtitle">% of impacted employers reporting each type of impact (Yes / (Yes + No), weighted). Items at 0% are excluded.</div>
+    <div id="barsFuelTypes" class="bar-chart-container"></div>
+  </div>
+
+  <!-- Cost Impact bars -->
+  <div class="section-header">Cost impact — which regions &amp; industries are most affected?</div>
+  <div class="chart-row">
+    <div class="chart-panel">
+      <h2>Cost Concern by State / Territory</h2>
+      <div class="subtitle">Weighted proportion citing Costs as greatest concern</div>
+      <div id="barsState" class="bar-chart-container"></div>
+    </div>
+    <div class="chart-panel">
+      <h2>Cost Concern by Region (GCC)</h2>
+      <div class="subtitle">Greater Capital City / Rest of State breakdown</div>
+      <div id="barsGCC" class="bar-chart-container"></div>
+    </div>
+  </div>
+  <div class="chart-panel">
+    <h2>Cost Concern by Industry (ANZSIC Division)</h2>
+    <div class="subtitle">Weighted proportion citing Costs as greatest concern</div>
+    <div id="barsIndustry" class="bar-chart-container"></div>
+  </div>
+  <div class="chart-row">
+    <div class="chart-panel">
+      <h2>Cost Concern by Remoteness (ARIA)</h2>
+      <div class="subtitle">Major Cities / Inner Regional / Outer Regional / Remote</div>
+      <div id="barsARIA" class="bar-chart-container"></div>
+    </div>
+    <div class="chart-panel">
+      <h2>Cost Concern rate by Business Size</h2>
+      <div class="subtitle">% of employers within each size citing Costs as greatest concern</div>
+      <div id="barsSizeRate" class="bar-chart-container"></div>
+    </div>
+  </div>
+  <div class="chart-panel">
+    <h2>Cost Concern distribution by Business Size</h2>
+    <div class="subtitle">Share of cost-concerned employers in each size category (sums to 100%)</div>
+    <div class="size-note">These bars show the <em>distribution</em> of cost-concerned employers across business sizes, not the rate within each size. This avoids misleading rates when one size dominates the sample.</div>
+    <div id="barsSize" class="bar-chart-container"></div>
+  </div>
+
+  <!-- State indicators -->
+  <div class="section-header">All indicators — by State / Territory</div>
+  <div class="chart-panel">
+    <h2>Key indicators by State</h2>
+    <div class="subtitle">RR, RD, FSI, Cost Concern across states (latest week)</div>
+    <canvas id="chartStateIndicators"></canvas>
+  </div>
+</div>
+
+<script>
+var DATA = {"national": [{"N": 114, "Sum_Weight": 73.21780319499999, "RR": 0.5468153925936322, "RD": 0.4223825223870509, "FSI": 0.2468698551206239, "Cost_Concern": 0.06734063334374323, "Week": "2026-02-06"}, {"N": 247, "Sum_Weight": 177.52692720099998, "RR": 0.48269818533487974, "RD": 0.36683093683983736, "FSI": 0.2080100994379854, "Cost_Concern": 0.09845248391247667, "Week": "2026-02-13"}, {"N": 249, "Sum_Weight": 235.072512565, "RR": 0.4991590996610233, "RD": 0.4969577408975123, "FSI": 0.1914470235508184, "Cost_Concern": 0.07191984321054712, "Week": "2026-02-20"}, {"N": 289, "Sum_Weight": 274.182757122, "RR": 0.5133594181206121, "RD": 0.41942142267891397, "FSI": 0.2241346653479804, "Cost_Concern": 0.07408592496911472, "Week": "2026-02-27"}, {"N": 214, "Sum_Weight": 181.31067239200001, "RR": 0.47376572783933657, "RD": 0.3744716816731417, "FSI": 0.11585766773609331, "Cost_Concern": 0.10734343602457797, "Week": "2026-03-06"}, {"N": 164, "Sum_Weight": 132.6886225, "RR": 0.5032644354341683, "RD": 0.5225705946693132, "FSI": 0.17694686902036383, "Cost_Concern": 0.14204052476480802, "Week": "2026-03-13"}, {"N": 245, "Sum_Weight": 215.38966410200004, "RR": 0.4683343562030436, "RD": 0.4387501711528864, "FSI": 0.12314462498438429, "Cost_Concern": 0.2053308440569894, "Week": "2026-03-20"}, {"N": 329, "Sum_Weight": 288.712687406, "RR": 0.4739894196781891, "RD": 0.5143550519127283, "FSI": 0.17087699783565088, "Cost_Concern": 0.28430653727392585, "Week": "2026-03-27"}, {"N": 260, "Sum_Weight": 232.132708004, "RR": 0.482204920071286, "RD": 0.4951349674569449, "FSI": 0.16177862725554765, "Cost_Concern": 0.353229021555545, "Week": "2026-04-03"}, {"N": 128, "Sum_Weight": 123.483531067, "RR": 0.44483374180639634, "RD": 0.5748702790142544, "FSI": 0.06976945911374566, "Cost_Concern": 0.2352714701622784, "Week": "2026-04-10"}], "cost_by_state": [{"State": "South Australia", "Cost_Concern": 0.254904985484845, "N": 232, "Sum_Weight": 118.129899118}, {"State": "Tasmania", "Cost_Concern": 0.24079102777904873, "N": 140, "Sum_Weight": 40.30797578100001}, {"State": "Australian Capital Territory", "Cost_Concern": 0.196707087698037, "N": 88, "Sum_Weight": 27.230925569}, {"State": "Victoria", "Cost_Concern": 0.1910298107884553, "N": 401, "Sum_Weight": 442.75208365599997}, {"State": "Western Australia", "Cost_Concern": 0.18752089501821045, "N": 268, "Sum_Weight": 182.752646422}, {"State": "Northern Territory", "Cost_Concern": 0.17179202615068193, "N": 55, "Sum_Weight": 13.791170464}, {"State": "Queensland", "Cost_Concern": 0.15976078175950084, "N": 389, "Sum_Weight": 365.82899321299993}, {"State": "New South Wales", "Cost_Concern": 0.1484827633316687, "N": 511, "Sum_Weight": 602.61315066}], "cost_by_industry": [{"Industry06": "Information Media and Telecommunications", "Cost_Concern": 0.525719669440902, "N": 8, "Sum_Weight": 5.376458524}, {"Industry06": "Transport, Postal and Warehousing", "Cost_Concern": 0.41682055300633186, "N": 64, "Sum_Weight": 54.447220709999996}, {"Industry06": "Agriculture, Forestry and Fishing", "Cost_Concern": 0.3823487579889686, "N": 44, "Sum_Weight": 28.166805660999998}, {"Industry06": "Electricity, Gas, Water and Waste Services", "Cost_Concern": 0.23421258171991688, "N": 11, "Sum_Weight": 8.734413714999999}, {"Industry06": "Wholesale Trade", "Cost_Concern": 0.2328650455452116, "N": 135, "Sum_Weight": 116.45087476100002}, {"Industry06": "Construction", "Cost_Concern": 0.22526302863596842, "N": 242, "Sum_Weight": 195.876895819}, {"Industry06": "Retail Trade", "Cost_Concern": 0.22504871642877483, "N": 327, "Sum_Weight": 296.37113265700003}, {"Industry06": "Manufacturing", "Cost_Concern": 0.20569566062702455, "N": 251, "Sum_Weight": 228.766680904}, {"Industry06": "Other Services", "Cost_Concern": 0.20500492002807671, "N": 113, "Sum_Weight": 92.96412294100001}, {"Industry06": "Arts and Recreation Services", "Cost_Concern": 0.20356408008342172, "N": 35, "Sum_Weight": 22.882567308}, {"Industry06": "Accommodation and Food Services", "Cost_Concern": 0.1675732202969212, "N": 161, "Sum_Weight": 129.384138734}, {"Industry06": "Administrative and Support Services", "Cost_Concern": 0.1297360694093276, "N": 47, "Sum_Weight": 40.392459066}, {"Industry06": "Rental, Hiring and Real Estate Services", "Cost_Concern": 0.10502241292666338, "N": 88, "Sum_Weight": 85.192705249}, {"Industry06": "Professional, Scientific and Technical Services", "Cost_Concern": 0.0926411300249335, "N": 203, "Sum_Weight": 181.01162268299998}, {"Industry06": "Financial and Insurance Services", "Cost_Concern": 0.0877952887890716, "N": 27, "Sum_Weight": 23.224477499}, {"Industry06": "Health Care and Social Assistance", "Cost_Concern": 0.049859528705715264, "N": 231, "Sum_Weight": 208.503267156}, {"Industry06": "Education and Training", "Cost_Concern": 0.03129184055090589, "N": 85, "Sum_Weight": 66.79655342100001}, {"Industry06": "Public Administration and Safety", "Cost_Concern": 0.013211223031162555, "N": 10, "Sum_Weight": 7.866985801}, {"Industry06": "Mining", "Cost_Concern": 0.0, "N": 2, "Sum_Weight": 0.997462274}], "cost_by_gcc": [{"GCC": "Rest of SA", "Cost_Concern": 0.31454743960208187, "N": 102, "Sum_Weight": 34.477104839000006}, {"GCC": "Rest of Tasmania", "Cost_Concern": 0.2514578827703048, "N": 77, "Sum_Weight": 24.29305237800001}, {"GCC": "Greater Adelaide", "Cost_Concern": 0.23032362916341687, "N": 130, "Sum_Weight": 83.65279427899999}, {"GCC": "Greater Hobart", "Cost_Concern": 0.2246104654066699, "N": 63, "Sum_Weight": 16.014923403}, {"GCC": "Greater Perth", "Cost_Concern": 0.20062444407590463, "N": 168, "Sum_Weight": 140.499051533}, {"GCC": "Greater Melbourne", "Cost_Concern": 0.19776734123704118, "N": 240, "Sum_Weight": 329.392283228}, {"GCC": "ACT", "Cost_Concern": 0.196707087698037, "N": 88, "Sum_Weight": 27.230925569}, {"GCC": "Greater Darwin", "Cost_Concern": 0.19243818242927482, "N": 34, "Sum_Weight": 9.299117116}, {"GCC": "Rest of Queensland", "Cost_Concern": 0.18761168828701785, "N": 205, "Sum_Weight": 199.49790367399999}, {"GCC": "Rest of Victoria", "Cost_Concern": 0.17145240742854498, "N": 161, "Sum_Weight": 113.359800428}, {"GCC": "Rest of NSW", "Cost_Concern": 0.16561176034819688, "N": 223, "Sum_Weight": 218.40845466500002}, {"GCC": "Rest of WA", "Cost_Concern": 0.1439497806749562, "N": 100, "Sum_Weight": 42.253594889000006}, {"GCC": "Greater Sydney", "Cost_Concern": 0.13874545973455182, "N": 288, "Sum_Weight": 384.204695995}, {"GCC": "Rest of NT", "Cost_Concern": 0.1290518780811238, "N": 21, "Sum_Weight": 4.492053348}, {"GCC": "Greater Brisbane", "Cost_Concern": 0.12635633835051685, "N": 184, "Sum_Weight": 166.331089539}], "cost_by_aria": [{"ARIA": "Very Remote Australia", "Cost_Concern": 0.24231627379204643, "N": 15, "Sum_Weight": 5.81496585}, {"ARIA": "Inner Regional Australia", "Cost_Concern": 0.20968767231485352, "N": 482, "Sum_Weight": 321.717301567}, {"ARIA": "Outer Regional Australia", "Cost_Concern": 0.1879053862435676, "N": 293, "Sum_Weight": 181.256008414}, {"ARIA": "Major Cities of Australia", "Cost_Concern": 0.16464834600797926, "N": 1238, "Sum_Weight": 1264.923087177}, {"ARIA": "Remote Australia", "Cost_Concern": 0.15837740537637904, "N": 56, "Sum_Weight": 19.695481875}], "cost_by_businesssize": [{"BusinessSize": "Small", "Cost_Concern": 0.1824317281315034, "N": 1399, "Sum_Weight": 1386.448038949}, {"BusinessSize": "Medium", "Cost_Concern": 0.1536830974572342, "N": 587, "Sum_Weight": 350.418759057}, {"BusinessSize": "Large", "Cost_Concern": 0.13317029417007642, "N": 98, "Sum_Weight": 56.540046877}], "by_state": [{"N": 4, "Sum_Weight": 1.989119484, "RR": 0.25, "RD": 0.0, "FSI": 0.25, "Cost_Concern": 0.25, "Week": "2026-04-10", "State": "Australian Capital Territory"}, {"N": 39, "Sum_Weight": 54.676991852000015, "RR": 0.38740354331005844, "RD": 0.6416848460214953, "FSI": 0.08700375984246819, "Cost_Concern": 0.24994063371733125, "Week": "2026-04-10", "State": "New South Wales"}, {"N": 2, "Sum_Weight": 0.998290205, "RR": 0.5905148553470981, "RD": 0.0, "FSI": 0.0, "Cost_Concern": 0.0, "Week": "2026-04-10", "State": "Northern Territory"}, {"N": 18, "Sum_Weight": 21.034611503999997, "RR": 0.5789819295537774, "RD": 0.7202235051056385, "FSI": 0.06608759756440712, "Cost_Concern": 0.18649730627323502, "Week": "2026-04-10", "State": "Queensland"}, {"N": 14, "Sum_Weight": 6.107683527000001, "RR": 0.22965053965213408, "RD": 0.21176222756824162, "FSI": 0.09050961490657469, "Cost_Concern": 0.3274791166173007, "Week": "2026-04-10", "State": "South Australia"}, {"N": 14, "Sum_Weight": 4.256932883999999, "RR": 0.28606732175108457, "RD": 0.49902466221377484, "FSI": 0.03597265688062937, "Cost_Concern": 0.10734998118424648, "Week": "2026-04-10", "State": "Tasmania"}, {"N": 23, "Sum_Weight": 23.035019539000007, "RR": 0.43690649443386154, "RD": 0.2943140277251736, "FSI": 0.054913399177212635, "Cost_Concern": 0.29065141304795294, "Week": "2026-04-10", "State": "Victoria"}, {"N": 14, "Sum_Weight": 11.384882071999998, "RR": 0.6849068685724372, "RD": 0.6857395649328701, "FSI": 0.0, "Cost_Concern": 0.16118470610005367, "Week": "2026-04-10", "State": "Western Australia"}], "concern_distribution": [{"Concern": "Lack of demand for products or services/economy", "Pct": 21.40491685510678, "N": 433, "Sum_Weight": 383.877244021}, {"Concern": "Recruitment or retention diff/Skill Shortages", "Pct": 19.479424003859585, "N": 428, "Sum_Weight": 349.34532342899996}, {"Concern": "No Concerns", "Pct": 19.322873165826895, "N": 401, "Sum_Weight": 346.537729984}, {"Concern": "Costs", "Pct": 17.526140684742707, "N": 365, "Sum_Weight": 314.315006684}, {"Concern": "Other concerns", "Pct": 10.26853877464788, "N": 214, "Sum_Weight": 184.15667725400002}, {"Concern": "Cash flow", "Pct": 3.89321599759786, "N": 70, "Sum_Weight": 69.821202187}, {"Concern": "Keeping up with demand for products or services", "Pct": 3.2120234024621483, "N": 64, "Sum_Weight": 57.604647559}, {"Concern": "Government regulation/red tape", "Pct": 2.2011153841433737, "N": 57, "Sum_Weight": 39.474953963000004}, {"Concern": "Supply chain issues", "Pct": 1.3741578362609497, "N": 26, "Sum_Weight": 24.644240695}, {"Concern": "Health related concerns (mental health, burnout from working more hours etc)", "Pct": 0.9559659996791459, "N": 21, "Sum_Weight": 17.144359673}, {"Concern": "Recruitment or retention diff/Skill shortages", "Pct": 0.29902871773358614, "N": 4, "Sum_Weight": 5.362801492}, {"Concern": "Cash Flow", "Pct": 0.0625991779390828, "N": 1, "Sum_Weight": 1.122657942}], "concern_components": [{"Week": "2026-02-06", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 22.340879837999996, "n": 33}, {"Week": "2026-02-06", "Concern": "Lack of demand for products or services/economy", "w": 14.479562209000001, "n": 21}, {"Week": "2026-02-06", "Concern": "No Concerns", "w": 18.322299546000004, "n": 27}, {"Week": "2026-02-06", "Concern": "Other concerns", "w": 5.750885775, "n": 10}, {"Week": "2026-02-06", "Concern": "Costs", "w": 4.778913810000001, "n": 8}, {"Week": "2026-02-06", "Concern": "Government regulation/red tape", "w": 0.397602446, "n": 3}, {"Week": "2026-02-06", "Concern": "Cash flow", "w": 1.243037496, "n": 3}, {"Week": "2026-02-06", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 0.666005022, "n": 1}, {"Week": "2026-02-06", "Concern": "Keeping up with demand for products or services", "w": 1.947762417, "n": 1}, {"Week": "2026-02-06", "Concern": "Supply chain issues", "w": 1.039325037, "n": 1}, {"Week": "2026-02-13", "Concern": "No Concerns", "w": 36.638567415000004, "n": 51}, {"Week": "2026-02-13", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 33.223145058, "n": 51}, {"Week": "2026-02-13", "Concern": "Lack of demand for products or services/economy", "w": 40.601590575, "n": 55}, {"Week": "2026-02-13", "Concern": "Other concerns", "w": 14.684555279, "n": 20}, {"Week": "2026-02-13", "Concern": "Government regulation/red tape", "w": 4.085983453000001, "n": 8}, {"Week": "2026-02-13", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 4.08402168, "n": 6}, {"Week": "2026-02-13", "Concern": "Costs", "w": 15.948828015000002, "n": 23}, {"Week": "2026-02-13", "Concern": "Cash flow", "w": 7.2920656, "n": 8}, {"Week": "2026-02-13", "Concern": "Keeping up with demand for products or services", "w": 4.449427933000001, "n": 8}, {"Week": "2026-02-13", "Concern": "Recruitment or retention diff/Skill shortages", "w": 0.986996639, "n": 1}, {"Week": "2026-02-20", "Concern": "No Concerns", "w": 52.465051370000005, "n": 56}, {"Week": "2026-02-20", "Concern": "Other concerns", "w": 33.619311573000005, "n": 33}, {"Week": "2026-02-20", "Concern": "Costs", "w": 15.236897889000002, "n": 15}, {"Week": "2026-02-20", "Concern": "Lack of demand for products or services/economy", "w": 44.844004022, "n": 48}, {"Week": "2026-02-20", "Concern": "Keeping up with demand for products or services", "w": 9.690642035, "n": 9}, {"Week": "2026-02-20", "Concern": "Government regulation/red tape", "w": 3.0974329369999998, "n": 4}, {"Week": "2026-02-20", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 40.512388087, "n": 49}, {"Week": "2026-02-20", "Concern": "Cash flow", "w": 9.589835582, "n": 9}, {"Week": "2026-02-20", "Concern": "Supply chain issues", "w": 2.310815785, "n": 2}, {"Week": "2026-02-20", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 0.493063244, "n": 1}, {"Week": "2026-02-27", "Concern": "No Concerns", "w": 70.676131156, "n": 72}, {"Week": "2026-02-27", "Concern": "Lack of demand for products or services/economy", "w": 54.489432131, "n": 59}, {"Week": "2026-02-27", "Concern": "Costs", "w": 18.020438771000002, "n": 16}, {"Week": "2026-02-27", "Concern": "Government regulation/red tape", "w": 7.993497887, "n": 11}, {"Week": "2026-02-27", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 52.681558458000005, "n": 55}, {"Week": "2026-02-27", "Concern": "Cash flow", "w": 16.116625909, "n": 15}, {"Week": "2026-02-27", "Concern": "Other concerns", "w": 10.850479162, "n": 15}, {"Week": "2026-02-27", "Concern": "Keeping up with demand for products or services", "w": 9.512887862, "n": 12}, {"Week": "2026-02-27", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 0.889611126, "n": 1}, {"Week": "2026-02-27", "Concern": "Supply chain issues", "w": 2.0063461670000002, "n": 2}, {"Week": "2026-03-06", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 33.391567784, "n": 42}, {"Week": "2026-03-06", "Concern": "Cash flow", "w": 10.143302915000001, "n": 8}, {"Week": "2026-03-06", "Concern": "Other concerns", "w": 26.002875944000003, "n": 32}, {"Week": "2026-03-06", "Concern": "Costs", "w": 18.039669832, "n": 20}, {"Week": "2026-03-06", "Concern": "Lack of demand for products or services/economy", "w": 23.869322535000002, "n": 28}, {"Week": "2026-03-06", "Concern": "No Concerns", "w": 48.533396624, "n": 55}, {"Week": "2026-03-06", "Concern": "Government regulation/red tape", "w": 2.43617075, "n": 4}, {"Week": "2026-03-06", "Concern": "Keeping up with demand for products or services", "w": 4.516675591, "n": 6}, {"Week": "2026-03-06", "Concern": "Supply chain issues", "w": 1.122657942, "n": 1}, {"Week": "2026-03-13", "Concern": "Lack of demand for products or services/economy", "w": 25.600331771, "n": 27}, {"Week": "2026-03-13", "Concern": "No Concerns", "w": 19.393840234000002, "n": 24}, {"Week": "2026-03-13", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 30.772531563, "n": 43}, {"Week": "2026-03-13", "Concern": "Other concerns", "w": 7.783780594, "n": 11}, {"Week": "2026-03-13", "Concern": "Cash flow", "w": 4.358979989000001, "n": 6}, {"Week": "2026-03-13", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 4.302659238, "n": 4}, {"Week": "2026-03-13", "Concern": "Costs", "w": 17.547951836, "n": 20}, {"Week": "2026-03-13", "Concern": "Government regulation/red tape", "w": 7.328721052, "n": 10}, {"Week": "2026-03-13", "Concern": "Keeping up with demand for products or services", "w": 3.481425012, "n": 4}, {"Week": "2026-03-13", "Concern": "Supply chain issues", "w": 2.971647238, "n": 5}, {"Week": "2026-03-20", "Concern": "Cash flow", "w": 6.1101296640000005, "n": 7}, {"Week": "2026-03-20", "Concern": "Costs", "w": 41.02955797900001, "n": 50}, {"Week": "2026-03-20", "Concern": "Lack of demand for products or services/economy", "w": 47.426122062000005, "n": 48}, {"Week": "2026-03-20", "Concern": "No Concerns", "w": 25.293754081, "n": 32}, {"Week": "2026-03-20", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 31.967644764, "n": 41}, {"Week": "2026-03-20", "Concern": "Other concerns", "w": 27.990375154, "n": 32}, {"Week": "2026-03-20", "Concern": "Supply chain issues", "w": 1.2778470629999998, "n": 2}, {"Week": "2026-03-20", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 4.35723899, "n": 4}, {"Week": "2026-03-20", "Concern": "Recruitment or retention diff/Skill shortages", "w": 4.375804853, "n": 3}, {"Week": "2026-03-20", "Concern": "Government regulation/red tape", "w": 0.396838457, "n": 2}, {"Week": "2026-03-20", "Concern": "Keeping up with demand for products or services", "w": 9.596385263, "n": 8}, {"Week": "2026-03-27", "Concern": "Lack of demand for products or services/economy", "w": 60.21823480499999, "n": 69}, {"Week": "2026-03-27", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 35.486092494000005, "n": 42}, {"Week": "2026-03-27", "Concern": "Costs", "w": 78.24465396100001, "n": 92}, {"Week": "2026-03-27", "Concern": "Other concerns", "w": 25.812600304, "n": 30}, {"Week": "2026-03-27", "Concern": "No Concerns", "w": 44.27070192199999, "n": 47}, {"Week": "2026-03-27", "Concern": "Supply chain issues", "w": 9.199934387, "n": 9}, {"Week": "2026-03-27", "Concern": "Government regulation/red tape", "w": 12.246590166999999, "n": 11}, {"Week": "2026-03-27", "Concern": "Keeping up with demand for products or services", "w": 3.9452131699999997, "n": 6}, {"Week": "2026-03-27", "Concern": "Cash flow", "w": 2.7226382129999998, "n": 3}, {"Week": "2026-03-27", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 1.942975364, "n": 3}, {"Week": "2026-03-27", "Concern": "Cash Flow", "w": 1.122657942, "n": 1}, {"Week": "2026-04-03", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 42.014721451, "n": 46}, {"Week": "2026-04-03", "Concern": "Lack of demand for products or services/economy", "w": 47.614656077999996, "n": 51}, {"Week": "2026-04-03", "Concern": "Costs", "w": 77.191979684, "n": 93}, {"Week": "2026-04-03", "Concern": "Other concerns", "w": 15.611745643999999, "n": 16}, {"Week": "2026-04-03", "Concern": "Government regulation/red tape", "w": 1.4921168139999998, "n": 4}, {"Week": "2026-04-03", "Concern": "No Concerns", "w": 19.759072693, "n": 20}, {"Week": "2026-04-03", "Concern": "Cash flow", "w": 5.234147450999999, "n": 6}, {"Week": "2026-04-03", "Concern": "Keeping up with demand for products or services", "w": 7.0625452719999995, "n": 6}, {"Week": "2026-04-03", "Concern": "Supply chain issues", "w": 2.551397513, "n": 2}, {"Week": "2026-04-10", "Concern": "Lack of demand for products or services/economy", "w": 24.733987832999997, "n": 27}, {"Week": "2026-04-10", "Concern": "No Concerns", "w": 11.184914943, "n": 17}, {"Week": "2026-04-10", "Concern": "Recruitment or retention diff/Skill Shortages", "w": 26.954793932, "n": 26}, {"Week": "2026-04-10", "Concern": "Costs", "w": 28.276114907, "n": 28}, {"Week": "2026-04-10", "Concern": "Other concerns", "w": 16.050067825, "n": 15}, {"Week": "2026-04-10", "Concern": "Cash flow", "w": 7.010439368, "n": 5}, {"Week": "2026-04-10", "Concern": "Health related concerns (mental health, burnout from working more hours etc)", "w": 0.408785009, "n": 1}, {"Week": "2026-04-10", "Concern": "Supply chain issues", "w": 2.164269563, "n": 2}, {"Week": "2026-04-10", "Concern": "Keeping up with demand for products or services", "w": 3.4016830039999997, "n": 4}], "cost_size_distribution": [{"BusinessSize": "Small", "Pct": 80.4708990443743, "Cost_Weight": 252.93211171000002, "N": 253}, {"BusinessSize": "Medium", "Pct": 17.13358864635507, "Cost_Weight": 53.853440299000006, "N": 98}, {"BusinessSize": "Large", "Pct": 2.395512309270622, "Cost_Weight": 7.529454675, "N": 14}], "national_by_size": {"Large": [{"N": 6, "Sum_Weight": 2.8505330119999996, "RR": 1.0, "RD": 0.3471307432099299, "FSI": 0.0, "Cost_Concern": 0.27211843354719234, "Week": "2026-02-06"}, {"N": 5, "Sum_Weight": 1.9036179539999998, "RR": 1.0, "RD": 0.0, "FSI": 0.2751052005469791, "Cost_Concern": 0.0, "Week": "2026-02-13"}, {"N": 15, "Sum_Weight": 9.620132907, "RR": 0.6720332408605049, "RD": 0.5206571021406914, "FSI": 0.49635801101163657, "Cost_Concern": 0.18599043354258338, "Week": "2026-02-20"}, {"N": 10, "Sum_Weight": 6.671370850000001, "RR": 0.7367841546389224, "RD": 0.26678819850963476, "FSI": 0.36567267771784445, "Cost_Concern": 0.0, "Week": "2026-02-27"}, {"N": 17, "Sum_Weight": 10.273802832000001, "RR": 0.8805801529324112, "RD": 0.15752500082467688, "FSI": 0.30956345405948116, "Cost_Concern": 0.030259861457060975, "Week": "2026-03-06"}, {"N": 8, "Sum_Weight": 5.402974041, "RR": 0.9618200964071594, "RD": 0.4200142611073734, "FSI": 0.42446795461107417, "Cost_Concern": 0.0, "Week": "2026-03-13"}, {"N": 9, "Sum_Weight": 5.403220123000001, "RR": 0.7313156708496362, "RD": 0.23253231435268834, "FSI": 0.0, "Cost_Concern": 0.0, "Week": "2026-03-20"}, {"N": 17, "Sum_Weight": 10.793682966, "RR": 0.9458233862489749, "RD": 0.4236908045669299, "FSI": 0.30942473106913004, "Cost_Concern": 0.1415046349586127, "Week": "2026-03-27"}, {"N": 17, "Sum_Weight": 9.932494248, "RR": 0.8711473038851539, "RD": 0.3317770702911085, "FSI": 0.14566393826921448, "Cost_Concern": 0.4169173036882194, "Week": "2026-04-03"}, {"N": 13, "Sum_Weight": 7.316862519, "RR": 0.7320035112169913, "RD": 0.44522167538923546, "FSI": 0.1488658614497059, "Cost_Concern": 0.023275004304918995, "Week": "2026-04-10"}], "Medium": [{"N": 32, "Sum_Weight": 14.148571969999999, "RR": 0.7383799961660854, "RD": 0.2172235434667913, "FSI": 0.15856935503859193, "Cost_Concern": 0.1610447542789768, "Week": "2026-02-06"}, {"N": 68, "Sum_Weight": 34.191733681, "RR": 0.6503351747664192, "RD": 0.26411546157915616, "FSI": 0.27102835862194197, "Cost_Concern": 0.034228212869609934, "Week": "2026-02-13"}, {"N": 70, "Sum_Weight": 46.647934796, "RR": 0.7363724136174511, "RD": 0.42534534586566086, "FSI": 0.23320682901770878, "Cost_Concern": 0.06559219352792264, "Week": "2026-02-20"}, {"N": 97, "Sum_Weight": 63.334059354, "RR": 0.689693353079558, "RD": 0.36845852362171966, "FSI": 0.25625928332312026, "Cost_Concern": 0.03272849320419587, "Week": "2026-02-27"}, {"N": 58, "Sum_Weight": 38.31010083100001, "RR": 0.7537825124342334, "RD": 0.4178338569062485, "FSI": 0.22390479387772716, "Cost_Concern": 0.10231775177665933, "Week": "2026-03-06"}, {"N": 52, "Sum_Weight": 31.051948181999997, "RR": 0.7339167798563603, "RD": 0.3835236696159418, "FSI": 0.1925995269265196, "Cost_Concern": 0.14903710006476686, "Week": "2026-03-13"}, {"N": 71, "Sum_Weight": 43.49061424000002, "RR": 0.7749996398303342, "RD": 0.2819013705020646, "FSI": 0.2501224788633842, "Cost_Concern": 0.18754838626286524, "Week": "2026-03-20"}, {"N": 85, "Sum_Weight": 51.97902224900001, "RR": 0.6448131253881908, "RD": 0.3866875725667056, "FSI": 0.2011889288510268, "Cost_Concern": 0.2766659161675503, "Week": "2026-03-27"}, {"N": 72, "Sum_Weight": 39.776098808, "RR": 0.5915906568561539, "RD": 0.32285062151825117, "FSI": 0.24493478075935698, "Cost_Concern": 0.3035908477684198, "Week": "2026-04-03"}, {"N": 30, "Sum_Weight": 18.967422295000002, "RR": 0.818748374421639, "RD": 0.36326882832769414, "FSI": 0.17752217827129893, "Cost_Concern": 0.30347001576965676, "Week": "2026-04-10"}], "Small": [{"N": 76, "Sum_Weight": 56.218698213, "RR": 0.4760693314633013, "RD": 0.5179480844930725, "FSI": 0.2816098386877815, "Cost_Concern": 0.0355746161592355, "Week": "2026-02-06"}, {"N": 174, "Sum_Weight": 141.431575566, "RR": 0.43520847666917384, "RD": 0.4135703069615911, "FSI": 0.19187206968741183, "Cost_Concern": 0.11553764209785099, "Week": "2026-02-13"}, {"N": 164, "Sum_Weight": 178.804444862, "RR": 0.4279719240484213, "RD": 0.5278903564866376, "FSI": 0.16443453324491997, "Cost_Concern": 0.06764877024930852, "Week": "2026-02-20"}, {"N": 182, "Sum_Weight": 204.177326918, "RR": 0.4510356745425062, "RD": 0.4511382389370358, "FSI": 0.21000689686382545, "Cost_Concern": 0.08815403451911501, "Week": "2026-02-27"}, {"N": 139, "Sum_Weight": 132.726768729, "RR": 0.3587974852635708, "RD": 0.3907324505790808, "FSI": 0.06967714656628539, "Cost_Concern": 0.11285338391244423, "Week": "2026-03-06"}, {"N": 104, "Sum_Weight": 96.233700277, "RR": 0.40309402785451415, "RD": 0.6192990561400529, "FSI": 0.15799929122785672, "Cost_Concern": 0.14673526240760404, "Week": "2026-03-13"}, {"N": 165, "Sum_Weight": 166.495829739, "RR": 0.37969545452339865, "RD": 0.5346075304695262, "FSI": 0.0937324409802997, "Cost_Concern": 0.21564618100469457, "Week": "2026-03-20"}, {"N": 227, "Sum_Weight": 225.939982191, "RR": 0.4120065827739068, "RD": 0.5705130250792723, "FSI": 0.1572847827037474, "Cost_Concern": 0.2923288201965771, "Week": "2026-03-27"}, {"N": 171, "Sum_Weight": 182.424114948, "RR": 0.4371773979867367, "RD": 0.5634177292107012, "FSI": 0.1445245031311528, "Cost_Concern": 0.3608491589030267, "Week": "2026-04-03"}, {"N": 85, "Sum_Weight": 97.199246253, "RR": 0.3502509254175337, "RD": 0.691791136761436, "FSI": 0.04278850061423839, "Cost_Concern": 0.23641390738453827, "Week": "2026-04-10"}]}, "cost_components_state": [{"Week": "2026-02-06", "State": "Australian Capital Territory", "num_w": 0.0, "den_w": 1.797229518, "n": 8}, {"Week": "2026-02-13", "State": "Australian Capital Territory", "num_w": 0.0, "den_w": 5.041730167000001, "n": 18}, {"Week": "2026-02-20", "State": "Australian Capital Territory", "num_w": 0.43962021, "den_w": 3.2902004510000005, "n": 13}, {"Week": "2026-02-27", "State": "Australian Capital Territory", "num_w": 0.043962021, "den_w": 0.522330909, "n": 6}, {"Week": "2026-03-06", "State": "Australian Capital Territory", "num_w": 1.4362922, "den_w": 3.078869428, "n": 7}, {"Week": "2026-03-13", "State": "Australian Capital Territory", "num_w": 0.206285028, "den_w": 1.0275736420000001, "n": 3}, {"Week": "2026-03-20", "State": "Australian Capital Territory", "num_w": 0.615003586, "den_w": 1.765577946, "n": 6}, {"Week": "2026-03-27", "State": "Australian Capital Territory", "num_w": 0.676503945, "den_w": 3.140369787, "n": 8}, {"Week": "2026-04-03", "State": "Australian Capital Territory", "num_w": 1.441569203, "den_w": 5.5779242369999995, "n": 15}, {"Week": "2026-04-10", "State": "Australian Capital Territory", "num_w": 0.497279871, "den_w": 1.989119484, "n": 4}, {"Week": "2026-02-06", "State": "New South Wales", "num_w": 2.356747017, "den_w": 23.929921115999996, "n": 20}, {"Week": "2026-02-13", "State": "New South Wales", "num_w": 3.4148983079999997, "den_w": 45.003732643, "n": 40}, {"Week": "2026-02-20", "State": "New South Wales", "num_w": 5.42231112, "den_w": 68.79130437799999, "n": 63}, {"Week": "2026-02-27", "State": "New South Wales", "num_w": 7.772254176000001, "den_w": 86.281324502, "n": 74}, {"Week": "2026-03-06", "State": "New South Wales", "num_w": 8.929758502, "den_w": 72.61032835900001, "n": 65}, {"Week": "2026-03-13", "State": "New South Wales", "num_w": 6.343299496999999, "den_w": 46.78351678399999, "n": 46}, {"Week": "2026-03-20", "State": "New South Wales", "num_w": 7.8121201309999995, "den_w": 41.12132345, "n": 37}, {"Week": "2026-03-27", "State": "New South Wales", "num_w": 11.847025606999999, "den_w": 87.32979002599998, "n": 70}, {"Week": "2026-04-03", "State": "New South Wales", "num_w": 22.320332585000003, "den_w": 77.713636739, "n": 58}, {"Week": "2026-04-10", "State": "New South Wales", "num_w": 13.258918887000002, "den_w": 53.04827266300001, "n": 38}, {"Week": "2026-02-06", "State": "Northern Territory", "num_w": 0.0, "den_w": 1.70988153, "n": 8}, {"Week": "2026-02-13", "State": "Northern Territory", "num_w": 0.249707921, "den_w": 3.21831862, "n": 16}, {"Week": "2026-02-20", "State": "Northern Territory", "num_w": 0.0, "den_w": 0.322000485, "n": 2}, {"Week": "2026-02-27", "State": "Northern Territory", "num_w": 0.0, "den_w": 0.655174428, "n": 5}, {"Week": "2026-03-06", "State": "Northern Territory", "num_w": 0.0, "den_w": 0.33, "n": 1}, {"Week": "2026-03-13", "State": "Northern Territory", "num_w": 0.0, "den_w": 0.78, "n": 2}, {"Week": "2026-03-20", "State": "Northern Territory", "num_w": 0.78, "den_w": 1.6500000000000001, "n": 6}, {"Week": "2026-03-27", "State": "Northern Territory", "num_w": 0.0, "den_w": 1.338, "n": 6}, {"Week": "2026-04-03", "State": "Northern Territory", "num_w": 1.339505196, "den_w": 2.7895051960000004, "n": 7}, {"Week": "2026-04-10", "State": "Northern Territory", "num_w": 0.0, "den_w": 0.998290205, "n": 2}, {"Week": "2026-02-06", "State": "Queensland", "num_w": 1.268745822, "den_w": 18.425483171000003, "n": 16}, {"Week": "2026-02-13", "State": "Queensland", "num_w": 1.550371078, "den_w": 32.102364997, "n": 35}, {"Week": "2026-02-20", "State": "Queensland", "num_w": 4.273991426, "den_w": 51.522576739, "n": 57}, {"Week": "2026-02-27", "State": "Queensland", "num_w": 5.091249849, "den_w": 45.298321407, "n": 46}, {"Week": "2026-03-06", "State": "Queensland", "num_w": 1.329524883, "den_w": 39.01249672200001, "n": 43}, {"Week": "2026-03-13", "State": "Queensland", "num_w": 0.616977822, "den_w": 21.951808775, "n": 29}, {"Week": "2026-03-20", "State": "Queensland", "num_w": 7.078456782, "den_w": 41.85139675699999, "n": 43}, {"Week": "2026-03-27", "State": "Queensland", "num_w": 19.044007739, "den_w": 65.47477191399999, "n": 71}, {"Week": "2026-04-03", "State": "Queensland", "num_w": 14.268902161, "den_w": 29.155161227, "n": 31}, {"Week": "2026-04-10", "State": "Queensland", "num_w": 3.9228983840000002, "den_w": 21.034611503999997, "n": 18}, {"Week": "2026-02-06", "State": "South Australia", "num_w": 0.048017149, "den_w": 6.164320476, "n": 17}, {"Week": "2026-02-13", "State": "South Australia", "num_w": 3.2060436390000002, "den_w": 17.965118905, "n": 34}, {"Week": "2026-02-20", "State": "South Australia", "num_w": 0.0, "den_w": 8.162911356, "n": 15}, {"Week": "2026-02-27", "State": "South Australia", "num_w": 0.0, "den_w": 11.340567471, "n": 18}, {"Week": "2026-03-06", "State": "South Australia", "num_w": 1.591099898, "den_w": 10.299597237000002, "n": 22}, {"Week": "2026-03-13", "State": "South Australia", "num_w": 0.8905974, "den_w": 5.974883742999999, "n": 13}, {"Week": "2026-03-20", "State": "South Australia", "num_w": 6.105360481, "den_w": 15.873462772, "n": 29}, {"Week": "2026-03-27", "State": "South Australia", "num_w": 8.036888604, "den_w": 20.076680484, "n": 37}, {"Week": "2026-04-03", "State": "South Australia", "num_w": 8.233754243, "den_w": 16.164673147, "n": 33}, {"Week": "2026-04-10", "State": "South Australia", "num_w": 2.000138806, "den_w": 6.107683527000001, "n": 14}, {"Week": "2026-02-06", "State": "Tasmania", "num_w": 0.460048716, "den_w": 4.612680933, "n": 17}, {"Week": "2026-02-13", "State": "Tasmania", "num_w": 1.7014593040000001, "den_w": 8.392079726, "n": 32}, {"Week": "2026-02-20", "State": "Tasmania", "num_w": 0.0, "den_w": 2.165334534, "n": 8}, {"Week": "2026-02-27", "State": "Tasmania", "num_w": 0.0, "den_w": 0.46047847799999997, "n": 2}, {"Week": "2026-03-06", "State": "Tasmania", "num_w": 0.210691058, "den_w": 1.6045230250000002, "n": 6}, {"Week": "2026-03-13", "State": "Tasmania", "num_w": 0.0, "den_w": 2.534723365, "n": 9}, {"Week": "2026-03-20", "State": "Tasmania", "num_w": 2.3843382739999996, "den_w": 6.559200891, "n": 20}, {"Week": "2026-03-27", "State": "Tasmania", "num_w": 3.3413748190000003, "den_w": 6.7726364839999995, "n": 21}, {"Week": "2026-04-03", "State": "Tasmania", "num_w": 1.15090508, "den_w": 2.9493854610000003, "n": 11}, {"Week": "2026-04-10", "State": "Tasmania", "num_w": 0.45698166500000004, "den_w": 4.256932883999999, "n": 14}, {"Week": "2026-02-06", "State": "Victoria", "num_w": 0.0, "den_w": 9.019296687, "n": 14}, {"Week": "2026-02-13", "State": "Victoria", "num_w": 4.757699024, "den_w": 42.99252756600001, "n": 48}, {"Week": "2026-02-20", "State": "Victoria", "num_w": 2.155778677, "den_w": 51.794262731, "n": 34}, {"Week": "2026-02-27", "State": "Victoria", "num_w": 4.527135222, "den_w": 66.18222195, "n": 55}, {"Week": "2026-03-06", "State": "Victoria", "num_w": 2.8359184280000003, "den_w": 31.620848742999996, "n": 30}, {"Week": "2026-03-13", "State": "Victoria", "num_w": 6.368350422, "den_w": 26.773404874999994, "n": 23}, {"Week": "2026-03-20", "State": "Victoria", "num_w": 11.719889329, "den_w": 67.38331320200001, "n": 59}, {"Week": "2026-03-27", "State": "Victoria", "num_w": 25.969971753, "den_w": 66.87226888900001, "n": 61}, {"Week": "2026-04-03", "State": "Victoria", "num_w": 19.821021098, "den_w": 58.015017329999985, "n": 55}, {"Week": "2026-04-10", "State": "Victoria", "num_w": 6.423082813999999, "den_w": 22.098921683000007, "n": 22}, {"Week": "2026-02-06", "State": "Western Australia", "num_w": 0.645355106, "den_w": 5.307460165, "n": 8}, {"Week": "2026-02-13", "State": "Western Australia", "num_w": 1.068648741, "den_w": 7.279309023, "n": 8}, {"Week": "2026-02-20", "State": "Western Australia", "num_w": 2.9451964560000006, "den_w": 25.810851850000002, "n": 34}, {"Week": "2026-02-27", "State": "Western Australia", "num_w": 0.585837503, "den_w": 32.496589484000005, "n": 52}, {"Week": "2026-03-06", "State": "Western Australia", "num_w": 1.706384863, "den_w": 9.498976403000002, "n": 22}, {"Week": "2026-03-13", "State": "Western Australia", "num_w": 3.1224416669999995, "den_w": 17.715957343, "n": 29}, {"Week": "2026-03-20", "State": "Western Australia", "num_w": 4.534389396, "den_w": 23.617423312, "n": 29}, {"Week": "2026-03-27", "State": "Western Australia", "num_w": 9.328881494, "den_w": 24.207775144999996, "n": 39}, {"Week": "2026-04-03", "State": "Western Australia", "num_w": 8.615990118, "den_w": 26.167079262999998, "n": 34}, {"Week": "2026-04-10", "State": "Western Australia", "num_w": 1.71681448, "den_w": 10.651224433999998, "n": 13}], "cost_components_industry": [{"Week": "2026-02-06", "Industry06": "Accommodation and Food Services", "num_w": 0.0, "den_w": 7.019605938, "n": 9}, {"Week": "2026-02-13", "Industry06": "Accommodation and Food Services", "num_w": 2.165488819, "den_w": 11.367878807999999, "n": 18}, {"Week": "2026-02-20", "Industry06": "Accommodation and Food Services", "num_w": 2.61315566, "den_w": 11.679593681999998, "n": 14}, {"Week": "2026-02-27", "Industry06": "Accommodation and Food Services", "num_w": 2.821783699, "den_w": 23.327881888, "n": 23}, {"Week": "2026-03-06", "Industry06": "Accommodation and Food Services", "num_w": 0.204333363, "den_w": 12.486496985, "n": 16}, {"Week": "2026-03-13", "Industry06": "Accommodation and Food Services", "num_w": 0.0, "den_w": 7.943129428, "n": 12}, {"Week": "2026-03-20", "Industry06": "Accommodation and Food Services", "num_w": 4.126540328, "den_w": 17.661254563, "n": 21}, {"Week": "2026-03-27", "Industry06": "Accommodation and Food Services", "num_w": 3.5975561559999996, "den_w": 21.465007776, "n": 26}, {"Week": "2026-04-03", "Industry06": "Accommodation and Food Services", "num_w": 5.640060954, "den_w": 12.189734282, "n": 16}, {"Week": "2026-04-10", "Industry06": "Accommodation and Food Services", "num_w": 0.512397804, "den_w": 4.243555384, "n": 6}, {"Week": "2026-02-06", "Industry06": "Administrative and Support Services", "num_w": 0.0, "den_w": 1.550371078, "n": 1}, {"Week": "2026-02-13", "Industry06": "Administrative and Support Services", "num_w": 0.0, "den_w": 0.859583889, "n": 3}, {"Week": "2026-02-20", "Industry06": "Administrative and Support Services", "num_w": 0.666005022, "den_w": 9.204979654999999, "n": 9}, {"Week": "2026-02-27", "Industry06": "Administrative and Support Services", "num_w": 0.043962021, "den_w": 3.9999266080000004, "n": 5}, {"Week": "2026-03-06", "Industry06": "Administrative and Support Services", "num_w": 0.0, "den_w": 2.272603642, "n": 5}, {"Week": "2026-03-13", "Industry06": "Administrative and Support Services", "num_w": 0.0, "den_w": 3.3603236580000004, "n": 4}, {"Week": "2026-03-20", "Industry06": "Administrative and Support Services", "num_w": 0.0, "den_w": 4.88133204, "n": 5}, {"Week": "2026-03-27", "Industry06": "Administrative and Support Services", "num_w": 1.12161967, "den_w": 4.4294165880000005, "n": 4}, {"Week": "2026-04-03", "Industry06": "Administrative and Support Services", "num_w": 0.8075870170000001, "den_w": 6.142912062000001, "n": 8}, {"Week": "2026-04-10", "Industry06": "Administrative and Support Services", "num_w": 2.6011851430000004, "den_w": 3.691009846, "n": 3}, {"Week": "2026-02-06", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 0.8236997269999999, "den_w": 1.732105401, "n": 5}, {"Week": "2026-02-13", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 1.355751103, "den_w": 5.428181348000001, "n": 7}, {"Week": "2026-02-20", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 0.775682578, "den_w": 3.3800522710000003, "n": 4}, {"Week": "2026-02-27", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 0.585837503, "den_w": 2.291167562, "n": 3}, {"Week": "2026-03-06", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 1.329524883, "den_w": 2.094234421, "n": 3}, {"Week": "2026-03-13", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 0.521525319, "den_w": 2.799709901, "n": 4}, {"Week": "2026-03-20", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 1.8256940179999999, "den_w": 4.201241209, "n": 7}, {"Week": "2026-03-27", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 1.38803425, "den_w": 3.871986405, "n": 5}, {"Week": "2026-04-03", "Industry06": "Agriculture, Forestry and Fishing", "num_w": 2.1637937799999998, "den_w": 2.3681271429999997, "n": 6}, {"Week": "2026-02-06", "Industry06": "Arts and Recreation Services", "num_w": 0.0, "den_w": 1.422881276, "n": 4}, {"Week": "2026-02-13", "Industry06": "Arts and Recreation Services", "num_w": 0.0, "den_w": 2.58635022, "n": 4}, {"Week": "2026-02-20", "Industry06": "Arts and Recreation Services", "num_w": 0.0, "den_w": 2.86862128, "n": 4}, {"Week": "2026-02-27", "Industry06": "Arts and Recreation Services", "num_w": 0.0, "den_w": 1.5118145550000002, "n": 6}, {"Week": "2026-03-06", "Industry06": "Arts and Recreation Services", "num_w": 0.712557006, "den_w": 4.1521768770000005, "n": 4}, {"Week": "2026-03-13", "Industry06": "Arts and Recreation Services", "num_w": 0.0, "den_w": 0.042877479, "n": 1}, {"Week": "2026-03-20", "Industry06": "Arts and Recreation Services", "num_w": 0.0, "den_w": 3.0605055130000003, "n": 5}, {"Week": "2026-03-27", "Industry06": "Arts and Recreation Services", "num_w": 0.0, "den_w": 0.615003586, "n": 1}, {"Week": "2026-04-03", "Industry06": "Arts and Recreation Services", "num_w": 2.958244072, "den_w": 3.596069127, "n": 4}, {"Week": "2026-04-10", "Industry06": "Arts and Recreation Services", "num_w": 0.987267686, "den_w": 3.026267395, "n": 2}, {"Week": "2026-02-06", "Industry06": "Construction", "num_w": 0.493063244, "den_w": 3.0931860290000004, "n": 11}, {"Week": "2026-02-13", "Industry06": "Construction", "num_w": 2.619019819, "den_w": 24.122711198000005, "n": 36}, {"Week": "2026-02-20", "Industry06": "Construction", "num_w": 0.775682578, "den_w": 17.674671912, "n": 17}, {"Week": "2026-02-27", "Industry06": "Construction", "num_w": 0.0, "den_w": 21.164048889, "n": 25}, {"Week": "2026-03-06", "Industry06": "Construction", "num_w": 3.631045163, "den_w": 26.040971360000004, "n": 27}, {"Week": "2026-03-13", "Industry06": "Construction", "num_w": 2.6586164119999998, "den_w": 15.368776045, "n": 21}, {"Week": "2026-03-20", "Industry06": "Construction", "num_w": 6.19477589, "den_w": 24.230826368000002, "n": 26}, {"Week": "2026-03-27", "Industry06": "Construction", "num_w": 11.980502332, "den_w": 25.898582527000002, "n": 30}, {"Week": "2026-04-03", "Industry06": "Construction", "num_w": 12.560718923999998, "den_w": 28.646020814000007, "n": 35}, {"Week": "2026-04-10", "Industry06": "Construction", "num_w": 3.2103984299999997, "den_w": 9.637100677, "n": 14}, {"Week": "2026-02-06", "Industry06": "Education and Training", "num_w": 0.645355106, "den_w": 3.292702242, "n": 8}, {"Week": "2026-02-13", "Industry06": "Education and Training", "num_w": 0.0, "den_w": 2.215913506, "n": 3}, {"Week": "2026-02-20", "Industry06": "Education and Training", "num_w": 0.0, "den_w": 5.787795061, "n": 9}, {"Week": "2026-02-27", "Industry06": "Education and Training", "num_w": 0.0, "den_w": 13.493042485999998, "n": 12}, {"Week": "2026-03-06", "Industry06": "Education and Training", "num_w": 0.615003586, "den_w": 9.032615651, "n": 11}, {"Week": "2026-03-13", "Industry06": "Education and Training", "num_w": 0.0, "den_w": 5.127869448, "n": 8}, {"Week": "2026-03-20", "Industry06": "Education and Training", "num_w": 0.829828407, "den_w": 7.351174299999999, "n": 11}, {"Week": "2026-03-27", "Industry06": "Education and Training", "num_w": 0.0, "den_w": 11.879043607, "n": 15}, {"Week": "2026-04-03", "Industry06": "Education and Training", "num_w": 0.0, "den_w": 6.578396264, "n": 5}, {"Week": "2026-04-10", "Industry06": "Education and Training", "num_w": 0.0, "den_w": 2.038000856, "n": 3}, {"Week": "2026-02-06", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.0, "den_w": 2.8227307269999997, "n": 2}, {"Week": "2026-02-13", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.460048716, "den_w": 1.129094406, "n": 3}, {"Week": "2026-02-20", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.0, "den_w": 0.460048716, "n": 1}, {"Week": "2026-03-06", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.0, "den_w": 1.122657942, "n": 1}, {"Week": "2026-03-13", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.0, "den_w": 1.144894575, "n": 1}, {"Week": "2026-03-20", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.0, "den_w": 0.469326479, "n": 1}, {"Week": "2026-03-27", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.8905974, "den_w": 0.8905974, "n": 1}, {"Week": "2026-04-10", "Industry06": "Electricity, Gas, Water and Waste Services", "num_w": 0.69506347, "den_w": 0.69506347, "n": 1}, {"Week": "2026-02-06", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 0.775503388, "n": 2}, {"Week": "2026-02-13", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 0.215577868, "n": 1}, {"Week": "2026-02-20", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 3.349096219, "n": 5}, {"Week": "2026-02-27", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 3.7137113630000003, "n": 3}, {"Week": "2026-03-06", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 4.774989874, "n": 3}, {"Week": "2026-03-13", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 0.136129421, "n": 1}, {"Week": "2026-03-20", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 3.1115948270000002, "n": 4}, {"Week": "2026-03-27", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 0.6527677000000001, "n": 2}, {"Week": "2026-04-03", "Industry06": "Financial and Insurance Services", "num_w": 0.0, "den_w": 4.051815371, "n": 4}, {"Week": "2026-04-10", "Industry06": "Financial and Insurance Services", "num_w": 2.038999709, "den_w": 2.443291468, "n": 2}, {"Week": "2026-02-06", "Industry06": "Health Care and Social Assistance", "num_w": 0.0, "den_w": 8.510719511, "n": 10}, {"Week": "2026-02-13", "Industry06": "Health Care and Social Assistance", "num_w": 0.0, "den_w": 13.453788395999998, "n": 17}, {"Week": "2026-02-20", "Industry06": "Health Care and Social Assistance", "num_w": 1.947762417, "den_w": 26.781914474000004, "n": 28}, {"Week": "2026-02-27", "Industry06": "Health Care and Social Assistance", "num_w": 0.493063244, "den_w": 35.58633860399999, "n": 36}, {"Week": "2026-03-06", "Industry06": "Health Care and Social Assistance", "num_w": 0.206285028, "den_w": 13.469647889, "n": 21}, {"Week": "2026-03-13", "Industry06": "Health Care and Social Assistance", "num_w": 1.891270785, "den_w": 19.965792908999997, "n": 23}, {"Week": "2026-03-20", "Industry06": "Health Care and Social Assistance", "num_w": 0.0, "den_w": 21.553301389, "n": 24}, {"Week": "2026-03-27", "Industry06": "Health Care and Social Assistance", "num_w": 3.098955741, "den_w": 29.362255685, "n": 35}, {"Week": "2026-04-03", "Industry06": "Health Care and Social Assistance", "num_w": 2.758537419, "den_w": 27.108461174, "n": 24}, {"Week": "2026-04-10", "Industry06": "Health Care and Social Assistance", "num_w": 0.0, "den_w": 12.711047125, "n": 13}, {"Week": "2026-02-06", "Industry06": "Information Media and Telecommunications", "num_w": 0.0, "den_w": 0.480171491, "n": 1}, {"Week": "2026-02-20", "Industry06": "Information Media and Telecommunications", "num_w": 0.645355106, "den_w": 1.756010518, "n": 2}, {"Week": "2026-03-06", "Industry06": "Information Media and Telecommunications", "num_w": 0.0, "den_w": 0.132952488, "n": 1}, {"Week": "2026-03-20", "Industry06": "Information Media and Telecommunications", "num_w": 0.0, "den_w": 0.0, "n": 0}, {"Week": "2026-03-27", "Industry06": "Information Media and Telecommunications", "num_w": 2.181154892, "den_w": 3.007324027, "n": 4}, {"Week": "2026-02-06", "Industry06": "Manufacturing", "num_w": 0.0, "den_w": 5.585746843000001, "n": 8}, {"Week": "2026-02-13", "Industry06": "Manufacturing", "num_w": 1.759270999, "den_w": 20.295100805, "n": 25}, {"Week": "2026-02-20", "Industry06": "Manufacturing", "num_w": 2.155778677, "den_w": 28.874020573000003, "n": 24}, {"Week": "2026-02-27", "Industry06": "Manufacturing", "num_w": 1.272359649, "den_w": 23.028769747, "n": 27}, {"Week": "2026-03-06", "Industry06": "Manufacturing", "num_w": 2.722588426, "den_w": 18.108377896, "n": 21}, {"Week": "2026-03-13", "Industry06": "Manufacturing", "num_w": 2.514814164, "den_w": 17.175976595999998, "n": 17}, {"Week": "2026-03-20", "Industry06": "Manufacturing", "num_w": 5.262286277, "den_w": 26.570326875, "n": 29}, {"Week": "2026-03-27", "Industry06": "Manufacturing", "num_w": 9.963946772999998, "den_w": 28.943423122, "n": 37}, {"Week": "2026-04-03", "Industry06": "Manufacturing", "num_w": 15.202341918000002, "den_w": 43.324683234000005, "n": 44}, {"Week": "2026-04-10", "Industry06": "Manufacturing", "num_w": 6.202926674999999, "den_w": 16.860255213, "n": 19}, {"Week": "2026-02-06", "Industry06": "Mining", "num_w": 0.0, "den_w": 0.106864874, "n": 1}, {"Week": "2026-02-27", "Industry06": "Mining", "num_w": 0.0, "den_w": 0.0, "n": 0}, {"Week": "2026-03-06", "Industry06": "Mining", "num_w": 0.0, "den_w": 0.8905974, "n": 1}, {"Week": "2026-03-27", "Industry06": "Mining", "num_w": 0.0, "den_w": 0.0, "n": 0}, {"Week": "2026-04-10", "Industry06": "Mining", "num_w": 0.0, "den_w": 0.0, "n": 0}, {"Week": "2026-02-06", "Industry06": "Other Services", "num_w": 1.272359649, "den_w": 6.622572444, "n": 8}, {"Week": "2026-02-13", "Industry06": "Other Services", "num_w": 0.460048716, "den_w": 3.5856697200000003, "n": 10}, {"Week": "2026-02-20", "Industry06": "Other Services", "num_w": 1.361313135, "den_w": 17.502902541, "n": 17}, {"Week": "2026-02-27", "Industry06": "Other Services", "num_w": 1.361313135, "den_w": 5.903698436, "n": 8}, {"Week": "2026-03-06", "Industry06": "Other Services", "num_w": 1.111172721, "den_w": 11.969834630999998, "n": 15}, {"Week": "2026-03-13", "Industry06": "Other Services", "num_w": 1.361294213, "den_w": 3.944714704, "n": 7}, {"Week": "2026-03-20", "Industry06": "Other Services", "num_w": 3.886724706, "den_w": 13.952265265000001, "n": 13}, {"Week": "2026-03-27", "Industry06": "Other Services", "num_w": 2.2442776120000003, "den_w": 11.120716844, "n": 12}, {"Week": "2026-04-03", "Industry06": "Other Services", "num_w": 5.999598702, "den_w": 7.725458239, "n": 13}, {"Week": "2026-04-10", "Industry06": "Other Services", "num_w": 0.0, "den_w": 10.636290117, "n": 10}, {"Week": "2026-02-06", "Industry06": "Professional, Scientific and Technical Services", "num_w": 0.194776242, "den_w": 2.8531242910000003, "n": 7}, {"Week": "2026-02-13", "Industry06": "Professional, Scientific and Technical Services", "num_w": 0.24693668900000001, "den_w": 19.885917414, "n": 29}, {"Week": "2026-02-20", "Industry06": "Professional, Scientific and Technical Services", "num_w": 1.084975316, "den_w": 18.712699922000002, "n": 23}, {"Week": "2026-02-27", "Industry06": "Professional, Scientific and Technical Services", "num_w": 0.215577868, "den_w": 26.634502797, "n": 27}, {"Week": "2026-03-06", "Industry06": "Professional, Scientific and Technical Services", "num_w": 0.0, "den_w": 17.507353565000003, "n": 18}, {"Week": "2026-03-13", "Industry06": "Professional, Scientific and Technical Services", "num_w": 0.584765193, "den_w": 6.100584706999999, "n": 8}, {"Week": "2026-03-20", "Industry06": "Professional, Scientific and Technical Services", "num_w": 4.926674425, "den_w": 27.955110148, "n": 26}, {"Week": "2026-03-27", "Industry06": "Professional, Scientific and Technical Services", "num_w": 2.559025739, "den_w": 31.747333312000002, "n": 35}, {"Week": "2026-04-03", "Industry06": "Professional, Scientific and Technical Services", "num_w": 1.249671194, "den_w": 10.519635750999997, "n": 14}, {"Week": "2026-04-10", "Industry06": "Professional, Scientific and Technical Services", "num_w": 5.706718607, "den_w": 19.095360776, "n": 16}, {"Week": "2026-02-06", "Industry06": "Public Administration and Safety", "num_w": 0.0, "den_w": 1.947762417, "n": 1}, {"Week": "2026-02-13", "Industry06": "Public Administration and Safety", "num_w": 0.103932504, "den_w": 0.103932504, "n": 1}, {"Week": "2026-02-27", "Industry06": "Public Administration and Safety", "num_w": 0.0, "den_w": 2.142538659, "n": 2}, {"Week": "2026-03-06", "Industry06": "Public Administration and Safety", "num_w": 0.0, "den_w": 0.0, "n": 0}, {"Week": "2026-03-13", "Industry06": "Public Administration and Safety", "num_w": 0.0, "den_w": 0.951789108, "n": 2}, {"Week": "2026-03-20", "Industry06": "Public Administration and Safety", "num_w": 0.0, "den_w": 1.0135399779999998, "n": 2}, {"Week": "2026-03-27", "Industry06": "Public Administration and Safety", "num_w": 0.0, "den_w": 1.122657942, "n": 1}, {"Week": "2026-04-03", "Industry06": "Public Administration and Safety", "num_w": 0.0, "den_w": 0.584765193, "n": 1}, {"Week": "2026-02-06", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 0.889611126, "den_w": 7.985054902000002, "n": 7}, {"Week": "2026-02-13", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 0.249707921, "den_w": 4.8263014570000005, "n": 9}, {"Week": "2026-02-20", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 0.0, "den_w": 9.021027860999999, "n": 11}, {"Week": "2026-02-27", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 0.0, "den_w": 14.092110866999999, "n": 12}, {"Week": "2026-03-06", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 0.8905974, "den_w": 5.950132711999999, "n": 5}, {"Week": "2026-03-13", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 0.0, "den_w": 5.192991210000001, "n": 7}, {"Week": "2026-03-20", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 0.0, "den_w": 4.774703464, "n": 8}, {"Week": "2026-03-27", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 2.474419458, "den_w": 18.195857455000002, "n": 15}, {"Week": "2026-04-03", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 3.352982861, "den_w": 7.309749215, "n": 7}, {"Week": "2026-04-10", "Industry06": "Rental, Hiring and Real Estate Services", "num_w": 1.089824703, "den_w": 7.844776105999999, "n": 7}, {"Week": "2026-02-06", "Industry06": "Retail Trade", "num_w": 0.460048716, "den_w": 10.441230281000001, "n": 15}, {"Week": "2026-02-13", "Industry06": "Retail Trade", "num_w": 4.467463363, "den_w": 36.280945347, "n": 40}, {"Week": "2026-02-20", "Industry06": "Retail Trade", "num_w": 3.0164111580000004, "den_w": 39.535341343000006, "n": 38}, {"Week": "2026-02-27", "Industry06": "Retail Trade", "num_w": 7.062403134999999, "den_w": 42.44376792700001, "n": 43}, {"Week": "2026-03-06", "Industry06": "Retail Trade", "num_w": 2.8621035170000004, "den_w": 25.720971154999994, "n": 30}, {"Week": "2026-03-13", "Industry06": "Retail Trade", "num_w": 1.942196237, "den_w": 16.377903712000002, "n": 15}, {"Week": "2026-03-20", "Industry06": "Retail Trade", "num_w": 8.244515154, "den_w": 23.299601533, "n": 30}, {"Week": "2026-03-27", "Industry06": "Retail Trade", "num_w": 17.833465691, "den_w": 46.43433167999999, "n": 50}, {"Week": "2026-04-03", "Industry06": "Retail Trade", "num_w": 16.667828043, "den_w": 31.337857115000002, "n": 40}, {"Week": "2026-04-10", "Industry06": "Retail Trade", "num_w": 4.141507977, "den_w": 24.499182564, "n": 26}, {"Week": "2026-02-06", "Industry06": "Transport, Postal and Warehousing", "num_w": 0.0, "den_w": 1.550371078, "n": 1}, {"Week": "2026-02-13", "Industry06": "Transport, Postal and Warehousing", "num_w": 0.419337769, "den_w": 5.46495122, "n": 8}, {"Week": "2026-02-20", "Industry06": "Transport, Postal and Warehousing", "num_w": 0.0, "den_w": 4.376446656, "n": 4}, {"Week": "2026-02-27", "Industry06": "Transport, Postal and Warehousing", "num_w": 4.1641385170000005, "den_w": 6.660050007000001, "n": 7}, {"Week": "2026-03-06", "Industry06": "Transport, Postal and Warehousing", "num_w": 0.829828407, "den_w": 4.777950188, "n": 6}, {"Week": "2026-03-13", "Industry06": "Transport, Postal and Warehousing", "num_w": 2.744622587, "den_w": 6.994402212, "n": 11}, {"Week": "2026-03-20", "Industry06": "Transport, Postal and Warehousing", "num_w": 0.469326479, "den_w": 2.866869242, "n": 3}, {"Week": "2026-03-27", "Industry06": "Transport, Postal and Warehousing", "num_w": 10.261388582, "den_w": 14.682396976, "n": 17}, {"Week": "2026-04-03", "Industry06": "Transport, Postal and Warehousing", "num_w": 2.716253602, "den_w": 5.983958427999999, "n": 6}, {"Week": "2026-04-10", "Industry06": "Transport, Postal and Warehousing", "num_w": 1.089824703, "den_w": 1.089824703, "n": 1}, {"Week": "2026-02-06", "Industry06": "Wholesale Trade", "num_w": 0.0, "den_w": 3.173569385, "n": 7}, {"Week": "2026-02-13", "Industry06": "Wholesale Trade", "num_w": 1.641821597, "den_w": 10.173283541, "n": 17}, {"Week": "2026-02-20", "Industry06": "Wholesale Trade", "num_w": 0.194776242, "den_w": 10.89421984, "n": 16}, {"Week": "2026-02-27", "Industry06": "Wholesale Trade", "num_w": 0.0, "den_w": 17.243638234, "n": 19}, {"Week": "2026-03-06", "Industry06": "Wholesale Trade", "num_w": 2.924630332, "den_w": 7.5510752409999995, "n": 8}, {"Week": "2026-03-13", "Industry06": "Wholesale Trade", "num_w": 3.3288469259999998, "den_w": 10.914003414000002, "n": 12}, {"Week": "2026-03-20", "Industry06": "Wholesale Trade", "num_w": 5.2631922950000005, "den_w": 12.868725137, "n": 14}, {"Week": "2026-03-27", "Industry06": "Wholesale Trade", "num_w": 8.649709665, "den_w": 20.893590097, "n": 23}, {"Week": "2026-04-03", "Industry06": "Wholesale Trade", "num_w": 5.114361198000001, "den_w": 21.064739188, "n": 17}, {"Week": "2026-04-10", "Industry06": "Wholesale Trade", "num_w": 0.0, "den_w": 1.6740306839999999, "n": 2}], "cost_components_gcc": [{"Week": "2026-02-06", "GCC": "ACT", "num_w": 0.0, "den_w": 1.797229518, "n": 8}, {"Week": "2026-02-13", "GCC": "ACT", "num_w": 0.0, "den_w": 5.041730167000001, "n": 18}, {"Week": "2026-02-20", "GCC": "ACT", "num_w": 0.43962021, "den_w": 3.2902004510000005, "n": 13}, {"Week": "2026-02-27", "GCC": "ACT", "num_w": 0.043962021, "den_w": 0.522330909, "n": 6}, {"Week": "2026-03-06", "GCC": "ACT", "num_w": 1.4362922, "den_w": 3.078869428, "n": 7}, {"Week": "2026-03-13", "GCC": "ACT", "num_w": 0.206285028, "den_w": 1.0275736420000001, "n": 3}, {"Week": "2026-03-20", "GCC": "ACT", "num_w": 0.615003586, "den_w": 1.765577946, "n": 6}, {"Week": "2026-03-27", "GCC": "ACT", "num_w": 0.676503945, "den_w": 3.140369787, "n": 8}, {"Week": "2026-04-03", "GCC": "ACT", "num_w": 1.441569203, "den_w": 5.5779242369999995, "n": 15}, {"Week": "2026-04-10", "GCC": "ACT", "num_w": 0.497279871, "den_w": 1.989119484, "n": 4}, {"Week": "2026-02-06", "GCC": "Greater Adelaide", "num_w": 0.0, "den_w": 1.525717895, "n": 3}, {"Week": "2026-02-13", "GCC": "Greater Adelaide", "num_w": 2.0726929419999998, "den_w": 12.366173342, "n": 18}, {"Week": "2026-02-20", "GCC": "Greater Adelaide", "num_w": 0.0, "den_w": 5.806772588, "n": 9}, {"Week": "2026-02-27", "GCC": "Greater Adelaide", "num_w": 0.0, "den_w": 11.07482392, "n": 16}, {"Week": "2026-03-06", "GCC": "Greater Adelaide", "num_w": 0.8905974, "den_w": 7.6523036939999995, "n": 14}, {"Week": "2026-03-13", "GCC": "Greater Adelaide", "num_w": 0.8905974, "den_w": 4.270311556, "n": 6}, {"Week": "2026-03-20", "GCC": "Greater Adelaide", "num_w": 3.916350578, "den_w": 11.737661824, "n": 18}, {"Week": "2026-03-27", "GCC": "Greater Adelaide", "num_w": 4.359371296, "den_w": 13.614750310000002, "n": 21}, {"Week": "2026-04-03", "GCC": "Greater Adelaide", "num_w": 6.243074914, "den_w": 12.920687236000003, "n": 22}, {"Week": "2026-04-10", "GCC": "Greater Adelaide", "num_w": 0.894530638, "den_w": 2.683591914, "n": 3}, {"Week": "2026-02-06", "GCC": "Greater Brisbane", "num_w": 0.493063244, "den_w": 9.795289711999999, "n": 7}, {"Week": "2026-02-13", "GCC": "Greater Brisbane", "num_w": 1.550371078, "den_w": 14.924188685999999, "n": 18}, {"Week": "2026-02-20", "GCC": "Greater Brisbane", "num_w": 0.0, "den_w": 17.615723360000004, "n": 22}, {"Week": "2026-02-27", "GCC": "Greater Brisbane", "num_w": 3.5938054, "den_w": 22.294788513999997, "n": 23}, {"Week": "2026-03-06", "GCC": "Greater Brisbane", "num_w": 0.0, "den_w": 18.63321756, "n": 22}, {"Week": "2026-03-13", "GCC": "Greater Brisbane", "num_w": 0.616977822, "den_w": 13.018959758, "n": 17}, {"Week": "2026-03-20", "GCC": "Greater Brisbane", "num_w": 0.112265794, "den_w": 15.940774683999999, "n": 16}, {"Week": "2026-03-27", "GCC": "Greater Brisbane", "num_w": 8.475583416, "den_w": 32.439974062, "n": 37}, {"Week": "2026-04-03", "GCC": "Greater Brisbane", "num_w": 5.479857204, "den_w": 11.964549243000004, "n": 13}, {"Week": "2026-04-10", "GCC": "Greater Brisbane", "num_w": 0.69506347, "den_w": 9.70362396, "n": 9}, {"Week": "2026-02-06", "GCC": "Greater Darwin", "num_w": 0.0, "den_w": 1.001750828, "n": 4}, {"Week": "2026-02-13", "GCC": "Greater Darwin", "num_w": 0.0, "den_w": 2.260479997, "n": 11}, {"Week": "2026-02-20", "GCC": "Greater Darwin", "num_w": 0.0, "den_w": 0.322000485, "n": 2}, {"Week": "2026-02-27", "GCC": "Greater Darwin", "num_w": 0.0, "den_w": 0.500875414, "n": 2}, {"Week": "2026-03-13", "GCC": "Greater Darwin", "num_w": 0.0, "den_w": 0.45, "n": 1}, {"Week": "2026-03-20", "GCC": "Greater Darwin", "num_w": 0.45, "den_w": 0.9900000000000001, "n": 4}, {"Week": "2026-03-27", "GCC": "Greater Darwin", "num_w": 0.0, "den_w": 0.645, "n": 3}, {"Week": "2026-04-03", "GCC": "Greater Darwin", "num_w": 1.339505196, "den_w": 2.539505196, "n": 6}, {"Week": "2026-04-10", "GCC": "Greater Darwin", "num_w": 0.0, "den_w": 0.589505196, "n": 1}, {"Week": "2026-02-06", "GCC": "Greater Hobart", "num_w": 0.0, "den_w": 2.6082674839999997, "n": 12}, {"Week": "2026-02-13", "GCC": "Greater Hobart", "num_w": 0.321313156, "den_w": 2.3660332389999996, "n": 9}, {"Week": "2026-02-20", "GCC": "Greater Hobart", "num_w": 0.0, "den_w": 0.752581347, "n": 3}, {"Week": "2026-02-27", "GCC": "Greater Hobart", "num_w": 0.0, "den_w": 0.46047847799999997, "n": 2}, {"Week": "2026-03-06", "GCC": "Greater Hobart", "num_w": 0.210691058, "den_w": 0.253568537, "n": 2}, {"Week": "2026-03-13", "GCC": "Greater Hobart", "num_w": 0.0, "den_w": 0.725220801, "n": 4}, {"Week": "2026-03-20", "GCC": "Greater Hobart", "num_w": 1.9257901979999996, "den_w": 4.315839991, "n": 13}, {"Week": "2026-03-27", "GCC": "Greater Hobart", "num_w": 0.639465843, "den_w": 1.5398928920000001, "n": 5}, {"Week": "2026-04-03", "GCC": "Greater Hobart", "num_w": 0.042877479, "den_w": 0.7105502020000001, "n": 4}, {"Week": "2026-04-10", "GCC": "Greater Hobart", "num_w": 0.45698166500000004, "den_w": 2.282490432, "n": 9}, {"Week": "2026-02-06", "GCC": "Greater Melbourne", "num_w": 0.0, "den_w": 3.482011957, "n": 3}, {"Week": "2026-02-13", "GCC": "Greater Melbourne", "num_w": 2.155778677, "den_w": 20.610961727, "n": 16}, {"Week": "2026-02-20", "GCC": "Greater Melbourne", "num_w": 2.155778677, "den_w": 47.009759806000005, "n": 27}, {"Week": "2026-02-27", "GCC": "Greater Melbourne", "num_w": 4.527135222, "den_w": 57.423029604999996, "n": 40}, {"Week": "2026-03-06", "GCC": "Greater Melbourne", "num_w": 2.8359184280000003, "den_w": 23.698338876999998, "n": 21}, {"Week": "2026-03-13", "GCC": "Greater Melbourne", "num_w": 5.223455846999999, "den_w": 19.320221487999998, "n": 15}, {"Week": "2026-03-20", "GCC": "Greater Melbourne", "num_w": 9.40736288, "den_w": 52.397365883999996, "n": 37}, {"Week": "2026-03-27", "GCC": "Greater Melbourne", "num_w": 21.482145612, "den_w": 51.92042751699999, "n": 39}, {"Week": "2026-04-03", "GCC": "Greater Melbourne", "num_w": 15.6205101, "den_w": 43.644825182, "n": 34}, {"Week": "2026-04-10", "GCC": "Greater Melbourne", "num_w": 1.734950635, "den_w": 9.885341184999998, "n": 8}, {"Week": "2026-02-06", "GCC": "Greater Perth", "num_w": 0.645355106, "den_w": 5.248876415000002, "n": 7}, {"Week": "2026-02-13", "GCC": "Greater Perth", "num_w": 1.068648741, "den_w": 7.279309023, "n": 8}, {"Week": "2026-02-20", "GCC": "Greater Perth", "num_w": 2.359358953, "den_w": 21.291105114, "n": 25}, {"Week": "2026-02-27", "GCC": "Greater Perth", "num_w": 0.0, "den_w": 22.803876797000004, "n": 28}, {"Week": "2026-03-06", "GCC": "Greater Perth", "num_w": 1.706384863, "den_w": 5.928243716, "n": 9}, {"Week": "2026-03-13", "GCC": "Greater Perth", "num_w": 1.7542955789999999, "den_w": 10.823074371, "n": 13}, {"Week": "2026-03-20", "GCC": "Greater Perth", "num_w": 4.534389396, "den_w": 21.206226586, "n": 24}, {"Week": "2026-03-27", "GCC": "Greater Perth", "num_w": 7.114114637, "den_w": 18.161512942, "n": 25}, {"Week": "2026-04-03", "GCC": "Greater Perth", "num_w": 7.288182352, "den_w": 19.656912603, "n": 20}, {"Week": "2026-04-10", "GCC": "Greater Perth", "num_w": 1.71681448, "den_w": 8.099913966, "n": 9}, {"Week": "2026-02-06", "GCC": "Greater Sydney", "num_w": 1.084387368, "den_w": 12.965738112, "n": 9}, {"Week": "2026-02-13", "GCC": "Greater Sydney", "num_w": 2.142538659, "den_w": 30.379531853999996, "n": 23}, {"Week": "2026-02-20", "GCC": "Greater Sydney", "num_w": 4.090301076, "den_w": 43.397742120000004, "n": 36}, {"Week": "2026-02-27", "GCC": "Greater Sydney", "num_w": 3.895524834, "den_w": 62.706826125000006, "n": 47}, {"Week": "2026-03-06", "GCC": "Greater Sydney", "num_w": 2.772024644, "den_w": 37.378277714, "n": 28}, {"Week": "2026-03-13", "GCC": "Greater Sydney", "num_w": 2.772024644, "den_w": 28.214585513, "n": 25}, {"Week": "2026-03-20", "GCC": "Greater Sydney", "num_w": 5.738268912, "den_w": 29.326953343, "n": 25}, {"Week": "2026-03-27", "GCC": "Greater Sydney", "num_w": 6.850636742000001, "den_w": 56.51770066099999, "n": 39}, {"Week": "2026-04-03", "GCC": "Greater Sydney", "num_w": 12.843148405, "den_w": 55.02920197500002, "n": 38}, {"Week": "2026-04-10", "GCC": "Greater Sydney", "num_w": 11.117801894000001, "den_w": 28.288138578, "n": 18}, {"Week": "2026-02-06", "GCC": "Rest of NSW", "num_w": 1.272359649, "den_w": 10.964183004, "n": 11}, {"Week": "2026-02-13", "GCC": "Rest of NSW", "num_w": 1.272359649, "den_w": 14.624200789, "n": 17}, {"Week": "2026-02-20", "GCC": "Rest of NSW", "num_w": 1.332010044, "den_w": 25.393562258, "n": 27}, {"Week": "2026-02-27", "GCC": "Rest of NSW", "num_w": 3.876729342, "den_w": 23.574498376999998, "n": 27}, {"Week": "2026-03-06", "GCC": "Rest of NSW", "num_w": 6.157733858, "den_w": 35.23205064500001, "n": 37}, {"Week": "2026-03-13", "GCC": "Rest of NSW", "num_w": 3.5712748530000002, "den_w": 18.568931271000004, "n": 21}, {"Week": "2026-03-20", "GCC": "Rest of NSW", "num_w": 2.0738512190000002, "den_w": 11.794370107000004, "n": 12}, {"Week": "2026-03-27", "GCC": "Rest of NSW", "num_w": 4.996388865, "den_w": 30.81208936500001, "n": 31}, {"Week": "2026-04-03", "GCC": "Rest of NSW", "num_w": 9.47718418, "den_w": 22.684434764000002, "n": 20}, {"Week": "2026-04-10", "GCC": "Rest of NSW", "num_w": 2.141116993, "den_w": 24.760134085, "n": 20}, {"Week": "2026-02-06", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.708130702, "n": 4}, {"Week": "2026-02-13", "GCC": "Rest of NT", "num_w": 0.249707921, "den_w": 0.9578386229999999, "n": 5}, {"Week": "2026-02-20", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.0, "n": 0}, {"Week": "2026-02-27", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.15429901399999998, "n": 3}, {"Week": "2026-03-06", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.33, "n": 1}, {"Week": "2026-03-13", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.33, "n": 1}, {"Week": "2026-03-20", "GCC": "Rest of NT", "num_w": 0.33, "den_w": 0.66, "n": 2}, {"Week": "2026-03-27", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.6930000000000001, "n": 3}, {"Week": "2026-04-03", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.25, "n": 1}, {"Week": "2026-04-10", "GCC": "Rest of NT", "num_w": 0.0, "den_w": 0.408785009, "n": 1}, {"Week": "2026-02-06", "GCC": "Rest of Queensland", "num_w": 0.775682578, "den_w": 8.630193459000001, "n": 9}, {"Week": "2026-02-13", "GCC": "Rest of Queensland", "num_w": 0.0, "den_w": 17.178176311, "n": 17}, {"Week": "2026-02-20", "GCC": "Rest of Queensland", "num_w": 4.273991426, "den_w": 33.906853379000005, "n": 35}, {"Week": "2026-02-27", "GCC": "Rest of Queensland", "num_w": 1.497444449, "den_w": 23.003532893000003, "n": 23}, {"Week": "2026-03-06", "GCC": "Rest of Queensland", "num_w": 1.329524883, "den_w": 20.379279162000003, "n": 21}, {"Week": "2026-03-13", "GCC": "Rest of Queensland", "num_w": 0.0, "den_w": 8.932849016999999, "n": 12}, {"Week": "2026-03-20", "GCC": "Rest of Queensland", "num_w": 6.966190987999999, "den_w": 25.910622073000003, "n": 27}, {"Week": "2026-03-27", "GCC": "Rest of Queensland", "num_w": 10.568424322999999, "den_w": 33.034797852, "n": 34}, {"Week": "2026-04-03", "GCC": "Rest of Queensland", "num_w": 8.789044957, "den_w": 17.190611983999997, "n": 18}, {"Week": "2026-04-10", "GCC": "Rest of Queensland", "num_w": 3.227834914, "den_w": 11.330987544, "n": 9}, {"Week": "2026-02-06", "GCC": "Rest of SA", "num_w": 0.048017149, "den_w": 4.638602581000001, "n": 14}, {"Week": "2026-02-13", "GCC": "Rest of SA", "num_w": 1.133350697, "den_w": 5.598945563000001, "n": 16}, {"Week": "2026-02-20", "GCC": "Rest of SA", "num_w": 0.0, "den_w": 2.356138768, "n": 6}, {"Week": "2026-02-27", "GCC": "Rest of SA", "num_w": 0.0, "den_w": 0.265743551, "n": 2}, {"Week": "2026-03-06", "GCC": "Rest of SA", "num_w": 0.700502498, "den_w": 2.647293543, "n": 8}, {"Week": "2026-03-13", "GCC": "Rest of SA", "num_w": 0.0, "den_w": 1.704572187, "n": 7}, {"Week": "2026-03-20", "GCC": "Rest of SA", "num_w": 2.189009903, "den_w": 4.135800948, "n": 11}, {"Week": "2026-03-27", "GCC": "Rest of SA", "num_w": 3.6775173079999997, "den_w": 6.461930173999999, "n": 16}, {"Week": "2026-04-03", "GCC": "Rest of SA", "num_w": 1.9906793289999998, "den_w": 3.2439859109999998, "n": 11}, {"Week": "2026-04-10", "GCC": "Rest of SA", "num_w": 1.1056081679999998, "den_w": 3.4240916129999994, "n": 11}, {"Week": "2026-02-06", "GCC": "Rest of Tasmania", "num_w": 0.460048716, "den_w": 2.0044134490000003, "n": 5}, {"Week": "2026-02-13", "GCC": "Rest of Tasmania", "num_w": 1.3801461480000001, "den_w": 6.026046487000001, "n": 23}, {"Week": "2026-02-20", "GCC": "Rest of Tasmania", "num_w": 0.0, "den_w": 1.412753187, "n": 5}, {"Week": "2026-03-06", "GCC": "Rest of Tasmania", "num_w": 0.0, "den_w": 1.3509544880000002, "n": 4}, {"Week": "2026-03-13", "GCC": "Rest of Tasmania", "num_w": 0.0, "den_w": 1.8095025640000002, "n": 5}, {"Week": "2026-03-20", "GCC": "Rest of Tasmania", "num_w": 0.458548076, "den_w": 2.2433609000000003, "n": 7}, {"Week": "2026-03-27", "GCC": "Rest of Tasmania", "num_w": 2.7019089760000004, "den_w": 5.232743592, "n": 16}, {"Week": "2026-04-03", "GCC": "Rest of Tasmania", "num_w": 1.1080276009999999, "den_w": 2.238835259, "n": 7}, {"Week": "2026-04-10", "GCC": "Rest of Tasmania", "num_w": 0.0, "den_w": 1.974442452, "n": 5}, {"Week": "2026-02-06", "GCC": "Rest of Victoria", "num_w": 0.0, "den_w": 5.5372847300000005, "n": 11}, {"Week": "2026-02-13", "GCC": "Rest of Victoria", "num_w": 2.6019203469999996, "den_w": 22.381565839, "n": 32}, {"Week": "2026-02-20", "GCC": "Rest of Victoria", "num_w": 0.0, "den_w": 4.784502925000001, "n": 7}, {"Week": "2026-02-27", "GCC": "Rest of Victoria", "num_w": 0.0, "den_w": 8.759192345, "n": 15}, {"Week": "2026-03-06", "GCC": "Rest of Victoria", "num_w": 0.0, "den_w": 7.922509866, "n": 9}, {"Week": "2026-03-13", "GCC": "Rest of Victoria", "num_w": 1.144894575, "den_w": 7.453183386999999, "n": 8}, {"Week": "2026-03-20", "GCC": "Rest of Victoria", "num_w": 2.312526449, "den_w": 14.985947317999997, "n": 22}, {"Week": "2026-03-27", "GCC": "Rest of Victoria", "num_w": 4.487826141, "den_w": 14.951841371999999, "n": 22}, {"Week": "2026-04-03", "GCC": "Rest of Victoria", "num_w": 4.2005109979999995, "den_w": 14.370192147999997, "n": 21}, {"Week": "2026-04-10", "GCC": "Rest of Victoria", "num_w": 4.688132179, "den_w": 12.213580497999997, "n": 14}, {"Week": "2026-02-06", "GCC": "Rest of WA", "num_w": 0.0, "den_w": 0.05858375, "n": 1}, {"Week": "2026-02-13", "GCC": "Rest of WA", "num_w": 0.0, "den_w": 0.0, "n": 0}, {"Week": "2026-02-20", "GCC": "Rest of WA", "num_w": 0.585837503, "den_w": 4.519746736, "n": 9}, {"Week": "2026-02-27", "GCC": "Rest of WA", "num_w": 0.585837503, "den_w": 9.692712687, "n": 24}, {"Week": "2026-03-06", "GCC": "Rest of WA", "num_w": 0.0, "den_w": 3.5707326870000005, "n": 13}, {"Week": "2026-03-13", "GCC": "Rest of WA", "num_w": 1.368146088, "den_w": 6.892882972000001, "n": 16}, {"Week": "2026-03-20", "GCC": "Rest of WA", "num_w": 0.0, "den_w": 2.411196726, "n": 5}, {"Week": "2026-03-27", "GCC": "Rest of WA", "num_w": 2.214766857, "den_w": 6.046262203000001, "n": 14}, {"Week": "2026-04-03", "GCC": "Rest of WA", "num_w": 1.327807766, "den_w": 6.51016666, "n": 14}, {"Week": "2026-04-10", "GCC": "Rest of WA", "num_w": 0.0, "den_w": 2.551310468, "n": 4}], "cost_components_aria": [{"Week": "2026-02-06", "ARIA": "Inner Regional Australia", "num_w": 1.235731294, "den_w": 18.045511974, "n": 40}, {"Week": "2026-02-13", "ARIA": "Inner Regional Australia", "num_w": 4.298906514, "den_w": 45.070274381000004, "n": 74}, {"Week": "2026-02-20", "ARIA": "Inner Regional Australia", "num_w": 2.693323179, "den_w": 37.251797168, "n": 47}, {"Week": "2026-02-27", "ARIA": "Inner Regional Australia", "num_w": 3.885515309, "den_w": 31.902901182000004, "n": 44}, {"Week": "2026-03-06", "ARIA": "Inner Regional Australia", "num_w": 5.828431943, "den_w": 31.291933471999997, "n": 41}, {"Week": "2026-03-13", "ARIA": "Inner Regional Australia", "num_w": 6.210123498000001, "den_w": 25.819846406999996, "n": 39}, {"Week": "2026-03-20", "ARIA": "Inner Regional Australia", "num_w": 9.157855432000002, "den_w": 26.749929896000005, "n": 49}, {"Week": "2026-03-27", "ARIA": "Inner Regional Australia", "num_w": 14.924275960999998, "den_w": 37.60516795699999, "n": 59}, {"Week": "2026-04-03", "ARIA": "Inner Regional Australia", "num_w": 13.161490554999999, "den_w": 31.051113418, "n": 48}, {"Week": "2026-04-10", "ARIA": "Inner Regional Australia", "num_w": 6.064498423999999, "den_w": 36.928825712, "n": 41}, {"Week": "2026-02-06", "ARIA": "Major Cities of Australia", "num_w": 3.4951653670000002, "den_w": 42.041297918000005, "n": 43}, {"Week": "2026-02-13", "ARIA": "Major Cities of Australia", "num_w": 8.990030097, "den_w": 96.39221574899999, "n": 107}, {"Week": "2026-02-20", "ARIA": "Major Cities of Australia", "num_w": 9.820741494, "den_w": 149.98571485999997, "n": 147}, {"Week": "2026-02-27", "ARIA": "Major Cities of Australia", "num_w": 13.998792148, "den_w": 191.35682699400002, "n": 177}, {"Week": "2026-03-06", "ARIA": "Major Cities of Australia", "num_w": 11.002511748, "den_w": 113.03008930200002, "n": 117}, {"Week": "2026-03-13", "ARIA": "Major Cities of Australia", "num_w": 9.778650563, "den_w": 83.287934816, "n": 88}, {"Week": "2026-03-20", "ARIA": "Major Cities of Australia", "num_w": 27.168304997, "den_w": 153.254773542, "n": 146}, {"Week": "2026-03-27", "ARIA": "Major Cities of Australia", "num_w": 54.079265473, "den_w": 200.97807683000002, "n": 197}, {"Week": "2026-04-03", "ARIA": "Major Cities of Australia", "num_w": 51.268912566, "den_w": 161.028170966, "n": 153}, {"Week": "2026-04-10", "ARIA": "Major Cities of Australia", "num_w": 18.665119678000003, "den_w": 73.56798619999999, "n": 63}, {"Week": "2026-02-06", "ARIA": "Outer Regional Australia", "num_w": 0.048017149, "den_w": 7.083377703000001, "n": 13}, {"Week": "2026-02-13", "ARIA": "Outer Regional Australia", "num_w": 2.410183483, "den_w": 19.432813724000003, "n": 42}, {"Week": "2026-02-20", "ARIA": "Outer Regional Australia", "num_w": 2.722833216, "den_w": 24.203046281, "n": 30}, {"Week": "2026-02-27", "ARIA": "Outer Regional Australia", "num_w": 0.136131314, "den_w": 13.557116137000001, "n": 24}, {"Week": "2026-03-06", "ARIA": "Outer Regional Australia", "num_w": 1.208726141, "den_w": 23.094978716, "n": 34}, {"Week": "2026-03-13", "ARIA": "Outer Regional Australia", "num_w": 1.037652456, "den_w": 12.683788684, "n": 22}, {"Week": "2026-03-20", "ARIA": "Outer Regional Australia", "num_w": 3.672895052, "den_w": 16.592177171, "n": 26}, {"Week": "2026-03-27", "ARIA": "Outer Regional Australia", "num_w": 7.962017724, "den_w": 32.98597353, "n": 49}, {"Week": "2026-04-03", "ARIA": "Outer Regional Australia", "num_w": 11.314026929999999, "den_w": 23.618932239000006, "n": 35}, {"Week": "2026-04-10", "ARIA": "Outer Regional Australia", "num_w": 3.5464968049999994, "den_w": 8.003804229, "n": 18}, {"Week": "2026-02-06", "ARIA": "Remote Australia", "num_w": 0.0, "den_w": 2.135700372, "n": 8}, {"Week": "2026-02-13", "ARIA": "Remote Australia", "num_w": 0.0, "den_w": 0.30273688100000007, "n": 4}, {"Week": "2026-02-20", "ARIA": "Remote Australia", "num_w": 0.0, "den_w": 0.360300465, "n": 1}, {"Week": "2026-02-27", "ARIA": "Remote Australia", "num_w": 0.0, "den_w": 5.24848931, "n": 11}, {"Week": "2026-03-06", "ARIA": "Remote Australia", "num_w": 0.0, "den_w": 0.6386384270000001, "n": 4}, {"Week": "2026-03-13", "ARIA": "Remote Australia", "num_w": 0.0, "den_w": 1.2287733010000002, "n": 4}, {"Week": "2026-03-20", "ARIA": "Remote Australia", "num_w": 1.030502498, "den_w": 2.894817721, "n": 7}, {"Week": "2026-03-27", "ARIA": "Remote Australia", "num_w": 1.279094803, "den_w": 3.643074412, "n": 8}, {"Week": "2026-04-03", "ARIA": "Remote Australia", "num_w": 0.809722016, "den_w": 2.19633836, "n": 7}, {"Week": "2026-04-10", "ARIA": "Remote Australia", "num_w": 0.0, "den_w": 1.046612626, "n": 2}, {"Week": "2026-02-06", "ARIA": "Very Remote Australia", "num_w": 0.0, "den_w": 1.660385629, "n": 4}, {"Week": "2026-02-13", "ARIA": "Very Remote Australia", "num_w": 0.249707921, "den_w": 0.7971409119999999, "n": 4}, {"Week": "2026-02-20", "ARIA": "Very Remote Australia", "num_w": 0.0, "den_w": 0.05858375, "n": 1}, {"Week": "2026-02-27", "ARIA": "Very Remote Australia", "num_w": 0.0, "den_w": 1.171675006, "n": 2}, {"Week": "2026-03-13", "ARIA": "Very Remote Australia", "num_w": 0.521525319, "den_w": 0.521525319, "n": 1}, {"Week": "2026-03-20", "ARIA": "Very Remote Australia", "num_w": 0.0, "den_w": 0.33, "n": 1}, {"Week": "2026-04-03", "ARIA": "Very Remote Australia", "num_w": 0.637827617, "den_w": 0.637827617, "n": 1}, {"Week": "2026-04-10", "ARIA": "Very Remote Australia", "num_w": 0.0, "den_w": 0.637827617, "n": 1}], "cost_components_businesssize": [{"Week": "2026-02-06", "BusinessSize": "Large", "num_w": 0.775682578, "den_w": 2.8505330119999996, "n": 6}, {"Week": "2026-02-13", "BusinessSize": "Large", "num_w": 0.0, "den_w": 1.9036179539999998, "n": 5}, {"Week": "2026-02-20", "BusinessSize": "Large", "num_w": 1.551365156, "den_w": 8.341101886, "n": 13}, {"Week": "2026-02-27", "BusinessSize": "Large", "num_w": 0.0, "den_w": 3.7562920660000003, "n": 6}, {"Week": "2026-03-06", "BusinessSize": "Large", "num_w": 0.206285028, "den_w": 6.817117398000001, "n": 12}, {"Week": "2026-03-13", "BusinessSize": "Large", "num_w": 0.0, "den_w": 4.420539946, "n": 7}, {"Week": "2026-03-20", "BusinessSize": "Large", "num_w": 0.0, "den_w": 4.17632416, "n": 7}, {"Week": "2026-03-27", "BusinessSize": "Large", "num_w": 1.342334677, "den_w": 9.486153421, "n": 15}, {"Week": "2026-04-03", "BusinessSize": "Large", "num_w": 3.5052749110000003, "den_w": 8.407602371, "n": 15}, {"Week": "2026-04-10", "BusinessSize": "Large", "num_w": 0.148512325, "den_w": 6.380764663, "n": 12}, {"Week": "2026-02-06", "BusinessSize": "Medium", "num_w": 2.0280294760000004, "den_w": 12.592955822, "n": 30}, {"Week": "2026-02-13", "BusinessSize": "Medium", "num_w": 1.072516975, "den_w": 31.334296625, "n": 63}, {"Week": "2026-02-20", "BusinessSize": "Medium", "num_w": 2.622720256, "den_w": 39.985249996, "n": 61}, {"Week": "2026-02-27", "BusinessSize": "Medium", "num_w": 1.825073288, "den_w": 55.764048672, "n": 86}, {"Week": "2026-03-06", "BusinessSize": "Medium", "num_w": 3.524609122, "den_w": 34.447679516, "n": 52}, {"Week": "2026-03-13", "BusinessSize": "Medium", "num_w": 4.445039292, "den_w": 29.825052218999996, "n": 50}, {"Week": "2026-03-20", "BusinessSize": "Medium", "num_w": 7.746955626000001, "den_w": 41.30643713000001, "n": 68}, {"Week": "2026-03-27", "BusinessSize": "Medium", "num_w": 13.726329567999999, "den_w": 49.613373986000006, "n": 81}, {"Week": "2026-04-03", "BusinessSize": "Medium", "num_w": 11.328765848000003, "den_w": 37.31590043399999, "n": 67}, {"Week": "2026-04-10", "BusinessSize": "Medium", "num_w": 5.533400848, "den_w": 18.233764657000002, "n": 29}, {"Week": "2026-02-06", "BusinessSize": "Small", "num_w": 1.9752017560000001, "den_w": 55.522784762, "n": 72}, {"Week": "2026-02-13", "BusinessSize": "Small", "num_w": 14.87631104, "den_w": 128.757267068, "n": 163}, {"Week": "2026-02-20", "BusinessSize": "Small", "num_w": 11.062812477000001, "den_w": 163.533090642, "n": 152}, {"Week": "2026-02-27", "BusinessSize": "Small", "num_w": 16.195365483, "den_w": 183.716667891, "n": 166}, {"Week": "2026-03-06", "BusinessSize": "Small", "num_w": 14.308775682, "den_w": 126.79084300299998, "n": 132}, {"Week": "2026-03-13", "BusinessSize": "Small", "num_w": 13.102912544, "den_w": 89.296276362, "n": 97}, {"Week": "2026-03-20", "BusinessSize": "Small", "num_w": 33.282602353, "den_w": 154.33893704000002, "n": 154}, {"Week": "2026-03-27", "BusinessSize": "Small", "num_w": 63.175989716, "den_w": 216.112765322, "n": 217}, {"Week": "2026-04-03", "BusinessSize": "Small", "num_w": 62.357938925, "den_w": 172.808879795, "n": 162}, {"Week": "2026-04-10", "BusinessSize": "Small", "num_w": 22.594201734000002, "den_w": 95.57052706399999, "n": 84}], "fuel_impact": {"impacted_pct": 73.47638578998414, "not_impacted_pct": 26.52361421001586, "expect_pct": 7.786426634309559, "severe_pct": 9.728244874512207, "moderate_pct": 38.73455067431942, "minor_pct": 25.0135902411525, "n_affected": 169, "n_total": 224}, "fuel_components": [{"Week": "2026-04-03", "yes_w": 71.771249805, "expect_w": 3.964561459, "no_w": 24.560100207, "severe_w": 9.477151558, "moderate_w": 34.308414352999996, "minor_w": 24.910343644, "fl_total_w": 68.69590955500001, "n": 101}, {"Week": "2026-04-10", "yes_w": 72.49046665700001, "expect_w": 13.135209735999998, "no_w": 33.688407813, "severe_w": 9.085700105999999, "moderate_w": 39.602525154999995, "minor_w": 22.819084554, "fl_total_w": 71.50730981500001, "n": 123}]};
+
+Chart.defaults.color = '#8b949e';
+Chart.defaults.borderColor = '#30363d';
+Chart.defaults.font.family = "'DM Sans', sans-serif";
+
+// ─── Note box ───
+(function() {
+  var nat = DATA.national;
+  var latest = nat[nat.length - 1];
+  document.getElementById('noteBox').innerHTML =
+    '<strong>Note:</strong> All indicators use weighted proportions (sum of weights). ' +
+    'Dataset contains <strong>' + nat.length + ' week(s)</strong> of data ' +
+    '(latest: w/e ' + latest.Week + '). ' +
+    'Sample: <strong>N=' + latest.N + '</strong>.';
+})();
+
+// ═══════════════════════════════════════════════════
+// Business Size selector (mod 3)
+// ═══════════════════════════════════════════════════
+var currentSize = 'All';
+var chartCostInstance = null;
+var chartTripleInstance = null;
+
+(function() {
+  var sizeRow = document.getElementById('sizeRow');
+  var sizes = ['All'];
+  var sizeCounts = {};
+  sizeCounts['All'] = DATA.national[DATA.national.length - 1].N;
+  if (DATA.national_by_size) {
+    for (var sz in DATA.national_by_size) {
+      sizes.push(sz);
+      var arr = DATA.national_by_size[sz];
+      var total = 0;
+      for (var i = 0; i < arr.length; i++) total += arr[i].N;
+      sizeCounts[sz] = total;
+    }
+  }
+  for (var i = 0; i < sizes.length; i++) {
+    var s = sizes[i];
+    var card = document.createElement('div');
+    card.className = 'size-card' + (s === 'All' ? ' active' : '');
+    card.setAttribute('data-size', s);
+    card.innerHTML = '<div class="sz-label">' + (s === 'All' ? 'All sizes' : s) + '</div>';
+    card.addEventListener('click', (function(sz) {
+      return function() { selectSize(sz); };
+    })(s));
+    sizeRow.appendChild(card);
+  }
+})();
+
+function selectSize(sz) {
+  currentSize = sz;
+  var cards = document.querySelectorAll('.size-card');
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].classList.toggle('active', cards[i].getAttribute('data-size') === sz);
+  }
+  updateKPIs();
+  updateTimeSeriesCharts();
+}
+
+// ─── KPIs ───
+function updateKPIs() {
+  var natArr = currentSize === 'All' ? DATA.national : (DATA.national_by_size && DATA.national_by_size[currentSize] ? DATA.national_by_size[currentSize] : DATA.national);
+  var nat = natArr[natArr.length - 1];
+  var kpiRow = document.getElementById('kpiRow');
+  kpiRow.innerHTML = '';
+  var kpis = [
+    { label: 'Recruitment Rate', value: nat.RR },
+    { label: 'Recruitment Difficulty', value: nat.RD },
+    { label: 'Future Staff Increase', value: nat.FSI },
+    { label: 'Cost as Top Concern', value: nat.Cost_Concern },
+  ];
+  for (var i = 0; i < kpis.length; i++) {
+    var k = kpis[i];
+    var card = document.createElement('div');
+    card.className = 'kpi-card';
+    card.innerHTML =
+      '<div class="kpi-label">' + k.label + '</div>' +
+      '<div class="kpi-value">' + (k.value != null ? (k.value * 100).toFixed(1) + '%' : 'N/A') + '</div>' +
+      '<div class="kpi-sub">Week ending ' + nat.Week + ' · N=' + nat.N + (currentSize !== 'All' ? ' · ' + currentSize : '') + '</div>';
+    kpiRow.appendChild(card);
+  }
+}
+updateKPIs();
+
+// ─── Time Series Charts ───
+function getTimeSeriesData() {
+  return currentSize === 'All' ? DATA.national : (DATA.national_by_size && DATA.national_by_size[currentSize] ? DATA.national_by_size[currentSize] : DATA.national);
+}
+
+function buildCostChart() {
+  var tsData = getTimeSeriesData();
+  if (chartCostInstance) chartCostInstance.destroy();
+  chartCostInstance = new Chart(document.getElementById('chartCost'), {
+    type: 'line',
+    data: {
+      labels: tsData.map(function(d) { return d.Week; }),
+      datasets: [{ label: 'Cost Concern %', data: tsData.map(function(d) { return d.Cost_Concern != null ? d.Cost_Concern * 100 : null; }),
+        borderColor: '#ffa657', backgroundColor: 'rgba(255,166,87,0.12)', fill: true, tension: 0.3, pointRadius: 5, pointBackgroundColor: '#ffa657', borderWidth: 2.5 }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx) { return (ctx.parsed.y).toFixed(1) + '%'; } } } },
+      scales: { y: { beginAtZero: true, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: '#1c2330' } }, x: { grid: { display: false } } } }
+  });
+}
+
+function buildTripleChart() {
+  var tsData = getTimeSeriesData();
+  if (chartTripleInstance) chartTripleInstance.destroy();
+  chartTripleInstance = new Chart(document.getElementById('chartTriple'), {
+    type: 'line',
+    data: {
+      labels: tsData.map(function(d) { return d.Week; }),
+      datasets: [
+        { label: 'Recruitment Rate (RR)', data: tsData.map(function(d) { return d.RR != null ? d.RR * 100 : null; }), borderColor: '#58a6ff', fill: false, tension: 0.3, pointRadius: 5, pointBackgroundColor: '#58a6ff', borderWidth: 2.5 },
+        { label: 'Difficulty Rate (RD)', data: tsData.map(function(d) { return d.RD != null ? d.RD * 100 : null; }), borderColor: '#f78166', fill: false, tension: 0.3, pointRadius: 5, pointBackgroundColor: '#f78166', borderWidth: 2.5 },
+        { label: 'Future Staff Increase (FSI)', data: tsData.map(function(d) { return d.FSI != null ? d.FSI * 100 : null; }), borderColor: '#3fb950', fill: false, tension: 0.3, pointRadius: 5, pointBackgroundColor: '#3fb950', borderWidth: 2.5 },
+      ]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%'; } } } },
+      scales: { y: { beginAtZero: true, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: '#1c2330' } }, x: { grid: { display: false } } } }
+  });
+}
+
+function updateTimeSeriesCharts() {
+  buildCostChart();
+  buildTripleChart();
+}
+buildCostChart();
+buildTripleChart();
+
+// ═══════════════════════════════════════════════════
+// Bar rendering helper
+// ═══════════════════════════════════════════════════
+function renderBars(containerId, items, labelKey, color) {
+  var el = document.getElementById(containerId);
+  var maxVal = 0.001;
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].Cost_Concern > maxVal) maxVal = items[i].Cost_Concern;
+  }
+  el.innerHTML = '';
+  for (var i = 0; i < items.length; i++) {
+    var d = items[i];
+    var pct = (d.Cost_Concern * 100).toFixed(1);
+    var w = Math.max((d.Cost_Concern / maxVal) * 100, 0);
+    var isZero = d.Cost_Concern < 0.0001;
+    var row = document.createElement('div'); row.className = 'bar-row';
+    row.innerHTML =
+      '<div class="bar-label" title="' + d[labelKey] + '">' + d[labelKey] + '</div>' +
+      '<div class="bar-track"><div class="bar-fill ' + (isZero ? 'zero' : '') + '" ' +
+      'style="width:' + (isZero ? '50px' : w + '%') + ';background:' + (isZero ? 'none' : color) + ';">' + pct + '%</div></div>' +
+      '<div class="bar-n">n=' + d.N + '</div>';
+    el.appendChild(row);
+  }
+}
+
+// Separate renderer for Business Size distribution (mod 6 — Pct field, sums to 100%)
+function renderSizeBars(containerId, items) {
+  var el = document.getElementById(containerId);
+  var maxVal = 0.001;
+  for (var i = 0; i < items.length; i++) {
+    if (items[i].Pct > maxVal) maxVal = items[i].Pct;
+  }
+  el.innerHTML = '';
+  for (var i = 0; i < items.length; i++) {
+    var d = items[i];
+    var pct = d.Pct.toFixed(1);
+    var w = Math.max((d.Pct / maxVal) * 100, 0);
+    var isZero = d.Pct < 0.01;
+    var row = document.createElement('div'); row.className = 'bar-row';
+    row.innerHTML =
+      '<div class="bar-label" title="' + d.BusinessSize + '">' + d.BusinessSize + '</div>' +
+      '<div class="bar-track"><div class="bar-fill ' + (isZero ? 'zero' : '') + '" ' +
+      'style="width:' + (isZero ? '50px' : w + '%') + ';background:' + (isZero ? 'none' : '#58a6ff') + ';">' + pct + '%</div></div>' +
+      '<div class="bar-n">n=' + d.N + '</div>';
+    el.appendChild(row);
+  }
+}
+
+// ─── Concern pie + table (reactive to slider) ───
+var concernColors = ['#f85149','#ffa657','#d2a8ff','#58a6ff','#3fb950','#f78166','#79c0ff','#7ee787','#ffc680','#c9d1d9'];
+var concernChartInstance = null;
+
+function updateConcernChart(cd) {
+  if (concernChartInstance) concernChartInstance.destroy();
+  concernChartInstance = new Chart(document.getElementById('chartConcernPie'), {
+    type: 'doughnut',
+    data: {
+      labels: cd.map(function(d) { return d.Concern; }),
+      datasets: [{
+        data: cd.map(function(d) { return d.Pct; }),
+        backgroundColor: concernColors.slice(0, cd.length),
+        borderColor: '#161b22', borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'right', labels: { padding: 12, usePointStyle: true, pointStyle: 'circle', font: { size: 11 } } },
+        tooltip: { callbacks: { label: function(ctx) { return ctx.label + ': ' + ctx.parsed.toFixed(1) + '%'; } } }
+      }
+    }
+  });
+}
+
+function updateConcernTable(cd) {
+  var tbody = document.querySelector('#concernTable tbody');
+  tbody.innerHTML = '';
+  for (var i = 0; i < cd.length; i++) {
+    var d = cd[i];
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + d.Concern + '</td>' +
+      '<td style="font-family:\'Space Mono\',monospace;color:' + (d.Pct > 0 ? '#ffa657' : 'var(--text-dim)') + '">' + d.Pct.toFixed(1) + '%</td>' +
+      '<td style="color:var(--text-dim)">' + d.N + '</td>';
+    tbody.appendChild(tr);
+  }
+}
+
+// ─── Fuel impact stacked bar (reactive to slider) ───
+var fuelChartInstance = null;
+var FUEL_COLORS = {
+  severe: '#A32D2D', moderate: '#EF9F27', minor: '#FAC775',
+  impacted: '#D85A30', expect: '#B5D4F4', no: '#D3D1C7'
+};
+
+function computeFuelFromComponents(components, weekStart, weekEnd) {
+  var totals = { yes_w: 0, expect_w: 0, no_w: 0, severe_w: 0, moderate_w: 0, minor_w: 0, fl_total_w: 0, n: 0 };
+  for (var i = 0; i < components.length; i++) {
+    var r = components[i];
+    if (r.Week >= weekStart && r.Week <= weekEnd) {
+      totals.yes_w += r.yes_w; totals.expect_w += r.expect_w; totals.no_w += r.no_w;
+      totals.severe_w += r.severe_w; totals.moderate_w += r.moderate_w; totals.minor_w += r.minor_w;
+      totals.fl_total_w += r.fl_total_w; totals.n += r.n;
+    }
+  }
+  var total_w = totals.yes_w + totals.expect_w + totals.no_w;
+  if (total_w === 0) return null;
+  var impacted_pct = (totals.yes_w + totals.expect_w) / total_w * 100;
+  var expect_pct = totals.expect_w / total_w * 100;
+  var not_impacted_pct = totals.no_w / total_w * 100;
+  var severe_pct = 0, moderate_pct = 0, minor_pct = 0;
+  if (totals.fl_total_w > 0) {
+    severe_pct = impacted_pct * (totals.severe_w / totals.fl_total_w * 100) / 100;
+    moderate_pct = impacted_pct * (totals.moderate_w / totals.fl_total_w * 100) / 100;
+    minor_pct = impacted_pct * (totals.minor_w / totals.fl_total_w * 100) / 100;
+  }
+  return { impacted_pct: impacted_pct, not_impacted_pct: not_impacted_pct, expect_pct: expect_pct,
+           severe_pct: severe_pct, moderate_pct: moderate_pct, minor_pct: minor_pct, n_total: totals.n };
+}
+
+function updateFuelChart(fd) {
+  if (!fd) return;
+  var legendEl = document.getElementById('fuelLegend');
+  var items = [
+    { label: 'Severe impact', pct: fd.severe_pct, color: FUEL_COLORS.severe },
+    { label: 'Moderate impact', pct: fd.moderate_pct, color: FUEL_COLORS.moderate },
+    { label: 'Minor impact', pct: fd.minor_pct, color: FUEL_COLORS.minor },
+    { label: 'Expect impacts', pct: fd.expect_pct, color: FUEL_COLORS.expect },
+    { label: 'Not impacted', pct: fd.not_impacted_pct, color: FUEL_COLORS.no },
+  ];
+  legendEl.innerHTML = '';
+  for (var i = 0; i < items.length; i++) {
+    legendEl.innerHTML += '<span style="display:flex;align-items:center;gap:4px;color:var(--text-dim);">' +
+      '<span style="width:10px;height:10px;border-radius:2px;background:' + items[i].color + ';"></span>' +
+      items[i].label + ' ' + items[i].pct.toFixed(1) + '%</span>';
+  }
+  if (fuelChartInstance) fuelChartInstance.destroy();
+  fuelChartInstance = new Chart(document.getElementById('chartFuel'), {
+    type: 'bar',
+    data: {
+      labels: ['Overall impact', 'By severity'],
+      datasets: [
+        { label: 'Severe impact', data: [0, fd.severe_pct], backgroundColor: FUEL_COLORS.severe },
+        { label: 'Moderate impact', data: [0, fd.moderate_pct], backgroundColor: FUEL_COLORS.moderate },
+        { label: 'Minor impact', data: [0, fd.minor_pct], backgroundColor: FUEL_COLORS.minor },
+        { label: 'Impacted (total)', data: [fd.impacted_pct, 0], backgroundColor: FUEL_COLORS.impacted },
+        { label: 'Expect impacts', data: [0, fd.expect_pct], backgroundColor: FUEL_COLORS.expect },
+        { label: 'Not impacted', data: [fd.not_impacted_pct, fd.not_impacted_pct], backgroundColor: FUEL_COLORS.no },
+      ]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      layout: { padding: { left: 10 } },
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: function(ctx) { return ctx.parsed.x > 0 ? ctx.dataset.label + ': ' + ctx.parsed.x.toFixed(1) + '%' : null; } } }
+      },
+      scales: {
+        x: { stacked: true, max: 100, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: 'rgba(128,128,128,0.1)' } },
+        y: { stacked: true, grid: { display: false }, ticks: { font: { size: 13 } } }
+      }
+    }
+  });
+}
+
+// Initial fuel render
+if (DATA.fuel_impact) updateFuelChart(DATA.fuel_impact);
+
+// ─── Fuel types horizontal bar (reactive to slider) ───
+var FUEL_TYPE_VARS = [
+  ["OperationCostsFuel", "Higher operation costs due to fuel"],
+  ["AvailabilityFuel", "Fuel availability"],
+  ["GoodsCostsFuel", "Higher costs of goods or inputs"],
+  ["DeliveryFuel", "Higher delivery or transport costs"],
+  ["DelaysFuel", "Freight or supply delays"],
+  ["DemandFuel", "Reduced customer demand"],
+  ["HoursFuel", "Reduced operating hours"],
+  ["UncertaintyFuel", "Increased business uncertainty"],
+  ["RecruitmentFuel", "Delayed recruitment"],
+  ["StaffFuel", "Staff impacted"],
+  ["RetentionFuel", "Worries about retaining staff"],
+  ["PositiveFuel", "Positive impacts"],
+  ["OtherFuel", "Other impacts"],
+];
+
+function computeFuelTypesFromComponents(components, weekStart, weekEnd) {
+  var totals = {};
+  for (var i = 0; i < FUEL_TYPE_VARS.length; i++) {
+    var v = FUEL_TYPE_VARS[i][0];
+    totals[v] = { yes: 0, tot: 0 };
+  }
+  for (var i = 0; i < components.length; i++) {
+    var r = components[i];
+    if (r.Week >= weekStart && r.Week <= weekEnd) {
+      for (var j = 0; j < FUEL_TYPE_VARS.length; j++) {
+        var v = FUEL_TYPE_VARS[j][0];
+        totals[v].yes += (r[v + '_yes'] || 0);
+        totals[v].tot += (r[v + '_tot'] || 0);
+      }
+    }
+  }
+  var results = [];
+  for (var i = 0; i < FUEL_TYPE_VARS.length; i++) {
+    var v = FUEL_TYPE_VARS[i][0];
+    var t = totals[v];
+    var pct = t.tot > 0 ? t.yes / t.tot * 100 : 0;
+    if (pct > 0.01) {
+      results.push({ label: FUEL_TYPE_VARS[i][1], pct: pct, N: Math.round(t.tot) });
+    }
+  }
+  results.sort(function(a, b) { return b.pct - a.pct; });
+  return results;
+}
+
+function renderFuelTypeBars(items) {
+  var el = document.getElementById('barsFuelTypes');
+  if (!items || items.length === 0) { el.innerHTML = ''; return; }
+  var maxVal = 0.01;
+  for (var i = 0; i < items.length; i++) { if (items[i].pct > maxVal) maxVal = items[i].pct; }
+  el.innerHTML = '';
+  for (var i = 0; i < items.length; i++) {
+    var d = items[i];
+    var pctStr = d.pct.toFixed(1);
+    var w = Math.max((d.pct / maxVal) * 100, 0);
+    var row = document.createElement('div'); row.className = 'bar-row';
+    row.innerHTML =
+      '<div class="bar-label" title="' + d.label + '">' + d.label + '</div>' +
+      '<div class="bar-track"><div class="bar-fill" style="width:' + w + '%;background:#D85A30;">' + pctStr + '%</div></div>' +
+      '<div class="bar-n">n=' + d.N + '</div>';
+    el.appendChild(row);
+  }
+}
+
+// Initial fuel types render from pre-computed data
+if (DATA.fuel_types) {
+  var ftFiltered = [];
+  for (var i = 0; i < DATA.fuel_types.length; i++) {
+    if (DATA.fuel_types[i].pct > 0.01) ftFiltered.push({ label: DATA.fuel_types[i].label, pct: DATA.fuel_types[i].pct, N: DATA.fuel_types[i].n });
+  }
+  renderFuelTypeBars(ftFiltered);
+}
+
+// ═══════════════════════════════════════════════════
+// Date range slider + reactive bars
+// ═══════════════════════════════════════════════════
+(function() {
+  var weekSet = {};
+  var compKeys = ['cost_components_state', 'cost_components_industry', 'cost_components_gcc', 'cost_components_aria', 'cost_components_businesssize'];
+  for (var k = 0; k < compKeys.length; k++) {
+    var arr = DATA[compKeys[k]];
+    if (arr) { for (var i = 0; i < arr.length; i++) weekSet[arr[i].Week] = true; }
+  }
+  if (DATA.fuel_components) { for (var i = 0; i < DATA.fuel_components.length; i++) weekSet[DATA.fuel_components[i].Week] = true; }
+  if (DATA.fuel_types_components) { for (var i = 0; i < DATA.fuel_types_components.length; i++) weekSet[DATA.fuel_types_components[i].Week] = true; }
+  var allWeeks = Object.keys(weekSet).sort();
+  var N = allWeeks.length;
+
+  var sliderMin = document.getElementById('sliderMin');
+  var sliderMax = document.getElementById('sliderMax');
+  var trackFill = document.getElementById('trackFill');
+  var startLabel = document.getElementById('sliderStartLabel');
+  var endLabel = document.getElementById('sliderEndLabel');
+  var pill = document.getElementById('sliderPill');
+  var resetBtn = document.getElementById('sliderReset');
+
+  if (N === 0) {
+    if (DATA.cost_by_state) renderBars('barsState', DATA.cost_by_state, 'State', '#ffa657');
+    if (DATA.cost_by_gcc) renderBars('barsGCC', DATA.cost_by_gcc, 'GCC', '#d2a8ff');
+    if (DATA.cost_by_industry) renderBars('barsIndustry', DATA.cost_by_industry, 'Industry06', '#3fb950');
+    if (DATA.cost_by_aria) renderBars('barsARIA', DATA.cost_by_aria, 'ARIA', '#f78166');
+    if (DATA.cost_by_businesssize) renderBars('barsSizeRate', DATA.cost_by_businesssize, 'BusinessSize', '#58a6ff');
+    if (DATA.cost_size_distribution) renderSizeBars('barsSize', DATA.cost_size_distribution);
+    updateConcernChart(DATA.concern_distribution);
+    updateConcernTable(DATA.concern_distribution);
+    if (DATA.fuel_impact) updateFuelChart(DATA.fuel_impact);
+    if (DATA.fuel_types) {
+      var ft = []; for (var i = 0; i < DATA.fuel_types.length; i++) { if (DATA.fuel_types[i].pct > 0.01) ft.push({ label: DATA.fuel_types[i].label, pct: DATA.fuel_types[i].pct, N: DATA.fuel_types[i].n }); }
+      renderFuelTypeBars(ft);
+    }
+    startLabel.textContent = '\u2014'; endLabel.textContent = '\u2014';
+    pill.innerHTML = 'No date data available';
+    return;
+  }
+
+  function aggregate(componentData, dimKey, weekStart, weekEnd) {
+    var byDim = {};
+    for (var i = 0; i < componentData.length; i++) {
+      var row = componentData[i];
+      if (row.Week >= weekStart && row.Week <= weekEnd) {
+        var key = row[dimKey];
+        if (!byDim[key]) byDim[key] = { num_w: 0, den_w: 0, n: 0 };
+        byDim[key].num_w += row.num_w;
+        byDim[key].den_w += row.den_w;
+        byDim[key].n += row.n;
+      }
+    }
+    var results = [];
+    for (var key in byDim) {
+      var v = byDim[key];
+      var obj = { N: v.n, Cost_Concern: v.den_w > 0 ? v.num_w / v.den_w : 0 };
+      obj[dimKey] = key;
+      results.push(obj);
+    }
+    results.sort(function(a, b) { return b.Cost_Concern - a.Cost_Concern; });
+    return results;
+  }
+
+  // Aggregate for business size distribution (mod 6): share of cost-concerned employers
+  function aggregateSizeDist(componentData, weekStart, weekEnd) {
+    var bySize = {};
+    for (var i = 0; i < componentData.length; i++) {
+      var row = componentData[i];
+      if (row.Week >= weekStart && row.Week <= weekEnd) {
+        var key = row.BusinessSize;
+        if (!bySize[key]) bySize[key] = { num_w: 0, n: 0 };
+        bySize[key].num_w += row.num_w;
+        bySize[key].n += row.n;
+      }
+    }
+    var totalCostW = 0;
+    for (var key in bySize) totalCostW += bySize[key].num_w;
+    var results = [];
+    for (var key in bySize) {
+      results.push({
+        BusinessSize: key,
+        Pct: totalCostW > 0 ? (bySize[key].num_w / totalCostW) * 100 : 0,
+        N: bySize[key].n
+      });
+    }
+    results.sort(function(a, b) { return b.Pct - a.Pct; });
+    return results;
+  }
+
+  // Aggregate concern distribution across selected weeks
+  function aggregateConcerns(componentData, weekStart, weekEnd) {
+    var byConcern = {};
+    for (var i = 0; i < componentData.length; i++) {
+      var row = componentData[i];
+      if (row.Week >= weekStart && row.Week <= weekEnd) {
+        if (!byConcern[row.Concern]) byConcern[row.Concern] = { w: 0, n: 0 };
+        byConcern[row.Concern].w += row.w;
+        byConcern[row.Concern].n += row.n;
+      }
+    }
+    var totalW = 0;
+    for (var key in byConcern) totalW += byConcern[key].w;
+    var results = [];
+    for (var key in byConcern) {
+      results.push({
+        Concern: key,
+        Pct: totalW > 0 ? (byConcern[key].w / totalW) * 100 : 0,
+        N: byConcern[key].n
+      });
+    }
+    results.sort(function(a, b) { return b.Pct - a.Pct; });
+    return results;
+  }
+
+  function updateBars() {
+    var lo = +sliderMin.value;
+    var hi = +sliderMax.value;
+    if (lo > hi) { var t = lo; lo = hi; hi = t; }
+    var startIdx = Math.round(lo / 100 * (N - 1));
+    var endIdx = Math.round(hi / 100 * (N - 1));
+    var weekStart = allWeeks[startIdx];
+    var weekEnd = allWeeks[endIdx];
+    var weekCount = endIdx - startIdx + 1;
+
+    startLabel.textContent = weekStart;
+    endLabel.textContent = weekEnd;
+    pill.innerHTML = '<strong>' + weekCount + '</strong> week' + (weekCount !== 1 ? 's' : '') + ' selected';
+    trackFill.style.left = lo + '%';
+    trackFill.style.width = (hi - lo) + '%';
+
+    // Cost impact bars
+    try {
+      if (DATA.cost_components_state) renderBars('barsState', aggregate(DATA.cost_components_state, 'State', weekStart, weekEnd), 'State', '#ffa657');
+      if (DATA.cost_components_gcc) renderBars('barsGCC', aggregate(DATA.cost_components_gcc, 'GCC', weekStart, weekEnd), 'GCC', '#d2a8ff');
+      if (DATA.cost_components_industry) renderBars('barsIndustry', aggregate(DATA.cost_components_industry, 'Industry06', weekStart, weekEnd), 'Industry06', '#3fb950');
+      if (DATA.cost_components_aria) renderBars('barsARIA', aggregate(DATA.cost_components_aria, 'ARIA', weekStart, weekEnd), 'ARIA', '#f78166');
+      if (DATA.cost_components_businesssize) renderBars('barsSizeRate', aggregate(DATA.cost_components_businesssize, 'BusinessSize', weekStart, weekEnd), 'BusinessSize', '#58a6ff');
+      if (DATA.cost_components_businesssize) renderSizeBars('barsSize', aggregateSizeDist(DATA.cost_components_businesssize, weekStart, weekEnd));
+    } catch(e) { console.error('Cost bars error:', e); }
+
+    // Concern distribution
+    try {
+      if (DATA.concern_components) {
+        var cd = aggregateConcerns(DATA.concern_components, weekStart, weekEnd);
+        updateConcernChart(cd);
+        updateConcernTable(cd);
+      }
+    } catch(e) { console.error('Concern chart error:', e); }
+
+    // Fuel impact stacked bar
+    try {
+      if (DATA.fuel_components && DATA.fuel_components.length > 0) {
+        var fd = computeFuelFromComponents(DATA.fuel_components, weekStart, weekEnd);
+        if (fd) updateFuelChart(fd);
+      }
+    } catch(e) { console.error('Fuel impact error:', e); }
+
+    // Fuel types bars
+    try {
+      if (DATA.fuel_types_components && DATA.fuel_types_components.length > 0) {
+        var ft = computeFuelTypesFromComponents(DATA.fuel_types_components, weekStart, weekEnd);
+        renderFuelTypeBars(ft);
+      }
+    } catch(e) { console.error('Fuel types error:', e); }
+  }
+
+  sliderMin.addEventListener('input', updateBars);
+  sliderMax.addEventListener('input', updateBars);
+  resetBtn.addEventListener('click', function() { sliderMin.value = 0; sliderMax.value = 100; updateBars(); });
+  updateBars();
+})();
+
+// ─── State indicators grouped bar ───
+(function() {
+  var states = DATA.by_state.map(function(d) { return d.State; });
+  new Chart(document.getElementById('chartStateIndicators'), {
+    type: 'bar',
+    data: { labels: states, datasets: [
+      { label: 'RR', data: DATA.by_state.map(function(d) { return d.RR != null ? d.RR * 100 : 0; }), backgroundColor: '#58a6ff' },
+      { label: 'RD', data: DATA.by_state.map(function(d) { return d.RD != null ? d.RD * 100 : 0; }), backgroundColor: '#f78166' },
+      { label: 'FSI', data: DATA.by_state.map(function(d) { return d.FSI != null ? d.FSI * 100 : 0; }), backgroundColor: '#3fb950' },
+      { label: 'Cost Concern', data: DATA.by_state.map(function(d) { return d.Cost_Concern != null ? d.Cost_Concern * 100 : 0; }), backgroundColor: '#ffa657' },
+    ]},
+    options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'circle' } },
+      tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(1) + '%'; } } } },
+      scales: { y: { beginAtZero: true, ticks: { callback: function(v) { return v + '%'; } }, grid: { color: '#1c2330' } }, x: { grid: { display: false }, ticks: { maxRotation: 45 } } } }
+  });
+})();
+</script>
+</body>
+</html>
