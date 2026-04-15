@@ -1,0 +1,58 @@
+we can deploy some improvements into the pipeline to ensure the model’s free text outputs comply with government style guidance before publication.
+
+1.	Scope: Only apply style rules to description, skills name and keywords. Do not modify codes, categories, levels, evidence or confidence scores.
+
+2.	Core style requirements the model must meet: The handbook expectations translate into the following operational rules.
+a.	Plain language and concision
+•	Use common, short words.
+•	Remove unnecessary qualifiers and abstractions.
+•	Avoid bureaucratic phrasing.
+•	Target ~15 words per sentence, maximum 25.
+Proposed instruction:
+“Rewrite in plain language. Be concise. Remove unnecessary words.”
+b.	Active voice by default
+•	Prefer explicit actors.
+•	Avoid agentless passive constructions unless the actor is genuinely unknown.
+Detect and rewrite patterns like:
+“X is undertaken / is conducted / is processed”
+c.	Sentence length control
+•	Split long or compound sentences.
+•	Lists are acceptable if they improve clarity.
+Post processing rule:
+If a sentence exceeds 25 words, split or re prompt.
+d.	Numbers formatting
+Apply the handbook rules consistently:
+•	Use words for zero and one.
+•	Use numerals for 2 and above.
+•	Use commas in thousands.
+•	Express large rounded numbers as 1 million, 4.5 million.
+•	Do not start sentences with numerals.
+•	Ensure comparisons use numerals on both sides.
+e.	Keywords list normalisation
+•	Use parallel structure.
+•	Prefer noun phrases.
+•	No mixing verbs, sentences and nouns.
+f.	Australian English and accessibility
+•	Australian spelling only.
+•	Avoid unexplained jargon or acronyms.
+•	Use inclusive, neutral language.
+3.	Before and after examples
+These are examples of what the model is expected to produce.
+•	Example: Description field
+o	Original Extends improvisational ideas to new scenarios, adapting techniques as required during practice.
+o	Compliant output Extends improvisational ideas to new situations and adapts techniques during practice.
+•	Example: Numbers
+o	Original Implement 1000000 tests to check data quality in 0 cases.
+o	Compliant output Implement 1 million tests to check data quality in zero cases.
+•	Example: Keywords
+o	Original [risk assessment, to identify hazards, compliant with SWMS, demolition safely]
+o	Compliant output [risk assessment, hazard identification, SWMS compliance, demolition safety]
+4.	Recommended implementation approach
+Can we look at the below list as things to actively input/encourage in the harvester
+•	Add explicit style constraints to the generation prompt.
+•	Apply a post processing pass that checks: 
+o	sentence length
+o	passive voice patterns
+o	number formatting
+o	list parallelism
+o	Australian spelling
