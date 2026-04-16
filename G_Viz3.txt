@@ -3,3 +3,6 @@ The total impacted (66%) and the 2 not impacted categories (8% & 27%, summing to
 The severe, moderate and minor impact categories are calculated from the “FuelLevel” variable in such a way that they sum to the total impacted value (66%). So, excluding Unsure responses again, severe impact makes up 13% of (weighted) responses to the “FuelLevel” variable, and is therefore reduced to 9% for the final graph (as in 66% of 13%).
 
 The “how employers impacted” graph is much more simple – for each of the variables it’s just Yes as a proportion of Yes + No.
+
+
+a quick introduction before all visualisation: Jobs and Skills Australia surveys around 1,000 employers each month through the Recruitment Experiences and Outlook Survey (REOS) to understand employers’ recruitment experiences and staffing expectations. From 1 April 2026, the survey introduced new targeted questions to measure the impact of fuel costs and supply disruptions on businesses.
