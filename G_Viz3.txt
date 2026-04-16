@@ -6,3 +6,10 @@ The “how employers impacted” graph is much more simple – for each of the v
 
 
 a quick introduction before all visualisation: Jobs and Skills Australia surveys around 1,000 employers each month through the Recruitment Experiences and Outlook Survey (REOS) to understand employers’ recruitment experiences and staffing expectations. From 1 April 2026, the survey introduced new targeted questions to measure the impact of fuel costs and supply disruptions on businesses.
+
+Disclaimer
+Data in this dashboard are derived from Jobs and Skills Australia’s Recruitment Experiences and Outlook Survey (REOS). Estimates are based on weighted survey responses and are subject to sampling variability, particularly where sample sizes are small or results are disaggregated. Results should be interpreted as indicative of employer sentiment and experiences at the time of collection, rather than precise measures.
+
+Fuel cost and supply disruption questions were introduced from 1 April 2026, and findings for these measures are not directly comparable with earlier periods.
+
+This dashboard is for internal analytical purposes only. The underlying data and outputs are subject to change as new information becomes available.
