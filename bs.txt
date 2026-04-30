@@ -1,0 +1,12 @@
+Skill Refiner Improvements — Findings from Manual Review
+We compared the automated refiner output against 101 manually reviewed skills. The refiner aligned with the reviewer 59% of the time on whether to change a name. Where both agreed a change was needed, 33% of the refiner's corrections matched the reviewer's suggestion closely (e.g., "Active Listening" → "Viewpoint Elicitation").
+Three areas need improvement:
+1. Over-refinement — the refiner removes words it shouldn't (16 cases)
+The refiner strips words it considers redundant, but the reviewer considered them meaningful because they appear in the source evidence text. For example, "Password Strength Creation" was simplified to "Password Creation" — but the evidence explicitly says "create strong passwords", so "Strength" carries meaning and should stay. Similarly, "ICT Gap Identification" was stripped to "Gap Analysis", losing the "ICT" scope that the evidence supports.
+Fix: add a rule that preserves words appearing in the evidence text.
+2. Under-refinement — the refiner doesn't change what it should (21 cases)
+The refiner reads the evidence text literally but misses the skill's purpose within the unit. The reviewer understood the broader context and wanted names that reflect what the skill is FOR, not just what it literally describes. For example, the reviewer changed "Stakeholder Reporting" to "Change Proposal Reporting" because the evidence says "report on proposed changes and improvement opportunities" — the purpose is proposing changes, not just reporting to stakeholders.
+Fix: provide additional context (such as the element title within the unit) so the refiner understands the skill's purpose, not just its literal description.
+3. Keywords not being updated (0% changed)
+The style compliance step should be normalising keywords to consistent parallel noun phrases (e.g., "to identify hazards" → "hazard identification"), but currently no keywords are being modified.
+Fix: investigate and resolve the keyword processing issue.
