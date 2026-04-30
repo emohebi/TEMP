@@ -31,3 +31,5 @@ Style compliance for descriptions and keywords (new capability)
 A style compliance step was added to bring descriptions and keywords in line with Australian VET plain language standards. For descriptions, the LLM rewrites for plain language, active voice, sentence length under 25 words, correct number formatting, and Australian spelling. For keywords, the LLM normalises entries to parallel noun phrases. A second validation pass checks the output and re-prompts the LLM for any remaining violations. Skill names are restricted to spelling and capitalisation fixes only — the meaning is locked after evidence validation to prevent the style step from undoing evidence-grounded corrections.
 Tracking columns (new)
 Original values are preserved alongside refined values with change flags, allowing before-and-after comparison: org_name/name_changed for skill names, org_description/description_changed for descriptions, and org_keywords/keywords_changed for keywords.
+
+return f'''<|start|>system<|message|>{sys_message}\n\nReasoning: medium<|end|><|start|>user<|message|>{query}<|end|><|start|>assistant<|channel|>analysis<|message|><|end|><|start|>assistant'''
