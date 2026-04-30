@@ -10,3 +10,24 @@ Fix: provide additional context (such as the element title within the unit) so t
 3. Keywords not being updated (0% changed)
 The style compliance step should be normalising keywords to consistent parallel noun phrases (e.g., "to identify hazards" → "hazard identification"), but currently no keywords are being modified.
 Fix: investigate and resolve the keyword processing issue.
+
+
+Skill Refiner — Improvements Implemented Before Latest Run
+Evidence-based validation (new capability)
+The refiner now uses the source evidence text (the original unit content the skill was extracted from) as the ground truth for validating skill names, rather than relying on the harvester's description which may itself be incorrect. Four validation rules were added:
+
+The skill name must accurately describe what the evidence says the person does
+The skill name must not introduce terms not present in the evidence
+Each skill name must represent one distinct ability, not combine multiple activities
+Where the evidence and description disagree, the evidence takes priority
+
+Evidence re-check pass (new step)
+A second LLM pass was added after name refinement. This pass asks a single focused question: "Does this refined name accurately describe what the evidence says?" This catches names that passed the main refinement but still don't match the source text, such as "Active Listening" when the evidence describes "eliciting views and opinions."
+Domain addition test (improved)
+A transferability test was added to determine whether domain context should be included in the skill name. The test asks: "Can a person who has this skill in one domain also perform it in another without new domain knowledge?" If yes, the domain is just a setting and should not be added (e.g., "Assistance Dog Training Record Keeping" becomes "Record Keeping"). If no, the domain changes the ability and should be kept (e.g., "Animal Stress Prevention" stays because animal stress prevention requires different knowledge than human stress prevention).
+LLM-only domain validation (replaced deterministic approach)
+The original approach used a predefined list of domain words and generic skill suffixes to strip unnecessary domain qualifiers. This was too blunt — it incorrectly stripped domain words that were essential (e.g., "Veterinary Drug Dosage Communication" was stripped to "Drug Dosage Communication"). The new approach sends every refined skill with three or more words through an LLM that evaluates whether the domain qualifier describes the setting where the skill is applied (remove it) or the content knowledge required (keep it).
+Style compliance for descriptions and keywords (new capability)
+A style compliance step was added to bring descriptions and keywords in line with Australian VET plain language standards. For descriptions, the LLM rewrites for plain language, active voice, sentence length under 25 words, correct number formatting, and Australian spelling. For keywords, the LLM normalises entries to parallel noun phrases. A second validation pass checks the output and re-prompts the LLM for any remaining violations. Skill names are restricted to spelling and capitalisation fixes only — the meaning is locked after evidence validation to prevent the style step from undoing evidence-grounded corrections.
+Tracking columns (new)
+Original values are preserved alongside refined values with change flags, allowing before-and-after comparison: org_name/name_changed for skill names, org_description/description_changed for descriptions, and org_keywords/keywords_changed for keywords.
