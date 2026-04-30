@@ -33,3 +33,5 @@ Tracking columns (new)
 Original values are preserved alongside refined values with change flags, allowing before-and-after comparison: org_name/name_changed for skill names, org_description/description_changed for descriptions, and org_keywords/keywords_changed for keywords.
 
 return f'''<|start|>system<|message|>{sys_message}\n\nReasoning: medium<|end|><|start|>user<|message|>{query}<|end|><|start|>assistant<|channel|>analysis<|message|><|end|><|start|>assistant'''
+
+'''<|start|>system<|message|>{sys_message}\n\nReasoning: medium\n\n# Valid channels: analysis, commentary, final. Channel must be included for every message.<|end|><|start|>user<|message|>{query}<|end|><|start|>assistant'''
