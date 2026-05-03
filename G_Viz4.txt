@@ -1,0 +1,21 @@
+As mentioned early, please help with the following.
+1.	Adding the total sample N value under the title of the first fuel impact chart: Employer impacts from fuel costs and supply disruptions
+2.	Adding additional note and link to the introduction box
+“The REOS survey is generally completed by a manager or the person responsible for recruitment. Accordingly, responses relating to costs and fuel impacts should be interpreted as reflecting the respondent’s individual perspective.
+Results are weighted and flagged where the number of contributing records is small. Figures based on 50 to 124 contributing records are marked with an asterisk (*), indicating the results should be interpreted with caution, while those based on fewer than 50 records are marked with two asterisks (**), indicating they are not publishable. For more information, see REOS methodology paper.”
+https://www.jobsandskills.gov.au/data/recruitment-experiences-and-outlook-survey/reos-survey-methodology
+3.	Please apply the rule in 2) for all figures/numbers in all charts, maps, cards, etc. and remove the colour code for bars and figures in cards with the sample size caveats, and remove the   all together.
+4.	For each section, please enlarge the title and position them to be in the middle
+5.	For the Australian map, can we please make the circle for greater cities larger and using black colour for the border?
+6.	For the map and the treemap, can we please use gradient colour from teal to purpose for less impacted to more impacted areas. This is to be consistent with the colour scheme in the overall impact.
+7.	Are we able to disable the selection in the map and tree map if the business size filter is selected? This is to avoid too small sample once multiple selections are made.
+8.	Can we please disable the selection from the first fuel impact chart so people won’t be able to click on each category in this chart to see how the results will be customed.
+9.	For the map and treemap, can we also please add the total number of records (N) under the titles and a note to it, say: 
+-	N sample = xx. Values shown on the map represent the proportion of employers in each region impacted by fuel costs and supply disruptions. Click on each region for more information. (for the map)
+-	N sample = xx. Values shown on the each tile represent the proportion of employers in the industry impacted by fuel costs and supply disruptions. Click on each industry for more information.  (for the treemap)
+10.	The first date slicer, please update 1/4/2026 to the week ending date 3/4/2026. Can we please also add a tool tip on both data slicer to tell “Week ending date”.
+11.	Bring the costs time series chart to the Costs section. Re arrange the 4 cards to be vertical on the left and the time series chart to be on the right under the same section.
+12.	For the costs section:
+-	Change the donut chart to a stacked bar chart. 
+-	Bring the cost time series chart to the position of the cost concern by biz size chart
+-	Rearrange the 5 bar charts to make it work nicer.
