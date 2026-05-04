@@ -1,53 +1,56 @@
-2026-05-04 08:35:45,294 - __main__ - INFO - Loading skills from: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app.xlsx
-2026-05-04 08:35:45,677 - __main__ - INFO - Loaded 159 skills
-2026-05-04 08:35:45,678 - __main__ - INFO - SkillNameRefiner v2 init: batch_size=10000, style=True, consensus=7x, threshold=4
-2026-05-04 08:35:45,678 - __main__ - INFO - Starting single-pass refinement for 159 skills
-2026-05-04 08:35:45,679 - __main__ - INFO - Using elements column 'elements' for cross-referencing
-2026-05-04 08:35:45,679 - __main__ - INFO - Using performance criteria column 'performance_criteria' for cross-referencing
-2026-05-04 08:35:45,679 - __main__ - INFO - Using foundation skills column 'foundation_skills' for cross-referencing
-2026-05-04 08:35:45,679 - __main__ - INFO - Using application column 'application' for unit context
-2026-05-04 08:35:45,689 - __main__ - INFO - Processing 157 skills (2 empty/skipped)
-2026-05-04 08:35:45,690 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
-2026-05-04 08:35:45,690 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
-2026-05-04 08:35:45,691 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
-Run 1/7 (t=0.0): 100%|██████████| 1/1 [00:44<00:00, 44.44s/it]2026-05-04 08:36:30,132 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
+2026-05-04 09:05:16,308 - __main__ - INFO - Loading skills from: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app.xlsx
+2026-05-04 09:05:16,505 - __main__ - INFO - Loaded 159 skills
+2026-05-04 09:05:16,506 - __main__ - INFO - Embedding interface available for PC coverage check
+2026-05-04 09:05:16,506 - __main__ - INFO - SkillNameRefiner v2 init: batch_size=10000, style=True, consensus=7x, threshold=4
+2026-05-04 09:05:16,506 - __main__ - INFO - Starting single-pass refinement for 159 skills
+2026-05-04 09:05:16,507 - __main__ - INFO - Using elements column 'elements' for cross-referencing
+2026-05-04 09:05:16,507 - __main__ - INFO - Using performance criteria column 'performance_criteria' for cross-referencing
+2026-05-04 09:05:16,507 - __main__ - INFO - Using foundation skills column 'foundation_skills' for cross-referencing
+2026-05-04 09:05:16,508 - __main__ - INFO - Using application column 'application' for unit context
+2026-05-04 09:05:16,517 - __main__ - INFO - Processing 157 skills (2 empty/skipped)
+2026-05-04 09:05:16,517 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
+2026-05-04 09:05:16,517 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+2026-05-04 09:05:16,518 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
+Run 1/7 (t=0.0): 100%|██████████| 1/1 [00:12<00:00, 12.42s/it]2026-05-04 09:05:28,938 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
 
-Run 2/7 (t=0.0): 100%|██████████| 1/1 [00:35<00:00, 35.31s/it]2026-05-04 08:37:05,441 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
+Run 2/7 (t=0.0): 100%|██████████| 1/1 [00:12<00:00, 12.01s/it]2026-05-04 09:05:40,945 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
 
-Run 3/7 (t=0.1): 100%|██████████| 1/1 [00:49<00:00, 49.12s/it]2026-05-04 08:37:54,566 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
+Run 3/7 (t=0.1): 100%|██████████| 1/1 [00:08<00:00,  8.39s/it]2026-05-04 09:05:49,338 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
 
-Run 4/7 (t=0.2): 100%|██████████| 1/1 [00:47<00:00, 47.23s/it]2026-05-04 08:38:41,800 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
+Run 4/7 (t=0.2): 100%|██████████| 1/1 [00:12<00:00, 12.13s/it]2026-05-04 09:06:01,468 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
 
-Run 5/7 (t=0.3): 100%|██████████| 1/1 [00:44<00:00, 44.13s/it]2026-05-04 08:39:25,930 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
+Run 5/7 (t=0.3): 100%|██████████| 1/1 [00:10<00:00, 10.30s/it]2026-05-04 09:06:11,770 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
 
-Run 6/7 (t=0.4): 100%|██████████| 1/1 [00:44<00:00, 44.52s/it]2026-05-04 08:40:10,451 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
+Run 6/7 (t=0.4): 100%|██████████| 1/1 [00:08<00:00,  8.55s/it]2026-05-04 09:06:20,322 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
 
-Run 7/7 (t=0.5): 100%|██████████| 1/1 [00:37<00:00, 37.68s/it]2026-05-04 08:40:48,182 - __main__ - INFO - Running post-refinement duplicate check...
+Run 7/7 (t=0.5): 100%|██████████| 1/1 [00:07<00:00,  7.92s/it]2026-05-04 09:06:28,295 - __main__ - INFO - Running post-refinement duplicate check...
+2026-05-04 09:06:28,323 - __main__ - INFO - Running validation pass for quality flags...
+2026-05-04 09:06:28,332 - __main__ - INFO - Validation pass: 157 skills
 
-Style compliance: 100%|██████████| 1/1 [00:48<00:00, 48.79s/it]2026-05-04 08:41:37,007 - __main__ - INFO - 
+Style compliance: 100%|██████████| 1/1 [00:38<00:00, 38.54s/it]2026-05-04 09:07:22,098 - __main__ - INFO - 
 ============================================================
-2026-05-04 08:41:37,009 - __main__ - INFO - SKILL NAME REFINEMENT v2 — STATISTICS (CONSENSUS)
-2026-05-04 08:41:37,010 - __main__ - INFO - ============================================================
-2026-05-04 08:41:37,010 - __main__ - INFO - Total processed: 157
-2026-05-04 08:41:37,010 - __main__ - INFO - Consensus runs: 7
-2026-05-04 08:41:37,011 - __main__ - INFO - Consensus threshold: 4
-2026-05-04 08:41:37,011 - __main__ - INFO - Names changed by consensus: 20
-2026-05-04 08:41:37,011 - __main__ - INFO - Names changed by post-process: 8
-2026-05-04 08:41:37,012 - __main__ - INFO - Names unchanged: 137
-2026-05-04 08:41:37,012 - __main__ - INFO - Flagged as duplicate: 3
-2026-05-04 08:41:37,012 - __main__ - INFO - Flagged as out of scope: 1
-2026-05-04 08:41:37,013 - __main__ - INFO - Flagged as misinterpretation: 0
-2026-05-04 08:41:37,013 - __main__ - INFO - Skills added from PC gaps: 0
-2026-05-04 08:41:37,013 - __main__ - INFO - Descriptions changed: 2
-2026-05-04 08:41:37,013 - __main__ - INFO - Keywords changed: 2
-2026-05-04 08:41:37,014 - __main__ - INFO - ============================================================
-2026-05-04 08:41:37,014 - __main__ - INFO - Checking PC coverage gaps...
+2026-05-04 09:07:22,099 - __main__ - INFO - SKILL NAME REFINEMENT v2 — STATISTICS (CONSENSUS)
+2026-05-04 09:07:22,100 - __main__ - INFO - ============================================================
+2026-05-04 09:07:22,100 - __main__ - INFO - Total processed: 157
+2026-05-04 09:07:22,100 - __main__ - INFO - Consensus runs: 7
+2026-05-04 09:07:22,101 - __main__ - INFO - Consensus threshold: 4
+2026-05-04 09:07:22,101 - __main__ - INFO - Names changed by consensus: 29
+2026-05-04 09:07:22,101 - __main__ - INFO - Names changed by post-process: 7
+2026-05-04 09:07:22,102 - __main__ - INFO - Names unchanged: 128
+2026-05-04 09:07:22,102 - __main__ - INFO - Flagged as duplicate: 26
+2026-05-04 09:07:22,102 - __main__ - INFO - Flagged as out of scope: 4
+2026-05-04 09:07:22,103 - __main__ - INFO - Flagged as misinterpretation: 0
+2026-05-04 09:07:22,103 - __main__ - INFO - Skills added from PC gaps: 0
+2026-05-04 09:07:22,103 - __main__ - INFO - Descriptions changed: 2
+2026-05-04 09:07:22,103 - __main__ - INFO - Keywords changed: 2
+2026-05-04 09:07:22,104 - __main__ - INFO - ============================================================
+2026-05-04 09:07:22,104 - __main__ - INFO - Checking PC coverage gaps...
+2026-05-04 09:07:22,105 - __main__ - INFO - Checking 11 units for PC coverage gaps (embedding=YES)
 
-Checking PC coverage: 100%|██████████| 11/11 [00:03<00:00,  3.24it/s]2026-05-04 08:41:40,416 - __main__ - INFO - No PC coverage gaps found
-
-2026-05-04 08:41:40,788 - __main__ - INFO - Saved refined skills to: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app_refined.xlsx
+Checking PC coverage: 100%|██████████| 11/11 [00:01<00:00,  5.63it/s]2026-05-04 09:07:24,059 - __main__ - INFO - No PC coverage gaps found
+2026-05-04 09:07:24,210 - __main__ - INFO - Saved refined skills to: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app_refined.xlsx
 
 Refinement complete!
 Output: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app_refined.xlsx
 Total: 159
-Changed: 28 (17.6%)
+Changed: 36 (22.6%)
