@@ -1,0 +1,357 @@
+{
+  "code": "S334",
+  "name": "Bachelor of Cyber Security",
+  "courses": [
+    {
+      "code": "DAI001",
+      "name": "Academic Integrity and Respect at Deakin",
+      "description": "The Academic Integrity and Respect at Deakin module is a compulsory zero credit point unit in all Deakin University courses. The module's learning and assessment activities allow students to develop knowledge and skills to maintain academic integrity in their studies and career and safe, respectful relationships within and beyond University.",
+      "learning_outcomes": [
+        "Apply the values of academic integrity - honesty, trust, fairness, respect and responsibility.",
+        "Identify acceptable and unacceptable behaviours related to acting with academic integrity.",
+        "Apply knowledge of appropriate strategies to act with academic integrity.",
+        "Identify the characteristics of safe, healthy and respectful relationships and where to seek support for self or others who have experienced harm."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nOnline Multiple-Choice Questions Quiz | 30-minute online quiz | 100% | Week 11 Students are strongly encouraged to complete this unit by the end of Week 3\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must achieve a minimum mark of 85% on the quiz. Students are allowed unlimited attempts of the quiz.",
+      "nominal_hours": null,
+      "prerequisites": [],
+      "year": 1,
+      "study_level": "University_Year_1"
+    },
+    {
+      "code": "SIT102",
+      "name": "Introduction to Programming",
+      "description": "Computing systems enable innovation and dramatic change in the world and the way we live in it. The capability of these systems evolve through people designing and developing new and innovative software solutions. Whether you are driving this revolution, or benefiting from it, you need to learn how computers work, and how people create software to drive computing processes. In this unit you will learn the fundamentals of structured programming and explore the mechanics of how these programs operate within the computer. The foundational knowledge and skills that you build in this unit will underpin both further programming units and your understanding of broader computing and communication systems in Information Technology contexts.",
+      "learning_outcomes": [
+        "Evaluate procedural program code for correct use of coding conventions, and use code tracing and debugging techniques to identify and correct issues.",
+        "Design, develop, and test procedural programs using specified programming languages to achieve defined program goals, including effective use of data types, programming statements, control flow structures and modularisation techniques.",
+        "Explain how programs function and are structured, using appropriate terminology, logic, syntax, and awareness of security issues.",
+        "Analyse, critique the quality, and reflect upon a portfolio of artefacts to justify the achievements of specified objectives and goals with evidence."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio of learning activities and achievements throughout the trimester. | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "Nil"
+      ],
+      "year": 1,
+      "study_level": "University_Year_1"
+    },
+    {
+      "code": "SIT111",
+      "name": "Computer Systems",
+      "description": "Over the past 70 years, computers have revolutionised nearly every facet of modern life, from healthcare to education, manufacturing to transport, and entertainment to agriculture. Computing hardware and the algorithms encoded into software are thus vital to the continued growth of modern society, as are computer scientists and software engineers - the professionals who design and develop computational solutions to many of the world's problems. In this unit, students will learn the building blocks of computing systems and the tools used by information technology professionals. The unit not only connects students with hardware and software elements of computer systems, ensuring they are ready to engage with configuring, operating, and building computing systems, but also develops students’ understanding of the expectations of IT professionals and the associated competencies required for engaging with the evolution of computer systems.",
+      "learning_outcomes": [
+        "Describe the elements of computer systems, and how they provide the foundations required for software applications.",
+        "Describe functions of modern operating systems and utilise Unix tools to configure and operate computer systems.",
+        "Prototype and build the hardware and software for small digital systems using microcontroller boards with a range of input and output components attached.",
+        "Identify and describe characteristics and expectations of IT professionals, and reflect upon associated competencies within the context of a study and career plan.",
+        "Independently identify knowledge gaps and effectively seek and use appropriate learning resources to acquire the necessary knowledge."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Written and visual documentation (program code, reports, concept maps) | 100% | Weekly submissions Final submission week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "Nil"
+      ],
+      "year": 1,
+      "study_level": "University_Year_1"
+    },
+    {
+      "code": "SIT182",
+      "name": "Real World Practices for Cyber Security",
+      "description": "In SIT182 students will learn the real world practices of cyber security by solving problems based on realistic case studies. Students will explore fundamental concepts of risks in managing communication networks and choose the appropriate means to manage these risks. The unit enables students to understand threats and vulnerabilities in the context of how systems can be compromised and how we can prevent harm to systems. There will be a practical focus on how we can detect and respond to cyber attacks. The key to learning will be introducing students to practices through case studies.",
+      "learning_outcomes": [
+        "Explain and implement approaches to computer security including monitoring, access control, identity verification and authentication in order to minimize the impact of cyber attacks on a system.",
+        "Assess the impact of different attacks against organisations and analyse the effectiveness of its countermeasures.",
+        "Describe modern approaches to cryptography and explain how these are applied to secure networks.",
+        "Select and use cyber security tools to protect and attack computer systems in a professional manner."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Written portfolio | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "Nil"
+      ],
+      "year": 1,
+      "study_level": "University_Year_1"
+    },
+    {
+      "code": "SIT192",
+      "name": "Discrete Mathematics",
+      "description": "In this unit you will explore the foundations of discrete mathematics, the basis for mathematical reasoning in applied and computational sciences. You will learn how to rigorously build, from first principles, the tools needed to address a wide range of mathematical and scientific problems. The topics you will cover include number theory, propositional and predicate logic, graph theory, sets, functions, recurrences and combinatorics. SIT192 is designed to prepare you for further study in disciplines where discrete mathematics play a fundamental or foundational role: cryptography, networks, computer programming, and analysis of algorithms.",
+      "learning_outcomes": [
+        "Understand and apply tools from discrete mathematics to solve complex mathematical problems.",
+        "Design and implement rigorous problem-solving strategies from first principles.",
+        "Pland reflect on task management strategies to successfully fulfil responsibilities",
+        "Identify knowledge gaps and effectively seek and use appropriate learning resources to acquire necessary knowledge"
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio consisting of evidence of completion of unit modules, reports, workings for associated mathematical problems, and a learning summary report. | 100% | Weekly task submissions with final submission in week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning Portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "Nil"
+      ],
+      "year": 1,
+      "study_level": "University_Year_1"
+    },
+    {
+      "code": "SIT202",
+      "name": "Computer Networks and Communication",
+      "description": "A strong understanding of computer networks is fundamental for cyber security. This unit will give students the deep understanding they need of how network protocols across the stack operate, while providing them with the programming and technical skills needed to analyse them. This will provide the focused technical foundation they need to be successful in the course.",
+      "learning_outcomes": [
+        "Explain the layers of abstraction involved in the computer network protocol stack, and how these enable data to flow between machines within a network.",
+        "Design and develop programs that interact with networks at different levels with the network protocol stack to implement and analyse common protocols.",
+        "Use industry-relevant networking tools to analyse different network configurations, real network data, networking protocols, and their operations, and provide networking solutions to given problems.",
+        "Reflect and critique on how networks and protocols are constructed and apply those concepts in analysing real network issues related to security and scalability."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio demonstrating student learning and reflections | 100% | Weekly submissions Final submission week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "SIT102 and SIT192"
+      ],
+      "year": 1,
+      "study_level": "University_Year_1"
+    },
+    {
+      "code": "SIT218",
+      "name": "Secure Coding",
+      "description": "Security by design in the software development life cycle is essential for fool proofing contemporary software systems and platforms against the evolving cyber threats. This unit comprises the principles of security for software development. Topics covered include the Continuous Delivery (CD) model for secure software development, adoption of cutting-edge software security tools for data validation, code bug detection, web application vulnerability assessment, secure database design and cloud/API security.",
+      "learning_outcomes": [
+        "Explain secure coding principles to a range of audiences, and apply them to software design and development activities.",
+        "Analyse program code and design documentation to identify common programming problems and recommend strategies to mitigate and report issues.",
+        "Perform static and dynamic analysis tools and techniques to find vulnerabilities within software.",
+        "Use proof techniques and automated theorem provers to formally verify software correctness."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Tasks include the production of a range of artefacts (code, reports, presentations etc.), along with written critique and reflection. | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "SIT102 and SIT192"
+      ],
+      "year": 2,
+      "study_level": "University_Year_2"
+    },
+    {
+      "code": "SIT223",
+      "name": "Professional Practice in Information Technology",
+      "description": "To be successful, IT graduates need to understand the use of industry tools and practices, the ways these tools work and connect together, and the underlying employability skills needed for successful practice as an IT professional. This unit introduces students to IT workflows, agile project management, dev-ops pipelines, version control, and the ways these tools fit together in modern companies. The use of these technologies is underpinned by the professional behaviours, teamwork and ethical considerations needed to engage in working in IT in a professional manner to enhance the employability skills. This unit will address current and future issues within the IT industry with a focus on gender equity and diversity, to ensure future IT leaders are well placed to address these (and other) challenges and succeed professionally.",
+      "learning_outcomes": [
+        "Engage with processes, tools, and practices associated with agile project management across all phases of the dev-ops lifecycle, and use software tools to contribute to real-world projects at each stage in an effective manner.",
+        "Observe and reflect upon the impact of different leadership styles, organisational structures, communication practices, and approaches to conflict management for effective professional relationships within IT companies and projects.",
+        "Evaluate, review, and synthesise real-world scenarios, including indigenous perspectives, regulatory requirements, professional standards, cyber security, sustainability and codes of ethics to inform discussion and practice of IT.",
+        "Reflect upon professional practice to develop career plans and apply for work opportunities, as ways of engaging in continuous professional development of discipline specific and transferable skills."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "Must have completed a minimum of two SIT coded units"
+      ],
+      "year": 2,
+      "study_level": "University_Year_2"
+    },
+    {
+      "code": "SIT232",
+      "name": "Object-Oriented Development",
+      "description": "SIT232 introduces students to object-oriented programming as the fundamental paradigm of modern programming languages and software development. Upon completion of the unit, the students will be ready to develop real-world software following the software design and structure best practices.",
+      "learning_outcomes": [
+        "Evaluate simple program code for correct use of coding conventions, and use code tracing and debugging techniques to identify and correct issues.",
+        "Apply and explain the principles of object-oriented programming including abstraction, encapsulation, inheritance and polymorphism.",
+        "Implement and test small object-oriented programs that conform to planned system structures and requirements.",
+        "Design, communicate, and evaluate solution structures using appropriate diagrams and textual descriptions.",
+        "Justify meeting specified outcomes through providing relevant evidence and critiquing the quality of that evidence against given criteria."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "One of SIT102",
+        "SIT153",
+        "SIT172 or SEP105"
+      ],
+      "year": 1,
+      "study_level": "University_Year_1"
+    },
+    {
+      "code": "SIT282",
+      "name": "Computer Forensics and Investigations",
+      "description": "In this unit, students explore various options available to organisations to investigate problems and attacks on their computer systems. It enables students to develop knowledge of laws governing the IT domain and apply approaches to investigating cyber-crime using digital forensic techniques. A range of computer forensic frameworks will be discussed to systematically assist organisations in identifying, analysing, and reporting cyber security issues. In addition, students will study exploitation techniques and use system log files, domain authentication and registry mechanisms to acquire digital evidence. The key focus of the unit is on the identification, preservation, analysis and presentation of digital evidence related to misuse or intrusion into an enterprise-level system.",
+      "learning_outcomes": [
+        "Define and explain digital forensic procedures and investigative findings to diverse stakeholders.",
+        "Investigate the usefulness of contemporary forensic techniques and apply relevant methods to gain access and recover computer crime data.",
+        "Analyse forensic data and review findings to further probe and investigate serious computer crimes.",
+        "Design, prepare and reflect on findings and prepare reports for stakeholders that justifies findings and recommends implicatory action."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio consisting of programming code, presentations, and reports | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "SIT182 and one of SIT102 or SIT105"
+      ],
+      "year": 2,
+      "study_level": "University_Year_2"
+    },
+    {
+      "code": "SIT306",
+      "name": "IT Placements and Industry Experience",
+      "description": "Integrating study and work experience in a systematic way is essential for forging close links between the university education process and the workplace. In this unit, students will undertake professional work experience with an approved host organisation for a minimum of 100 hours. The exact nature, activities, and emphasis in each industry placement will vary according to the context, resources and expertise of the staff of the host organisation as well as the experience, qualities and aspirations of the student. This unit provides students with a systematic opportunity to undertake professional work experience through an IT placement, requiring them to critically reflect on their discipline-specific knowledge, practical skills, and unique employability attributes in alignment with their course and graduate learning outcomes.\n\nLearning and assessment activities in this unit will help students develop a deeper understanding of key aspects of professional practice and support them in making informed decisions about their personal and professional development. Importantly, these activities will provide students with relevant evidence for future employment applications.",
+      "learning_outcomes": [
+        "Articulate aspirations, career goals and intended activities to potential employers highlighting key personal and professional capabilities and competencies, to secure a position.",
+        "Participate in and demonstrate evidence of ethical, professional and efficient work practices in IT.",
+        "Use reflective practice to document experience gained and skills developed to become an IT professional during placement experience.",
+        "Show capacity for preparing personal and professional development plans, which contribute to the job search/career development process."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Reflective placement logbook and other written documentation consisting of preparation activities and post-placement reflection. | 100% Ungraded pass/fail | Within two weeks of placement completion\nFollowing completion of this unit students will be awarded an ungraded pass/ungraded fail only. All assessments must be passed for an ungraded pass to be given for the unit.\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain an ungraded pass in this unit students must demonstrate that they are working to the satisfaction of the host organisation:\na. at the mid placement phase of the professional experience (placement).b. at the end of placement phase of the professional experience (placement).c. in the professional review (industry/supervisor performance evaluation of placement activity), documenting achievement for all skill competency levels, professional code of conduct and project output requirements.",
+      "nominal_hours": 50.0,
+      "prerequisites": [
+        "STP010",
+        "and must have passed at least seven SIT-coded units including SIT223."
+      ],
+      "year": 3,
+      "study_level": "University_Year_3"
+    },
+    {
+      "code": "SIT324",
+      "name": "Malware Analysis",
+      "description": "Understanding malware is a critical task both for attacking and defending computer networks and systems. This unit will provide a comprehensive overview of malware development and detection strategies, as well as the common tools used in the area of malware analysis and development.",
+      "learning_outcomes": [
+        "Design and implement small software components at an assembly level for a variety of processor architectures.",
+        "Reverse engineer and analyse software using common tools such as Ghidra to identify malware operation and recommend strategies to mitigate.",
+        "Detect and implement common ways for software to persist and avoid detection by operating systems.",
+        "Implement common anti-reverse engineering techniques and explain the implication of these techniques on analysis of malware.",
+        "Understand and implement industry standards for malware classification and reporting."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Tasks include the production of a range of artefacts (code, reports, presentations etc.), along with written critique and reflection. | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "SIT218"
+      ],
+      "year": 3,
+      "study_level": "University_Year_3"
+    },
+    {
+      "code": "SIT327",
+      "name": "Network Forensics",
+      "description": "This unit teaches the main techniques and tools needed to successfully investigate attacks against modern computer networks, including how to detect the attacks, how to attribute them, and how to mitigate damage and prevent further damage. Skills to be studied include log analysis, IDS configuration, pcap analysis, protocol reverse engineering. Student will work through a variety of simulated and historical forensic incidents in order to hone their skills.",
+      "learning_outcomes": [
+        "Analyse network log recovery in order to detect common attacks, while gaining familiarity with common network forensics tools.",
+        "Develop experience in configuring intrusion detection systems to discover and prevent common network attacks.",
+        "Perform reverse engineering of unknown network communications protocols, using manual analysis and automated tools.",
+        "Use common network forensics tools to perform analysis of wireless network traffic, in order to detect and prevent common wireless attacks.",
+        "Respond to simulated incidents and produce reports on response, attribution, and recommend mitigation."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Tasks include the production of a range of artefacts (scripts, packet captures, written reports etc.), along with written critique and reflection. | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "SIT202"
+      ],
+      "year": 3,
+      "study_level": "University_Year_3"
+    },
+    {
+      "code": "SIT344",
+      "name": "Professional Practice",
+      "description": "Integrating study and work experience is essential for forging close links between university education and the workplace. Students will gain professional work experience with an approved host organisation. The exact nature, activities, and emphasis in each industry placement will vary according to the context, resources, and expertise of staff and the student's experience, qualities, and aspirations. Industry experiences will allow students to learn about and with an organisation. In addition, students will critically reflect on their role as IT professionals, bringing together everything they have learnt in their course to demonstrate achievement of Course and Graduate Learning Outcomes and their readiness for professional work. Learning and assessment activities in this unit will help students appreciate work-life and make decisions about personal and professional development. Most importantly, it will provide relevant evidence when applying for future work.",
+      "learning_outcomes": [
+        "Articulate aspirations, career goals and intended activities to potential employers, highlighting key personal and professional capabilities and competencies, to secure a position.",
+        "Participate in and demonstrate evidence of ethical, professional and efficient work practices in IT/data science through a placement logbook.",
+        "Use reflective practice to document discipline-specific (course learning outcomes) and generic competencies (graduate learning outcomes) required to become an IT professional/data scientist, drawn from placement experience.",
+        "Show capacity for preparing personal and professional development plans, which contribute to the job search/career development process."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nPlacement portfolio | Written placement portfolio, consisting of preparation activities, logbook and post-placement reflection | 100% | Within 2 weeks of completion of placement\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio and demonstrate that they are working to the satisfaction of the host organisation (including skill competency levels, professional code of conduct and project output requirements) at both the mid and end of professional experience (placement). More specifically, both mid and end professional experience (placement) reviews need to be deemed ‘satisfactory’ by your supervisor to achieve the pass level.",
+      "nominal_hours": 50.0,
+      "prerequisites": [
+        "STP010",
+        "and must have successfully completed a minimum of seven SIT-coded units including SIT223."
+      ],
+      "year": 3,
+      "study_level": "University_Year_3"
+    },
+    {
+      "code": "SIT374",
+      "name": "Team Project (A) - Project Management and Practices",
+      "description": "This is the first of two undergraduate capstone units for students within the School of Information Technology. The capstone experience provides students with the opportunity to engage in a real-world, industry-relevant IT project, and to demonstrate the knowledge and skills they have gained across their studies. In this first unit, students learn about project management methodologies and practices, with a particular emphasis on agile project management. Students will join a team and work under the guidance of students from Team Project (B) to advance an ongoing industry-relevant project. Students will develop hands-on experience in using industry-standard tools to contribute to the project, analyse requirements, design solutions, monitor project progress and productivity, and reflect on sprint and project outcomes.",
+      "learning_outcomes": [
+        "Develop and apply discipline specific knowledge and skills, communication skills, digital literacy, and professional practice through engaging in an authentic real-world project.",
+        "Develop and apply problem solving and critical thinking in solving real-world problems and evaluating solutions as a member of a team.",
+        "Apply contemporary Information Technology methods tools and techniques to contribute to real-world projects in ways that meet project and stakeholder needs.",
+        "Reflect on, and take responsibility for, their own learning; manage their own time and processes; by reviewing personal performance as a means of managing continuing professional development.",
+        "Reflect upon knowledge and skills gained, progress towards achievement of learning goals, and communicate how skills developed are transferrable to other real-world contexts."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio consisting of: − Individual iteration plans, progress reports, achievements, reflections − project documentation and deliverables, showcase video, and learning summary report. | 100% | Weekly task submissions with final submission in week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "Must have completed 16 credit points of study including SIT223 or SIT209"
+      ],
+      "year": 3,
+      "study_level": "University_Year_3"
+    },
+    {
+      "code": "SIT378",
+      "name": "Team Project (B) - Execution and Delivery",
+      "description": "This is the second of two undergraduate capstone units in the School of Information Technology. In this unit, students will extend their prior experiences of IT projects by executing a real-world, industry-relevant project and synthesise knowledge and technical skills as well as other professional capabilities acquired during their course. Students will join Team Project (B) as senior members and provide guidance and mentorship to SIT374 Team Project (A) students. As a team, they will apply agile project management methods to iteratively refine and enhance a unique IT product, service or solution in a highly flexible and interactive manner. Students will identify a potential problem or technical gap and experience how to solve it using methods, algorithms and techniques pertinent to the field of IT. Students will be required to further formulate necessary design and/or development strategies, work collaboratively with peers to manage and conduct the implementation of the project and demonstrate outcomes achieved against project goals and targets.\n\nIn this final capstone unit, students will demonstrate achievement of course learning outcomes by drawing upon a combination of work they contribute to the project and work completed in other units, respectively. Together, the capstone units will guide students to effectively engage with and contribute to industry-relevant projects, to communicate most important project factors to stakeholders, focus on project delivery, and enable them to manage IT projects within defined scopes and schedules.",
+      "learning_outcomes": [
+        "Demonstrate the apply discipline specific knowledge, communication skills, digital literacy, and professional practice through engaging in an authentic real-world project.",
+        "Demonstrate and apply problem solving and critical thinking in solving real-world problems and evaluating solutions as a member of a team.",
+        "Analyse stakeholders' needs, project goals, and team capabilities to identify, prioritise, and schedule project deliverables, and take responsibility for the execution of the project pland associated reporting as a senior member of a team.",
+        "Apply contemporary Information Technology methods tools and techniques to contribute to real-world projects in ways that meet project and stakeholder needs including mentoring team members.",
+        "Reflect on and take responsibility for their own learning; manage their own time and processes; by reviewing personal performance as a means of managing continuing professional development.",
+        "Reflect upon and showcase knowledge and skills gained, demonstrate achievement of learning goals, and communicate how skills developed are transferrable to other real-world contexts."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Portfolio consisting of: − Individual iteration plans, progress reports, achievements, reflections − project documentation and deliverables, showcase video, and learning summary report | 100% | Weekly task submission with final submission in week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "Must have completed 18 credit points of study",
+        "including SIT374 (students enrolled in D371 must complete MIS398)"
+      ],
+      "year": 3,
+      "study_level": "University_Year_3"
+    },
+    {
+      "code": "SIT379",
+      "name": "Ethical Hacking",
+      "description": "This unit introduces ethical hacking and penetration testing techniques to students. Students will be able to solve problems in ethical hacking. That is, students will implement the tools and methods that hackers use to break into a network and systems with certain security vulnerabilities. Students will also explain the key countermeasures to protect these networks and systems. Students will be assessed on the basis of their technical capabilities in ethical hacking, their communication skills in speaking and writing, their teamwork skills and awareness of ethical and legal constraints.",
+      "learning_outcomes": [
+        "Apply ethical hacking techniques to exploit security vulnerabilities of systems, applications, and services.",
+        "Communicate with peers effectively on ethical hacking practice.",
+        "Synthesize knowledge in effectively and efficiently defending real-world attacks performed by malicious attackers.",
+        "Work effectively as a team member to perform penetration-testing tasks."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Visual and written documentation | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "SIT102",
+        "SIT202 and SIT182"
+      ],
+      "year": 3,
+      "study_level": "University_Year_3"
+    },
+    {
+      "code": "SIT384",
+      "name": "Cyber Security Analytics",
+      "description": "In SIT384 students will learn about the various data analytical methodologies used to investigate cyber security problems. In particular, we will focus on processing and analysing data relevant to cyber security systems and applications. You will be introduced to the scripting techniques and solutions required for data analytics in the context of cyber security. Applying appropriate data analytical methods and solving cyber security problems will be a key practical element of this unit.",
+      "learning_outcomes": [
+        "Identify common formats of data stored and transmitted in the context of cyber security systems and applications.",
+        "Apply and explain the principles of data analytics including classification, clustering, regression supervised learning and unsupervised learning.",
+        "Implement and test small data analytics solutions to process cyber security data using scripting languages such as Python.",
+        "Justify meeting specified outcomes through providing relevant evidence and critiquing the quality of that evidence against given criteria."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nLearning portfolio | Python code, Screenshot images, documents, video links | 100% | Week 12\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must meet certain milestones as part of the Learning portfolio.",
+      "nominal_hours": 150.0,
+      "prerequisites": [
+        "SIT102 and SIT182"
+      ],
+      "year": 2,
+      "study_level": "University_Year_2"
+    },
+    {
+      "code": "STP010",
+      "name": "Career Tools for Employability",
+      "description": "This zero credit point unit requires students to undertake and pass the introductory unit online prior to enrolling in a Faculty of Science, Engineering and Built Environment Professional Practice unit, Internship unit, Work Integrated Learning (WIL) project and or Industry Based Learning (IBL) unit.",
+      "learning_outcomes": [
+        "You will create three personalised career tools that will enhance your employability.",
+        "You will demonstrate achievement of foundational knowledge required for your career education journey as a professional."
+      ],
+      "assessment_requirements": "Assessment Description | Student output | Grading and weighting (% total mark for unit) | Indicative due week\nOnline multiple- choice quiz | 10-minute online quiz (Three attempts) | 100% | Week 6\nThe assessment due weeks provided may change.  The Unit Chair will clarify the exact assessment requirements, including the due date, at the start of the teaching period.\n\nHurdle requirement:\nTo be eligible to obtain a pass in this unit, students must complete the 3 assignments (a resume, a 'Me in a Minute' script or LinkedIn summary, and a Pre-professional experience plan).  Students must also achieve a minimum mark of 70% in the online quiz. Three attempts to pass the quiz are permitted.",
+      "nominal_hours": null,
+      "prerequisites": [
+        "Nil"
+      ],
+      "year": 1,
+      "study_level": "University_Year_1"
+    }
+  ]
+}
