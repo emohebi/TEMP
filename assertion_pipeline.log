@@ -1,336 +1,389 @@
-2026-05-04 13:25:45,692 - __main__ - INFO - Loading skills from: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app.xlsx
-2026-05-04 13:25:45,692 - __main__ - INFO - Loading skills from: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app.xlsx
-2026-05-04 13:25:45,850 - __main__ - INFO - Loaded 159 skills
-2026-05-04 13:25:45,850 - __main__ - INFO - Loaded 159 skills
-2026-05-04 13:25:45,851 - __main__ - INFO - Using provided embedding interface for PC coverage check
-2026-05-04 13:25:45,851 - __main__ - INFO - Using provided embedding interface for PC coverage check
-2026-05-04 13:25:45,851 - __main__ - INFO - SkillNameRefiner v2 init: batch_size=20, style=True, consensus=7x, threshold=4, validation_threshold=2
-2026-05-04 13:25:45,851 - __main__ - INFO - SkillNameRefiner v2 init: batch_size=20, style=True, consensus=7x, threshold=4, validation_threshold=2
-2026-05-04 13:25:45,852 - __main__ - INFO - Starting single-pass refinement for 159 skills
-2026-05-04 13:25:45,852 - __main__ - INFO - Starting single-pass refinement for 159 skills
-2026-05-04 13:25:45,853 - __main__ - INFO - Using elements column 'elements' for cross-referencing
-2026-05-04 13:25:45,853 - __main__ - INFO - Using elements column 'elements' for cross-referencing
-2026-05-04 13:25:45,853 - __main__ - INFO - Using performance criteria column 'performance_criteria' for cross-referencing
-2026-05-04 13:25:45,853 - __main__ - INFO - Using performance criteria column 'performance_criteria' for cross-referencing
-2026-05-04 13:25:45,854 - __main__ - INFO - Using foundation skills column 'foundation_skills' for cross-referencing
-2026-05-04 13:25:45,854 - __main__ - INFO - Using foundation skills column 'foundation_skills' for cross-referencing
-2026-05-04 13:25:45,854 - __main__ - INFO - Using application column 'application' for unit context
-2026-05-04 13:25:45,854 - __main__ - INFO - Using application column 'application' for unit context
-2026-05-04 13:25:45,865 - __main__ - INFO - Processing 157 skills (2 empty/skipped)
-2026-05-04 13:25:45,865 - __main__ - INFO - Processing 157 skills (2 empty/skipped)
-2026-05-04 13:25:45,866 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
-2026-05-04 13:25:45,866 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
-2026-05-04 13:25:45,867 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
-2026-05-04 13:25:45,867 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
-2026-05-04 13:25:45,867 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
-2026-05-04 13:25:45,867 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
-Run 1/7 (t=0.0): 100%|██████████| 8/8 [00:12<00:00,  1.60s/it]2026-05-04 13:25:58,660 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
-2026-05-04 13:25:58,660 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
-
-Run 2/7 (t=0.0): 100%|██████████| 8/8 [00:06<00:00,  1.19it/s]2026-05-04 13:26:05,358 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
-2026-05-04 13:26:05,358 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
-
-Run 3/7 (t=0.1): 100%|██████████| 8/8 [00:06<00:00,  1.21it/s]2026-05-04 13:26:11,990 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
-2026-05-04 13:26:11,990 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
-
-Run 4/7 (t=0.2): 100%|██████████| 8/8 [00:06<00:00,  1.20it/s]2026-05-04 13:26:18,667 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
-2026-05-04 13:26:18,667 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
-
-Run 5/7 (t=0.3): 100%|██████████| 8/8 [00:06<00:00,  1.20it/s]2026-05-04 13:26:25,347 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
-2026-05-04 13:26:25,347 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
-
-Run 6/7 (t=0.4): 100%|██████████| 8/8 [00:06<00:00,  1.19it/s]2026-05-04 13:26:32,053 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
-2026-05-04 13:26:32,053 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
-
-Run 7/7 (t=0.5): 100%|██████████| 8/8 [00:06<00:00,  1.20it/s]2026-05-04 13:26:38,732 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Active Listening' -> 'Stakeholder Viewpoint Elicitation' (keep:0, "Stakeholder Viewpoint Elicitation":7)
-2026-05-04 13:26:38,732 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Active Listening' -> 'Stakeholder Viewpoint Elicitation' (keep:0, "Stakeholder Viewpoint Elicitation":7)
-2026-05-04 13:26:38,734 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Brainstorming Idea Generation' -> 'Idea Generation' (keep:0, "Idea Generation":7)
-2026-05-04 13:26:38,734 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Brainstorming Idea Generation' -> 'Idea Generation' (keep:0, "Idea Generation":7)
-2026-05-04 13:26:38,736 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Idea Evaluation Viability' -> 'Idea Viability Evaluation' (keep:0, "Idea Viability Evaluation":7)
-2026-05-04 13:26:38,736 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Idea Evaluation Viability' -> 'Idea Viability Evaluation' (keep:0, "Idea Viability Evaluation":7)
-2026-05-04 13:26:38,737 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Research Information Gathering' -> 'Solution Research' (keep:0, "Solution Research":5, "Information Research":2)
-2026-05-04 13:26:38,737 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Research Information Gathering' -> 'Solution Research' (keep:0, "Solution Research":5, "Information Research":2)
-2026-05-04 13:26:38,740 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Insight Presentation Delivery' -> 'Insight Presentation' (keep:2, "Insight Presentation":5)
-2026-05-04 13:26:38,740 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Insight Presentation Delivery' -> 'Insight Presentation' (keep:2, "Insight Presentation":5)
-2026-05-04 13:26:38,741 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Policy Contribution Drafting' -> 'Policy Drafting' (keep:0, "Policy Drafting":7)
-2026-05-04 13:26:38,741 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Policy Contribution Drafting' -> 'Policy Drafting' (keep:0, "Policy Drafting":7)
-2026-05-04 13:26:38,742 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Practice Review Execution' -> 'Practice Review' (keep:0, "Practice Review":7)
-2026-05-04 13:26:38,742 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Practice Review Execution' -> 'Practice Review' (keep:0, "Practice Review":7)
-2026-05-04 13:26:38,746 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Risk Categorization Analysis' -> 'Data Risk Categorisation' (keep:0, "Data Risk Categorisation":7)
-2026-05-04 13:26:38,746 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Risk Categorization Analysis' -> 'Data Risk Categorisation' (keep:0, "Data Risk Categorisation":7)
-2026-05-04 13:26:38,747 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Security Plan Communication' -> 'Physical Security Plan Communication' (keep:3, "Physical Security Plan Communication":4)
-2026-05-04 13:26:38,747 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Security Plan Communication' -> 'Physical Security Plan Communication' (keep:3, "Physical Security Plan Communication":4)
-2026-05-04 13:26:38,750 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Numerical Data Interpretation' -> 'Financial Impact Interpretation' (keep:2, "Financial Impact Interpretation":4, "Financial Impact Assessment":1)
-2026-05-04 13:26:38,750 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Numerical Data Interpretation' -> 'Financial Impact Interpretation' (keep:2, "Financial Impact Interpretation":4, "Financial Impact Assessment":1)
-2026-05-04 13:26:38,752 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Complex Text Analysis' -> 'Legislative Text Analysis' (keep:0, "Legislative Text Analysis":7)
-2026-05-04 13:26:38,752 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Complex Text Analysis' -> 'Legislative Text Analysis' (keep:0, "Legislative Text Analysis":7)
-2026-05-04 13:26:38,754 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Policy Documentation' -> 'Privacy Policy Documentation' (keep:0, "Privacy Policy Documentation":7)
-2026-05-04 13:26:38,754 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Policy Documentation' -> 'Privacy Policy Documentation' (keep:0, "Privacy Policy Documentation":7)
-2026-05-04 13:26:38,756 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Stakeholder Communication' -> 'Policy Distribution' (keep:0, "Policy Distribution":7)
-2026-05-04 13:26:38,756 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Stakeholder Communication' -> 'Policy Distribution' (keep:0, "Policy Distribution":7)
-2026-05-04 13:26:38,758 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Maintenance Testing Execution' -> 'Maintenance Testing' (keep:2, "Maintenance Testing":5)
-2026-05-04 13:26:38,758 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Maintenance Testing Execution' -> 'Maintenance Testing' (keep:2, "Maintenance Testing":5)
-2026-05-04 13:26:38,760 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Analytic Platform Operation' -> 'Data Log Ingestion' (keep:0, "Data Log Ingestion":7)
-2026-05-04 13:26:38,760 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Analytic Platform Operation' -> 'Data Log Ingestion' (keep:0, "Data Log Ingestion":7)
-2026-05-04 13:26:38,762 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Dataset Creation Procedures' -> 'Dataset Creation' (keep:3, "Dataset Creation":4)
-2026-05-04 13:26:38,762 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Dataset Creation Procedures' -> 'Dataset Creation' (keep:3, "Dataset Creation":4)
-2026-05-04 13:26:38,763 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'False Positive Detection' -> 'False Data Detection' (keep:0, "False Data Detection":7)
-2026-05-04 13:26:38,763 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'False Positive Detection' -> 'False Data Detection' (keep:0, "False Data Detection":7)
-2026-05-04 13:26:38,764 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Risk Likelihood Assessment' -> 'Threat Risk Assessment' (keep:0, "Threat Risk Assessment":7)
-2026-05-04 13:26:38,764 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Risk Likelihood Assessment' -> 'Threat Risk Assessment' (keep:0, "Threat Risk Assessment":7)
-2026-05-04 13:26:38,766 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Threat Data Collection' -> 'Threat Data Collation' (keep:2, "Threat Data Collation":5)
-2026-05-04 13:26:38,766 - __main__ - DEBUG - Consensus CHANGE [5/7]: 'Threat Data Collection' -> 'Threat Data Collation' (keep:2, "Threat Data Collation":5)
-2026-05-04 13:26:38,768 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Protection Plan Analysis' -> 'Critical Infrastructure Protection Analysis' (keep:3, "Critical Infrastructure Protection Analysis":4)
-2026-05-04 13:26:38,768 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Protection Plan Analysis' -> 'Critical Infrastructure Protection Analysis' (keep:3, "Critical Infrastructure Protection Analysis":4)
-2026-05-04 13:26:38,769 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Protection Testing Execution' -> 'Protection Plan Testing' (keep:0, "Protection Plan Testing":7)
-2026-05-04 13:26:38,769 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Protection Testing Execution' -> 'Protection Plan Testing' (keep:0, "Protection Plan Testing":7)
-2026-05-04 13:26:38,772 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Problem Solving In Security' -> 'Security Contextual Problem Solving' (keep:0, "Security Contextual Problem Solving":7)
-2026-05-04 13:26:38,772 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Problem Solving In Security' -> 'Security Contextual Problem Solving' (keep:0, "Security Contextual Problem Solving":7)
-2026-05-04 13:26:38,773 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Security Architecture Documentation' -> 'Security Findings Documentation' (keep:0, "Security Findings Documentation/Security Requirements Documentation":7)
-2026-05-04 13:26:38,773 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Security Architecture Documentation' -> 'Security Findings Documentation' (keep:0, "Security Findings Documentation/Security Requirements Documentation":7)
-2026-05-04 13:26:38,776 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Incident Response Evaluation' -> 'Incident Response Plan Evaluation' (keep:0, "Incident Response Plan Evaluation":7)
-2026-05-04 13:26:38,776 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Incident Response Evaluation' -> 'Incident Response Plan Evaluation' (keep:0, "Incident Response Plan Evaluation":7)
-2026-05-04 13:26:38,777 - __main__ - DEBUG - Consensus CHANGE [6/7]: 'Red Teaming Design' -> 'Incident Response Training' (keep:0, "Incident Response Training":6, "Incident Response Training Design":1)
-2026-05-04 13:26:38,777 - __main__ - DEBUG - Consensus CHANGE [6/7]: 'Red Teaming Design' -> 'Incident Response Training' (keep:0, "Incident Response Training":6, "Incident Response Training Design":1)
-2026-05-04 13:26:38,779 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Risk Analysis' -> 'Technical Data Interpretation' (keep:0, "Technical Data Interpretation":7)
-2026-05-04 13:26:38,779 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Risk Analysis' -> 'Technical Data Interpretation' (keep:0, "Technical Data Interpretation":7)
-2026-05-04 13:26:38,781 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Numerical Data Analysis' -> 'Business Data Analysis' (keep:0, "Business Data Analysis":7)
-2026-05-04 13:26:38,781 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Numerical Data Analysis' -> 'Business Data Analysis' (keep:0, "Business Data Analysis":7)
-2026-05-04 13:26:38,798 - __main__ - INFO - Running post-refinement duplicate check...
-2026-05-04 13:26:38,798 - __main__ - INFO - Running post-refinement duplicate check...
-2026-05-04 13:26:38,804 - __main__ - DEBUG - Post-refine dup: 'Physical Security Plan Communication' <-> 'Physical Security Planning' (name_j=0.40, ev_j=1.00)
-2026-05-04 13:26:38,804 - __main__ - DEBUG - Post-refine dup: 'Physical Security Plan Communication' <-> 'Physical Security Planning' (name_j=0.40, ev_j=1.00)
-2026-05-04 13:26:38,809 - __main__ - DEBUG - Post-refine dup: 'Data Log Ingestion' <-> 'Security Log Ingestion' (name_j=0.50, ev_j=1.00)
-2026-05-04 13:26:38,809 - __main__ - DEBUG - Post-refine dup: 'Data Log Ingestion' <-> 'Security Log Ingestion' (name_j=0.50, ev_j=1.00)
-2026-05-04 13:26:38,810 - __main__ - DEBUG - Post-refine dup: 'Dataset Creation' <-> 'Threat Data Collation' (name_j=0.00, ev_j=1.00)
-2026-05-04 13:26:38,810 - __main__ - DEBUG - Post-refine dup: 'Dataset Creation' <-> 'Threat Data Collation' (name_j=0.00, ev_j=1.00)
-2026-05-04 13:26:38,823 - __main__ - DEBUG - Post-refine dup: 'Policy Distribution' <-> 'Policy Distribution' (name_j=1.00, ev_j=0.36)
-2026-05-04 13:26:38,823 - __main__ - DEBUG - Post-refine dup: 'Policy Distribution' <-> 'Policy Distribution' (name_j=1.00, ev_j=0.36)
-2026-05-04 13:26:38,826 - __main__ - DEBUG - Post-refine dup: 'Technical Data Interpretation' <-> 'Technical Data Interpretation' (name_j=1.00, ev_j=0.40)
-2026-05-04 13:26:38,826 - __main__ - DEBUG - Post-refine dup: 'Technical Data Interpretation' <-> 'Technical Data Interpretation' (name_j=1.00, ev_j=0.40)
-2026-05-04 13:26:38,832 - __main__ - INFO - Deterministic MIS: 'Device Inventory Management' - domain term 'inventory' not in unit
-2026-05-04 13:26:38,832 - __main__ - INFO - Deterministic MIS: 'Device Inventory Management' - domain term 'inventory' not in unit
-2026-05-04 13:26:38,844 - __main__ - INFO - Deterministic OOS: 'Autonomous Decision Making' - generic FS capability
-2026-05-04 13:26:38,844 - __main__ - INFO - Deterministic OOS: 'Autonomous Decision Making' - generic FS capability
-2026-05-04 13:26:38,845 - __main__ - INFO - Deterministic OOS: 'Problem Solving' - generic FS capability
-2026-05-04 13:26:38,845 - __main__ - INFO - Deterministic OOS: 'Problem Solving' - generic FS capability
-2026-05-04 13:26:38,850 - __main__ - INFO - Deterministic OOS: 'Technical Specification Reading' - FS interpret implicit in prepare element
-2026-05-04 13:26:38,850 - __main__ - INFO - Deterministic OOS: 'Technical Specification Reading' - FS interpret implicit in prepare element
-2026-05-04 13:26:38,851 - __main__ - INFO - Deterministic OOS: 'Technical Data Interpretation' - FS interpret implicit in prepare element
-2026-05-04 13:26:38,851 - __main__ - INFO - Deterministic OOS: 'Technical Data Interpretation' - FS interpret implicit in prepare element
-2026-05-04 13:26:38,852 - __main__ - INFO - Checking PC coverage gaps...
-2026-05-04 13:26:38,852 - __main__ - INFO - Checking PC coverage gaps...
-2026-05-04 13:26:38,854 - __main__ - INFO - Checking 11 units for PC coverage gaps (embedding=YES)
-2026-05-04 13:26:38,854 - __main__ - INFO - Checking 11 units for PC coverage gaps (embedding=YES)
-
-Checking PC coverage:   0%|          | 0/11 [00:00<?, ?it/s]2026-05-04 13:26:38,856 - __main__ - DEBUG - Unit BSBCRT512: 12 PCs in 3 elements
-2026-05-04 13:26:38,856 - __main__ - DEBUG - Unit BSBCRT512: 12 PCs in 3 elements
-2026-05-04 13:26:38,857 - __main__ - DEBUG - Unit BSBCRT512 Element 1: all 4 PCs covered
-2026-05-04 13:26:38,857 - __main__ - DEBUG - Unit BSBCRT512 Element 1: all 4 PCs covered
-2026-05-04 13:26:38,858 - __main__ - DEBUG - Unit BSBCRT512 Element 2: all 4 PCs covered
-2026-05-04 13:26:38,858 - __main__ - DEBUG - Unit BSBCRT512 Element 2: all 4 PCs covered
-2026-05-04 13:26:39,393 - __main__ - INFO - Unit BSBCRT512 Element 3: 1/4 PCs uncovered
-2026-05-04 13:26:39,393 - __main__ - INFO - Unit BSBCRT512 Element 3: 1/4 PCs uncovered
-Checking PC coverage:   9%|▉         | 1/11 [00:01<00:11,  1.15s/it]2026-05-04 13:26:40,005 - __main__ - DEBUG - Unit BSBXCS402: 9 PCs in 3 elements
-2026-05-04 13:26:40,005 - __main__ - DEBUG - Unit BSBXCS402: 9 PCs in 3 elements
-2026-05-04 13:26:40,007 - __main__ - DEBUG - Unit BSBXCS402 Element 1: all 3 PCs covered
-2026-05-04 13:26:40,007 - __main__ - DEBUG - Unit BSBXCS402 Element 1: all 3 PCs covered
-2026-05-04 13:26:40,008 - __main__ - DEBUG - Unit BSBXCS402 Element 2: all 3 PCs covered
-2026-05-04 13:26:40,008 - __main__ - DEBUG - Unit BSBXCS402 Element 2: all 3 PCs covered
-2026-05-04 13:26:40,008 - __main__ - DEBUG - Unit BSBXCS402 Element 3: all 3 PCs covered
-2026-05-04 13:26:40,008 - __main__ - DEBUG - Unit BSBXCS402 Element 3: all 3 PCs covered
-2026-05-04 13:26:40,009 - __main__ - DEBUG - Unit BSBXCS401: 14 PCs in 4 elements
-2026-05-04 13:26:40,009 - __main__ - DEBUG - Unit BSBXCS401: 14 PCs in 4 elements
-2026-05-04 13:26:40,474 - __main__ - INFO - Unit BSBXCS401 Element 1: 1/4 PCs uncovered
-2026-05-04 13:26:40,474 - __main__ - INFO - Unit BSBXCS401 Element 1: 1/4 PCs uncovered
-2026-05-04 13:26:41,072 - __main__ - DEBUG - Unit BSBXCS401 Element 2: all 5 PCs covered
-2026-05-04 13:26:41,072 - __main__ - DEBUG - Unit BSBXCS401 Element 2: all 5 PCs covered
-2026-05-04 13:26:41,073 - __main__ - DEBUG - Unit BSBXCS401 Element 3: all 3 PCs covered
-2026-05-04 13:26:41,073 - __main__ - DEBUG - Unit BSBXCS401 Element 3: all 3 PCs covered
-2026-05-04 13:26:41,074 - __main__ - DEBUG - Unit BSBXCS401 Element 4: all 2 PCs covered
-2026-05-04 13:26:41,074 - __main__ - DEBUG - Unit BSBXCS401 Element 4: all 2 PCs covered
-Checking PC coverage:  27%|██▋       | 3/11 [00:02<00:05,  1.44it/s]2026-05-04 13:26:41,076 - __main__ - DEBUG - Unit ICTICT517: 11 PCs in 3 elements
-2026-05-04 13:26:41,076 - __main__ - DEBUG - Unit ICTICT517: 11 PCs in 3 elements
-2026-05-04 13:26:41,077 - __main__ - DEBUG - Unit ICTICT517 Element 1: all 4 PCs covered
-2026-05-04 13:26:41,077 - __main__ - DEBUG - Unit ICTICT517 Element 1: all 4 PCs covered
-2026-05-04 13:26:41,078 - __main__ - DEBUG - Unit ICTICT517 Element 2: all 4 PCs covered
-2026-05-04 13:26:41,078 - __main__ - DEBUG - Unit ICTICT517 Element 2: all 4 PCs covered
-2026-05-04 13:26:41,079 - __main__ - DEBUG - Unit ICTICT517 Element 3: all 3 PCs covered
-2026-05-04 13:26:41,079 - __main__ - DEBUG - Unit ICTICT517 Element 3: all 3 PCs covered
-2026-05-04 13:26:41,080 - __main__ - DEBUG - Unit ICTICT532: 13 PCs in 4 elements
-2026-05-04 13:26:41,080 - __main__ - DEBUG - Unit ICTICT532: 13 PCs in 4 elements
-2026-05-04 13:26:41,081 - __main__ - DEBUG - Unit ICTICT532 Element 1: all 3 PCs covered
-2026-05-04 13:26:41,081 - __main__ - DEBUG - Unit ICTICT532 Element 1: all 3 PCs covered
-2026-05-04 13:26:41,082 - __main__ - DEBUG - Unit ICTICT532 Element 2: all 3 PCs covered
-2026-05-04 13:26:41,082 - __main__ - DEBUG - Unit ICTICT532 Element 2: all 3 PCs covered
-2026-05-04 13:26:41,083 - __main__ - DEBUG - Unit ICTICT532 Element 3: all 4 PCs covered
-2026-05-04 13:26:41,083 - __main__ - DEBUG - Unit ICTICT532 Element 3: all 4 PCs covered
-2026-05-04 13:26:41,596 - __main__ - INFO - Unit ICTICT532 Element 4: 1/3 PCs uncovered
-2026-05-04 13:26:41,596 - __main__ - INFO - Unit ICTICT532 Element 4: 1/3 PCs uncovered
-Checking PC coverage:  45%|████▌     | 5/11 [00:03<00:03,  1.61it/s]2026-05-04 13:26:42,173 - __main__ - DEBUG - Unit ICTICT527: 17 PCs in 4 elements
-2026-05-04 13:26:42,173 - __main__ - DEBUG - Unit ICTICT527: 17 PCs in 4 elements
-2026-05-04 13:26:42,813 - __main__ - INFO - Unit ICTICT527 Element 1: 2/4 PCs uncovered
-2026-05-04 13:26:42,813 - __main__ - INFO - Unit ICTICT527 Element 1: 2/4 PCs uncovered
-2026-05-04 13:26:43,488 - __main__ - DEBUG - Unit ICTICT527 Element 2: all 4 PCs covered
-2026-05-04 13:26:43,488 - __main__ - DEBUG - Unit ICTICT527 Element 2: all 4 PCs covered
-2026-05-04 13:26:43,489 - __main__ - DEBUG - Unit ICTICT527 Element 3: all 5 PCs covered
-2026-05-04 13:26:43,489 - __main__ - DEBUG - Unit ICTICT527 Element 3: all 5 PCs covered
-2026-05-04 13:26:43,490 - __main__ - DEBUG - Unit ICTICT527 Element 4: all 4 PCs covered
-2026-05-04 13:26:43,490 - __main__ - DEBUG - Unit ICTICT527 Element 4: all 4 PCs covered
-Checking PC coverage:  55%|█████▍    | 6/11 [00:04<00:04,  1.24it/s]2026-05-04 13:26:43,492 - __main__ - DEBUG - Unit ICTCYS407: 13 PCs in 3 elements
-2026-05-04 13:26:43,492 - __main__ - DEBUG - Unit ICTCYS407: 13 PCs in 3 elements
-2026-05-04 13:26:43,865 - __main__ - INFO - Unit ICTCYS407 Element 1: 1/4 PCs uncovered
-2026-05-04 13:26:43,865 - __main__ - INFO - Unit ICTCYS407 Element 1: 1/4 PCs uncovered
-2026-05-04 13:26:44,593 - __main__ - INFO - Unit ICTCYS407 Element 2: 1/4 PCs uncovered
-2026-05-04 13:26:44,593 - __main__ - INFO - Unit ICTCYS407 Element 2: 1/4 PCs uncovered
-2026-05-04 13:26:45,136 - __main__ - DEBUG - Unit ICTCYS407 Element 3: all 5 PCs covered
-2026-05-04 13:26:45,136 - __main__ - DEBUG - Unit ICTCYS407 Element 3: all 5 PCs covered
-Checking PC coverage:  64%|██████▎   | 7/11 [00:06<00:04,  1.04s/it]2026-05-04 13:26:45,139 - __main__ - DEBUG - Unit ICTCYS610: 17 PCs in 4 elements
-2026-05-04 13:26:45,139 - __main__ - DEBUG - Unit ICTCYS610: 17 PCs in 4 elements
-2026-05-04 13:26:45,781 - __main__ - INFO - Unit ICTCYS610 Element 1: 2/5 PCs uncovered
-2026-05-04 13:26:45,781 - __main__ - INFO - Unit ICTCYS610 Element 1: 2/5 PCs uncovered
-2026-05-04 13:26:46,433 - __main__ - DEBUG - Unit ICTCYS610 Element 2: all 3 PCs covered
-2026-05-04 13:26:46,433 - __main__ - DEBUG - Unit ICTCYS610 Element 2: all 3 PCs covered
-2026-05-04 13:26:46,434 - __main__ - DEBUG - Unit ICTCYS610 Element 3: all 5 PCs covered
-2026-05-04 13:26:46,434 - __main__ - DEBUG - Unit ICTCYS610 Element 3: all 5 PCs covered
-2026-05-04 13:26:46,435 - __main__ - DEBUG - Unit ICTCYS610 Element 4: all 4 PCs covered
-2026-05-04 13:26:46,435 - __main__ - DEBUG - Unit ICTCYS610 Element 4: all 4 PCs covered
-Checking PC coverage:  73%|███████▎  | 8/11 [00:07<00:03,  1.11s/it]2026-05-04 13:26:46,437 - __main__ - DEBUG - Unit ICTCYS613: 11 PCs in 3 elements
-2026-05-04 13:26:46,437 - __main__ - DEBUG - Unit ICTCYS613: 11 PCs in 3 elements
-2026-05-04 13:26:46,438 - __main__ - DEBUG - Unit ICTCYS613 Element 1: all 5 PCs covered
-2026-05-04 13:26:46,438 - __main__ - DEBUG - Unit ICTCYS613 Element 1: all 5 PCs covered
-2026-05-04 13:26:46,439 - __main__ - DEBUG - Unit ICTCYS613 Element 2: all 3 PCs covered
-2026-05-04 13:26:46,439 - __main__ - DEBUG - Unit ICTCYS613 Element 2: all 3 PCs covered
-2026-05-04 13:26:46,439 - __main__ - DEBUG - Unit ICTCYS613 Element 3: all 3 PCs covered
-2026-05-04 13:26:46,439 - __main__ - DEBUG - Unit ICTCYS613 Element 3: all 3 PCs covered
-2026-05-04 13:26:46,440 - __main__ - DEBUG - Unit ICTSAS524: 21 PCs in 4 elements
-2026-05-04 13:26:46,440 - __main__ - DEBUG - Unit ICTSAS524: 21 PCs in 4 elements
-2026-05-04 13:26:47,035 - __main__ - INFO - Unit ICTSAS524 Element 1: 2/5 PCs uncovered
-2026-05-04 13:26:47,035 - __main__ - INFO - Unit ICTSAS524 Element 1: 2/5 PCs uncovered
-2026-05-04 13:26:47,700 - __main__ - DEBUG - Unit ICTSAS524 Element 2: all 6 PCs covered
-2026-05-04 13:26:47,700 - __main__ - DEBUG - Unit ICTSAS524 Element 2: all 6 PCs covered
-2026-05-04 13:26:47,835 - __main__ - INFO - Unit ICTSAS524 Element 3: 1/5 PCs uncovered
-2026-05-04 13:26:47,835 - __main__ - INFO - Unit ICTSAS524 Element 3: 1/5 PCs uncovered
-2026-05-04 13:26:48,395 - __main__ - DEBUG - Unit ICTSAS524 Element 4: all 5 PCs covered
-2026-05-04 13:26:48,395 - __main__ - DEBUG - Unit ICTSAS524 Element 4: all 5 PCs covered
-Checking PC coverage:  91%|█████████ | 10/11 [00:09<00:01,  1.05s/it]2026-05-04 13:26:48,397 - __main__ - DEBUG - Unit ICTSAS526: 15 PCs in 4 elements
-2026-05-04 13:26:48,397 - __main__ - DEBUG - Unit ICTSAS526: 15 PCs in 4 elements
-2026-05-04 13:26:49,078 - __main__ - INFO - Unit ICTSAS526 Element 1: 3/4 PCs uncovered
-2026-05-04 13:26:49,078 - __main__ - INFO - Unit ICTSAS526 Element 1: 3/4 PCs uncovered
-2026-05-04 13:26:49,826 - __main__ - DEBUG - Unit ICTSAS526 Element 2: all 3 PCs covered
-2026-05-04 13:26:49,826 - __main__ - DEBUG - Unit ICTSAS526 Element 2: all 3 PCs covered
-2026-05-04 13:26:49,828 - __main__ - DEBUG - Unit ICTSAS526 Element 3: all 3 PCs covered
-2026-05-04 13:26:49,828 - __main__ - DEBUG - Unit ICTSAS526 Element 3: all 3 PCs covered
-2026-05-04 13:26:50,146 - __main__ - INFO - Unit ICTSAS526 Element 4: 3/5 PCs uncovered
-2026-05-04 13:26:50,146 - __main__ - INFO - Unit ICTSAS526 Element 4: 3/5 PCs uncovered
-Checking PC coverage: 100%|██████████| 11/11 [00:11<00:00,  1.09s/it]2026-05-04 13:26:50,844 - __main__ - INFO - Added 11 new skills from uncovered PCs
-2026-05-04 13:26:50,844 - __main__ - INFO - Added 11 new skills from uncovered PCs
-2026-05-04 13:26:50,852 - __main__ - DEBUG - Element heading match but PCs NOT all covered: 'Business Continuity Evaluation' elem=1
-2026-05-04 13:26:50,852 - __main__ - DEBUG - Element heading match but PCs NOT all covered: 'Business Continuity Evaluation' elem=1
-2026-05-04 13:26:50,854 - __main__ - INFO - Deterministic DUP: 'Disaster Recovery Planning' - evidence matches element heading, all PCs covered
-2026-05-04 13:26:50,854 - __main__ - INFO - Deterministic DUP: 'Disaster Recovery Planning' - evidence matches element heading, all PCs covered
-2026-05-04 13:26:50,856 - __main__ - INFO - Deterministic DUP: 'Prevention Strategy Formulation' - evidence matches element heading, all PCs covered
-2026-05-04 13:26:50,856 - __main__ - INFO - Deterministic DUP: 'Prevention Strategy Formulation' - evidence matches element heading, all PCs covered
-2026-05-04 13:26:50,858 - __main__ - INFO - Deterministic DUP: 'Threat Assessment' - evidence matches element heading, all PCs covered
-2026-05-04 13:26:50,858 - __main__ - INFO - Deterministic DUP: 'Threat Assessment' - evidence matches element heading, all PCs covered
-2026-05-04 13:26:50,859 - __main__ - INFO - Running validation pass for quality flags...
-2026-05-04 13:26:50,859 - __main__ - INFO - Running validation pass for quality flags...
-2026-05-04 13:26:50,880 - __main__ - INFO - Validation pass: 157 skills
-2026-05-04 13:26:50,880 - __main__ - INFO - Validation pass: 157 skills
-
-2026-05-04 13:27:15,016 - __main__ - INFO - Verifying 26 duplicate flags with evidence overlap...
-2026-05-04 13:27:15,016 - __main__ - INFO - Verifying 26 duplicate flags with evidence overlap...
-2026-05-04 13:27:15,018 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Stakeholder Viewpoint Elicitation' vs 'Stakeholder Feedback Solicitation' (ev_j=0.09, verbs_a={'develop'}, verbs_b={'seek'})
-2026-05-04 13:27:15,018 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Stakeholder Viewpoint Elicitation' vs 'Stakeholder Feedback Solicitation' (ev_j=0.09, verbs_a={'develop'}, verbs_b={'seek'})
-2026-05-04 13:27:15,019 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Idea Generation' vs 'Concept Planning' (ev_j=0.00, verbs_a={'brainstorm'}, verbs_b={'gather', 'evaluate'})
-2026-05-04 13:27:15,019 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Idea Generation' vs 'Concept Planning' (ev_j=0.00, verbs_a={'brainstorm'}, verbs_b={'gather', 'evaluate'})
-2026-05-04 13:27:15,021 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Idea Viability Evaluation' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a={'evaluate'}, verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,021 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Idea Viability Evaluation' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a={'evaluate'}, verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,023 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Solution Presentation' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a={'select', 'present'}, verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,023 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Solution Presentation' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a={'select', 'present'}, verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,024 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Solution Refinement' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a=set(), verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,024 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Solution Refinement' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a=set(), verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,026 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Device Configuration Setup' vs 'Device Inventory Management' (ev_j=0.06, verbs_a=set(), verbs_b={'create', 'maintain'})
-2026-05-04 13:27:15,026 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Device Configuration Setup' vs 'Device Inventory Management' (ev_j=0.06, verbs_a=set(), verbs_b={'create', 'maintain'})
-2026-05-04 13:27:15,027 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Password Strength Creation' vs 'Anti-malware Deployment' (ev_j=0.00, verbs_a={'create'}, verbs_b={'install'})
-2026-05-04 13:27:15,027 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Password Strength Creation' vs 'Anti-malware Deployment' (ev_j=0.00, verbs_a={'create'}, verbs_b={'install'})
-2026-05-04 13:27:15,029 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Physical Security Plan Communication' vs 'Physical Security Planning' (ev_j=1.00)
-2026-05-04 13:27:15,029 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Physical Security Plan Communication' vs 'Physical Security Planning' (ev_j=1.00)
-2026-05-04 13:27:15,030 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Security Trend Monitoring' vs 'Device Inventory Management' (ev_j=0.08, verbs_a={'monitor'}, verbs_b={'create', 'maintain'})
-2026-05-04 13:27:15,030 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Security Trend Monitoring' vs 'Device Inventory Management' (ev_j=0.08, verbs_a={'monitor'}, verbs_b={'create', 'maintain'})
-2026-05-04 13:27:15,031 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Policy Distribution' vs 'Policy Distribution' (ev_j=0.50)
-2026-05-04 13:27:15,031 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Policy Distribution' vs 'Policy Distribution' (ev_j=0.50)
-2026-05-04 13:27:15,033 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Design Documentation Preparation' vs 'Documentation Submission' (ev_j=0.00, verbs_a={'document', 'design', 'plan'}, verbs_b={'respond', 'seek', 'submit'})
-2026-05-04 13:27:15,033 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Design Documentation Preparation' vs 'Documentation Submission' (ev_j=0.00, verbs_a={'document', 'design', 'plan'}, verbs_b={'respond', 'seek', 'submit'})
-2026-05-04 13:27:15,035 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Documentation Submission' vs 'Design Documentation Preparation' (ev_j=0.00, verbs_a={'respond', 'seek', 'submit'}, verbs_b={'document', 'design', 'plan'})
-2026-05-04 13:27:15,035 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Documentation Submission' vs 'Design Documentation Preparation' (ev_j=0.00, verbs_a={'respond', 'seek', 'submit'}, verbs_b={'document', 'design', 'plan'})
-2026-05-04 13:27:15,037 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Data Log Ingestion' vs 'Security Log Ingestion' (ev_j=1.00)
-2026-05-04 13:27:15,037 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Data Log Ingestion' vs 'Security Log Ingestion' (ev_j=1.00)
-2026-05-04 13:27:15,038 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Data Discrepancy Analysis' vs 'Threat Risk Assessment' (ev_j=0.00, verbs_a=set(), verbs_b={'discuss', 'assess'})
-2026-05-04 13:27:15,038 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Data Discrepancy Analysis' vs 'Threat Risk Assessment' (ev_j=0.00, verbs_a=set(), verbs_b={'discuss', 'assess'})
-2026-05-04 13:27:15,040 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Dataset Creation' vs 'Threat Data Collation' (ev_j=1.00)
-2026-05-04 13:27:15,040 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Dataset Creation' vs 'Threat Data Collation' (ev_j=1.00)
-2026-05-04 13:27:15,041 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Threat Data Collation' vs 'Dataset Creation' (ev_j=1.00)
-2026-05-04 13:27:15,041 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Threat Data Collation' vs 'Dataset Creation' (ev_j=1.00)
-2026-05-04 13:27:15,042 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Technical Documentation Preparation' vs 'Security Findings Documentation' (ev_j=0.09, verbs_a=set(), verbs_b={'document'})
-2026-05-04 13:27:15,042 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Technical Documentation Preparation' vs 'Security Findings Documentation' (ev_j=0.09, verbs_a=set(), verbs_b={'document'})
-2026-05-04 13:27:15,044 - __main__ - DEBUG - Dup KEPT (borderline): 'Incident Response Planning' vs 'Incident Response Plan Evaluation' (ev_j=0.40, shared={'document'})
-2026-05-04 13:27:15,044 - __main__ - DEBUG - Dup KEPT (borderline): 'Incident Response Planning' vs 'Incident Response Plan Evaluation' (ev_j=0.40, shared={'document'})
-2026-05-04 13:27:15,045 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Technical Data Interpretation' vs 'Technical Data Interpretation' (ev_j=1.00)
-2026-05-04 13:27:15,045 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Technical Data Interpretation' vs 'Technical Data Interpretation' (ev_j=1.00)
-2026-05-04 13:27:15,046 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Business Continuity Evaluation' vs 'Critical Function Identification' (ev_j=0.11, verbs_a={'evaluate'}, verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,046 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Business Continuity Evaluation' vs 'Critical Function Identification' (ev_j=0.11, verbs_a={'evaluate'}, verbs_b={'identify', 'assess'})
-2026-05-04 13:27:15,048 - __main__ - DEBUG - Dup KEPT (borderline): 'Contingency Plan Development' vs 'Disaster Recovery Planning' (ev_j=0.22, shared={'develop', 'plan'})
-2026-05-04 13:27:15,048 - __main__ - DEBUG - Dup KEPT (borderline): 'Contingency Plan Development' vs 'Disaster Recovery Planning' (ev_j=0.22, shared={'develop', 'plan'})
-2026-05-04 13:27:15,049 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Industry Standards Review' vs 'Compliance Management' (ev_j=0.00, verbs_a={'review', 'check'}, verbs_b=set())
-2026-05-04 13:27:15,049 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Industry Standards Review' vs 'Compliance Management' (ev_j=0.00, verbs_a={'review', 'check'}, verbs_b=set())
-2026-05-04 13:27:15,050 - __main__ - DEBUG - Dup KEPT (borderline): 'Risk Analysis' vs 'Disaster Recovery Planning' (ev_j=0.20, shared=set())
-2026-05-04 13:27:15,050 - __main__ - DEBUG - Dup KEPT (borderline): 'Risk Analysis' vs 'Disaster Recovery Planning' (ev_j=0.20, shared=set())
-2026-05-04 13:27:15,051 - __main__ - INFO - Duplicate verification: 14/26 flags removed as false positives
-2026-05-04 13:27:15,051 - __main__ - INFO - Duplicate verification: 14/26 flags removed as false positives
-Style compliance: 100%|██████████| 9/9 [01:03<00:00,  7.04s/it]2026-05-04 13:28:18,454 - __main__ - INFO - 
+2026-05-08 00:09:36,292 - __main__ - INFO - Loading skills from: ./data/S334_skills_all_gt.xlsx
+2026-05-08 00:09:36,401 - __main__ - INFO - Loaded 232 skills
+2026-05-08 00:09:36,402 - __main__ - INFO - Column mapping (university):
+2026-05-08 00:09:36,402 - __main__ - INFO -   unit_code → Course Code
+2026-05-08 00:09:36,403 - __main__ - INFO -   unit_title → Course Name
+2026-05-08 00:09:36,403 - __main__ - INFO -   skill_name → Skill Name
+2026-05-08 00:09:36,403 - __main__ - INFO -   description → Description
+2026-05-08 00:09:36,404 - __main__ - INFO -   evidence → Evidence
+2026-05-08 00:09:36,404 - __main__ - INFO -   keywords → Keywords
+2026-05-08 00:09:36,404 - __main__ - INFO -   category → Category
+2026-05-08 00:09:36,405 - __main__ - INFO -   level → Level
+2026-05-08 00:09:36,405 - __main__ - INFO -   context → Context
+2026-05-08 00:09:36,405 - __main__ - INFO -   confidence → Confidence
+2026-05-08 00:09:36,406 - __main__ - INFO -   sub_outcomes → learning_outcomes
+2026-05-08 00:09:36,406 - __main__ - INFO -   unit_context → course_description
+2026-05-08 00:09:36,406 - __main__ - INFO -   Missing (will use empty): {'meta_skills', 'unit_structure'}
+2026-05-08 00:09:36,407 - __main__ - INFO - Processing 19 units: ['DAI001', 'SIT102', 'SIT111', 'SIT182', 'SIT192', 'SIT202', 'SIT218', 'SIT223', 'SIT232', 'SIT282', 'SIT306', 'SIT324', 'SIT327', 'SIT344', 'SIT374', 'SIT378', 'SIT379', 'SIT384', 'STP010']
+2026-05-08 00:09:36,408 - __main__ - INFO - 
 ============================================================
-2026-05-04 13:28:18,454 - __main__ - INFO - 
+2026-05-08 00:09:36,408 - __main__ - INFO - UNIT 1/19: DAI001
+2026-05-08 00:09:36,408 - __main__ - INFO - ============================================================
+2026-05-08 00:09:36,409 - __main__ - INFO - Skills in unit: 14
+2026-05-08 00:09:36,470 - __main__ - INFO - Loading skills from: _temp_DAI001.xlsx
+2026-05-08 00:09:36,641 - __main__ - INFO - Loaded 14 skills
+2026-05-08 00:09:36,642 - __main__ - INFO - Using provided embedding interface for coverage check
+2026-05-08 00:09:36,643 - __main__ - INFO - SkillNameRefiner v3 init: mode=university, batch_size=10000, style=True, consensus=7x, threshold=4, validation_threshold=2
+2026-05-08 00:09:36,643 - __main__ - INFO - Column mapping (university):
+2026-05-08 00:09:36,643 - __main__ - INFO -   unit_code → Course Code
+2026-05-08 00:09:36,644 - __main__ - INFO -   unit_title → Course Name
+2026-05-08 00:09:36,644 - __main__ - INFO -   skill_name → Skill Name
+2026-05-08 00:09:36,644 - __main__ - INFO -   description → Description
+2026-05-08 00:09:36,645 - __main__ - INFO -   evidence → Evidence
+2026-05-08 00:09:36,645 - __main__ - INFO -   keywords → Keywords
+2026-05-08 00:09:36,645 - __main__ - INFO -   category → Category
+2026-05-08 00:09:36,645 - __main__ - INFO -   level → Level
+2026-05-08 00:09:36,646 - __main__ - INFO -   context → Context
+2026-05-08 00:09:36,646 - __main__ - INFO -   confidence → Confidence
+2026-05-08 00:09:36,646 - __main__ - INFO -   sub_outcomes → learning_outcomes
+2026-05-08 00:09:36,647 - __main__ - INFO -   unit_context → course_description
+2026-05-08 00:09:36,647 - __main__ - INFO -   Missing (will use empty): {'meta_skills', 'unit_structure'}
+2026-05-08 00:09:36,647 - __main__ - INFO - Starting refinement for 14 skills (mode=university)
+2026-05-08 00:09:36,648 - __main__ - INFO - Using learning outcomes column 'learning_outcomes' for cross-referencing
+2026-05-08 00:09:36,648 - __main__ - INFO - Using course description column 'course_description' for context
+2026-05-08 00:09:36,648 - __main__ - WARNING - No application column 'course_description'
+2026-05-08 00:09:36,651 - __main__ - INFO - Processing 14 skills (0 empty/skipped)
+2026-05-08 00:09:36,651 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
+2026-05-08 00:09:36,651 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+2026-05-08 00:09:36,652 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
+Run 1/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  1.35it/s]2026-05-08 00:09:37,396 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
+
+Run 2/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  1.87it/s]2026-05-08 00:09:37,931 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
+
+Run 3/7 (t=0.1): 100%|██████████| 1/1 [00:00<00:00,  1.87it/s]2026-05-08 00:09:38,467 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
+
+Run 4/7 (t=0.2): 100%|██████████| 1/1 [00:00<00:00,  1.92it/s]2026-05-08 00:09:38,989 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
+
+Run 5/7 (t=0.3): 100%|██████████| 1/1 [00:00<00:00,  1.78it/s]2026-05-08 00:09:39,553 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
+
+Run 6/7 (t=0.4): 100%|██████████| 1/1 [00:00<00:00,  1.84it/s]2026-05-08 00:09:40,097 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
+
+Run 7/7 (t=0.5): 100%|██████████| 1/1 [00:00<00:00,  1.78it/s]2026-05-08 00:09:40,663 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'integrity policy comprehension' -> 'Academic Integrity Comprehension' (keep:0, "Academic Integrity Comprehension":7)
+2026-05-08 00:09:40,665 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'support seeking guidance' -> 'Support Referral' (keep:0, "Support Referral/Support Guidance Referral":7)
+2026-05-08 00:09:40,669 - __main__ - INFO - Running post-refinement duplicate check...
+2026-05-08 00:09:40,670 - __main__ - DEBUG - Post-refine dup: 'Academic Honesty Evaluation' <-> 'Ethical Behaviour Identification' (name_j=0.00, ev_j=1.00)
+2026-05-08 00:09:40,671 - __main__ - DEBUG - Post-refine dup: 'Academic Integrity Application' <-> 'Integrity Values Assessment' (name_j=0.20, ev_j=1.00)
+2026-05-08 00:09:40,673 - __main__ - DEBUG - Post-refine dup: 'Support Referral' <-> 'Harm Support Referral' (name_j=0.67, ev_j=1.00)
+2026-05-08 00:09:40,674 - __main__ - DEBUG - Post-refine dup: 'Respectful Relationship Building' <-> 'Safe Relationship Identification' (name_j=0.20, ev_j=1.00)
+2026-05-08 00:09:40,675 - __main__ - INFO - Step 3b3: Skipped (university mode — generic names may be valid)
+2026-05-08 00:09:40,676 - __main__ - INFO - Step 3b5: Same-LO duplicate detection (university mode)
+2026-05-08 00:09:40,678 - __main__ - INFO - Uni DUP: 'Responsibility Management' same LO as 'Fairness Evaluation' (ev_j=0.67)
+2026-05-08 00:09:40,679 - __main__ - INFO - Uni DUP: 'Trust Development Facilitation' same LO as 'Fairness Evaluation' (ev_j=0.67)
+2026-05-08 00:09:40,679 - __main__ - INFO - Uni DUP: 'Self‑harm Awareness' same LO as 'Harm Support Referral' (ev_j=0.60)
+2026-05-08 00:09:40,680 - __main__ - INFO - Step 3b6: Vague description-sourced skill check (university mode)
+2026-05-08 00:09:40,681 - __main__ - INFO - Checking PC coverage gaps...
+2026-05-08 00:09:40,681 - __main__ - INFO - Checking 1 units for PC coverage gaps (embedding=YES)
+
+Checking PC coverage:   0%|          | 0/1 [00:00<?, ?it/s]2026-05-08 00:09:40,682 - __main__ - WARNING - Unit DAI001: no PCs parsed from text
+Checking PC coverage: 100%|██████████| 1/1 [00:00<00:00, 1084.64it/s]2026-05-08 00:09:40,683 - __main__ - INFO - No PC coverage gaps found
+2026-05-08 00:09:40,684 - __main__ - INFO - Running validation pass for quality flags...
+2026-05-08 00:09:40,685 - __main__ - INFO - Validation pass: 14 skills
+
+2026-05-08 00:09:43,012 - __main__ - INFO - Verifying 9 duplicate flags with evidence overlap...
+2026-05-08 00:09:43,014 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Academic Honesty Evaluation' vs 'Ethical Behaviour Identification' (ev_j=1.00)
+2026-05-08 00:09:43,015 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Academic Integrity Application' vs 'Integrity Values Assessment' (ev_j=1.00)
+2026-05-08 00:09:43,016 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Academic Integrity Comprehension' vs 'Academic Integrity Application' (ev_j=0.12, verbs_a={'develop', 'maintain'}, verbs_b={'apply'})
+2026-05-08 00:09:43,017 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Integrity Values Assessment' vs 'Academic Integrity Application' (ev_j=1.00)
+2026-05-08 00:09:43,018 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Respectful Relationship Building' vs 'Safe Relationship Identification' (ev_j=1.00)
+2026-05-08 00:09:43,021 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Support Referral' vs 'Harm Support Referral' (ev_j=1.00)
+2026-05-08 00:09:43,022 - __main__ - INFO - Duplicate verification: 4/9 flags removed as false positives
+2026-05-08 00:09:43,023 - __main__ - INFO - Re-refining 1 misinterpreted skills...
+2026-05-08 00:09:43,263 - __main__ - INFO - MIS re-refined: 'Trust Development Facilitation' -> 'Trust Development Application'
+2026-05-08 00:09:43,264 - __main__ - INFO - Description detection: 12/14 skills have extra verbs
+2026-05-08 00:09:43,265 - __main__ - INFO - Description correction: 12 skills sent to LLM
+2026-05-08 00:09:44,220 - __main__ - DEBUG - Description refined R0: 'Evaluates academic integrity in hybrid settings by' -> 'Identifies academic integrity in hybrid settings b' (Removed extra verb 'evaluates' and replaced with evidence verb 'identifies')
+2026-05-08 00:09:44,221 - __main__ - DEBUG - Description refined R1: 'Upholds academic integrity by demonstrating honest' -> 'Applies academic integrity by upholding honesty, t' (Removed extra verb 'demonstrating' and replaced with evidence verb 'applies')
+2026-05-08 00:09:44,221 - __main__ - DEBUG - Description refined R2: 'Evaluates academic actions in hybrid settings to d' -> 'Identifies academic actions in hybrid settings to ' (Removed extra verb 'evaluates' and replaced with evidence verb 'identifies')
+2026-05-08 00:09:44,222 - __main__ - DEBUG - Description refined R4: 'Assesses student work for fairness using academic ' -> 'Applies academic integrity values to evaluate fair' (Removed extra verb 'assesses' and used only the evidence verb 'apply' while preserving context.)
+2026-05-08 00:09:44,222 - __main__ - DEBUG - Description refined R5: 'Identifies and directs individuals to appropriate ' -> 'Seeks and supports individuals by directing them t' (Removed extra verb 'identifies' and used only evidence verbs 'seek' and 'support'.)
+2026-05-08 00:09:44,223 - __main__ - DEBUG - Description refined R6: 'Applies academic integrity principles by citing so' -> 'Develops and maintains academic integrity by citin' (Removed extra verb 'applies' and replaced with evidence verbs 'develop' and 'maintain')
+2026-05-08 00:09:44,223 - __main__ - DEBUG - Description refined R7: 'Assesses academic work by applying honesty, trust,' -> 'Applies honesty, trust, fairness, respect, and res' (Removed extra verb 'assesses' which was not in the evidence; retained only the evidence verb 'apply' and kept context.)
+2026-05-08 00:09:44,223 - __main__ - DEBUG - Description refined R8: 'Evaluates and applies safe, healthy, respectful re' -> 'Identifies safe, healthy, respectful relationship ' (Removed extra verbs 'evaluates' and 'applies' which were not present in the evidence; retained only the evidence verb 'identify' while preserving context.)
+2026-05-08 00:09:44,224 - __main__ - DEBUG - Description refined R9: 'Upholds academic integrity by consistently managin' -> 'Applies academic integrity values while consistent' (Removed extra verb 'manage' and replaced with evidence verb 'apply')
+2026-05-08 00:09:44,224 - __main__ - DEBUG - Description refined R10: 'Evaluates interpersonal dynamics in hybrid setting' -> 'Identifies interpersonal dynamics in hybrid settin' (Removed extra verb 'evaluates' and replaced with evidence verb 'identifies')
+2026-05-08 00:09:44,225 - __main__ - DEBUG - Description refined R11: 'Recognizes signs of self‑harm in hybrid settings t' -> 'Identifies signs of self‑harm in hybrid settings f' (Removed extra verb 'support' not present in evidence; retained evidence verb 'identify' and kept context qualifiers.)
+2026-05-08 00:09:44,225 - __main__ - DEBUG - Description refined R12: 'Identifies appropriate hybrid support resources an' -> 'Seeks appropriate hybrid support resources and sup' (Removed extra verb 'identifies' and used only evidence verbs 'seek' and 'support')
+2026-05-08 00:09:44,225 - __main__ - INFO - Descriptions changed: 12
+2026-05-08 00:09:44,226 - __main__ - INFO - Keyword detection: 14/14 skills have gaps or flags
+2026-05-08 00:09:44,234 - __main__ - INFO - Keyword correction: 14 skills sent to LLM
+2026-05-08 00:09:44,936 - __main__ - DEBUG - Keywords enriched R0: 'academic integrity; plagiarism detection; citation' -> 'academic integrity, plagiarism detection, citation' (added core term honesty)
+2026-05-08 00:09:44,937 - __main__ - DEBUG - Keywords enriched R1: 'ethical standards; honesty; fairness; responsibili' -> 'ethical standards, honesty, fairness, responsibili' (added missing core term academic integrity)
+2026-05-08 00:09:44,938 - __main__ - DEBUG - Keywords enriched R2: 'academic integrity; ethical standards; honor code;' -> 'academic integrity, ethical standards, honor code,' (added core term behaviour)
+2026-05-08 00:09:44,938 - __main__ - DEBUG - Keywords enriched R3: 'academic integrity; research ethics; compliance; m' -> 'academic integrity, research ethics, moral reasoni' (added missing core terms ethical, decision, making)
+2026-05-08 00:09:44,939 - __main__ - DEBUG - Keywords enriched R4: 'academic integrity; ethical assessment; bias detec' -> 'academic integrity, ethical assessment, bias detec' (added core term fairness)
+2026-05-08 00:09:44,939 - __main__ - DEBUG - Keywords enriched R5: 'crisis intervention; counseling services; referral' -> 'crisis intervention, counseling services, referral' (added core term harm)
+2026-05-08 00:09:44,940 - __main__ - DEBUG - Keywords enriched R6: 'academic integrity; research ethics; plagiarism pr' -> 'academic integrity, plagiarism prevention, citatio' (added missing core term comprehension)
+2026-05-08 00:09:44,940 - __main__ - DEBUG - Keywords enriched R7: 'academic integrity; ethical standards; honor code;' -> 'academic integrity, ethical standards, honor code,' (added core term values)
+2026-05-08 00:09:44,941 - __main__ - DEBUG - Keywords enriched R8: 'healthy relationships; empathy; boundaries; consen' -> 'healthy relationships, empathy, boundaries, consen' (added core term respectful relationships)
+2026-05-08 00:09:44,941 - __main__ - DEBUG - Keywords enriched R9: 'academic integrity; ethics; accountability; compli' -> 'academic integrity, ethics, accountability, compli' (added core term responsibility)
+2026-05-08 00:09:44,941 - __main__ - DEBUG - Keywords enriched R10: 'healthy relationships; respectful interaction; bou' -> 'healthy relationships, respectful interaction, bou' (added core term safe)
+2026-05-08 00:09:44,942 - __main__ - DEBUG - Keywords enriched R11: 'mental health; risk assessment; crisis interventio' -> 'mental health, risk assessment, crisis interventio' (added core term awareness)
+2026-05-08 00:09:44,942 - __main__ - DEBUG - Keywords enriched R12: 'support resources; referral pathways; student well' -> 'support resources, referral pathways, student well' (added core term experienced harm)
+2026-05-08 00:09:44,943 - __main__ - DEBUG - Keywords enriched R13: 'relationship building; academic integrity; facilit' -> 'relationship building, academic integrity, facilit' (added missing core term application)
+2026-05-08 00:09:44,943 - __main__ - INFO - Keywords changed: 14
+Style compliance: 100%|██████████| 1/1 [00:04<00:00,  4.03s/it]2026-05-08 00:09:48,973 - __main__ - ERROR - Unit DAI001 failed: No module named 'postprocess_keywords'
+2026-05-08 00:09:49,068 - __main__ - INFO - 
 ============================================================
-2026-05-04 13:28:18,455 - __main__ - INFO - SKILL NAME REFINEMENT v2 — STATISTICS (CONSENSUS)
-2026-05-04 13:28:18,455 - __main__ - INFO - SKILL NAME REFINEMENT v2 — STATISTICS (CONSENSUS)
-2026-05-04 13:28:18,456 - __main__ - INFO - ============================================================
-2026-05-04 13:28:18,456 - __main__ - INFO - ============================================================
-2026-05-04 13:28:18,456 - __main__ - INFO - Total processed: 157
-2026-05-04 13:28:18,456 - __main__ - INFO - Total processed: 157
-2026-05-04 13:28:18,457 - __main__ - INFO - Consensus runs: 7
-2026-05-04 13:28:18,457 - __main__ - INFO - Consensus runs: 7
-2026-05-04 13:28:18,457 - __main__ - INFO - Consensus threshold: 4
-2026-05-04 13:28:18,457 - __main__ - INFO - Consensus threshold: 4
-2026-05-04 13:28:18,458 - __main__ - INFO - Validation threshold: 2
-2026-05-04 13:28:18,458 - __main__ - INFO - Validation threshold: 2
-2026-05-04 13:28:18,458 - __main__ - INFO - Names changed by consensus: 27
-2026-05-04 13:28:18,458 - __main__ - INFO - Names changed by consensus: 27
-2026-05-04 13:28:18,459 - __main__ - INFO - Names changed by post-process: 7
-2026-05-04 13:28:18,459 - __main__ - INFO - Names changed by post-process: 7
-2026-05-04 13:28:18,459 - __main__ - INFO - Names unchanged: 130
-2026-05-04 13:28:18,459 - __main__ - INFO - Names unchanged: 130
-2026-05-04 13:28:18,460 - __main__ - INFO - Flagged as duplicate: 12
-2026-05-04 13:28:18,460 - __main__ - INFO - Flagged as duplicate: 12
-2026-05-04 13:28:18,460 - __main__ - INFO - Duplicate flags removed by evidence verification: 14
-2026-05-04 13:28:18,460 - __main__ - INFO - Duplicate flags removed by evidence verification: 14
-2026-05-04 13:28:18,461 - __main__ - INFO - Flagged as out of scope: 9
-2026-05-04 13:28:18,461 - __main__ - INFO - Flagged as out of scope: 9
-2026-05-04 13:28:18,461 - __main__ - INFO - Flagged as misinterpretation: 3
-2026-05-04 13:28:18,461 - __main__ - INFO - Flagged as misinterpretation: 3
-2026-05-04 13:28:18,462 - __main__ - INFO - Skills added from PC gaps: 11
-2026-05-04 13:28:18,462 - __main__ - INFO - Skills added from PC gaps: 11
-2026-05-04 13:28:18,462 - __main__ - INFO - Descriptions changed: 2
-2026-05-04 13:28:18,462 - __main__ - INFO - Descriptions changed: 2
-2026-05-04 13:28:18,463 - __main__ - INFO - Keywords changed: 2
-2026-05-04 13:28:18,463 - __main__ - INFO - Keywords changed: 2
-2026-05-04 13:28:18,463 - __main__ - INFO - ============================================================
-2026-05-04 13:28:18,463 - __main__ - INFO - ============================================================
+2026-05-08 00:09:49,069 - __main__ - INFO - UNIT 2/19: SIT102
+2026-05-08 00:09:49,069 - __main__ - INFO - ============================================================
+2026-05-08 00:09:49,070 - __main__ - INFO - Skills in unit: 12
+2026-05-08 00:09:49,126 - __main__ - INFO - Loading skills from: _temp_SIT102.xlsx
 
-2026-05-04 13:28:18,699 - __main__ - INFO - Saved refined skills to: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app_refined_v5.xlsx
-2026-05-04 13:28:18,699 - __main__ - INFO - Saved refined skills to: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app_refined_v5.xlsx
+2026-05-08 00:09:49,287 - __main__ - INFO - Loaded 12 skills
+2026-05-08 00:09:49,287 - __main__ - INFO - Using provided embedding interface for coverage check
+2026-05-08 00:09:49,288 - __main__ - INFO - SkillNameRefiner v3 init: mode=university, batch_size=10000, style=True, consensus=7x, threshold=4, validation_threshold=2
+2026-05-08 00:09:49,288 - __main__ - INFO - Column mapping (university):
+2026-05-08 00:09:49,288 - __main__ - INFO -   unit_code → Course Code
+2026-05-08 00:09:49,289 - __main__ - INFO -   unit_title → Course Name
+2026-05-08 00:09:49,289 - __main__ - INFO -   skill_name → Skill Name
+2026-05-08 00:09:49,289 - __main__ - INFO -   description → Description
+2026-05-08 00:09:49,290 - __main__ - INFO -   evidence → Evidence
+2026-05-08 00:09:49,290 - __main__ - INFO -   keywords → Keywords
+2026-05-08 00:09:49,290 - __main__ - INFO -   category → Category
+2026-05-08 00:09:49,291 - __main__ - INFO -   level → Level
+2026-05-08 00:09:49,291 - __main__ - INFO -   context → Context
+2026-05-08 00:09:49,291 - __main__ - INFO -   confidence → Confidence
+2026-05-08 00:09:49,292 - __main__ - INFO -   sub_outcomes → learning_outcomes
+2026-05-08 00:09:49,292 - __main__ - INFO -   unit_context → course_description
+2026-05-08 00:09:49,292 - __main__ - INFO -   Missing (will use empty): {'meta_skills', 'unit_structure'}
+2026-05-08 00:09:49,292 - __main__ - INFO - Starting refinement for 12 skills (mode=university)
+2026-05-08 00:09:49,293 - __main__ - INFO - Using learning outcomes column 'learning_outcomes' for cross-referencing
+2026-05-08 00:09:49,293 - __main__ - INFO - Using course description column 'course_description' for context
+2026-05-08 00:09:49,293 - __main__ - WARNING - No application column 'course_description'
+2026-05-08 00:09:49,296 - __main__ - INFO - Processing 12 skills (0 empty/skipped)
+2026-05-08 00:09:49,296 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
+2026-05-08 00:09:49,296 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+2026-05-08 00:09:49,297 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
+Run 1/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  1.29it/s]2026-05-08 00:09:50,073 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
 
-Refinement complete!
-Output: ./data/20260423 V1 FSO Skills Output_CM_added_element_pcs_fs_pcs_fs_app_refined_v5.xlsx
-Total: 170
-Changed: 34 (20.0%)
+Run 2/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  1.99it/s]2026-05-08 00:09:50,577 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
+
+Run 3/7 (t=0.1): 100%|██████████| 1/1 [00:00<00:00,  2.01it/s]2026-05-08 00:09:51,076 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
+
+Run 4/7 (t=0.2): 100%|██████████| 1/1 [00:00<00:00,  1.90it/s]2026-05-08 00:09:51,604 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
+
+Run 5/7 (t=0.3): 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]2026-05-08 00:09:52,111 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
+
+Run 6/7 (t=0.4): 100%|██████████| 1/1 [00:00<00:00,  1.98it/s]2026-05-08 00:09:52,617 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
+
+Run 7/7 (t=0.5): 100%|██████████| 1/1 [00:00<00:00,  1.92it/s]2026-05-08 00:09:53,143 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'programming syntax explanation' -> 'Program Structure Explanation' (keep:0, "Program Structure Explanation":7)
+2026-05-08 00:09:53,146 - __main__ - INFO - Running post-refinement duplicate check...
+2026-05-08 00:09:53,150 - __main__ - INFO - Step 3b3: Skipped (university mode — generic names may be valid)
+2026-05-08 00:09:53,150 - __main__ - INFO - Step 3b5: Same-LO duplicate detection (university mode)
+2026-05-08 00:09:53,153 - __main__ - INFO - Step 3b6: Vague description-sourced skill check (university mode)
+2026-05-08 00:09:53,154 - __main__ - INFO - Uni OOS: 'Structured Programming Fundamentals' - vague description-sourced skill
+2026-05-08 00:09:53,154 - __main__ - INFO - Checking PC coverage gaps...
+2026-05-08 00:09:53,155 - __main__ - INFO - Checking 1 units for PC coverage gaps (embedding=YES)
+
+Checking PC coverage:   0%|          | 0/1 [00:00<?, ?it/s]2026-05-08 00:09:53,156 - __main__ - WARNING - Unit SIT102: no PCs parsed from text
+Checking PC coverage: 100%|██████████| 1/1 [00:00<00:00, 1200.09it/s]2026-05-08 00:09:53,157 - __main__ - INFO - No PC coverage gaps found
+2026-05-08 00:09:53,157 - __main__ - INFO - Running validation pass for quality flags...
+2026-05-08 00:09:53,159 - __main__ - INFO - Validation pass: 12 skills
+
+2026-05-08 00:09:53,835 - __main__ - INFO - Verifying 1 duplicate flags with evidence overlap...
+2026-05-08 00:09:53,837 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Modular Program Design' vs 'Procedural Code Evaluation' (ev_j=0.00, verbs_a=set(), verbs_b={'evaluate'})
+2026-05-08 00:09:53,837 - __main__ - INFO - Duplicate verification: 1/1 flags removed as false positives
+2026-05-08 00:09:53,838 - __main__ - INFO - Description detection: 8/12 skills have extra verbs
+2026-05-08 00:09:53,839 - __main__ - INFO - Description correction: 8 skills sent to LLM
+2026-05-08 00:09:54,552 - __main__ - DEBUG - Description refined R1: 'Implements conditional loops and branches in code ' -> 'Uses conditional loops and branches in code to con' (Removed extra action verbs 'implements' and 'manage' which were not present in the evidence; retained the core action 'use' aligned with the evidence.)
+2026-05-08 00:09:54,553 - __main__ - DEBUG - Description refined R2: 'Selects appropriate data types to optimize storage' -> 'Uses appropriate data types to optimize storage an' (Removed the extra verb 'select' which is not present in the evidence; kept the context of using data types.)
+2026-05-08 00:09:54,553 - __main__ - DEBUG - Description refined R3: 'Applies formal logic and precise terminology to de' -> 'Uses formal logic and precise terminology to devel' (Removed extra verbs 'applies', 'design', and 'evaluate' which were not present in the evidence.)
+2026-05-08 00:09:54,554 - __main__ - DEBUG - Description refined R4: 'Designs modular code structures using modularisati' -> 'Creates modular code structures using modularisati' (Removed extra verb 'design' which was not present in the evidence; used 'creates' as a suitable synonym for the evidence context.)
+2026-05-08 00:09:54,554 - __main__ - DEBUG - Description refined R5: 'Provides evidence-based justification for objectiv' -> 'Provides evidence-based justification for objectiv' (Removed extra action verbs 'document' and 'report' which were not present in the evidence.)
+2026-05-08 00:09:54,555 - __main__ - DEBUG - Description refined R7: 'Reviews procedural program code in hybrid environm' -> 'Evaluates procedural program code in hybrid enviro' (Removed extra verb 'reviews' and replaced with evidence verb 'evaluates' to match the evidence.)
+2026-05-08 00:09:54,555 - __main__ - DEBUG - Description refined R10: 'Identifies common software security vulnerabilitie' -> 'Describes common software security vulnerabilities' (Removed extra action verbs 'identifies' and 'advises' which are not present in the evidence.)
+2026-05-08 00:09:54,556 - __main__ - DEBUG - Description refined R11: 'Applies structured programming basics to design cl' -> 'Learns the fundamentals of structured programming ' (Removed extra action verbs 'applies' and 'design' which were not present in the evidence; retained context and focus on learning structured programming fundamentals.)
+2026-05-08 00:09:54,556 - __main__ - INFO - Descriptions changed: 8
+2026-05-08 00:09:54,557 - __main__ - INFO - Keyword detection: 11/12 skills have gaps or flags
+2026-05-08 00:09:54,568 - __main__ - INFO - Keyword correction: 11 skills sent to LLM
+2026-05-08 00:09:55,308 - __main__ - DEBUG - Keywords enriched R1: 'conditional statements; loop constructs; branching' -> 'conditional statements, loop constructs, branching' (added core term control flow)
+2026-05-08 00:09:55,309 - __main__ - DEBUG - Keywords enriched R2: 'type casting; type safety; static typing; dynamic ' -> 'type casting, type safety, static typing, dynamic ' (added core term utilisation)
+2026-05-08 00:09:55,309 - __main__ - DEBUG - Keywords enriched R3: 'algorithmic thinking; formal logic; problem solvin' -> 'algorithmic thinking, formal logic, logical reason' (added missing core term logical reasoning)
+2026-05-08 00:09:55,310 - __main__ - DEBUG - Keywords enriched R4: 'software engineering; code reuse; component archit' -> 'software engineering, code reuse, component archit' (added missing core term modular program)
+2026-05-08 00:09:55,310 - __main__ - DEBUG - Keywords enriched R5: 'performance measurement; KPI reporting; evidence-b' -> 'performance measurement, KPI reporting, evidence-b' (added core term objective)
+2026-05-08 00:09:55,311 - __main__ - DEBUG - Keywords enriched R6: 'portfolio assessment; artefact evaluation; reflect' -> 'portfolio assessment, artefact evaluation, reflect' (added core term critique)
+2026-05-08 00:09:55,311 - __main__ - DEBUG - Keywords enriched R7: 'code review; coding standards; static analysis; so' -> 'code review, coding standards, static analysis, pr' (added core term procedural)
+2026-05-08 00:09:55,311 - __main__ - DEBUG - Keywords enriched R8: 'structured programming; algorithm implementation; ' -> 'structured programming, algorithm implementation, ' (added missing core term procedural program)
+2026-05-08 00:09:55,312 - __main__ - DEBUG - Keywords enriched R9: 'code semantics; language constructs; compiler theo' -> 'code semantics, language constructs, compiler theo' (added core term program structure)
+2026-05-08 00:09:55,312 - __main__ - DEBUG - Keywords enriched R10: 'cybersecurity; threat modeling; vulnerability asse' -> 'software, cybersecurity, threat modeling, vulnerab' (added missing core terms software and awareness (awareness cov
+
+... [*** WARNING: max output size exceeded, skipping output. ***] ...
+
+_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': 'b578880b-461f-42b8-9e2c-6821a5bedd1e', 'session': '', 'username': '', 'date': datetime.datetime(2026, 5, 8, 0, 12, 53, 14000, tzinfo=tzutc()), 'version': '5.4'}, 'msg_id': 'b578880b-461f-42b8-9e2c-6821a5bedd1e', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '0ab62ee9-6377-4cbc-a203-e69b72fcf662'}, 'body': {'lsp_msg': {'method': 'textDocument/definition', 'params': {'textDocument': {'uri': '/notebook/9fed0608-dd67-4837-9201-31f198bf368d/3654997778802561'}, 'position': {'line': 4172, 'character': 34}}, 'id': 5, 'jsonrpc': '2.0', 'cachedFilesAndMtimes': {}}}}}, 'buffers': []})
+Run 2/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  1.83it/s]2026-05-08 00:12:53,308 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
+
+Run 3/7 (t=0.1): 100%|██████████| 1/1 [00:00<00:00,  1.93it/s]2026-05-08 00:12:53,827 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
+
+Run 4/7 (t=0.2): 100%|██████████| 1/1 [00:00<00:00,  1.92it/s]2026-05-08 00:12:54,349 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
+
+Run 5/7 (t=0.3): 100%|██████████| 1/1 [00:00<00:00,  1.80it/s]2026-05-08 00:12:54,907 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
+
+Run 6/7 (t=0.4):   0%|          | 0/1 [00:00<?, ?it/s]2026-05-08 00:12:54,997 - Comm - DEBUG - handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': 'a7e80a0a-78aa-4a2c-b35b-173267ffa0ea', 'session': '', 'username': '', 'date': datetime.datetime(2026, 5, 8, 0, 12, 54, 877000, tzinfo=tzutc()), 'version': '5.4'}, 'msg_id': 'a7e80a0a-78aa-4a2c-b35b-173267ffa0ea', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '0ab62ee9-6377-4cbc-a203-e69b72fcf662'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'method': '$/cancelRequest', 'params': {'id': 5}}}}}, 'buffers': []})
+2026-05-08 00:12:54,999 - Comm - DEBUG - handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': '2e2f7016-d784-4e5b-8fd7-e64eac72c4a0', 'session': '', 'username': '', 'date': datetime.datetime(2026, 5, 8, 0, 12, 54, 879000, tzinfo=tzutc()), 'version': '5.4'}, 'msg_id': '2e2f7016-d784-4e5b-8fd7-e64eac72c4a0', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '0ab62ee9-6377-4cbc-a203-e69b72fcf662'}, 'body': {'lsp_msg': {'method': 'textDocument/definition', 'params': {'textDocument': {'uri': '/notebook/9fed0608-dd67-4837-9201-31f198bf368d/3654997778802561'}, 'position': {'line': 4172, 'character': 33}}, 'id': 6, 'jsonrpc': '2.0', 'cachedFilesAndMtimes': {}}}}}, 'buffers': []})
+2026-05-08 00:12:55,085 - Comm - DEBUG - handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': 'bb8cef5e-ea08-42ee-a333-608e5ba9a418', 'session': '', 'username': '', 'date': datetime.datetime(2026, 5, 8, 0, 12, 54, 974000, tzinfo=tzutc()), 'version': '5.4'}, 'msg_id': 'bb8cef5e-ea08-42ee-a333-608e5ba9a418', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '0ab62ee9-6377-4cbc-a203-e69b72fcf662'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'method': '$/cancelRequest', 'params': {'id': 6}}}}}, 'buffers': []})
+2026-05-08 00:12:55,310 - Comm - DEBUG - handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': 'a8ed40c5-fa23-4f05-bbdc-5e800a90035f', 'session': '', 'username': '', 'date': datetime.datetime(2026, 5, 8, 0, 12, 55, 199000, tzinfo=tzutc()), 'version': '5.4'}, 'msg_id': 'a8ed40c5-fa23-4f05-bbdc-5e800a90035f', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '0ab62ee9-6377-4cbc-a203-e69b72fcf662'}, 'body': {'lsp_msg': {'jsonrpc': '2.0', 'method': '$/cancelRequest', 'params': {'id': 7}}}}}, 'buffers': []})
+Run 6/7 (t=0.4): 100%|██████████| 1/1 [00:00<00:00,  1.78it/s]2026-05-08 00:12:55,471 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
+
+Run 7/7 (t=0.5): 100%|██████████| 1/1 [00:00<00:00,  1.96it/s]2026-05-08 00:12:55,984 - __main__ - DEBUG - Consensus CHANGE [6/7]: 'critical data interpretation' -> 'Data Interpretation' (keep:1, "Data Interpretation":6)
+2026-05-08 00:12:55,987 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'security analytics reporting' -> 'Evidence Evaluation Reporting' (keep:0, "Evidence Evaluation Reporting":7)
+2026-05-08 00:12:55,991 - __main__ - INFO - Running post-refinement duplicate check...
+2026-05-08 00:12:55,993 - __main__ - DEBUG - Post-refine dup: 'Python Scripting for Analytics' <-> 'Analytics Solution Implementation' (name_j=0.17, ev_j=1.00)
+2026-05-08 00:12:55,993 - __main__ - DEBUG - Post-refine dup: 'Classification Modelling' <-> 'Clustering Analysis' (name_j=0.00, ev_j=1.00)
+2026-05-08 00:12:55,995 - __main__ - DEBUG - Post-refine dup: 'Clustering Analysis' <-> 'Machine Learning Application' (name_j=0.00, ev_j=1.00)
+2026-05-08 00:12:55,996 - __main__ - DEBUG - Post-refine dup: 'Cyber Security Data Analysis' <-> 'Research Methodology Design' (name_j=0.00, ev_j=1.00)
+2026-05-08 00:12:55,997 - __main__ - DEBUG - Post-refine dup: 'Cyber Security Data Processing' <-> 'Cyber Security Data Visualization' (name_j=0.60, ev_j=1.00)
+2026-05-08 00:12:55,998 - __main__ - DEBUG - Post-refine dup: 'Evidence Evaluation Reporting' <-> 'Evidence Evaluation' (name_j=0.67, ev_j=0.77)
+2026-05-08 00:12:55,999 - __main__ - DEBUG - Post-refine dup: 'Machine Learning Application' <-> 'Regression Modelling' (name_j=0.00, ev_j=1.00)
+2026-05-08 00:12:56,000 - __main__ - INFO - Step 3b3: Skipped (university mode — generic names may be valid)
+2026-05-08 00:12:56,001 - __main__ - INFO - Step 3b5: Same-LO duplicate detection (university mode)
+2026-05-08 00:12:56,003 - __main__ - INFO - Step 3b6: Vague description-sourced skill check (university mode)
+2026-05-08 00:12:56,003 - __main__ - INFO - Checking PC coverage gaps...
+2026-05-08 00:12:56,004 - __main__ - INFO - Checking 1 units for PC coverage gaps (embedding=YES)
+
+Checking PC coverage:   0%|          | 0/1 [00:00<?, ?it/s]2026-05-08 00:12:56,005 - __main__ - WARNING - Unit SIT384: no PCs parsed from text
+Checking PC coverage: 100%|██████████| 1/1 [00:00<00:00, 1204.57it/s]2026-05-08 00:12:56,006 - __main__ - INFO - No PC coverage gaps found
+2026-05-08 00:12:56,006 - __main__ - INFO - Running validation pass for quality flags...
+2026-05-08 00:12:56,008 - __main__ - INFO - Validation pass: 15 skills
+2026-05-08 00:12:56,009 - Comm - DEBUG - handle_msg[LSP_COMM_ID]({'header': {'msg_type': 'comm_msg', 'msg_id': '4a45f952-8efd-4870-a40b-8659c034b7c6', 'session': '', 'username': '', 'date': datetime.datetime(2026, 5, 8, 0, 12, 55, 889000, tzinfo=tzutc()), 'version': '5.4'}, 'msg_id': '4a45f952-8efd-4870-a40b-8659c034b7c6', 'msg_type': 'comm_msg', 'parent_header': {'session': '', 'username': '', 'version': '5.3'}, 'metadata': {}, 'content': {'comm_id': 'LSP_COMM_ID', 'data': {'header': {'lsm_protocol_version': 0, 'msg_type': 'lsp_msg', 'ls_instance_id': '0ab62ee9-6377-4cbc-a203-e69b72fcf662'}, 'body': {'lsp_msg': {'method': 'textDocument/definition', 'params': {'textDocument': {'uri': '/notebook/9fed0608-dd67-4837-9201-31f198bf368d/3654997778802561'}, 'position': {'line': 4175, 'character': 16}}, 'id': 8, 'jsonrpc': '2.0', 'cachedFilesAndMtimes': {}}}}}, 'buffers': []})
+
+2026-05-08 00:12:56,897 - __main__ - INFO - Verifying 8 duplicate flags with evidence overlap...
+2026-05-08 00:12:56,899 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Analytics Solution Implementation' vs 'Cyber Security Data Processing' (ev_j=0.17, verbs_a={'implement', 'test'}, verbs_b=set())
+2026-05-08 00:12:56,900 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Classification Modelling' vs 'Clustering Analysis' (ev_j=1.00)
+2026-05-08 00:12:56,901 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Clustering Analysis' vs 'Machine Learning Application' (ev_j=1.00)
+2026-05-08 00:12:56,902 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Cyber Security Data Analysis' vs 'Research Methodology Design' (ev_j=1.00)
+2026-05-08 00:12:56,903 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Cyber Security Data Processing' vs 'Cyber Security Data Visualization' (ev_j=1.00)
+2026-05-08 00:12:56,904 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Machine Learning Application' vs 'Regression Modelling' (ev_j=1.00)
+2026-05-08 00:12:56,905 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Python Scripting for Analytics' vs 'Analytics Solution Implementation' (ev_j=1.00)
+2026-05-08 00:12:56,906 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Evidence Evaluation Reporting' vs 'Evidence Evaluation' (ev_j=0.75)
+2026-05-08 00:12:56,906 - __main__ - INFO - Duplicate verification: 1/8 flags removed as false positives
+2026-05-08 00:12:56,907 - __main__ - INFO - Re-refining 1 misinterpreted skills...
+2026-05-08 00:12:57,181 - __main__ - INFO - MIS re-refined: 'Research Methodology Design' -> 'Data Analytical Methodology Learning'
+2026-05-08 00:12:57,183 - __main__ - INFO - Description detection: 13/15 skills have extra verbs
+2026-05-08 00:12:57,184 - __main__ - INFO - Description correction: 13 skills sent to LLM
+2026-05-08 00:12:58,166 - __main__ - DEBUG - Description refined R0: 'Develops and tests Python scripts to implement sma' -> 'Implements and tests Python scripts for small anal' (Removed extra verb 'develop' not present in evidence; kept evidence verbs 'implement' and 'test' and retained context.)
+2026-05-08 00:12:58,167 - __main__ - DEBUG - Description refined R2: 'Applies clustering techniques to analyze datasets,' -> 'Applies clustering techniques, explaining methodol' (Removed extra verb 'analyze' which was not present in the evidence; retained only the evidence verb 'apply'.)
+2026-05-08 00:12:58,167 - __main__ - DEBUG - Description refined R3: 'Interprets complex datasets using analytics princi' -> 'Applies analytics principles to complex datasets, ' (Removed extra verb 'interprets' which was not in the evidence; retained evidence verb 'apply' and context qualifiers.)
+2026-05-08 00:12:58,168 - __main__ - DEBUG - Description refined R4: 'Applies hybrid data‑analysis techniques to investi' -> 'Investigates cyber‑security incidents using hybrid' (Removed extra verb 'applies' which was not present in the evidence; retained evidence verb 'investigate' and kept context.)
+2026-05-08 00:12:58,168 - __main__ - DEBUG - Description refined R5: 'Processes and analyzes cyber security system data ' -> 'Processes and analyses cyber security system data ' (Removed extra verbs 'analyze' (duplicate) and 'detect' which were not in the evidence; kept only the evidence verb 'analyse'.)
+2026-05-08 00:12:58,169 - __main__ - DEBUG - Description refined R6: 'Creates visual dashboards by processing and analyz' -> 'Processes and analyses cyber security data to crea' (Removed extra verb 'create' and replaced 'analyzing' with the evidence verb 'analyses' while retaining context.)
+2026-05-08 00:12:58,169 - __main__ - DEBUG - Description refined R7: 'Applies advanced data analytics to identify and re' -> 'Applies advanced data analytics to resolve cyber s' (Removed extra verb 'identify' which was not present in the evidence; retained the evidence verb 'apply' and kept context.)
+2026-05-08 00:12:58,169 - __main__ - DEBUG - Description refined R8: 'Identifies and classifies common data formats used' -> 'Identifies common data formats used in cybersecuri' (Removed extra verb 'classifies' which was not present in the evidence; kept only the evidence verb 'identify'.)
+2026-05-08 00:12:58,170 - __main__ - DEBUG - Description refined R9: 'Evaluates and critiques evidence against criteria ' -> 'Critiques evidence against criteria to justify out' (Removed extra verbs 'evaluates' and 'analyse' which were not present in the evidence; kept only the evidence verb 'critique' and retained context qualifiers.)
+2026-05-08 00:12:58,170 - __main__ - DEBUG - Description refined R10: 'Applies and explains classification, clustering, a' -> 'Applies classification, clustering, and regression' (Removed extra verb 'analyze' which was not present in the evidence; kept only the evidence verb 'apply' (as 'applies') and retained context.)
+2026-05-08 00:12:58,171 - __main__ - DEBUG - Description refined R11: 'Develops and tests Python scripts to analyze cyber' -> 'Implements and tests Python scripts to process cyb' (Removed extra verbs 'develops' and 'analyze' which are not in the evidence; kept only evidence verbs 'implement' and 'test'.)
+2026-05-08 00:12:58,171 - __main__ - DEBUG - Description refined R13: 'Designs research methodologies by selecting approp' -> 'Investigates data analysis techniques to study cyb' (Removed extra verbs 'designs', 'research', and 'select' which were not present in the evidence; retained the evidence verb 'investigate'.)
+2026-05-08 00:12:58,171 - __main__ - DEBUG - Description refined R14: 'Uses security analytics to compile evidence, evalu' -> 'Uses security analytics to compile evidence and pr' (Removed extra action verbs 'evaluate' and 'report' which were not present in the evidence.)
+2026-05-08 00:12:58,172 - __main__ - INFO - Descriptions changed: 13
+2026-05-08 00:12:58,173 - __main__ - INFO - Keyword detection: 12/15 skills have gaps or flags
+2026-05-08 00:12:58,182 - __main__ - INFO - Keyword correction: 12 skills sent to LLM
+2026-05-08 00:12:58,913 - __main__ - DEBUG - Keywords enriched R0: 'cybersecurity data; Python scripting; data analyti' -> 'cybersecurity data, Python scripting, data analyti' (added core term analytics solution)
+2026-05-08 00:12:58,914 - __main__ - DEBUG - Keywords enriched R1: 'supervised learning; unsupervised learning; regres' -> 'classification, supervised learning, unsupervised ' (added core term classification)
+2026-05-08 00:12:58,915 - __main__ - DEBUG - Keywords enriched R2: 'unsupervised learning; data mining; pattern recogn' -> 'clustering, unsupervised learning, data mining, pa' (added core term clustering)
+2026-05-08 00:12:58,915 - __main__ - DEBUG - Keywords enriched R5: 'threat intelligence; SIEM; log analysis; network t' -> 'threat intelligence, SIEM, log analysis, network t' (added core term processing)
+2026-05-08 00:12:58,915 - __main__ - DEBUG - Keywords enriched R7: 'threat analysis; incident response; vulnerability ' -> 'threat analysis, incident response, vulnerability ' (added missing term solving cyber security problems)
+2026-05-08 00:12:58,916 - __main__ - DEBUG - Keywords enriched R8: 'cybersecurity; file formats; network protocols; da' -> 'cybersecurity, file formats, network protocols, da' (added core term data format)
+2026-05-08 00:12:58,916 - __main__ - DEBUG - Keywords enriched R10: 'classification algorithms; clustering techniques; ' -> 'machine learning, classification algorithms, clust' (added core term machine learning)
+2026-05-08 00:12:58,917 - __main__ - DEBUG - Keywords enriched R11: 'cybersecurity; data analytics; log processing; aut' -> 'cybersecurity, data analytics, log processing, aut' (added missing core terms python and scripting)
+2026-05-08 00:12:58,917 - __main__ - DEBUG - Keywords enriched R12: 'supervised learning; predictive analytics; statist' -> 'regression, supervised learning, predictive analyt' (added core term regression)
+2026-05-08 00:12:58,917 - __main__ - DEBUG - Keywords enriched R13: 'cybersecurity analytics; data analysis techniques;' -> 'cybersecurity analytics, data analysis techniques,' (added core term analytical methodologies)
+2026-05-08 00:12:58,918 - __main__ - INFO - Keywords changed: 10
+Style compliance: 100%|██████████| 1/1 [00:06<00:00,  6.54s/it]2026-05-08 00:13:05,464 - __main__ - ERROR - Unit SIT384 failed: No module named 'postprocess_keywords'
+2026-05-08 00:13:05,544 - __main__ - INFO - 
+============================================================
+2026-05-08 00:13:05,545 - __main__ - INFO - UNIT 19/19: STP010
+2026-05-08 00:13:05,545 - __main__ - INFO - ============================================================
+2026-05-08 00:13:05,546 - __main__ - INFO - Skills in unit: 8
+2026-05-08 00:13:05,592 - __main__ - INFO - Loading skills from: _temp_STP010.xlsx
+
+2026-05-08 00:13:05,934 - __main__ - INFO - Loaded 8 skills
+2026-05-08 00:13:05,935 - __main__ - INFO - Using provided embedding interface for coverage check
+2026-05-08 00:13:05,935 - __main__ - INFO - SkillNameRefiner v3 init: mode=university, batch_size=10000, style=True, consensus=7x, threshold=4, validation_threshold=2
+2026-05-08 00:13:05,936 - __main__ - INFO - Column mapping (university):
+2026-05-08 00:13:05,936 - __main__ - INFO -   unit_code → Course Code
+2026-05-08 00:13:05,936 - __main__ - INFO -   unit_title → Course Name
+2026-05-08 00:13:05,936 - __main__ - INFO -   skill_name → Skill Name
+2026-05-08 00:13:05,937 - __main__ - INFO -   description → Description
+2026-05-08 00:13:05,937 - __main__ - INFO -   evidence → Evidence
+2026-05-08 00:13:05,937 - __main__ - INFO -   keywords → Keywords
+2026-05-08 00:13:05,938 - __main__ - INFO -   category → Category
+2026-05-08 00:13:05,938 - __main__ - INFO -   level → Level
+2026-05-08 00:13:05,938 - __main__ - INFO -   context → Context
+2026-05-08 00:13:05,939 - __main__ - INFO -   confidence → Confidence
+2026-05-08 00:13:05,939 - __main__ - INFO -   sub_outcomes → learning_outcomes
+2026-05-08 00:13:05,939 - __main__ - INFO -   unit_context → course_description
+2026-05-08 00:13:05,939 - __main__ - INFO -   Missing (will use empty): {'meta_skills', 'unit_structure'}
+2026-05-08 00:13:05,940 - __main__ - INFO - Starting refinement for 8 skills (mode=university)
+2026-05-08 00:13:05,940 - __main__ - INFO - Using learning outcomes column 'learning_outcomes' for cross-referencing
+2026-05-08 00:13:05,940 - __main__ - INFO - Using course description column 'course_description' for context
+2026-05-08 00:13:05,941 - __main__ - WARNING - No application column 'course_description'
+2026-05-08 00:13:05,943 - __main__ - INFO - Processing 8 skills (0 empty/skipped)
+2026-05-08 00:13:05,943 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
+2026-05-08 00:13:05,943 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+2026-05-08 00:13:05,944 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
+Run 1/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  2.16it/s]2026-05-08 00:13:06,409 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
+
+Run 2/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  2.98it/s]2026-05-08 00:13:06,746 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
+
+Run 3/7 (t=0.1): 100%|██████████| 1/1 [00:00<00:00,  3.11it/s]2026-05-08 00:13:07,069 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
+
+Run 4/7 (t=0.2): 100%|██████████| 1/1 [00:00<00:00,  3.04it/s]2026-05-08 00:13:07,400 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
+
+Run 5/7 (t=0.3): 100%|██████████| 1/1 [00:00<00:00,  3.04it/s]2026-05-08 00:13:07,730 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
+
+Run 6/7 (t=0.4): 100%|██████████| 1/1 [00:00<00:00,  3.04it/s]2026-05-08 00:13:08,061 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
+
+Run 7/7 (t=0.5): 100%|██████████| 1/1 [00:00<00:00,  2.98it/s]2026-05-08 00:13:08,402 - __main__ - INFO - Running post-refinement duplicate check...
+2026-05-08 00:13:08,404 - __main__ - DEBUG - Post-refine dup: 'Career Planning' <-> 'Professional Identity Development' (name_j=0.00, ev_j=1.00)
+2026-05-08 00:13:08,405 - __main__ - INFO - Step 3b3: Skipped (university mode — generic names may be valid)
+2026-05-08 00:13:08,405 - __main__ - INFO - Step 3b5: Same-LO duplicate detection (university mode)
+2026-05-08 00:13:08,407 - __main__ - INFO - Step 3b6: Vague description-sourced skill check (university mode)
+2026-05-08 00:13:08,407 - __main__ - INFO - Checking PC coverage gaps...
+2026-05-08 00:13:08,408 - __main__ - INFO - Checking 1 units for PC coverage gaps (embedding=YES)
+
+Checking PC coverage:   0%|          | 0/1 [00:00<?, ?it/s]2026-05-08 00:13:08,409 - __main__ - WARNING - Unit STP010: no PCs parsed from text
+Checking PC coverage: 100%|██████████| 1/1 [00:00<00:00, 1217.50it/s]2026-05-08 00:13:08,410 - __main__ - INFO - No PC coverage gaps found
+2026-05-08 00:13:08,410 - __main__ - INFO - Running validation pass for quality flags...
+2026-05-08 00:13:08,411 - __main__ - INFO - Validation pass: 8 skills
+
+2026-05-08 00:13:08,902 - __main__ - INFO - Verifying 3 duplicate flags with evidence overlap...
+2026-05-08 00:13:08,904 - __main__ - DEBUG - Dup CONFIRMED (high overlap): 'Career Planning' vs 'Professional Identity Development' (ev_j=1.00)
+2026-05-08 00:13:08,905 - __main__ - DEBUG - Dup KEPT (borderline): 'Career Tool Development' vs 'Employability Skill Development' (ev_j=0.30, shared=set())
+2026-05-08 00:13:08,906 - __main__ - DEBUG - Dup KEPT (borderline): 'Employability Skill Development' vs 'Career Tool Development' (ev_j=0.30, shared=set())
+2026-05-08 00:13:08,906 - __main__ - INFO - Duplicate verification: 0/3 flags removed as false positives
+2026-05-08 00:13:08,907 - __main__ - INFO - Description detection: 5/8 skills have extra verbs
+2026-05-08 00:13:08,908 - __main__ - INFO - Description correction: 5 skills sent to LLM
+2026-05-08 00:13:09,296 - asyncio - DEBUG - Using selector: EpollSelector
+2026-05-08 00:13:09,585 - __main__ - DEBUG - Description refined R1: 'Designs personal career pathways using theoretical' -> 'Creates personal career pathways using theoretical' (Removed extra action verbs 'design' and 'guide' which were not present in the evidence; retained context and used the evidence verb 'create' as a synonym.)
+2026-05-08 00:13:09,586 - __main__ - DEBUG - Description refined R2: 'Designs three customized career tools, applying pe' -> 'Creates three customized career tools that enhance' (Removed extra action verbs 'designs' and 'applying' which are not in the evidence; kept only the evidence verb 'create' (rephrased as 'creates'))
+2026-05-08 00:13:09,587 - __main__ - DEBUG - Description refined R3: 'Designs and implements targeted activities that bu' -> 'Builds job‑ready competencies to enhance employabi' (Removed extra verbs 'designs' and 'implements' which are not present in the evidence; kept the core action of building competencies aligned with the evidence verb 'enhance'.)
+2026-05-08 00:13:09,587 - __main__ - DEBUG - Description refined R4: 'Applies core academic concepts in hybrid coursewor' -> 'Demonstrates core academic concepts in hybrid cour' (Removed extra verb 'applies' and replaced with evidence verb 'demonstrates'.)
+2026-05-08 00:13:09,588 - __main__ - DEBUG - Description refined R6: 'Reflects on career education experiences to shape ' -> 'Reflects on career education experiences to shape ' (Removed extra verb 'guide' not present in evidence)
+2026-05-08 00:13:09,588 - __main__ - INFO - Descriptions changed: 5
+2026-05-08 00:13:09,589 - __main__ - INFO - Keyword detection: 4/8 skills have gaps or flags
+2026-05-08 00:13:09,591 - __main__ - INFO - Keyword correction: 4 skills sent to LLM
+2026-05-08 00:13:09,998 - __main__ - DEBUG - Keywords enriched R0: 'online assessment; e‑learning; introductory unit; ' -> 'online assessment, e‑learning, introductory unit, ' (added core term completion)
+2026-05-08 00:13:09,999 - __main__ - DEBUG - Keywords enriched R2: 'career development; personal branding; employabili' -> 'career development, personal branding, employabili' (added core term career tools)
+2026-05-08 00:13:09,999 - __main__ - DEBUG - Keywords enriched R3: 'career readiness; professional competencies; soft ' -> 'career readiness, professional competencies, soft ' (added core term employability)
+2026-05-08 00:13:10,000 - __main__ - DEBUG - Keywords enriched R4: 'core concepts; career readiness; educational found' -> 'foundational knowledge, core concepts, career read' (added core terms foundational and knowledge)
+2026-05-08 00:13:10,000 - __main__ - INFO - Keywords changed: 4
+Style compliance: 100%|██████████| 1/1 [00:04<00:00,  4.09s/it]2026-05-08 00:13:14,097 - __main__ - ERROR - Unit STP010 failed: No module named 'postprocess_keywords'
+
+
+============================================================
+REFINEMENT COMPLETE
+============================================================
+Units processed: 19
+Total skills: 232
+Names changed: 0 (0.0%)
+Output files:
+Exception ignored in: <function ZipFile.__del__ at 0x7fbe3fb8ee80>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/zipfile/__init__.py", line 1953, in __del__
+    self.close()
+  File "/usr/lib/python3.12/zipfile/__init__.py", line 1970, in close
+    self.fp.seek(self.start_dir)
+OSError: [Errno 95] Operation not supported
+2026-05-08 00:13:14,857 - __main__ - INFO - Combined output saved to: /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/Deakin_08052026/S334_skills_all_gt_combined.xlsx
+
+Combined file: /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/Deakin_08052026/S334_skills_all_gt_combined.xlsx
+Total rows: 232
