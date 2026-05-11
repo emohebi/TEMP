@@ -387,3 +387,7 @@ OSError: [Errno 95] Operation not supported
 
 Combined file: /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/Deakin_08052026/S334_skills_all_gt_combined.xlsx
 Total rows: 232
+
+However, not everyone who reports that they were impacted gets the actual question asking what specific impacts (those Unsure for the severity (FuelLevel)), and some people can also report Unsure for that specific question, and thus aren't included in the denominator. The calculations for each of the impacts should simply be e.g. % GoodsCostsFuel = Yes/Yes+No.
+
+The total sample can be deduced from the below like FuelLevel = Minor, Moderate, Severe and UnsureFuel = No.
