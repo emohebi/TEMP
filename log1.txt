@@ -1,0 +1,118 @@
+============================================================
+2026-05-13 04:00:29,887 - __main__ - INFO - UNIT 1/11: BSBCRT512
+2026-05-13 04:00:29,888 - __main__ - INFO - ============================================================
+2026-05-13 04:00:29,889 - __main__ - INFO - Skills in unit: 15
+2026-05-13 04:00:29,911 - __main__ - INFO - Loading skills from: _temp_BSBCRT512.xlsx
+2026-05-13 04:00:30,054 - __main__ - INFO - Loaded 15 skills
+2026-05-13 04:00:30,055 - __main__ - INFO - Using provided embedding interface for PC coverage check
+2026-05-13 04:00:30,055 - __main__ - INFO - SkillNameRefiner v2 init: batch_size=10000, style=True, consensus=7x, threshold=4, validation_threshold=2
+2026-05-13 04:00:30,056 - __main__ - INFO - Starting single-pass refinement for 15 skills
+2026-05-13 04:00:30,056 - __main__ - INFO - Using elements column 'elements' for cross-referencing
+2026-05-13 04:00:30,056 - __main__ - INFO - Using performance criteria column 'performance_criteria' for cross-referencing
+2026-05-13 04:00:30,057 - __main__ - INFO - Using foundation skills column 'foundation_skills' for cross-referencing
+2026-05-13 04:00:30,057 - __main__ - INFO - Using application column 'application' for unit context
+2026-05-13 04:00:30,060 - __main__ - INFO - Processing 15 skills (0 empty/skipped)
+2026-05-13 04:00:30,060 - __main__ - INFO - Consensus mode: 7 runs, threshold=4
+2026-05-13 04:00:30,061 - __main__ - INFO - Temperature schedule: [0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+2026-05-13 04:00:30,061 - __main__ - INFO - Consensus run 1/7 (temperature=0.0)
+Run 1/7 (t=0.0): 100%|██████████| 1/1 [00:01<00:00,  1.44s/it]2026-05-13 04:00:31,506 - __main__ - INFO - Consensus run 2/7 (temperature=0.0)
+
+Run 2/7 (t=0.0): 100%|██████████| 1/1 [00:00<00:00,  1.71it/s]2026-05-13 04:00:32,090 - __main__ - INFO - Consensus run 3/7 (temperature=0.1)
+
+Run 3/7 (t=0.1): 100%|██████████| 1/1 [00:00<00:00,  1.72it/s]2026-05-13 04:00:32,672 - __main__ - INFO - Consensus run 4/7 (temperature=0.2)
+
+Run 4/7 (t=0.2): 100%|██████████| 1/1 [00:00<00:00,  1.75it/s]2026-05-13 04:00:33,246 - __main__ - INFO - Consensus run 5/7 (temperature=0.3)
+
+Run 5/7 (t=0.3): 100%|██████████| 1/1 [00:00<00:00,  1.75it/s]2026-05-13 04:00:33,820 - __main__ - INFO - Consensus run 6/7 (temperature=0.4)
+
+Run 6/7 (t=0.4): 100%|██████████| 1/1 [00:00<00:00,  1.58it/s]2026-05-13 04:00:34,455 - __main__ - INFO - Consensus run 7/7 (temperature=0.5)
+
+Run 7/7 (t=0.5): 100%|██████████| 1/1 [00:00<00:00,  1.64it/s]2026-05-13 04:00:35,068 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Active Listening' -> 'Stakeholder Viewpoint Elicitation' (keep:0, "Stakeholder Viewpoint Elicitation":7)
+2026-05-13 04:00:35,070 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Brainstorming Idea Generation' -> 'Idea Generation' (keep:0, "Idea Generation":7)
+2026-05-13 04:00:35,071 - __main__ - DEBUG - Consensus CHANGE [4/7]: 'Idea Evaluation Viability' -> 'Idea Viability Assessment' (keep:0, "Solution Viability Assessment/Idea Viability Assessment":4, "Idea Viability Evaluation":3)
+2026-05-13 04:00:35,073 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Research Information Gathering' -> 'Information Research' (keep:0, "Information Research":7)
+2026-05-13 04:00:35,074 - __main__ - DEBUG - Consensus CHANGE [7/7]: 'Team Facilitation' -> 'Discussion Facilitation' (keep:0, "Discussion Facilitation":7)
+2026-05-13 04:00:35,078 - __main__ - INFO - Running post-refinement duplicate check...
+2026-05-13 04:00:35,082 - __main__ - INFO - Running embedding-enhanced duplicate check...
+
+2026-05-13 04:00:35,601 - __main__ - INFO - Checking PC coverage gaps...
+2026-05-13 04:00:35,603 - __main__ - INFO - Checking 1 units for PC coverage gaps (embedding=YES)
+Checking PC coverage:   0%|          | 0/1 [00:00<?, ?it/s]2026-05-13 04:00:35,605 - __main__ - DEBUG - Unit BSBCRT512: 12 PCs in 3 elements
+2026-05-13 04:00:35,607 - __main__ - DEBUG - Unit BSBCRT512 Element 1: all 4 PCs covered
+2026-05-13 04:00:35,607 - __main__ - DEBUG - Unit BSBCRT512 Element 2: all 4 PCs covered
+2026-05-13 04:00:35,898 - __main__ - INFO - Unit BSBCRT512 Element 3: 1/4 PCs uncovered
+Checking PC coverage: 100%|██████████| 1/1 [00:00<00:00,  1.13it/s]2026-05-13 04:00:36,493 - __main__ - INFO - Added 1 new skills from uncovered PCs
+2026-05-13 04:00:36,494 - __main__ - INFO - Running validation pass for quality flags...
+2026-05-13 04:00:36,497 - __main__ - INFO - Validation pass: 15 skills
+
+2026-05-13 04:00:49,827 - __main__ - INFO - Verifying 4 duplicate flags with evidence overlap...
+2026-05-13 04:00:49,829 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Stakeholder Viewpoint Elicitation' vs 'Stakeholder Feedback Solicitation' (ev_j=0.09, verbs_a={'develop'}, verbs_b={'seek'})
+2026-05-13 04:00:49,830 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Idea Generation' vs 'Concept Planning' (ev_j=0.00, verbs_a={'brainstorm'}, verbs_b={'gather', 'evaluate'})
+2026-05-13 04:00:49,832 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Idea Viability Assessment' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a={'evaluate'}, verbs_b={'identify', 'assess'})
+2026-05-13 04:00:49,833 - __main__ - DEBUG - Dup REMOVED (low overlap, no shared verb): 'Solution Presentation' vs 'Solution Viability Assessment' (ev_j=0.00, verbs_a={'select', 'present'}, verbs_b={'identify', 'assess'})
+2026-05-13 04:00:49,834 - __main__ - INFO - Duplicate verification: 4/4 flags removed as false positives
+2026-05-13 04:00:49,834 - __main__ - INFO - Re-refining 1 misinterpreted skills...
+2026-05-13 04:00:50,111 - __main__ - INFO - MIS re-refined: 'Concept Planning' -> 'Concept Evaluation'
+2026-05-13 04:00:50,112 - __main__ - INFO - Description detection: 13/16 skills have extra verbs
+2026-05-13 04:00:50,114 - __main__ - INFO - Description correction: 13 skills sent to LLM
+2026-05-13 04:00:51,163 - __main__ - DEBUG - Description refined R1: 'Compares project concepts against industry best‑pr' -> 'Compares project concepts against industry best‑pr' (Removed extra verb 'identify' not present in evidence; retained only the evidence verb 'compare' while preserving context.)
+2026-05-13 04:00:51,164 - __main__ - DEBUG - Description refined R2: 'Generates diverse solutions by leading focused bra' -> 'Brainstorms diverse solutions by leading focused s' (Removed extra verb 'generate' which was not present in the evidence; kept only the evidence verb 'brainstorm'.)
+2026-05-13 04:00:51,165 - __main__ - DEBUG - Description refined R3: 'Applies systematic analytical methods to collect a' -> 'Gathers and evaluates concepts using systematic an' (Removed extra verb 'applies' which was not in the evidence; kept only evidence verbs 'gather' and 'evaluate'.)
+2026-05-13 04:00:51,165 - __main__ - DEBUG - Description refined R4: 'Applies creative thinking techniques to develop in' -> 'Generates innovative solutions to workplace challe' (Removed extra verbs 'applies' and 'develop' which were not present in the evidence; retained the evidence verb 'generate' and kept context qualifiers.)
+2026-05-13 04:00:51,166 - __main__ - DEBUG - Description refined R6: 'Assesses ideas by systematically comparing them ag' -> 'Evaluates ideas against identified viability facto' (Description used extra verbs 'assesses' and 'comparing' not present in evidence; replaced with evidence verb 'evaluates' only.)
+2026-05-13 04:00:51,166 - __main__ - DEBUG - Description refined R7: 'Collaborates with relevant personnel to identify a' -> 'Selects an issue to be explored, consulting releva' (Removed extra verbs 'collaborates' and 'identify' that were not in the evidence; kept only the evidence verb 'select' with appropriate context.)
+2026-05-13 04:00:51,166 - __main__ - DEBUG - Description refined R8: 'Drafts detailed proposals and plans using sector‑s' -> 'Prepares detailed proposals and plans using sector' (Removed extra verb 'draft' and kept only evidence verbs 'prepare' (synonym 'draft' removed) and 'plan' while eliminating the extra action 'review'.)
+2026-05-13 04:00:51,167 - __main__ - DEBUG - Description refined R9: 'Gathers and evaluates relevant data to identify vi' -> 'Researches information on possible solutions to th' (Removed extra action verbs (gathers, evaluates, identifies) that were not present in the evidence; retained only the evidence verb 'research'.)
+2026-05-13 04:00:51,167 - __main__ - DEBUG - Description refined R10: 'Selects appropriate solution formats and delivers ' -> 'Selects appropriate solution formats and presents ' (Removed extra verb 'delivers' which is not in the evidence; kept evidence verbs 'select' and 'present'.)
+2026-05-13 04:00:51,168 - __main__ - DEBUG - Description refined R12: 'Evaluates alternative solutions to a business prob' -> 'Assesses alternative solutions to a business probl' (Removed extra verb 'evaluates' (extra action) and kept evidence verbs 'assess' and 'identify')
+2026-05-13 04:00:51,168 - __main__ - DEBUG - Description refined R13: 'Proactively seeks stakeholder input on ideas to re' -> 'Seeks stakeholder input on ideas.' (Removed extra verbs 'align' and 'refine' that were not present in the evidence; retained only the evidence verb 'seek'.)
+2026-05-13 04:00:51,168 - __main__ - DEBUG - Description refined R14: 'Guides group discussions, encourages participation' -> 'Collaborates with others to facilitate group discu' (Removed extra verbs 'guides' and 'coordinates' not present in evidence; retained evidence verbs 'collaborate' and 'facilitate' and kept context.)
+2026-05-13 04:00:51,169 - __main__ - DEBUG - Description refined R15: 'Provides clear, evidence‑based answers to stakehol' -> 'Provides clear, evidence‑based answers to stakehol' (Removed the extra verb 'support' which is not present in the evidence.)
+2026-05-13 04:00:51,169 - __main__ - INFO - Descriptions changed: 13
+2026-05-13 04:00:51,170 - __main__ - INFO - Keyword detection: 15/16 skills have gaps or flags
+2026-05-13 04:00:51,196 - __main__ - INFO - Keyword correction: 15 skills sent to LLM
+2026-05-13 04:00:51,960 - __main__ - DEBUG - Keywords enriched R0: 'communication, empathy, feedback, stakeholder enga' -> 'communication, empathy, feedback, stakeholder enga' (added core terms viewpoint and elicitation)
+2026-05-13 04:00:51,961 - __main__ - DEBUG - Keywords enriched R2: 'ideation, creative problem solving, mind mapping, ' -> 'ideation, creative problem solving, mind mapping, ' (added core term idea generation)
+2026-05-13 04:00:51,961 - __main__ - DEBUG - Keywords enriched R4: 'ideation, innovation, brainstorming, design thinki' -> 'creative thinking, ideation, innovation, brainstor' (added core term creative thinking)
+2026-05-13 04:00:51,962 - __main__ - DEBUG - Keywords enriched R5: 'record‑keeping, compliance, audit trail, quality a' -> 'record‑keeping, compliance, audit trail, quality a' (added core term feedback)
+2026-05-13 04:00:51,962 - __main__ - DEBUG - Keywords enriched R6: 'feasibility analysis, risk assessment, criteria we' -> 'feasibility analysis, risk assessment, criteria we' (added core term idea)
+2026-05-13 04:00:51,963 - __main__ - DEBUG - Keywords enriched R7: 'stakeholder engagement, problem identification, ne' -> 'stakeholder engagement, problem identification, is' (added core term issue selection)
+2026-05-13 04:00:51,963 - __main__ - DEBUG - Keywords enriched R8: 'stakeholder communication, business case developme' -> 'proposal writing, stakeholder communication, busin' (added core term proposal)
+2026-05-13 04:00:51,964 - __main__ - DEBUG - Keywords enriched R9: 'literature review, data collection, search strateg' -> 'literature review, data collection, search strateg' (added core term research)
+2026-05-13 04:00:51,964 - __main__ - DEBUG - Keywords enriched R11: 'requirements analysis, design optimisation, protot' -> 'requirements analysis, design optimisation, protot' (added core term solution)
+2026-05-13 04:00:51,964 - __main__ - DEBUG - Keywords enriched R12: 'feasibility analysis, constraint identification, b' -> 'feasibility analysis, constraint identification, s' (added core term solution viability)
+2026-05-13 04:00:51,965 - __main__ - DEBUG - Keywords enriched R13: 'stakeholder engagement, feedback collection, surve' -> 'stakeholder engagement, feedback collection, surve' (added core term solicitation)
+2026-05-13 04:00:51,965 - __main__ - DEBUG - Keywords enriched R14: 'group dynamics, collaboration tools, meeting facil' -> 'group dynamics, meeting facilitation, conflict res' (added core term discussion)
+2026-05-13 04:00:51,965 - __main__ - DEBUG - Keywords enriched R15: 'evidence based answers, stakeholder queries, data ' -> 'substantiation, stakeholder queries, data support,' (added core term substantiation)
+2026-05-13 04:00:51,966 - __main__ - INFO - Keywords changed: 13
+Style compliance: 100%|██████████| 1/1 [00:02<00:00,  2.54s/it]2026-05-13 04:00:54,516 - __main__ - WARNING - postprocess_keywords module not found — skipping keyword normalisation
+2026-05-13 04:00:54,516 - __main__ - INFO - 
+============================================================
+2026-05-13 04:00:54,516 - __main__ - INFO - SKILL NAME REFINEMENT v2 — STATISTICS (CONSENSUS)
+2026-05-13 04:00:54,517 - __main__ - INFO - ============================================================
+2026-05-13 04:00:54,517 - __main__ - INFO - Total processed: 15
+2026-05-13 04:00:54,517 - __main__ - INFO - Consensus runs: 7
+2026-05-13 04:00:54,517 - __main__ - INFO - Consensus threshold: 4
+2026-05-13 04:00:54,518 - __main__ - INFO - Validation threshold: 2
+2026-05-13 04:00:54,518 - __main__ - INFO - Names changed by consensus: 6
+2026-05-13 04:00:54,518 - __main__ - INFO - Names changed by post-process: 2
+2026-05-13 04:00:54,519 - __main__ - INFO - Names unchanged: 10
+2026-05-13 04:00:54,519 - __main__ - INFO - Flagged as duplicate: 0
+2026-05-13 04:00:54,519 - __main__ - INFO - Duplicate flags removed by evidence verification: 4
+2026-05-13 04:00:54,519 - __main__ - INFO - Flagged as out of scope: 0
+2026-05-13 04:00:54,520 - __main__ - INFO - Flagged as misinterpretation: 1
+2026-05-13 04:00:54,520 - __main__ - INFO - Skills added from PC gaps: 1
+2026-05-13 04:00:54,520 - __main__ - INFO - Descriptions changed: 12
+2026-05-13 04:00:54,521 - __main__ - INFO - Keywords changed: 12
+2026-05-13 04:00:54,521 - __main__ - INFO - ============================================================
+
+Exception ignored in: <function ZipFile.__del__ at 0x7ff0f14c6e80>
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/zipfile/__init__.py", line 1953, in __del__
+    self.close()
+  File "/usr/lib/python3.12/zipfile/__init__.py", line 1970, in close
+    self.fp.seek(self.start_dir)
+OSError: [Errno 95] Operation not supported
+2026-05-13 04:00:54,880 - __main__ - INFO - Saved refined skills to: /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/FSO_TEST_ONLY/Qwen/BSBCRT512_skills.xlsx
+2026-05-13 04:00:54,881 - __main__ - INFO - Unit BSBCRT512: 16 skills, 8 names changed
+2026-05-13 04:00:54,964 - __main__ - INFO - 
