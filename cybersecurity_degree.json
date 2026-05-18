@@ -9,7 +9,8 @@
       "study_level": "University_Year_1",
       "learning_outcomes": [
         "Recognise and understand academic integrity responsibilities.",
-        "Locate, select, and utilise information about La Trobe's approach to academic integrity to support appropriate acknowledgement of references used."
+        "Locate, select, and utilise information about La Trobe's approach to academic integrity to support appropriate acknowledgement of references used.",
+        "Understand the importance of the acknowledgment and the referencing of sources"
       ],
       "assessment": null,
       "nominal_hours": null,
@@ -21,7 +22,17 @@
       "name": "Wominjeka La Trobe: Indigenous Cultural Literacy for Higher Education",
       "description": "Wominjeka La Trobe is a short one-hour compulsory online subject that introduces all La Trobe students to Indigenous Australian history, culture and customs. A rich and relevant cultural heritage education is important for everyone. This topic highlights the link between Indigenous knowledge and values and broader cultural literacy. It asks you to think critically about your own attitudes, values and beliefs. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page.",
       "study_level": "University_Year_1",
-      "learning_outcomes": [],
+      "learning_outcomes": [
+        "Demonstrate knowledge of and respect for Indigenous Australian perspectives and experiences, history, culture and customs, including an appreciation of the local people and country",
+        "Recall important details regarding the history, culture, customs and people of Indigenous Australia",
+        "Understand the need for and value of appropriate and effective intercultural communication",
+        "Reflect critically on your own cultural attitudes, values and beliefs",
+        "View the University timetable for all available subjects",
+        "University fees and costs explained",
+        "Access support for your employability",
+        "International students",
+        "Find information for International students"
+      ],
       "assessment": null,
       "nominal_hours": null,
       "credit_points": 0,
@@ -47,7 +58,11 @@
       "name": "Cybersecurity in Practice",
       "description": "Every organization and business that intends to protect itself from threats of cyber-attacks needs to know current practices in cyber defence. This subject will introduce common technologies used to identify and mitigate threats including firewalls, intrusion detection systems, intrusion protection systems and honeypots. This subject also introduces incident response processes and simple ways to incorporate secure programming practices to make computer programs less vulnerable to attacks. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page. Prescribed - Book - The Computer Incident Response Planning Handbook The Computer Incident Response Planning Handbook Resource requirement: Your full Reading List is available through Talis. The Library endeavours to provide free digital access to required resources so please check with your Subject Coordinator before making any purchases.",
       "study_level": "University_Year_1",
-      "learning_outcomes": [],
+      "learning_outcomes": [
+        "Investigate, evaluate and apply current cybersecurity technologies that protect against cyber threats",
+        "Describe the process of threat and vulnerability identification and incident response in cybersecurity environments",
+        "Employ secure software design practices when working in teams"
+      ],
       "assessment": null,
       "nominal_hours": null,
       "credit_points": 15,
@@ -59,8 +74,10 @@
       "description": "This subject helps the student evaluate data-based evidence encountered in everyday life. It provides the fundamental numeracy skills required by business people, scientists, lawyers, nurses, journalists, social scientists, teachers and other professionals who need to evaluate data-based arguments, whether found in newspapers, television or on-line websites. This is achieved by a combination of studying newsworthy topics introduced in lectures, laboratory classes which encourage engagement with others and on-line quizzes that assess numeracy skills. The four themes covered in this subject are gathering useful data, turning data into information, probability and from data to decision making. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page. Prescribed - Book - Data-based critical thinking Data-based critical thinking Resource requirement: Your full Reading List is available through Talis. The Library endeavours to provide free digital access to required resources so please check with your Subject Coordinator before making any purchases.",
       "study_level": "University_Year_1",
       "learning_outcomes": [
+        "Critique data-based conclusions that are reported in the media and similar outlets",
         "Interpret/derive simple numeric and graphical statistical summary measures of data.",
-        "Calculate probabilities in a variety of scenarios that may be used for informed decision making."
+        "Calculate probabilities in a variety of scenarios that may be used for informed decision making.",
+        "Identify and discuss common misconceptions of probability that can lead to poor decisions"
       ],
       "assessment": null,
       "nominal_hours": null,
@@ -72,7 +89,12 @@
       "name": "Inside Information Technology",
       "description": "Students will be introduced to the rapidly expanding and influential field of information technology which comprises various types of technologies in computers (both hardware and software) and computer networks. It is therefore relevant to students in a wide range of disciplines: for examples, health sciences, business, engineering and technology. Students will be taught the fundamental principles of computer operations, different types of input/output and storage devices, computer networks including Local and Wide area networks, information systems, Database, the Internet, the World Wide Web and HTML. Students will acquire the knowledge and practical skills in information technology and be able to apply them to their field of study. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page. Prescribed - Book - Fluency with Information Technology: Skills, Concepts and Capabilities Fluency with Information Technology: Skills, Concepts and Capabilities Resource requirement: Your full Reading List is available through Talis. The Library endeavours to provide free digital access to required resources so please check with your Subject Coordinator before making any purchases.",
       "study_level": "University_Year_1",
-      "learning_outcomes": [],
+      "learning_outcomes": [
+        "Demonstrate how a computer system processes and delivers data/information to users",
+        "Interpret how the role of  each of the following components of Information Technology (IT) - computer system, computer network, and World Wide Web - supports the goal of delivering data and information to users from around the world",
+        "Apply the Web Development principles to constructing a Web system",
+        "Practise the IT knowledge such as HTML, computer system/network to address typical real-life issues"
+      ],
       "assessment": null,
       "nominal_hours": null,
       "credit_points": 15,
@@ -85,7 +107,9 @@
       "study_level": "University_Year_1",
       "learning_outcomes": [
         "Analyse emerging cybersecurity practices, regulations, and standards, and evaluate their implications for digital security.",
-        "Apply and compare approaches to cyber risk management in addressing real-world digital security challenges."
+        "Demonstrate foundation skills in identifying malware, securing applications, systems, and networks",
+        "Apply and compare approaches to cyber risk management in addressing real-world digital security challenges.",
+        "Work efficiently and effectively as a member of a team to investigate possible solutions such as cryptography to enhance data security, and web security, and digital forensics against cyber threats"
       ],
       "assessment": null,
       "nominal_hours": null,
@@ -116,6 +140,8 @@
       "study_level": "University_Year_1",
       "learning_outcomes": [
         "Compare the traditional method of analysis/design/implementation and the object-oriented approach, with the OO model’s basic construct being the object, which combines both data structure and behaviour.",
+        "Relate the principles behind the use of the abstract data type (ADT) to localise and minimise the effects of modifications through object-oriented approach",
+        "Justify the capabilities of the OO model to share and reuse code with OO techniques, reducing the time required to develop an application",
         "Apply the object-oriented method to designing and implementing a computer program for solving a real-life problem."
       ],
       "assessment": null,
@@ -146,6 +172,7 @@
       "study_level": "University_Year_2",
       "learning_outcomes": [
         "Describe Security issues associated with the use of the cyberspace.",
+        "Identify laws and policies applicable to the use of the cyberspace",
         "Analyse the application of laws and policies relating to cyberspace.",
         "Evaluate the effectiveness and applicability of laws and policies relating to cyberspace security."
       ],
@@ -162,6 +189,7 @@
       "learning_outcomes": [
         "Describe key concepts of data security and information assurance, including the CIA triad, information assets, and common organisational security challenges.",
         "Identify and analyse threats, vulnerabilities, and risks affecting organisational information systems.",
+        "Analyse security risks and apply appropriate technical and security controls to protect organisational information systems",
         "Evaluate security policies, ethical practices, and data maintenance methods to ensure compliance, confidentiality, integrity, and availability of organizational information."
       ],
       "assessment": null,
@@ -191,7 +219,12 @@
       "name": "Wireless Network and Security",
       "description": "Due to the ubiquitous nature of mobile and wireless technology in our daily lives and business operations, ensuring wireless security is becoming a top priority. This subject explores the security vulnerabilities in wireless networks and covers the fundamental concerns of confidentiality, integrity and availability. The following key areas will be covered: Wireless LAN Security - Wired Equivalent Privacy (WEP), Wi-Fi Protected Access (WPA), Authentication Servers (RADIUS), 802.11i security standard; Securing Ad-Hoc Networks - MAC layer misbehaviour, secure routing protocols, types of attacks and solutions, key management, broadcast authentication. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page. This subject contains career development learning or professional engagement opportunities",
       "study_level": "University_Year_2",
-      "learning_outcomes": [],
+      "learning_outcomes": [
+        "Apply techniques for addressing the impairments in wireless communication",
+        "Create security risk assessment reports based on the identification and appraisal of various threats and attacks on wireless systems",
+        "Apply suitable wireless network security architectures and settings for homes, enterprises and public environments",
+        "Assess and evaluate potential and existing security risk levels and vulnerabilities in wireless systems"
+      ],
       "assessment": null,
       "nominal_hours": null,
       "credit_points": 15,
@@ -219,6 +252,7 @@
       "description": "In this subject, students will explore the structure and function of routers and examine key network routing concepts. The subject covers both static and dynamic routing, focusing on core protocols such as distance vector ,link state and, path vector ). Students will gain hands-on experience in configuring routers, building and interpreting routing tables, and evaluating the performance of these protocols across diverse network environments. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page.",
       "study_level": "University_Year_3",
       "learning_outcomes": [
+        "Describe and evaluate IPng addressing scheme and subnetting and their issues",
         "Implement distance vector and link state routing protocols.",
         "Implement multiprotocol network.",
         "Recognize the strengths and weaknesses of routing protocols.",
@@ -234,7 +268,12 @@
       "name": "Introduction to Computer Forensics",
       "description": "This subject considers the procedures related to digital forensic investigation in computing and networking scenarios. Students critically appraise the key concepts associated with data hiding, evidence collection and validation and traffic analysis required to perform forensic analysis in a digital environment. Students learn the importance of legal considerations in the documentation of forensic evidence. Case studies are incorporated for students to apply practical forensic tools. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page.",
       "study_level": "University_Year_3",
-      "learning_outcomes": [],
+      "learning_outcomes": [
+        "Investigate and explain different phases of digital forensic process",
+        "Summarise ethical and legal considerations in the documentation of forensic evidence",
+        "Analyse digital evidence with physical forensic evidence tools and techniques",
+        "Apply  investigative procedures  to perform forensic Investigations of different types of digital systems"
+      ],
       "assessment": null,
       "nominal_hours": null,
       "credit_points": 15,
@@ -246,6 +285,7 @@
       "description": "Penetration testing encompasses the evaluation of organizational vulnerabilities by conducting thorough security testing. This subject provides students with a comprehensive understanding of the principles and procedures involved in system penetration testing and the ethical and legal obligations. It explores the utilization of popular software tools employed during penetration testing exercises. Through this course, students will acquire knowledge about different types of penetration testing and their respective phases, as well as gain expertise in interpreting results obtained from commonly utilized penetration testing tools. Additionally, students will recognize the significant value of penetration testing for businesses and organizations and will develop the skills to effectively report on and enhance an organization's security resilience using testing outcomes. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page. This subject contains career development learning or professional engagement opportunities",
       "study_level": "University_Year_3",
       "learning_outcomes": [
+        "Review and compare different  concepts of penetration testing",
         "Apply penetration testing methodologies and techniques.",
         "Identify and exploit common security vulnerabilities and recommend security controls.",
         "Develop and produce client reports, explaining key findings to diverse audiences."
@@ -277,6 +317,9 @@
       "description": "Entrepreneurship is an essential element of today’s society. This subject will outline the basic principles of Entrepreneurship. It will examine the steps required in developing an idea into a business and will explore the tools and necessary insights to make a successful venture. You will interpret and apply theory to case studies. Guest speakers will present and discuss start-up issues, pitfalls, and the ingredients for success. You will also develop professional skills related to ethical and moral decision making, and evaluate the social implications of entrepreneurship in the broader global context. To view instance specific details which include - Assessments, Class requirements and Subject instance coordinators - please select your preferred instance via the drop-down menu at the top right-hand side of this page. Prescribed - Book - The Startup Owner's Manual: The Step-By-Step Guide for Building a Great Company The Startup Owner's Manual: The Step-By-Step Guide for Building a Great Company Resource requirement: Steve Blank. Bob Dorf Prescribed - Book - Ethics in Information Technology Ethics in Information Technology Resource requirement: Prescribed - Book - Technology Entrepreneurship: Taking Innovation to the Marketplace Technology Entrepreneurship: Taking Innovation to the Marketplace Resource requirement: Thomas N. Duening Robert A. Hisrich, Michael A. Lechter Your full Reading List is available through Talis. The Library endeavours to provide free digital access to required resources so please check with your Subject Coordinator before making any purchases. This subject contains career development learning or professional engagement opportunities",
       "study_level": "University_Year_3",
       "learning_outcomes": [
+        "Evaluate diverse funding options for supporting entrepreneurial endeavors while considering the essential development steps",
+        "Critically analyse IT business ventures based on social, legal and ethical issues and examine the responsibilities of IT professionals to employers, clients, and society as part of a team",
+        "Reflect on personal viewpoints related to managing relationships and individual entrepreneurial capacity, effectively developing and presenting personal and professional reflections to become career-ready",
         "Apply ethical theory to analyse ethical dilemmas in IT and business through debate."
       ],
       "assessment": null,

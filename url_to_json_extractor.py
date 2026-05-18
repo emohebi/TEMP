@@ -224,8 +224,21 @@ def extract_learning_outcomes_handbook(soup: BeautifulSoup) -> List[str]:
     Filters out UI artifacts like 'keyboard_arrow_down' and nav/footer noise.
     """
     page = soup.get_text(separator="\n", strip=True)
-    raw = text_between(page, "On successful completion you will be able to:",
-                       "Learning activities", "Enrolment rules", "Work based learning")
+
+    # Try multiple possible start markers
+    raw = None
+    for start in [
+        "On successful completion you will be able to:",
+        "On completion of this subject, students will be able to:",
+        "Subject intended learning outcomes",
+        "Learning outcomes",
+    ]:
+        raw = text_between(page, start,
+                           "Learning activities", "Enrolment rules",
+                           "Work based learning", "Prescribed", "Resource requirement")
+        if raw:
+            break
+
     if not raw:
         return []
 
@@ -246,9 +259,19 @@ def extract_learning_outcomes_handbook(soup: BeautifulSoup) -> List[str]:
             continue
         if any(n in line for n in noise_partial):
             continue
-        if line.endswith("."):  # outcomes are full sentences
+        # Accept lines ending with a period or a colon (some outcomes don't end with .)
+        if line.endswith(".") or (len(line) > 20 and line[0].isupper()):
             outcomes.append(line)
-    return outcomes
+
+    # Deduplicate while preserving order
+    seen = set()
+    unique = []
+    for o in outcomes:
+        if o not in seen:
+            seen.add(o)
+            unique.append(o)
+
+    return unique
 
 
 def extract_assessment_handbook(soup: BeautifulSoup) -> Optional[str]:
