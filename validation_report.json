@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-26T02:14:20Z",
+  "inputs": {
+    "wrong_cases": "data/FSO_V2_Wrong_Cases.xlsx",
+    "wrong_cases_sha256": "eb3791eca2187a70f8d27fa0c0936c42a9638d60661043048d453e7e6f9f3c8a",
+    "latest": "/Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/fso/20260526-011934-3ab7/02_refine/vet_skills_refined.xlsx",
+    "latest_sha256": "71dc41d3f0d4ec1f0b9acf9d2b4402006ffd0ffc192aa019f6a44cadd14be5d9"
+  },
+  "summary": {
+    "total_wrong_cases": 86,
+    "matched": 79,
+    "unmatched": 7,
+    "match_rate": 0.9186
+  },
+  "by_status": {
+    "Approve with edits": {
+      "n": 51,
+      "name_changed": 23,
+      "description_changed": 28,
+      "keywords_changed": 51,
+      "now_flagged": 14,
+      "newly_flagged": 11,
+      "flag_breakdown": {
+        "is_duplicate": 4,
+        "is_out_of_scope": 8,
+        "is_misinterpretation": 3
+      }
+    },
+    "Reject": {
+      "n": 26,
+      "name_changed": 13,
+      "description_changed": 16,
+      "keywords_changed": 26,
+      "now_flagged": 14,
+      "newly_flagged": 13,
+      "flag_breakdown": {
+        "is_duplicate": 5,
+        "is_out_of_scope": 9,
+        "is_misinterpretation": 2
+      }
+    },
+    "See note above": {
+      "n": 1,
+      "name_changed": 1,
+      "description_changed": 1,
+      "keywords_changed": 1,
+      "now_flagged": 0,
+      "newly_flagged": 0,
+      "flag_breakdown": {
+        "is_duplicate": 0,
+        "is_out_of_scope": 0,
+        "is_misinterpretation": 0
+      }
+    },
+    "__none__": {
+      "n": 1,
+      "name_changed": 0,
+      "description_changed": 1,
+      "keywords_changed": 1,
+      "now_flagged": 0,
+      "newly_flagged": 0,
+      "flag_breakdown": {
+        "is_duplicate": 0,
+        "is_out_of_scope": 0,
+        "is_misinterpretation": 0
+      }
+    }
+  },
+  "approve_with_edits": {
+    "n": 51,
+    "alignment_method": "llm",
+    "with_suggested_name": 16,
+    "name_aligned": 6,
+    "name_alignment_rate": 0.375,
+    "false_flagged": 14,
+    "false_flag_breakdown": {
+      "is_duplicate": 4,
+      "is_out_of_scope": 8,
+      "is_misinterpretation": 3
+    },
+    "alignment_detail": [
+      {
+        "unit_code": "BSBXTW401",
+        "org_name": "Ethical Compliance Guidance",
+        "output_name": "Ethical Compliance Communication",
+        "suggested_name": "Compliance Guidance",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTCYS610",
+        "org_name": "Asset Management Implementation",
+        "output_name": "Asset Management Implementation",
+        "suggested_name": "Asset Protection Management",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTCYS613",
+        "org_name": "Feedback Response Management",
+        "output_name": "Feedback Response",
+        "suggested_name": "Stakeholder Feedback Elicitation",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTICT517",
+        "org_name": "Digital Technology Utilization",
+        "output_name": "Digital Technology Utilisation",
+        "suggested_name": "New Technology Investigation an Plan",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTICT517",
+        "org_name": "Documentation Preparation",
+        "output_name": "Evaluation Process Documentation",
+        "suggested_name": "Evaluation Findings Documentation",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTICT532",
+        "org_name": "Information Synthesis Writing",
+        "output_name": "Information Synthesis Writing",
+        "suggested_name": "Information Synthesis",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTNWK429",
+        "org_name": "Hardware Installation Execution",
+        "output_name": "Hardware Installation",
+        "suggested_name": "Hardware Installation",
+        "aligned": true
+      },
+      {
+        "unit_code": "ICTNWK546",
+        "org_name": "Log Analysis",
+        "output_name": "Log Analysis",
+        "suggested_name": "Threat Assessment",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTNWK557",
+        "org_name": "Template Provisioning",
+        "output_name": "Provisioning Services Configuration",
+        "suggested_name": "Service and Template Provisioning",
+        "aligned": true
+      },
+      {
+        "unit_code": "ICTNWK562",
+        "org_name": "System Vulnerability Identification",
+        "output_name": "System Vulnerability Identification",
+        "suggested_name": "ISP Security Testing",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTPRG435",
+        "org_name": "Code Review",
+        "output_name": "Pseudo Code Review",
+        "suggested_name": "Pseudo Code Review",
+        "aligned": true
+      },
+      {
+        "unit_code": "ICTPRG435",
+        "org_name": "Framework Utilization",
+        "output_name": "Framework and IDE Utilisation",
+        "suggested_name": "IDE and Frameworks Utilisation",
+        "aligned": true
+      },
+      {
+        "unit_code": "ICTPRG435",
+        "org_name": "Version Control",
+        "output_name": "Script Finalisation",
+        "suggested_name": "Finalise Script Output",
+        "aligned": true
+      },
+      {
+        "unit_code": "ICTSAS524",
+        "org_name": "Forensic Evidence Collection",
+        "output_name": "Forensic Evidence Procedure Development",
+        "suggested_name": "Forensic Evidence Procedure Development",
+        "aligned": true
+      },
+      {
+        "unit_code": "ICTSAS527",
+        "org_name": "Process Implementation",
+        "output_name": "Process Implementation",
+        "suggested_name": "Client Support Implementation",
+        "aligned": false
+      },
+      {
+        "unit_code": "ICTTEN417",
+        "org_name": "Technical Report Writing",
+        "output_name": "Technical Report Writing",
+        "suggested_name": "Test Result Reporting",
+        "aligned": false
+      }
+    ]
+  },
+  "unmatched": [
+    {
+      "unit_code": "ICTCYS407",
+      "org_name": "Reliability Consistency Analysis",
+      "status": "See note above re Threat Data Analysis"
+    },
+    {
+      "unit_code": "ICTCYS610",
+      "org_name": "Plan Alignment Evaluation",
+      "status": "Approve with edits"
+    },
+    {
+      "unit_code": "ICTICT527",
+      "org_name": "Process Suitability Assessment",
+      "status": "Approve with edits"
+    },
+    {
+      "unit_code": "ICTNWK546",
+      "org_name": "Document Submission",
+      "status": "Approve with edits"
+    },
+    {
+      "unit_code": "ICTSAS527",
+      "org_name": "Documentation Submission Management",
+      "status": "Approve with edits"
+    },
+    {
+      "unit_code": "ICTTEN417",
+      "org_name": "Network Functionality Validation",
+      "status": "Approve with edits"
+    },
+    {
+      "unit_code": "ICTTEN419",
+      "org_name": "Worksite Coordination",
+      "status": "Approve with edits"
+    }
+  ]
+}
