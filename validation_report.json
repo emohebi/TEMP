@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-26T02:14:20Z",
+  "generated_at": "2026-05-26T05:18:24Z",
   "inputs": {
     "wrong_cases": "data/FSO_V2_Wrong_Cases.xlsx",
     "wrong_cases_sha256": "eb3791eca2187a70f8d27fa0c0936c42a9638d60661043048d453e7e6f9f3c8a",
-    "latest": "/Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/fso/20260526-011934-3ab7/02_refine/vet_skills_refined.xlsx",
-    "latest_sha256": "71dc41d3f0d4ec1f0b9acf9d2b4402006ffd0ffc192aa019f6a44cadd14be5d9"
+    "latest": "/Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/fso/20260526-045302-d436/02_refine/vet_skills_refined.xlsx",
+    "latest_sha256": "0da321edd3977a453fef6e34fc3a02f221d9aad3cb8f1d4a2502f59989506690"
   },
   "summary": {
     "total_wrong_cases": 86,
@@ -16,27 +16,27 @@
   "by_status": {
     "Approve with edits": {
       "n": 51,
-      "name_changed": 23,
-      "description_changed": 28,
+      "name_changed": 20,
+      "description_changed": 31,
       "keywords_changed": 51,
-      "now_flagged": 14,
-      "newly_flagged": 11,
+      "now_flagged": 18,
+      "newly_flagged": 15,
       "flag_breakdown": {
-        "is_duplicate": 4,
+        "is_duplicate": 8,
         "is_out_of_scope": 8,
-        "is_misinterpretation": 3
+        "is_misinterpretation": 4
       }
     },
     "Reject": {
       "n": 26,
-      "name_changed": 13,
+      "name_changed": 12,
       "description_changed": 16,
       "keywords_changed": 26,
-      "now_flagged": 14,
-      "newly_flagged": 13,
+      "now_flagged": 17,
+      "newly_flagged": 16,
       "flag_breakdown": {
-        "is_duplicate": 5,
-        "is_out_of_scope": 9,
+        "is_duplicate": 3,
+        "is_out_of_scope": 13,
         "is_misinterpretation": 2
       }
     },
@@ -71,19 +71,19 @@
     "n": 51,
     "alignment_method": "llm",
     "with_suggested_name": 16,
-    "name_aligned": 6,
-    "name_alignment_rate": 0.375,
-    "false_flagged": 14,
+    "name_aligned": 4,
+    "name_alignment_rate": 0.25,
+    "false_flagged": 18,
     "false_flag_breakdown": {
-      "is_duplicate": 4,
+      "is_duplicate": 8,
       "is_out_of_scope": 8,
-      "is_misinterpretation": 3
+      "is_misinterpretation": 4
     },
     "alignment_detail": [
       {
         "unit_code": "BSBXTW401",
         "org_name": "Ethical Compliance Guidance",
-        "output_name": "Ethical Compliance Communication",
+        "output_name": "Ethical Compliance Guidance",
         "suggested_name": "Compliance Guidance",
         "aligned": false
       },
@@ -97,7 +97,7 @@
       {
         "unit_code": "ICTCYS613",
         "org_name": "Feedback Response Management",
-        "output_name": "Feedback Response",
+        "output_name": "Documentation Submission",
         "suggested_name": "Stakeholder Feedback Elicitation",
         "aligned": false
       },
@@ -111,7 +111,7 @@
       {
         "unit_code": "ICTICT517",
         "org_name": "Documentation Preparation",
-        "output_name": "Evaluation Process Documentation",
+        "output_name": "Evaluation Documentation",
         "suggested_name": "Evaluation Findings Documentation",
         "aligned": false
       },
@@ -141,7 +141,7 @@
         "org_name": "Template Provisioning",
         "output_name": "Provisioning Services Configuration",
         "suggested_name": "Service and Template Provisioning",
-        "aligned": true
+        "aligned": false
       },
       {
         "unit_code": "ICTNWK562",
@@ -160,9 +160,9 @@
       {
         "unit_code": "ICTPRG435",
         "org_name": "Framework Utilization",
-        "output_name": "Framework and IDE Utilisation",
+        "output_name": "Framework Utilisation",
         "suggested_name": "IDE and Frameworks Utilisation",
-        "aligned": true
+        "aligned": false
       },
       {
         "unit_code": "ICTPRG435",

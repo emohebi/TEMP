@@ -1,5 +1,5 @@
 # Refiner regression report
-_Generated 2026-05-26 02:14:20 UTC_
+_Generated 2026-05-26 05:18:24 UTC_
 
 ## Summary
 - Total wrong cases: **86**
@@ -9,20 +9,20 @@ _Generated 2026-05-26 02:14:20 UTC_
 ## Per-Status fix rates
 
 ### `Approve with edits` (n=51)
-- Name changed: 23 / 51 (45%)
-- Description changed: 28 / 51 (55%)
+- Name changed: 20 / 51 (39%)
+- Description changed: 31 / 51 (61%)
 - Keywords changed: 51 / 51 (100%)
-- Now flagged dup/oos/mis: 14 / 51 (27%)
-- Newly flagged (was clean in A): 11 / 51 (22%)
-- Flag breakdown in B: is_duplicate=4, is_out_of_scope=8, is_misinterpretation=3
+- Now flagged dup/oos/mis: 18 / 51 (35%)
+- Newly flagged (was clean in A): 15 / 51 (29%)
+- Flag breakdown in B: is_duplicate=8, is_out_of_scope=8, is_misinterpretation=4
 
 ### `Reject` (n=26)
-- Name changed: 13 / 26 (50%)
+- Name changed: 12 / 26 (46%)
 - Description changed: 16 / 26 (62%)
 - Keywords changed: 26 / 26 (100%)
-- Now flagged dup/oos/mis: 14 / 26 (54%)
-- Newly flagged (was clean in A): 13 / 26 (50%)
-- Flag breakdown in B: is_duplicate=5, is_out_of_scope=9, is_misinterpretation=2
+- Now flagged dup/oos/mis: 17 / 26 (65%)
+- Newly flagged (was clean in A): 16 / 26 (62%)
+- Flag breakdown in B: is_duplicate=3, is_out_of_scope=13, is_misinterpretation=2
 
 ### `See note above` (n=1)
 - Name changed: 1 / 1 (100%)
@@ -43,18 +43,20 @@ _Generated 2026-05-26 02:14:20 UTC_
 ## Approve-with-edits quality
 - Cases: **51**  (alignment method: `llm`)
 - Name edits with a quoted gold suggestion: **16**
-- Name-edit alignment: **6/16** (38%)
-- **Falsely flagged** dup/oos/mis (these are APPROVED skills): **14/51** (dup=4, oos=8, mis=3)
+- Name-edit alignment: **4/16** (25%)
+- **Falsely flagged** dup/oos/mis (these are APPROVED skills): **18/51** (dup=8, oos=8, mis=4)
 
   Misaligned name edits (output vs reviewer suggestion):
-  - `Ethical Compliance Guidance` → out=`Ethical Compliance Communication` | want=`Compliance Guidance`
+  - `Ethical Compliance Guidance` → out=`Ethical Compliance Guidance` | want=`Compliance Guidance`
   - `Asset Management Implementation` → out=`Asset Management Implementation` | want=`Asset Protection Management`
-  - `Feedback Response Management` → out=`Feedback Response` | want=`Stakeholder Feedback Elicitation`
+  - `Feedback Response Management` → out=`Documentation Submission` | want=`Stakeholder Feedback Elicitation`
   - `Digital Technology Utilization` → out=`Digital Technology Utilisation` | want=`New Technology Investigation an Plan`
-  - `Documentation Preparation` → out=`Evaluation Process Documentation` | want=`Evaluation Findings Documentation`
+  - `Documentation Preparation` → out=`Evaluation Documentation` | want=`Evaluation Findings Documentation`
   - `Information Synthesis Writing` → out=`Information Synthesis Writing` | want=`Information Synthesis`
   - `Log Analysis` → out=`Log Analysis` | want=`Threat Assessment`
+  - `Template Provisioning` → out=`Provisioning Services Configuration` | want=`Service and Template Provisioning`
   - `System Vulnerability Identification` → out=`System Vulnerability Identification` | want=`ISP Security Testing`
+  - `Framework Utilization` → out=`Framework Utilisation` | want=`IDE and Frameworks Utilisation`
   - `Process Implementation` → out=`Process Implementation` | want=`Client Support Implementation`
   - `Technical Report Writing` → out=`Technical Report Writing` | want=`Test Result Reporting`
 
