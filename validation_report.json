@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-05-26T05:18:24Z",
+  "generated_at": "2026-05-26T07:22:35Z",
   "inputs": {
     "wrong_cases": "data/FSO_V2_Wrong_Cases.xlsx",
     "wrong_cases_sha256": "eb3791eca2187a70f8d27fa0c0936c42a9638d60661043048d453e7e6f9f3c8a",
-    "latest": "/Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/fso/20260526-045302-d436/02_refine/vet_skills_refined.xlsx",
-    "latest_sha256": "0da321edd3977a453fef6e34fc3a02f221d9aad3cb8f1d4a2502f59989506690"
+    "latest": "/Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/fso/20260526-070450-a2d6/02_refine/vet_skills_refined.xlsx",
+    "latest_sha256": "df69559fb25f8dc0f51e0a4fe79df28b66835204fe84ed9baba0eb4d4355836b"
   },
   "summary": {
     "total_wrong_cases": 86,
@@ -16,34 +16,34 @@
   "by_status": {
     "Approve with edits": {
       "n": 51,
-      "name_changed": 20,
-      "description_changed": 31,
+      "name_changed": 25,
+      "description_changed": 30,
       "keywords_changed": 51,
-      "now_flagged": 18,
-      "newly_flagged": 15,
+      "now_flagged": 16,
+      "newly_flagged": 13,
       "flag_breakdown": {
-        "is_duplicate": 8,
-        "is_out_of_scope": 8,
-        "is_misinterpretation": 4
+        "is_duplicate": 6,
+        "is_out_of_scope": 7,
+        "is_misinterpretation": 3
       }
     },
     "Reject": {
       "n": 26,
-      "name_changed": 12,
-      "description_changed": 16,
+      "name_changed": 15,
+      "description_changed": 15,
       "keywords_changed": 26,
-      "now_flagged": 17,
-      "newly_flagged": 16,
+      "now_flagged": 14,
+      "newly_flagged": 13,
       "flag_breakdown": {
-        "is_duplicate": 3,
-        "is_out_of_scope": 13,
+        "is_duplicate": 5,
+        "is_out_of_scope": 8,
         "is_misinterpretation": 2
       }
     },
     "See note above": {
       "n": 1,
       "name_changed": 1,
-      "description_changed": 1,
+      "description_changed": 0,
       "keywords_changed": 1,
       "now_flagged": 0,
       "newly_flagged": 0,
@@ -71,19 +71,19 @@
     "n": 51,
     "alignment_method": "llm",
     "with_suggested_name": 16,
-    "name_aligned": 4,
-    "name_alignment_rate": 0.25,
-    "false_flagged": 18,
+    "name_aligned": 5,
+    "name_alignment_rate": 0.3125,
+    "false_flagged": 16,
     "false_flag_breakdown": {
-      "is_duplicate": 8,
-      "is_out_of_scope": 8,
-      "is_misinterpretation": 4
+      "is_duplicate": 6,
+      "is_out_of_scope": 7,
+      "is_misinterpretation": 3
     },
     "alignment_detail": [
       {
         "unit_code": "BSBXTW401",
         "org_name": "Ethical Compliance Guidance",
-        "output_name": "Ethical Compliance Guidance",
+        "output_name": "Ethical Responsibility Explanation",
         "suggested_name": "Compliance Guidance",
         "aligned": false
       },
@@ -97,7 +97,7 @@
       {
         "unit_code": "ICTCYS613",
         "org_name": "Feedback Response Management",
-        "output_name": "Documentation Submission",
+        "output_name": "Feedback Handling",
         "suggested_name": "Stakeholder Feedback Elicitation",
         "aligned": false
       },
@@ -132,7 +132,7 @@
       {
         "unit_code": "ICTNWK546",
         "org_name": "Log Analysis",
-        "output_name": "Log Analysis",
+        "output_name": "Logging Technique Analysis",
         "suggested_name": "Threat Assessment",
         "aligned": false
       },
@@ -141,7 +141,7 @@
         "org_name": "Template Provisioning",
         "output_name": "Provisioning Services Configuration",
         "suggested_name": "Service and Template Provisioning",
-        "aligned": false
+        "aligned": true
       },
       {
         "unit_code": "ICTNWK562",
@@ -160,9 +160,9 @@
       {
         "unit_code": "ICTPRG435",
         "org_name": "Framework Utilization",
-        "output_name": "Framework Utilisation",
+        "output_name": "Framework IDE Utilisation",
         "suggested_name": "IDE and Frameworks Utilisation",
-        "aligned": false
+        "aligned": true
       },
       {
         "unit_code": "ICTPRG435",
@@ -174,9 +174,9 @@
       {
         "unit_code": "ICTSAS524",
         "org_name": "Forensic Evidence Collection",
-        "output_name": "Forensic Evidence Procedure Development",
+        "output_name": "Forensic Evidence Procedure",
         "suggested_name": "Forensic Evidence Procedure Development",
-        "aligned": true
+        "aligned": false
       },
       {
         "unit_code": "ICTSAS527",
