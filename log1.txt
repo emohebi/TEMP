@@ -106,13 +106,21 @@ Style compliance: 100%|██████████| 1/1 [00:02<00:00,  2.54s/
 2026-05-13 04:00:54,521 - __main__ - INFO - Keywords changed: 12
 2026-05-13 04:00:54,521 - __main__ - INFO - ============================================================
 
-Exception ignored in: <function ZipFile.__del__ at 0x7ff0f14c6e80>
+026-05-27 01:21:17,923 - pipeline - INFO - [refine] starting
+2026-05-27 01:21:18,311 - reporting.skill_export - INFO - Imported VET skills from /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/latrobe/20260527-010839-2998/01_extract/vet_skills.json
+2026-05-27 01:21:18,523 - refine_skills - INFO - Loaded context metadata for 16 units/courses from data/Certificate_IV_in_Cyber_Security.json
+2026-05-27 01:21:18,656 - pipeline - ERROR - [refine] failed: refine: imported vet skills carry no performance_criteria/elements/foundation_skills/application — gap-fill and prompt context will be empty. Re-run with --no-gap-fill, or provide a qualification JSON, or re-import an XLSX that includes those columns.
 Traceback (most recent call last):
-  File "/usr/lib/python3.12/zipfile/__init__.py", line 1953, in __del__
-    self.close()
-  File "/usr/lib/python3.12/zipfile/__init__.py", line 1970, in close
-    self.fp.seek(self.start_dir)
-OSError: [Errno 95] Operation not supported
-2026-05-13 04:00:54,880 - __main__ - INFO - Saved refined skills to: /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/FSO_TEST_ONLY/Qwen/BSBCRT512_skills.xlsx
-2026-05-13 04:00:54,881 - __main__ - INFO - Unit BSBCRT512: 16 skills, 8 names changed
-2026-05-13 04:00:54,964 - __main__ - INFO - 
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 865, in run_pipeline
+    outputs = step_dispatch[step_key]()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 839, in <lambda>
+    "refine": lambda: _run_refine(cfg, run_dir, runtime_cfg, genai, embeddings, artifacts),
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 537, in _run_refine
+    refine_qualification_skills(
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/refine_skills.py", line 377, in refine_qualification_skills
+    _validate_metadata_present(meta, side)
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/refine_skills.py", line 146, in _validate_metadata_present
+    raise ValueError(
+ValueError: refine: imported vet skills carry no performance_criteria/elements/foundation_skills/application — gap-fill and prompt context will be empty. Re-run with --no-gap-fill, or provide a qualification JSON, or re-import an XLSX that includes those columns.
