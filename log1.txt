@@ -106,29 +106,40 @@ Style compliance: 100%|██████████| 1/1 [00:02<00:00,  2.54s/
 2026-05-13 04:00:54,521 - __main__ - INFO - Keywords changed: 12
 2026-05-13 04:00:54,521 - __main__ - INFO - ============================================================
 
-2026-06-03 01:46:40,120 - analysis.simplified_analyzer - INFO - Using 349 VET skills and 241 Uni skills
-2026-06-03 01:46:40,121 - analysis.simplified_analyzer - INFO - Using matching strategy: direct_one_vs_all
-  5%|▌         | 1/19 [00:03<01:07,  3.74s/it]
-2026-06-03 01:46:43,990 - pipeline - ERROR - [analyze] failed: __autoreload_class__._parse_validate_response() takes 1 positional argument but 2 were given
+2026-06-03 02:32:57,581 - analysis.simplified_analyzer - INFO - Performing quick analysis
+2026-06-03 02:32:57,582 - analysis.simplified_analyzer - INFO - Using 349 VET skills and 241 Uni skills
+2026-06-03 02:32:57,582 - analysis.simplified_analyzer - INFO - Using matching strategy: direct_one_vs_all
+  5%|▌         | 1/19 [00:01<00:20,  1.12s/it]2026-06-03 02:33:02,155 - analysis.simplified_analyzer - INFO - [genai_validate] course=SIT102 pairs=8 kept=2 demoted=6 low_conf_kept=0 parse_fail=0
+  5%|▌         | 1/19 [00:04<01:23,  4.65s/it]
+2026-06-03 02:33:02,352 - pipeline - ERROR - [analyze] failed: [Errno 29] Illegal seek
 Traceback (most recent call last):
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 992, in run_pipeline
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 876, in _dump_match_debug
+    w.writerow(row)
+  File "/usr/lib/python3.12/csv.py", line 164, in writerow
+    return self.writer.writerow(self._dict_to_list(rowdict))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 29] Illegal seek
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 995, in run_pipeline
     outputs = step_dispatch[step_key]()
               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 967, in <lambda>
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 970, in <lambda>
     "analyze": lambda: _run_analyze(cfg, run_dir, runtime_cfg, genai,
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 789, in _run_analyze
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 792, in _run_analyze
     recommendations = analyzer.analyze(
                       ^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 445, in analyze
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 456, in analyze
     return self._quick_analysis(vet_qual, uni_qual)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 502, in _quick_analysis
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 513, in _quick_analysis
     best_match = self._find_best_direct_match_one_vs_all_vet(
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 882, in _find_best_direct_match_one_vs_all_vet
-    self._genai_validate_matches(
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 687, in _genai_validate_matches
-    verdict = self._parse_validate_response(resp)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: __autoreload_class__._parse_validate_response() takes 1 positional argument but 2 were given
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 1056, in _find_best_direct_match_one_vs_all_vet
+    self._dump_match_debug(
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 848, in _dump_match_debug
+    with open(path, mode, newline='', encoding='utf-8') as f:
+OSError: [Errno 29] Illegal seek
