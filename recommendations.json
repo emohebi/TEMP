@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-03T06:27:42.623072",
+  "timestamp": "2026-06-03T06:41:36.988094",
   "config": {
     "depth": "balanced",
     "thresholds": {
@@ -13,20 +13,21 @@
       "vet_units": [
         "ICTNWK562: Configure internet gateways",
         "ICTCYS407: Gather, analyse and interpret threat data",
+        "ICTTEN417: Install, configure and test a router",
         "ICTNWK546: Manage network security",
         "ICTSAS524: Develop, implement and evaluate an incident response plan",
         "ICTNWK557: Configure and manage advanced virtual computing environments"
       ],
       "uni_course": "SIT182",
-      "score": 0.6454560437202456,
+      "score": 0.6806106162280828,
       "type": "partial",
-      "confidence": 0.8925000000000001,
+      "confidence": 0.8935714285714286,
       "evidence": [
         "Skill coverage: 84.6%",
-        "Match quality: 38.7%",
-        "Level alignment: 46.2%",
-        "Context alignment: 46.2%",
-        "Direct matching: 3 exact matches",
+        "Match quality: 45.1%",
+        "Level alignment: 53.8%",
+        "Context alignment: 53.8%",
+        "Direct matching: 2 exact matches",
         "13 skill clusters matched",
         "Course level: University_Year_1"
       ],
@@ -36,18 +37,17 @@
       "vet_units": [
         "BSBCRT512: Originate and develop concepts",
         "ICTPRG435: Write scripts for software applications",
-        "ICTCYS610: Protect critical infrastructure for organisations",
-        "ICTNWK559: Install an enterprise virtual computing environment"
+        "ICTCYS610: Protect critical infrastructure for organisations"
       ],
       "uni_course": "SIT232",
-      "score": 0.5788999226291975,
+      "score": 0.5431401214718818,
       "type": "partial",
-      "confidence": 0.8866666666666667,
+      "confidence": 0.889,
       "evidence": [
         "Skill coverage: 63.7%",
-        "Match quality: 41.8%",
-        "Level alignment: 50.0%",
-        "Context alignment: 50.0%",
+        "Match quality: 35.8%",
+        "Level alignment: 41.7%",
+        "Context alignment: 41.7%",
         "Direct matching: 2 exact matches",
         "11 skill clusters matched",
         "Course level: University_Year_1"
@@ -60,14 +60,14 @@
         "ICTNWK429: Install hardware to networks"
       ],
       "uni_course": "SIT202",
-      "score": 0.4679520327611402,
-      "type": "partial",
-      "confidence": 0.88,
+      "score": 0.4288057504783977,
+      "type": "none",
+      "confidence": 0.8949999999999999,
       "evidence": [
         "Skill coverage: 63.3%",
-        "Match quality: 22.4%",
-        "Level alignment: 25.0%",
-        "Context alignment: 27.3%",
+        "Match quality: 15.5%",
+        "Level alignment: 15.9%",
+        "Context alignment: 18.2%",
         "Direct matching: 0 exact matches",
         "11 skill clusters matched",
         "Course level: University_Year_1"
@@ -96,17 +96,18 @@
     },
     {
       "vet_units": [
-        "ICTPRG435: Write scripts for software applications"
+        "ICTPRG435: Write scripts for software applications",
+        "ICTNWK559: Install an enterprise virtual computing environment"
       ],
       "uni_course": "SIT102",
-      "score": 0.35653392376349524,
+      "score": 0.3882335574840888,
       "type": "none",
-      "confidence": 0.8849999999999999,
+      "confidence": 0.8683333333333333,
       "evidence": [
         "Skill coverage: 48.0%",
-        "Match quality: 12.7%",
-        "Level alignment: 15.4%",
-        "Context alignment: 15.4%",
+        "Match quality: 18.0%",
+        "Level alignment: 23.1%",
+        "Context alignment: 23.1%",
         "Direct matching: 1 exact matches",
         "13 skill clusters matched",
         "Course level: University_Year_1"
@@ -115,16 +116,16 @@
     },
     {
       "vet_units": [
-        "ICTCYS407: Gather, analyse and interpret threat data",
+        "ICTCYS613: Utilise design methodologies for security architecture",
         "ICTNWK559: Install an enterprise virtual computing environment"
       ],
       "uni_course": "SIT111",
-      "score": 0.33261782257755595,
+      "score": 0.3314966957271099,
       "type": "none",
-      "confidence": 0.9175,
+      "confidence": 0.9125,
       "evidence": [
         "Skill coverage: 40.8%",
-        "Match quality: 12.8%",
+        "Match quality: 12.4%",
         "Level alignment: 16.7%",
         "Context alignment: 16.7%",
         "Direct matching: 0 exact matches",
@@ -135,18 +136,17 @@
     },
     {
       "vet_units": [
-        "ICTICT517: Match ICT needs with the strategic direction of the organisation",
-        "ICTCYS613: Utilise design methodologies for security architecture"
+        "ICTICT517: Match ICT needs with the strategic direction of the organisation"
       ],
       "uni_course": "SIT192",
-      "score": 0.32695942019422847,
+      "score": 0.2897969542940458,
       "type": "none",
-      "confidence": 0.8375000000000001,
+      "confidence": 0.8,
       "evidence": [
         "Skill coverage: 40.7%",
-        "Match quality: 12.2%",
-        "Level alignment: 16.7%",
-        "Context alignment: 16.7%",
+        "Match quality: 6.4%",
+        "Level alignment: 8.3%",
+        "Context alignment: 8.3%",
         "Direct matching: 0 exact matches",
         "12 skill clusters matched",
         "Course level: University_Year_1"
@@ -156,18 +156,17 @@
     {
       "vet_units": [
         "ICTNWK557: Configure and manage advanced virtual computing environments",
-        "ICTICT527: Develop and maintain blockchain solutions",
         "ICTICT532: Apply IP, ethics and privacy in ICT environments"
       ],
       "uni_course": "SIT374",
-      "score": 0.28400174919515847,
+      "score": 0.2573280751655499,
       "type": "none",
-      "confidence": 0.90625,
+      "confidence": 0.8983333333333333,
       "evidence": [
         "Skill coverage: 21.2%",
-        "Match quality: 21.3%",
-        "Level alignment: 17.2%",
-        "Context alignment: 25.0%",
+        "Match quality: 16.1%",
+        "Level alignment: 12.5%",
+        "Context alignment: 18.8%",
         "Direct matching: 0 exact matches",
         "15 skill clusters matched",
         "Course level: University_Year_3"
@@ -179,14 +178,14 @@
         "ICTSAS524: Develop, implement and evaluate an incident response plan"
       ],
       "uni_course": "SIT282",
-      "score": 0.25949344308559696,
+      "score": 0.22975024832212,
       "type": "none",
-      "confidence": 0.9324999999999999,
+      "confidence": 0.945,
       "evidence": [
         "Skill coverage: 24.2%",
-        "Match quality: 13.2%",
-        "Level alignment: 13.5%",
-        "Context alignment: 13.1%",
+        "Match quality: 6.7%",
+        "Level alignment: 7.7%",
+        "Context alignment: 7.7%",
         "Direct matching: 0 exact matches",
         "13 skill clusters matched",
         "Course level: University_Year_2"
@@ -195,58 +194,16 @@
     },
     {
       "vet_units": [
-        "ICTICT532: Apply IP, ethics and privacy in ICT environments",
-        "ICTCYS613: Utilise design methodologies for security architecture",
-        "ICTPRG435: Write scripts for software applications"
-      ],
-      "uni_course": "SIT218",
-      "score": 0.24689239758820758,
-      "type": "none",
-      "confidence": 0.9083333333333333,
-      "evidence": [
-        "Skill coverage: 15.9%",
-        "Match quality: 17.8%",
-        "Level alignment: 16.1%",
-        "Context alignment: 19.3%",
-        "Direct matching: 0 exact matches",
-        "14 skill clusters matched",
-        "Course level: University_Year_2"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "ICTCYS407: Gather, analyse and interpret threat data",
-        "ICTNWK562: Configure internet gateways"
-      ],
-      "uni_course": "SIT327",
-      "score": 0.2267927802503109,
-      "type": "none",
-      "confidence": 0.905,
-      "evidence": [
-        "Skill coverage: 14.9%",
-        "Match quality: 14.6%",
-        "Level alignment: 12.5%",
-        "Context alignment: 16.7%",
-        "Direct matching: 0 exact matches",
-        "12 skill clusters matched",
-        "Course level: University_Year_3"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "ICTICT517: Match ICT needs with the strategic direction of the organisation",
         "BSBXCS402: Promote workplace cyber security awareness and best practices",
         "ICTSAS526: Review and update disaster recovery and contingency plans"
       ],
       "uni_course": "SIT378",
-      "score": 0.21685547745972866,
+      "score": 0.21770163944611942,
       "type": "none",
-      "confidence": 0.8849999999999999,
+      "confidence": 0.8833333333333333,
       "evidence": [
         "Skill coverage: 11.3%",
-        "Match quality: 14.0%",
+        "Match quality: 14.4%",
         "Level alignment: 15.6%",
         "Context alignment: 18.8%",
         "Direct matching: 0 exact matches",
@@ -257,40 +214,79 @@
     },
     {
       "vet_units": [
-        "BSBXTW401: Lead and facilitate a team"
+        "ICTCYS613: Utilise design methodologies for security architecture",
+        "ICTPRG435: Write scripts for software applications"
       ],
-      "uni_course": "STP010",
-      "score": 0.2125040833950042,
+      "uni_course": "SIT218",
+      "score": 0.21700100678205486,
       "type": "none",
-      "confidence": 0.885,
+      "confidence": 0.9099999999999999,
       "evidence": [
-        "Skill coverage: 16.5%",
-        "Match quality: 8.4%",
-        "Level alignment: 12.5%",
-        "Context alignment: 12.5%",
+        "Skill coverage: 15.9%",
+        "Match quality: 11.9%",
+        "Level alignment: 10.7%",
+        "Context alignment: 12.1%",
         "Direct matching: 0 exact matches",
-        "7 skill clusters matched",
-        "Course level: University_Year_1"
+        "14 skill clusters matched",
+        "Course level: University_Year_2"
       ],
       "gaps": []
     },
     {
       "vet_units": [
         "ICTPRG435: Write scripts for software applications",
-        "ICTICT532: Apply IP, ethics and privacy in ICT environments"
+        "ICTNWK559: Install an enterprise virtual computing environment"
       ],
       "uni_course": "SIT223",
-      "score": 0.19360702051967377,
+      "score": 0.1928269901126623,
       "type": "none",
-      "confidence": 0.8724999999999999,
+      "confidence": 0.875,
       "evidence": [
         "Skill coverage: 11.4%",
-        "Match quality: 10.2%",
+        "Match quality: 9.8%",
         "Level alignment: 10.9%",
         "Context alignment: 12.5%",
         "Direct matching: 0 exact matches",
         "16 skill clusters matched",
         "Course level: University_Year_2"
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "ICTCYS407: Gather, analyse and interpret threat data"
+      ],
+      "uni_course": "SIT327",
+      "score": 0.19192461636662483,
+      "type": "none",
+      "confidence": 0.915,
+      "evidence": [
+        "Skill coverage: 14.9%",
+        "Match quality: 7.6%",
+        "Level alignment: 6.2%",
+        "Context alignment: 8.3%",
+        "Direct matching: 0 exact matches",
+        "12 skill clusters matched",
+        "Course level: University_Year_3"
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "ICTICT532: Apply IP, ethics and privacy in ICT environments"
+      ],
+      "uni_course": "SIT379",
+      "score": 0.18472109332349562,
+      "type": "none",
+      "confidence": 0.86,
+      "evidence": [
+        "Skill coverage: 11.1%",
+        "Match quality: 9.4%",
+        "Level alignment: 8.3%",
+        "Context alignment: 11.1%",
+        "Direct matching: 0 exact matches",
+        "9 skill clusters matched",
+        "Course level: University_Year_3"
       ],
       "gaps": []
     },
@@ -315,18 +311,18 @@
     },
     {
       "vet_units": [],
-      "uni_course": "SIT379",
-      "score": 0.09450393517812092,
+      "uni_course": "STP010",
+      "score": 0.1160792469978332,
       "type": "none",
       "confidence": 0.0,
       "evidence": [
-        "Skill coverage: 11.1%",
+        "Skill coverage: 16.5%",
         "Match quality: 0.0%",
         "Level alignment: 0.0%",
         "Context alignment: 0.0%",
         "Direct matching: 0 exact matches",
-        "9 skill clusters matched",
-        "Course level: University_Year_3"
+        "7 skill clusters matched",
+        "Course level: University_Year_1"
       ],
       "gaps": []
     },
