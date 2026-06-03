@@ -106,10 +106,10 @@ Style compliance: 100%|██████████| 1/1 [00:02<00:00,  2.54s/
 2026-05-13 04:00:54,521 - __main__ - INFO - Keywords changed: 12
 2026-05-13 04:00:54,521 - __main__ - INFO - ============================================================
 
-2026-06-03 01:41:28,169 - analysis.simplified_analyzer - INFO - Using 349 VET skills and 241 Uni skills
-2026-06-03 01:41:28,169 - analysis.simplified_analyzer - INFO - Using matching strategy: direct_one_vs_all
-  5%|▌         | 1/19 [00:01<00:31,  1.74s/it]
-2026-06-03 01:41:30,080 - pipeline - ERROR - [analyze] failed: attribute name must be string, not 'Skill'
+2026-06-03 01:46:40,120 - analysis.simplified_analyzer - INFO - Using 349 VET skills and 241 Uni skills
+2026-06-03 01:46:40,121 - analysis.simplified_analyzer - INFO - Using matching strategy: direct_one_vs_all
+  5%|▌         | 1/19 [00:03<01:07,  3.74s/it]
+2026-06-03 01:46:43,990 - pipeline - ERROR - [analyze] failed: __autoreload_class__._parse_validate_response() takes 1 positional argument but 2 were given
 Traceback (most recent call last):
   File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 992, in run_pipeline
     outputs = step_dispatch[step_key]()
@@ -126,14 +126,9 @@ Traceback (most recent call last):
   File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 502, in _quick_analysis
     best_match = self._find_best_direct_match_one_vs_all_vet(
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 884, in _find_best_direct_match_one_vs_all_vet
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 882, in _find_best_direct_match_one_vs_all_vet
     self._genai_validate_matches(
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 664, in _genai_validate_matches
-    self._build_validate_user_prompt(m['vet_skill'], m['uni_skill'])
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 602, in _build_validate_user_prompt
-    f"  name: {self._skill_attr(vet_skill, 'name')}\n"
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 592, in _skill_attr
-    v = getattr(s, name, default)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: attribute name must be string, not 'Skill'
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 687, in _genai_validate_matches
+    verdict = self._parse_validate_response(resp)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: __autoreload_class__._parse_validate_response() takes 1 positional argument but 2 were given
