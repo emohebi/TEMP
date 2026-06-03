@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-03T10:27:11.643647",
+  "timestamp": "2026-06-03T10:34:31.943028",
   "config": {
     "depth": "balanced",
     "thresholds": {
@@ -21,18 +21,18 @@
         "ICTNWK557: Configure and manage advanced virtual computing environments"
       ],
       "uni_course": "SIT182",
-      "score": 0.8499201101074872,
+      "score": 0.8725282166880421,
       "type": "full",
       "confidence": 0.8930769230769229,
       "evidence": [
-        "Skill coverage: 76.6%",
+        "Skill coverage: 82.3%",
         "Match quality: 79.5%",
         "Level alignment: 100.0%",
         "Context alignment: 100.0%",
         "Direct matching: 9 exact matches",
         "13 skill clusters matched",
         "Course level: University_Year_1",
-        "Rationale: The VET qualification covers all core competencies required for SIT182, with direct skill pairings demonstrating alignment across security monitoring, risk assessment, access control, incident response and network security implementation. Consequently, no additional learning is required for admission."
+        "Rationale: The VET qualification covers all core competencies required for SIT182, with direct skill pairings that map to each university learning outcome. High similarity scores across network security implementation, risk assessment, access control, monitoring, and incident response demonstrate comprehensive alignment, justifying a full credit transfer."
       ],
       "gaps": []
     },
@@ -48,18 +48,18 @@
         "ICTNWK557: Configure and manage advanced virtual computing environments"
       ],
       "uni_course": "SIT111",
-      "score": 0.6662974281974313,
+      "score": 0.6728406580775876,
       "type": "partial",
       "confidence": 0.8836363636363636,
       "evidence": [
-        "Skill coverage: 44.8%",
+        "Skill coverage: 46.4%",
         "Match quality: 65.5%",
         "Level alignment: 91.7%",
         "Context alignment: 91.7%",
         "Direct matching: 1 exact matches",
         "12 skill clusters matched",
         "Course level: University_Year_1",
-        "Rationale: The VET units demonstrate partial alignment with the introductory computing systems curriculum, covering hardware/software selection, network protocols and virtual environments, but they do not address core topics such as embedded system prototyping and broader system architecture, justifying a partial credit transfer."
+        "Rationale: The VET units demonstrate relevant knowledge in hardware/software selection, network protocols and virtual environment configuration, supporting several core outcomes of SIT111. However, key university outcomes such as embedded system prototyping are not covered, justifying a partial credit\u2011transfer."
       ],
       "gaps": []
     },
@@ -72,18 +72,18 @@
         "ICTTEN419: Implement and troubleshoot enterprise routers and switches"
       ],
       "uni_course": "SIT202",
-      "score": 0.6365497436150157,
+      "score": 0.6499752061451325,
       "type": "partial",
       "confidence": 0.8825,
       "evidence": [
-        "Skill coverage: 55.2%",
+        "Skill coverage: 58.6%",
         "Match quality: 57.3%",
         "Level alignment: 70.5%",
         "Context alignment: 72.7%",
         "Direct matching: 3 exact matches",
         "11 skill clusters matched",
         "Course level: University_Year_1",
-        "Rationale: The VET qualification demonstrates solid practical competence in network performance monitoring, protocol knowledge and troubleshooting, which aligns with several core university outcomes, but it does not cover higher\u2011order design evaluation, programming, and detailed protocol implementation required for full credit."
+        "Rationale: The VET qualification demonstrates solid coverage of core networking concepts and troubleshooting, justifying partial credit, but it lacks evidence of higher\u2011order design, programming and protocol implementation skills required by the unit."
       ],
       "gaps": []
     },
@@ -96,18 +96,18 @@
         "ICTICT517: Match ICT needs with the strategic direction of the organisation"
       ],
       "uni_course": "SIT102",
-      "score": 0.5451596335080954,
+      "score": 0.6049371635995361,
       "type": "partial",
-      "confidence": 0.8538888888888888,
+      "confidence": 0.86,
       "evidence": [
-        "Skill coverage: 38.3%",
-        "Match quality: 50.4%",
-        "Level alignment: 69.2%",
-        "Context alignment: 69.2%",
-        "Direct matching: 2 exact matches",
+        "Skill coverage: 44.6%",
+        "Match quality: 56.5%",
+        "Level alignment: 76.9%",
+        "Context alignment: 76.9%",
+        "Direct matching: 3 exact matches",
         "13 skill clusters matched",
         "Course level: University_Year_1",
-        "Rationale: The VET qualification demonstrates solid alignment in scripting, debugging and control\u2011flow concepts, justifying partial credit, but it does not cover key programming fundamentals such as modularisation and procedural development required for full credit."
+        "Rationale: The VET qualification demonstrates solid overlap in debugging, script translation and compliance assessment, supporting part of the introductory programming outcomes, but it does not cover core programming constructs such as modularisation and procedural development, justifying a partial credit transfer."
       ],
       "gaps": []
     },
@@ -118,11 +118,11 @@
         "ICTPRG435: Write scripts for software applications"
       ],
       "uni_course": "SIT232",
-      "score": 0.5346303942242943,
+      "score": 0.541297060890961,
       "type": "partial",
       "confidence": 0.8942857142857142,
       "evidence": [
-        "Skill coverage: 44.8%",
+        "Skill coverage: 46.5%",
         "Match quality: 48.2%",
         "Level alignment: 56.2%",
         "Context alignment: 55.8%",
@@ -140,18 +140,18 @@
         "ICTSAS524: Develop, implement and evaluate an incident response plan"
       ],
       "uni_course": "SIT282",
-      "score": 0.48925179029644555,
+      "score": 0.5000622822737146,
       "type": "partial",
       "confidence": 0.915,
       "evidence": [
-        "Skill coverage: 20.1%",
+        "Skill coverage: 22.8%",
         "Match quality: 65.2%",
         "Level alignment: 59.6%",
         "Context alignment: 60.8%",
         "Direct matching: 1 exact matches",
         "13 skill clusters matched",
         "Course level: University_Year_2",
-        "Rationale: The VET units provide substantial coverage of forensic evidence procedures, incident response and log analysis, supporting many core outcomes of SIT282, but they do not address the unit\u2019s legal, reporting design and communication components, justifying a partial credit transfer."
+        "Rationale: The VET qualification demonstrates substantial overlap in forensic evidence procedures and incident response, supporting partial credit for the unit. However, key university outcomes\u2014report design, IT law compliance, and investigative communication\u2014are not covered, necessitating additional learning."
       ],
       "gaps": []
     },
@@ -163,17 +163,18 @@
         "ICTNWK546: Manage network security"
       ],
       "uni_course": "SIT384",
-      "score": 0.44677699275370003,
-      "type": "none",
+      "score": 0.4580771987360495,
+      "type": "partial",
       "confidence": 0.870625,
       "evidence": [
-        "Skill coverage: 30.6%",
+        "Skill coverage: 33.5%",
         "Match quality: 44.7%",
         "Level alignment: 45.0%",
         "Context alignment: 51.3%",
         "Direct matching: 3 exact matches",
         "13 skill clusters matched",
-        "Course level: University_Year_2"
+        "Course level: University_Year_2",
+        "Rationale: The VET qualification demonstrates solid overlap in security\u2011focused data analysis, data processing and evidence evaluation, justifying partial credit. However, key university outcomes in advanced analytics techniques are not covered, requiring additional study."
       ],
       "gaps": []
     },
@@ -185,11 +186,11 @@
         "ICTCYS613: Utilise design methodologies for security architecture"
       ],
       "uni_course": "SIT218",
-      "score": 0.38550416552736644,
+      "score": 0.3889204420352739,
       "type": "none",
       "confidence": 0.8975,
       "evidence": [
-        "Skill coverage: 14.6%",
+        "Skill coverage: 15.4%",
         "Match quality: 45.2%",
         "Level alignment: 42.9%",
         "Context alignment: 55.0%",
@@ -232,11 +233,11 @@
         "BSBXCS402: Promote workplace cyber security awareness and best practices"
       ],
       "uni_course": "SIT378",
-      "score": 0.330533156412698,
+      "score": 0.3312701030087376,
       "type": "none",
       "confidence": 0.8892857142857143,
       "evidence": [
-        "Skill coverage: 14.1%",
+        "Skill coverage: 14.2%",
         "Match quality: 33.6%",
         "Level alignment: 35.9%",
         "Context alignment: 41.9%",
@@ -248,42 +249,41 @@
     },
     {
       "vet_units": [
-        "ICTCYS407: Gather, analyse and interpret threat data",
-        "ICTTEN419: Implement and troubleshoot enterprise routers and switches",
-        "ICTNWK562: Configure internet gateways",
-        "ICTSAS524: Develop, implement and evaluate an incident response plan"
+        "ICTICT532: Apply IP, ethics and privacy in ICT environments",
+        "ICTNWK546: Manage network security"
       ],
-      "uni_course": "SIT327",
-      "score": 0.31749715958149344,
+      "uni_course": "SIT379",
+      "score": 0.27242630836110054,
       "type": "none",
-      "confidence": 0.9099999999999999,
+      "confidence": 0.8783333333333334,
       "evidence": [
-        "Skill coverage: 20.5%",
-        "Match quality: 27.7%",
+        "Skill coverage: 10.5%",
+        "Match quality: 26.2%",
         "Level alignment: 25.0%",
         "Context alignment: 33.3%",
-        "Direct matching: 1 exact matches",
-        "12 skill clusters matched",
+        "Direct matching: 0 exact matches",
+        "9 skill clusters matched",
         "Course level: University_Year_3"
       ],
       "gaps": []
     },
     {
       "vet_units": [
-        "ICTICT532: Apply IP, ethics and privacy in ICT environments",
-        "ICTNWK546: Manage network security"
+        "ICTTEN419: Implement and troubleshoot enterprise routers and switches",
+        "ICTNWK562: Configure internet gateways",
+        "ICTSAS524: Develop, implement and evaluate an incident response plan"
       ],
-      "uni_course": "SIT379",
-      "score": 0.2714666652208493,
+      "uni_course": "SIT327",
+      "score": 0.24773220639537885,
       "type": "none",
-      "confidence": 0.8783333333333334,
+      "confidence": 0.9083333333333333,
       "evidence": [
-        "Skill coverage: 10.3%",
-        "Match quality: 26.2%",
-        "Level alignment: 25.0%",
-        "Context alignment: 33.3%",
+        "Skill coverage: 12.1%",
+        "Match quality: 20.3%",
+        "Level alignment: 18.8%",
+        "Context alignment: 25.0%",
         "Direct matching: 0 exact matches",
-        "9 skill clusters matched",
+        "12 skill clusters matched",
         "Course level: University_Year_3"
       ],
       "gaps": []
