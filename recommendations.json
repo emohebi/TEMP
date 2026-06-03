@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-03T09:12:51.532834",
+  "timestamp": "2026-06-03T09:27:16.978431",
   "config": {
     "depth": "balanced",
     "thresholds": {
@@ -21,17 +21,18 @@
         "ICTNWK557: Configure and manage advanced virtual computing environments"
       ],
       "uni_course": "SIT182",
-      "score": 0.773126314512685,
-      "type": "partial",
+      "score": 0.8499201101074872,
+      "type": "full",
       "confidence": 0.8930769230769229,
       "evidence": [
         "Skill coverage: 76.6%",
-        "Match quality: 66.1%",
-        "Level alignment: 82.7%",
-        "Context alignment: 82.7%",
+        "Match quality: 79.5%",
+        "Level alignment: 100.0%",
+        "Context alignment: 100.0%",
         "Direct matching: 9 exact matches",
         "13 skill clusters matched",
-        "Course level: University_Year_1"
+        "Course level: University_Year_1",
+        "Rationale: The VET qualification covers all core competencies required for SIT182, with direct skill matches across network security implementation, risk assessment, access control, incident response and security monitoring, satisfying the unit\u2019s learning outcomes."
       ],
       "gaps": []
     },
@@ -45,17 +46,18 @@
         "ICTTEN419: Implement and troubleshoot enterprise routers and switches"
       ],
       "uni_course": "SIT202",
-      "score": 0.7177993008304127,
+      "score": 0.76771313594953,
       "type": "partial",
       "confidence": 0.8895000000000002,
       "evidence": [
         "Skill coverage: 68.1%",
-        "Match quality: 62.1%",
-        "Level alignment: 77.3%",
-        "Context alignment: 79.5%",
+        "Match quality: 70.7%",
+        "Level alignment: 88.6%",
+        "Context alignment: 90.9%",
         "Direct matching: 3 exact matches",
         "11 skill clusters matched",
-        "Course level: University_Year_1"
+        "Course level: University_Year_1",
+        "Rationale: The VET qualification demonstrates substantial overlap with core network concepts and security, justifying partial credit, but it does not fully cover the university unit\u2019s emphasis on protocol implementation analysis and advanced programming skills."
       ],
       "gaps": []
     },
@@ -72,17 +74,18 @@
         "ICTNWK557: Configure and manage advanced virtual computing environments"
       ],
       "uni_course": "SIT111",
-      "score": 0.655209337282788,
+      "score": 0.7163191312761219,
       "type": "partial",
       "confidence": 0.8866666666666667,
       "evidence": [
         "Skill coverage: 48.4%",
-        "Match quality: 61.5%",
-        "Level alignment: 85.4%",
-        "Context alignment: 85.4%",
+        "Match quality: 71.4%",
+        "Level alignment: 100.0%",
+        "Context alignment: 100.0%",
         "Direct matching: 1 exact matches",
         "12 skill clusters matched",
-        "Course level: University_Year_1"
+        "Course level: University_Year_1",
+        "Rationale: The VET qualification demonstrates a direct match in hardware/software selection and several partial overlaps in network and system configuration, supporting a partial credit\u2011transfer. However, significant core computing theory and software development competencies required by SIT111 are not covered, necessitating additional study."
       ],
       "gaps": []
     },
@@ -96,17 +99,18 @@
         "ICTCYS610: Protect critical infrastructure for organisations"
       ],
       "uni_course": "SIT102",
-      "score": 0.6541869622759332,
+      "score": 0.7036383323547168,
       "type": "partial",
       "confidence": 0.86375,
       "evidence": [
         "Skill coverage: 52.4%",
-        "Match quality: 59.8%",
-        "Level alignment: 80.8%",
-        "Context alignment: 80.8%",
+        "Match quality: 68.0%",
+        "Level alignment: 92.3%",
+        "Context alignment: 92.3%",
         "Direct matching: 4 exact matches",
         "13 skill clusters matched",
-        "Course level: University_Year_1"
+        "Course level: University_Year_1",
+        "Rationale: The VET units demonstrate solid overlap in scripting, debugging and procedural development, supporting partial credit, but they do not cover the full range of foundational programming concepts required for the university course."
       ],
       "gaps": []
     },
@@ -117,17 +121,40 @@
         "ICTPRG435: Write scripts for software applications"
       ],
       "uni_course": "SIT232",
-      "score": 0.5155387818753404,
+      "score": 0.5346303942242943,
       "type": "partial",
       "confidence": 0.8942857142857142,
       "evidence": [
         "Skill coverage: 44.8%",
-        "Match quality: 44.7%",
-        "Level alignment: 52.1%",
-        "Context alignment: 51.7%",
+        "Match quality: 48.2%",
+        "Level alignment: 56.2%",
+        "Context alignment: 55.8%",
         "Direct matching: 5 exact matches",
         "11 skill clusters matched",
-        "Course level: University_Year_1"
+        "Course level: University_Year_1",
+        "Rationale: The VET units provide solid coverage of testing, debugging, documentation and system architecture, supporting several core outcomes of SIT232, but they do not address key object\u2011oriented concepts and communication requirements, justifying a partial credit transfer."
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "ICTCYS407: Gather, analyse and interpret threat data",
+        "ICTNWK546: Manage network security",
+        "ICTSAS524: Develop, implement and evaluate an incident response plan"
+      ],
+      "uni_course": "SIT282",
+      "score": 0.5271234083416834,
+      "type": "partial",
+      "confidence": 0.9109090909090909,
+      "evidence": [
+        "Skill coverage: 21.9%",
+        "Match quality: 71.9%",
+        "Level alignment: 65.4%",
+        "Context alignment: 66.2%",
+        "Direct matching: 1 exact matches",
+        "13 skill clusters matched",
+        "Course level: University_Year_2",
+        "Rationale: The VET qualification demonstrates substantial overlap with core forensic techniques and incident reporting, justifying partial credit, but it does not address the legal and communication components required by the university unit."
       ],
       "gaps": []
     },
@@ -140,17 +167,18 @@
         "ICTPRG435: Write scripts for software applications"
       ],
       "uni_course": "SIT218",
-      "score": 0.4408678966388816,
-      "type": "none",
+      "score": 0.48425924346390226,
+      "type": "partial",
       "confidence": 0.8954999999999999,
       "evidence": [
         "Skill coverage: 24.2%",
-        "Match quality: 48.9%",
-        "Level alignment: 45.5%",
-        "Context alignment: 58.6%",
+        "Match quality: 57.2%",
+        "Level alignment: 53.6%",
+        "Context alignment: 69.3%",
         "Direct matching: 0 exact matches",
         "14 skill clusters matched",
-        "Course level: University_Year_2"
+        "Course level: University_Year_2",
+        "Rationale: The VET qualification demonstrates relevant competencies in security design, script debugging, and vulnerability assessment, supporting partial credit for the Secure Coding unit. However, key university outcomes such as formal software verification and communication of secure coding principles are not covered, necessitating additional learning."
       ],
       "gaps": []
     },
@@ -162,14 +190,14 @@
         "ICTNWK546: Manage network security"
       ],
       "uni_course": "SIT384",
-      "score": 0.3878599352792458,
+      "score": 0.44677699275370003,
       "type": "none",
       "confidence": 0.870625,
       "evidence": [
         "Skill coverage: 30.6%",
-        "Match quality: 32.6%",
-        "Level alignment: 34.4%",
-        "Context alignment: 38.7%",
+        "Match quality: 44.7%",
+        "Level alignment: 45.0%",
+        "Context alignment: 51.3%",
         "Direct matching: 3 exact matches",
         "13 skill clusters matched",
         "Course level: University_Year_2"
@@ -186,38 +214,17 @@
         "ICTICT517: Match ICT needs with the strategic direction of the organisation"
       ],
       "uni_course": "SIT374",
-      "score": 0.3681776003609929,
+      "score": 0.3811278720084164,
       "type": "none",
       "confidence": 0.900625,
       "evidence": [
         "Skill coverage: 19.7%",
-        "Match quality: 36.9%",
-        "Level alignment: 36.7%",
-        "Context alignment: 46.9%",
+        "Match quality: 39.4%",
+        "Level alignment: 39.1%",
+        "Context alignment: 50.0%",
         "Direct matching: 0 exact matches",
         "15 skill clusters matched",
         "Course level: University_Year_3"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "ICTCYS407: Gather, analyse and interpret threat data",
-        "ICTNWK546: Manage network security",
-        "ICTSAS524: Develop, implement and evaluate an incident response plan"
-      ],
-      "uni_course": "SIT282",
-      "score": 0.32865500498073363,
-      "type": "none",
-      "confidence": 0.9109090909090909,
-      "evidence": [
-        "Skill coverage: 21.9%",
-        "Match quality: 30.0%",
-        "Level alignment: 27.8%",
-        "Context alignment: 28.9%",
-        "Direct matching: 1 exact matches",
-        "13 skill clusters matched",
-        "Course level: University_Year_2"
       ],
       "gaps": []
     },
@@ -230,14 +237,14 @@
         "BSBXCS402: Promote workplace cyber security awareness and best practices"
       ],
       "uni_course": "SIT378",
-      "score": 0.3179580908818614,
+      "score": 0.330533156412698,
       "type": "none",
       "confidence": 0.8892857142857143,
       "evidence": [
         "Skill coverage: 14.1%",
-        "Match quality: 31.2%",
-        "Level alignment: 33.6%",
-        "Context alignment: 38.8%",
+        "Match quality: 33.6%",
+        "Level alignment: 35.9%",
+        "Context alignment: 41.9%",
         "Direct matching: 0 exact matches",
         "16 skill clusters matched",
         "Course level: University_Year_3"
@@ -294,14 +301,14 @@
         "ICTNWK546: Manage network security"
       ],
       "uni_course": "SIT379",
-      "score": 0.24919313830063666,
+      "score": 0.2714666652208493,
       "type": "none",
       "confidence": 0.8783333333333334,
       "evidence": [
         "Skill coverage: 10.3%",
-        "Match quality: 22.0%",
-        "Level alignment: 20.8%",
-        "Context alignment: 27.8%",
+        "Match quality: 26.2%",
+        "Level alignment: 25.0%",
+        "Context alignment: 33.3%",
         "Direct matching: 0 exact matches",
         "9 skill clusters matched",
         "Course level: University_Year_3"
