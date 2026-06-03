@@ -106,21 +106,34 @@ Style compliance: 100%|██████████| 1/1 [00:02<00:00,  2.54s/
 2026-05-13 04:00:54,521 - __main__ - INFO - Keywords changed: 12
 2026-05-13 04:00:54,521 - __main__ - INFO - ============================================================
 
-026-05-27 01:21:17,923 - pipeline - INFO - [refine] starting
-2026-05-27 01:21:18,311 - reporting.skill_export - INFO - Imported VET skills from /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/latrobe/20260527-010839-2998/01_extract/vet_skills.json
-2026-05-27 01:21:18,523 - refine_skills - INFO - Loaded context metadata for 16 units/courses from data/Certificate_IV_in_Cyber_Security.json
-2026-05-27 01:21:18,656 - pipeline - ERROR - [refine] failed: refine: imported vet skills carry no performance_criteria/elements/foundation_skills/application — gap-fill and prompt context will be empty. Re-run with --no-gap-fill, or provide a qualification JSON, or re-import an XLSX that includes those columns.
+2026-06-03 01:41:28,169 - analysis.simplified_analyzer - INFO - Using 349 VET skills and 241 Uni skills
+2026-06-03 01:41:28,169 - analysis.simplified_analyzer - INFO - Using matching strategy: direct_one_vs_all
+  5%|▌         | 1/19 [00:01<00:31,  1.74s/it]
+2026-06-03 01:41:30,080 - pipeline - ERROR - [analyze] failed: attribute name must be string, not 'Skill'
 Traceback (most recent call last):
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 865, in run_pipeline
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 992, in run_pipeline
     outputs = step_dispatch[step_key]()
               ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 839, in <lambda>
-    "refine": lambda: _run_refine(cfg, run_dir, runtime_cfg, genai, embeddings, artifacts),
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 537, in _run_refine
-    refine_qualification_skills(
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/refine_skills.py", line 377, in refine_qualification_skills
-    _validate_metadata_present(meta, side)
-  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/refine_skills.py", line 146, in _validate_metadata_present
-    raise ValueError(
-ValueError: refine: imported vet skills carry no performance_criteria/elements/foundation_skills/application — gap-fill and prompt context will be empty. Re-run with --no-gap-fill, or provide a qualification JSON, or re-import an XLSX that includes those columns.
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 967, in <lambda>
+    "analyze": lambda: _run_analyze(cfg, run_dir, runtime_cfg, genai,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/pipeline.py", line 789, in _run_analyze
+    recommendations = analyzer.analyze(
+                      ^^^^^^^^^^^^^^^^^
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 445, in analyze
+    return self._quick_analysis(vet_qual, uni_qual)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 502, in _quick_analysis
+    best_match = self._find_best_direct_match_one_vs_all_vet(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 884, in _find_best_direct_match_one_vs_all_vet
+    self._genai_validate_matches(
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 664, in _genai_validate_matches
+    self._build_validate_user_prompt(m['vet_skill'], m['uni_skill'])
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 602, in _build_validate_user_prompt
+    f"  name: {self._skill_attr(vet_skill, 'name')}\n"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Workspace/Users/ehsan.mohebi@jobsandskills.gov.au/credit-transfer-system/credit-transfer-system/analysis/simplified_analyzer.py", line 592, in _skill_attr
+    v = getattr(s, name, default)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: attribute name must be string, not 'Skill'
