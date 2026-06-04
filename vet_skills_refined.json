@@ -1,11 +1,11 @@
 {
   "qualification": {
-    "code": "20260505 V1 FSO Skills Output_combined_v2",
-    "name": "",
-    "level": "",
+    "code": "22603VIC",
+    "name": "Certificate IV in Cyber Security",
+    "level": "Certificate IV",
     "total_units": 22
   },
-  "export_timestamp": "2026-06-03T01:56:12.152881",
+  "export_timestamp": "2026-06-03T23:10:29.757219",
   "units": [
     {
       "code": "BSBCRT512",
