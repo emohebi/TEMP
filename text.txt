@@ -1,0 +1,66 @@
+I hope you’re well.
+
+I appreciate this is a substantial amount to review, but if possible, could you please provide JSA’s feedback by COB Wednesday 1 July?
+
+Following our earlier discussion about whether Singapore’s Critical Core Skills framework fully captures the skills needed in the Australian context, FSO has undertaken a desktop review of more than 66 workforce and skills documents against the framework.
+
+The review included all JSC workforce plans published on their websites, relevant Jobs and Skills Australia reports, World Economic Forum reports and other cross-industry workforce and skills research. We have summarised the findings below and would value JSA’s views, particularly given the Skills Harvester work and JSA’s broader exploration of these skills and capabilities.
+
+All 16 Critical Core Skills appeared in the evidence. Digital Fluency, Learning Agility and Adaptability were raised most often, followed by Developing People, Collaboration, Communication and Building Inclusivity.
+
+Rank	Critical Core Skill	CCS category	Demand
+1	Digital Fluency	Staying Relevant	Very high
+2	Learning Agility	Staying Relevant	High
+3	Adaptability	Staying Relevant	High
+4	Developing People	Interacting with Others	High
+5	Collaboration	Interacting with Others	High
+6	Communication	Interacting with Others	High
+7	Building Inclusivity	Interacting with Others	High
+8	Sense Making	Thinking Critically	Moderate
+9	Problem Solving	Thinking Critically	Moderate
+10	Creative Thinking	Thinking Critically	Moderate
+11	Decision Making	Thinking Critically	Moderate
+12	Customer Orientation	Interacting with Others	Moderate
+13	Self Management	Staying Relevant	Moderate
+14	Influence	Interacting with Others	Moderate
+15	Global Perspective	Staying Relevant	Low
+16	Transdisciplinary Thinking	Thinking Critically	Low
+
+The documents also rarely used the formal CCS labels. More than eight in ten references used different wording and were mapped to the closest CCS skill.
+
+Critical Core Skill	Terms used in the documents
+Digital Fluency	digital skills, digital literacy, digital capability, IT skills, AI skills, AI literacy, cyber skills
+Learning Agility	lifelong learning, continuous learning, reskilling, upskilling, learning to learn, continuing professional development
+Adaptability	adaptability, flexibility, agility, adapting to change, career adaptability
+Developing People	mentoring, coaching, succession planning, supervisory capability, people management, knowledge transfer
+Collaboration	teamwork, working with others, coordination, relationship building, collaborative working
+Communication	oral and written communication, interpersonal communication, active listening, managing difficult conversations
+Building Inclusivity	inclusion, diversity and inclusion, cultural awareness, cultural competence, cultural safety, psychological safety, inclusive leadership
+Sense Making	analytical skills, critical thinking, data analysis, data literacy, information synthesis, situational awareness
+Problem Solving	problem solving, complex problem solving, creative problem solving, critical thinking
+Creative Thinking	creativity, innovation, human-centred design, initiative
+Decision Making	decision making, data-driven decision making, judgement, strategic decision making, deciding under uncertainty
+Customer Orientation	customer service, customer experience, client management, service orientation, customer relations
+Self Management	planning and organising, time management, wellbeing, work-life balance, stress management
+Influence	influencing, negotiation, persuasion, stakeholder management, emotional intelligence, conflict management
+Global Perspective	cultural awareness, cross-cultural capability, global awareness, market awareness
+Transdisciplinary Thinking	systems thinking, cross-disciplinary skills, integrating knowledge across fields
+
+Some terms may map to more than one skill depending on context. For example, critical thinking may sit under Sense Making or Problem Solving, while leadership may sit under Developing People or Influence.
+
+The review also identified broader capabilities that appear across the Australian workforce and draw on several Critical Core Skills, but may not be fully covered by the framework.
+
+Capability	Why it may require further analysis
+Leadership and people management	CCS covers developing and influencing people, but not the full responsibility for team direction, delegation, performance and workforce outcomes.
+Project management	CCS supports planning, collaboration and problem solving, but does not cover scope, schedule, resources, governance, project risk and benefits.
+Business acumen	CCS supports customer focus, sense making and decision making, but does not fully cover value creation, commercial drivers, business models and organisational performance.
+Change management	CCS covers adaptability and influence, but not change impacts, readiness, resistance, adoption and implementation.
+Strategic thinking	CCS supports sense making and decision making, but does not fully cover setting direction, assessing scenarios, strategic choices and aligning priorities.
+Risk management	CCS supports risk-based judgement, but does not cover the full process of identifying, assessing, treating, monitoring and governing risk.
+
+Given JSA’s Skills Harvester work and its broader exploration of skills and capability frameworks, we would value your views on whether our interpretation is consistent with JSA’s work and whether there are relevant findings we should bring into the review.
+
+Could you please advise whether you agree:
+1.	with how the alternative terms have been grouped and mapped to the 16 Critical Core Skills
+2.	that the six broader capabilities above should be included in the analysis
+3.	whether there are other capabilities, evidence or JSA work that we should also consider.
