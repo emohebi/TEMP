@@ -64,3 +64,36 @@ Could you please advise whether you agree:
 1.	with how the alternative terms have been grouped and mapped to the 16 Critical Core Skills
 2.	that the six broader capabilities above should be included in the analysis
 3.	whether there are other capabilities, evidence or JSA work that we should also consider.
+
+
+
+
+
+
+
+=== FSO ↔ CCS pilot agreement ===
+Source phrases: 82
+Top-1 agrees with FSO label: 0  (0.0%)
+Disagrees: 0  (0.0%)
+No model pick (unmatched in match_debug): 82
+
+=== Per-CCS recall (FSO-labelled phrases the model also assigned to that CCS) ===
+  Adaptability                 0/5   (  0.0%)
+  Building Inclusivity         0/7   (  0.0%)
+  Collaboration                0/5   (  0.0%)
+  Communication                0/4   (  0.0%)
+  Creative Thinking            0/4   (  0.0%)
+  Customer Orientation         0/5   (  0.0%)
+  Decision Making              0/5   (  0.0%)
+  Developing People            0/6   (  0.0%)
+  Digital Fluency              0/7   (  0.0%)
+  Global Perspective           0/4   (  0.0%)
+  Influence                    0/6   (  0.0%)
+  Learning Agility             0/6   (  0.0%)
+  Problem Solving              0/4   (  0.0%)
+  Self Management              0/5   (  0.0%)
+  Sense Making                 0/6   (  0.0%)
+  Transdisciplinary Thinking   0/3   (  0.0%)
+
+=== Disagreements (0) ===
+phrase                                    fso label                 model top-1                 top    rup
