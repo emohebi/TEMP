@@ -1,0 +1,141 @@
+# Pipeline configuration — schema v2 (two-stage).
+#
+# Two-stage layout splits the pipeline into:
+#
+#   1) preprocess  — per-qualification extract + refine, cached on disk
+#                    keyed by the qualification's top-level `code` field.
+#                    Run once per qualification; reused by every pair.
+#   2) analyze     — per-pair (source, target) credit recommendation.
+#                    Pulls preprocessed skills from the cache.
+#
+# Run with either:
+#   python pipeline.py preprocess pipeline.example.v2.yaml   # populate cache
+#   python pipeline.py analyze    pipeline.example.v2.yaml   # one pair
+#   python pipeline.py run        pipeline.example.v2.yaml   # both, in order
+#
+# Schema v1 (single-file, single-pair) still works — see pipeline.example.yaml.
+
+schema_version: 2
+
+run:
+  output_dir:   /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/test_2206/runs       # per-run scratch (logs, intermediate artifacts)
+  cache_dir:    /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/test_2206/cache      # preprocess cache: <code>/skills_refined.json + manifest
+  analyses_dir: /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/test_2206/analyses   # per-pair analyse output: <source>__<target>/
+  run_id: null                    # null → auto-generate (timestamp + short uuid)
+  seed: 42
+  profile: robust                 # fast | balanced | thorough | dev | robust
+  backend: vllm                   # vllm is currently the only supported backend
+  embedding: [jina, qwen]         # load set; each step picks one by name from this list
+
+# ─── Stage 1: preprocess (per-qualification) ────────────────────────────────
+# Cache is keyed by the qualification's top-level `code` field. Re-running
+# preprocess on an unchanged input + unchanged extract/refine config is a no-op
+# (manifest fingerprints match). Change either the input file or this block to
+# invalidate. `tasks:` is OPTIONAL — omit it to run `analyze` directly on
+# qualifications another run already preprocessed.
+tasks:
+  input:
+    # path may be a single .json file OR a directory of .json files.
+    # All files under one path share the same `kind`. To mix kinds across
+    # one preprocess invocation, run preprocess twice with different configs.
+    path: /Volumes/jsa_external_prod/external_vols/scratch/Scratch/Ehsan/NST/pilot/latrobe/20260619-001441-19dd/01_extract/uni_skills.json
+    kind: uni                     # vet | uni — applies to every file under path
+
+  extract:
+    enabled: false
+    embedding: jina
+
+  refine:
+    enabled: false
+    batch_size: 20
+    apply_style: true
+    # When fill_gap is on, the VET input's per-unit `description` is parsed into
+    # performance_criteria/elements/foundation_skills/application before extract
+    # runs, so gap-fill has the context it needs. Existing fields are preserved.
+    fill_gap: true
+    name_guard_use_llm: true
+    use_consolidated_pipeline: true
+    identical_name_divergence_threshold: 0.5
+    disambiguate_identical_names: false
+    embedding: qwen
+
+# ─── Stage 2: analyze (per-pair) ────────────────────────────────────────────
+# Both `source` and `target` must already be in the cache (preprocessed by a
+# prior `preprocess` run, possibly using a different YAML). The analyser
+# errors clearly if either code is missing.
+analyze:
+  enabled: true
+  input:
+    source: S334              # qualification code claimed for credit
+    target: S334                 # qualification code receiving credit
+  pair_type: uni_to_uni           # vet_to_uni | uni_to_uni
+  embedding: jina
+  match_debug: true
+  depth: quick     # optional override of profile's PROGRESSIVE_DEPTH
+                        # (quick | balanced | deep | auto)
+    # LLM rationale generator.
+  generate_rationale: true
+  rationale_for_none: false
+  rationale_max_pairs_shown:     8
+  rationale_max_unmapped_shown:  5
+  rationale_uni_description_truncate: 300
+  # Drop skills before analysis when these refiner/diff metadata flags
+  # are True. Applies to both VET and Uni sides. Empty list = no filter.
+  exclude_skill_flags: [is_out_of_scope]
+  # Common entries: [is_duplicate, is_out_of_scope, is_misinterpretation]
+  # Guards.
+  identical_name_direct_floor: true
+  coverage_decay_enabled:      true
+  coverage_decay_base:         0.7
+  # Hard cap: one VET skill can win at most K Uni outcomes per
+  # course. 4th+ winners (by combined_score desc) → Unmapped.
+  # null = uncapped. 3 keeps Risk Assessment 3-win cases intact
+  # while cutting SIT282's 5-winner Forensic case.
+  max_winners_per_vet:         1
+  # LLM equivalence judge.
+  genai_validate: true
+  genai_demote_confidence_threshold: 0.70
+  genai_reject_confidence_threshold: 0.85
+  # Self-consistency voting: K judge samples per pair, majority verdict.
+  # Damps the ~13% run-to-run verdict flip from MoE/vLLM nondeterminism.
+  # 1 = single-shot (original). 5 = recommended for stable measurement.
+  genai_validate_votes: 5
+  genai_validate_vote_temperature: 0.5
+
+  scoring:
+    # Per-pair classification weights.
+    combined_similarity_weight: 0.60
+    combined_level_weight:      0.25
+    combined_context_weight:    0.15
+    # Cutoffs anchored against the iter-6 distribution (winners sit
+    # in [0.800, 0.944], median 0.837).
+    direct_threshold:           0.87
+    partial_threshold:          0.78
+
+    # Coverage / Quality formulation.
+    use_graduated_coverage:     true
+    partial_bucket:             0.5
+    quality_formulation:        similarity_only
+
+    # Headline weights.
+    weight_coverage:   0.40
+    weight_quality:    0.25
+    weight_level:      0.15
+    weight_context:    0.10
+    weight_confidence: 0.05
+    weight_volume:     0.05
+
+    # Volume gate.
+    use_volume_gate:        true
+    hours_per_credit_point: 25.0
+    volume_gate_floor:      0.5
+
+    # AQF level-compatibility curve (sharper than legacy SFIA).
+    level_compat_curve: [1.0, 0.75, 0.5, 0.2, 0.0]
+
+    # FULL / PARTIAL floors.
+    full_score_floor:    0.75
+    full_coverage_floor: 0.70
+    full_level_floor:    0.60
+    full_volume_floor:   0.70
+    partial_score_floor: 0.45
