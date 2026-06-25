@@ -1,0 +1,5635 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Credit Transfer Analysis Report</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                
+                body { 
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    min-height: 100vh;
+                    padding: 20px;
+                }
+                
+                .container {
+                    max-width: 1400px;
+                    margin: 0 auto;
+                    background: white;
+                    border-radius: 20px;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                    overflow: hidden;
+                }
+                
+                .header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 40px;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .header::before {
+                    content: '';
+                    position: absolute;
+                    top: -50%;
+                    right: -50%;
+                    bottom: -50%;
+                    left: -50%;
+                    background: repeating-linear-gradient(
+                        45deg,
+                        transparent,
+                        transparent 10px,
+                        rgba(255, 255, 255, 0.05) 10px,
+                        rgba(255, 255, 255, 0.05) 20px
+                    );
+                    animation: slide 20s linear infinite;
+                }
+                
+                @keyframes slide {
+                    0% { transform: translate(0, 0); }
+                    100% { transform: translate(50px, 50px); }
+                }
+                
+                .header-content {
+                    position: relative;
+                    z-index: 1;
+                }
+                
+                h1 { 
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                }
+                
+                .header-info {
+                    font-size: 0.95rem;
+                    opacity: 0.95;
+                    line-height: 1.6;
+                }
+                
+                .content {
+                    padding: 40px;
+                }
+                
+                h2 { 
+                    color: #2d3748;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    margin: 40px 0 20px 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                }
+                
+                h2 i {
+                    color: #667eea;
+                    font-size: 1.5rem;
+                }
+                
+                h3 { 
+                    color: #4a5568;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    margin: 20px 0 15px 0;
+                }
+                
+                /* Enhanced table styles with CONDENSED rows */
+                table { 
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    width: 100%;
+                    margin: 25px 0;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+                
+                th { 
+                    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+                    color: white;
+                    padding: 6px 10px;
+                    text-align: left;
+                    font-weight: 600;
+                    font-size: 0.8rem;
+                    letter-spacing: 0.5px;
+                    text-transform: uppercase;
+                }
+                
+                td { 
+                    padding: 5px 10px;
+                    border-bottom: 1px solid #e2e8f0;
+                    font-size: 0.85rem;
+                    line-height: 1.3;
+                    transition: all 0.3s ease;
+                }
+                
+                /* Recommendation type colors with gradients */
+                .full.rec-group-even { 
+                    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+                }
+                .full.rec-group-odd { 
+                    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+                }
+                .partial.rec-group-even { 
+                    background: linear-gradient(135deg, #fff3cd 0%, #ffe8a1 100%);
+                }
+                .partial.rec-group-odd { 
+                    background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+                }
+                
+                /* Enhanced hover effects */
+                .full.hover-highlight { 
+                    background: linear-gradient(135deg, #b8e0c1 0%, #a8d5b1 100%) !important;
+                    transform: scale(1.01);
+                }
+                .partial.hover-highlight { 
+                    background: linear-gradient(135deg, #ffde7d 0%, #ffd966 100%) !important;
+                    transform: scale(1.01);
+                }
+                
+                /* Animated expand button - SMALLER */
+                .expand-btn {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border: none;
+                    padding: 5px 12px;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    font-size: 0.75rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 6px;
+                }
+                
+                .expand-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                }
+                
+                .expand-btn i {
+                    transition: transform 0.3s ease;
+                }
+                
+                .expand-btn.expanded {
+                    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+                }
+                
+                .expand-btn.expanded i {
+                    transform: rotate(180deg);
+                }
+                
+                /* Enhanced expandable content */
+                .expandable-content {
+                    display: none;
+                    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+                    padding: 20px;
+                    animation: slideDown 0.3s ease;
+                }
+                
+                .expandable-content.show {
+                    display: table-cell;
+                }
+                
+                @keyframes slideDown {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                /* Enhanced summary boxes */
+                .summary-box { 
+                    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+                    padding: 25px;
+                    border-radius: 15px;
+                    margin: 30px 0;
+                    border-left: 4px solid #667eea;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+                }
+                
+                /* Enhanced stats grid */
+                .stats-grid { 
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                    gap: 20px;
+                    margin: 30px 0;
+                }
+                
+                .stat-card { 
+                    background: white;
+                    padding: 25px;
+                    border-radius: 15px;
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+                    transition: all 0.3s ease;
+                    border-top: 3px solid #667eea;
+                    text-align: center;
+                }
+                
+                .stat-card:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+                }
+                
+                .stat-value { 
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    margin-bottom: 8px;
+                }
+                
+                .stat-label { 
+                    color: #718096;
+                    font-size: 0.95rem;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                }
+                
+                /* Enhanced progress bars */
+                .progress-container {
+                    margin: 20px 0;
+                }
+                
+                .progress-label {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 8px;
+                    font-size: 0.9rem;
+                    color: #4a5568;
+                }
+                
+                .progress-bar { 
+                    width: 100%;
+                    height: 24px;
+                    background: #e2e8f0;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+                }
+                
+                .progress-fill { 
+                    height: 100%;
+                    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 12px;
+                    transition: width 0.8s ease;
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .progress-fill::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(
+                        90deg,
+                        transparent,
+                        rgba(255, 255, 255, 0.3),
+                        transparent
+                    );
+                    animation: shimmer 2s infinite;
+                }
+                
+                @keyframes shimmer {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+                
+                /* Enhanced skill badges - SMALLER */
+                .skill-badge { 
+                    display: inline-block;
+                    padding: 6px 12px;
+                    margin: 4px;
+                    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+                    border-radius: 20px;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                    border: 1px solid #cbd5e0;
+                    cursor: default;
+                }
+                
+                .skill-badge:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border-color: transparent;
+                }
+                
+                .skill-level-badge {
+                    display: inline-block;
+                    padding: 2px 6px;
+                    margin-left: 4px;
+                    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+                    color: white;
+                    border-radius: 8px;
+                    font-size: 0.65rem;
+                    font-weight: 600;
+                }
+                
+                .skill-context-badge {
+                    display: inline-block;
+                    padding: 2px 6px;
+                    margin-left: 3px;
+                    border-radius: 8px;
+                    font-size: 0.65rem;
+                    font-weight: 600;
+                    color: white;
+                }
+                
+                .skill-context-badge.theoretical {
+                    background: linear-gradient(135deg, #9f7aea 0%, #805ad5 100%);
+                }
+                
+                .skill-context-badge.practical {
+                    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+                }
+                
+                .skill-context-badge.hybrid {
+                    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+                }
+                
+                /* NEW: Tooltip styles for skill descriptions */
+                .skill-name {
+                    position: relative;
+                    cursor: help;
+                    border-bottom: 1px dotted #667eea;
+                    display: inline-block;
+                }
+                
+                .skill-description-tooltip {
+                    visibility: hidden;
+                    width: 320px;
+                    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+                    color: white;
+                    text-align: left;
+                    border-radius: 8px;
+                    padding: 12px;
+                    position: absolute;
+                    z-index: 1000;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -160px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                    font-size: 0.8rem;
+                    line-height: 1.4;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    pointer-events: none;
+                }
+                
+                .skill-description-tooltip::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: #2d3748 transparent transparent transparent;
+                }
+                
+                .skill-name:hover .skill-description-tooltip {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                
+                .skill-description-label {
+                    font-weight: 600;
+                    color: #667eea;
+                    margin-bottom: 4px;
+                    display: block;
+                }
+                
+                /* NEW: Expandable row toggle for skill details */
+                .skill-detail-toggle {
+                    cursor: pointer;
+                    color: #667eea;
+                    font-size: 0.7rem;
+                    margin-left: 6px;
+                    transition: transform 0.3s ease;
+                    display: inline-block;
+                }
+                
+                .skill-detail-toggle:hover {
+                    color: #764ba2;
+                }
+                
+                .skill-detail-toggle.expanded {
+                    transform: rotate(180deg);
+                }
+                
+                .skill-detail-row {
+                    display: none;
+                    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+                }
+                
+                .skill-detail-row.show {
+                    display: table-row;
+                }
+                
+                .skill-detail-content {
+                    padding: 15px;
+                    animation: slideDown 0.3s ease;
+                }
+                
+                .skill-description-box {
+                    background: white;
+                    padding: 12px;
+                    border-radius: 8px;
+                    margin: 8px 0;
+                    border-left: 3px solid #667eea;
+                    font-size: 0.8rem;
+                    line-height: 1.5;
+                }
+                
+                .skill-description-box h4 {
+                    font-size: 0.85rem;
+                    color: #2d3748;
+                    margin-bottom: 6px;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                }
+                
+                .skill-description-box p {
+                    color: #4a5568;
+                    margin: 0;
+                }
+                
+                .skill-description-empty {
+                    color: #a0aec0;
+                    font-style: italic;
+                }
+                
+                /* Enhanced inner skill mapping table - SMALLER */
+                .skill-mapping-inner-table {
+                    width: 100%;
+                    border-collapse: separate;
+                    border-spacing: 0;
+                    margin: 15px 0;
+                    font-size: 0.85rem;
+                    background: white;
+                    border-radius: 10px;
+                    overflow: hidden;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                }
+                
+                .skill-mapping-inner-table th {
+                    background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+                    color: white;
+                    padding: 6px 8px;
+                    text-align: left;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                
+                .skill-mapping-inner-table td {
+                    padding: 5px 8px;
+                    border-bottom: 1px solid #e2e8f0;
+                    font-size: 0.75rem;
+                    line-height: 1.3;
+                }
+                
+                .mapping-direct td {
+                    background: linear-gradient(90deg, #d4edda 0%, #c3e6cb 100%);
+                    color: #155724;
+                    font-weight: 500;
+                }
+                
+                .mapping-partial td {
+                    background: linear-gradient(90deg, #fff3cd 0%, #ffeaa7 100%);
+                    color: #856404;
+                    font-weight: 500;
+                }
+                
+                .mapping-unmapped td {
+                    background: linear-gradient(90deg, #f8d7da 0%, #f5c6cb 100%);
+                    color: #721c24;
+                }
+                
+                .mapping-summary {
+                    margin: 15px 0;
+                    padding: 15px;
+                    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+                    border-radius: 10px;
+                    font-size: 0.9rem;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                }
+                
+                .mapping-stat {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .mapping-stat-value {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    color: #667eea;
+                }
+                
+                .mapping-stat-label {
+                    font-size: 0.8rem;
+                    color: #718096;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                
+                /* Separator between recommendations */
+                .rec-group-last {
+                    border-bottom: 3px solid #667eea !important;
+                }
+                
+                /* Search/Filter Bar */
+                .search-container {
+                    margin: 30px 0;
+                    display: flex;
+                    gap: 15px;
+                    align-items: center;
+                    flex-wrap: wrap;
+                }
+                
+                .search-box {
+                    flex: 1;
+                    min-width: 300px;
+                    position: relative;
+                }
+                
+                .search-box input {
+                    width: 100%;
+                    padding: 12px 40px 12px 15px;
+                    border: 2px solid #e2e8f0;
+                    border-radius: 10px;
+                    font-size: 0.95rem;
+                    transition: all 0.3s ease;
+                }
+                
+                .search-box input:focus {
+                    outline: none;
+                    border-color: #667eea;
+                    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                }
+                
+                .search-box i {
+                    position: absolute;
+                    right: 15px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: #718096;
+                }
+                
+                .filter-btn {
+                    padding: 12px 20px;
+                    background: white;
+                    border: 2px solid #e2e8f0;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-size: 0.95rem;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                }
+                
+                .filter-btn:hover {
+                    border-color: #667eea;
+                    color: #667eea;
+                }
+                
+                .filter-btn.active {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border-color: transparent;
+                }
+                
+                /* Tooltip */
+                .tooltip {
+                    position: relative;
+                    cursor: help;
+                }
+                
+                .tooltip .tooltiptext {
+                    visibility: hidden;
+                    width: 250px;
+                    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+                    color: white;
+                    text-align: center;
+                    border-radius: 8px;
+                    padding: 10px;
+                    position: absolute;
+                    z-index: 1;
+                    bottom: 125%;
+                    left: 50%;
+                    margin-left: -125px;
+                    opacity: 0;
+                    transition: opacity 0.3s;
+                    font-size: 0.85rem;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                }
+                
+                .tooltip:hover .tooltiptext {
+                    visibility: visible;
+                    opacity: 1;
+                }
+                
+                /* Back to top button */
+                .back-to-top {
+                    position: fixed;
+                    bottom: 30px;
+                    right: 30px;
+                    width: 50px;
+                    height: 50px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    border: none;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.2rem;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    transition: all 0.3s ease;
+                    z-index: 1000;
+                }
+                
+                .back-to-top:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+                }
+                
+                .back-to-top.show {
+                    display: flex;
+                }
+                
+                /* Print styles */
+                @media print {
+                    .header {
+                        background: none;
+                        color: black;
+                    }
+                    .expand-btn, .back-to-top, .search-container {
+                        display: none !important;
+                    }
+                    .expandable-content {
+                        display: table-cell !important;
+                    }
+                }
+            </style>
+            <script>
+                function toggleExpand(btn, rowId) {
+                    var content = document.getElementById('expand-' + rowId);
+                    var icon = btn.querySelector('i');
+                    if (content.classList.contains('show')) {
+                        content.classList.remove('show');
+                        btn.innerHTML = '<i class="fas fa-chevron-down"></i> Mapped Skills';
+                        btn.classList.remove('expanded');
+                    } else {
+                        content.classList.add('show');
+                        btn.innerHTML = '<i class="fas fa-chevron-up"></i> Hide Skills';
+                        btn.classList.add('expanded');
+                    }
+                }
+                
+                // NEW: Toggle skill detail row
+                function toggleSkillDetail(icon, rowId) {
+                    var row = document.getElementById(rowId);
+                    if (row.classList.contains('show')) {
+                        row.classList.remove('show');
+                        icon.classList.remove('expanded');
+                    } else {
+                        row.classList.add('show');
+                        icon.classList.add('expanded');
+                    }
+                }
+                
+                // Enhanced hover effect for grouped rows
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Hover effect
+                    var rows = document.querySelectorAll('tr[data-rec-group]');
+                    rows.forEach(function(row) {
+                        row.addEventListener('mouseenter', function() {
+                            var groupId = this.getAttribute('data-rec-group');
+                            var groupRows = document.querySelectorAll('tr[data-rec-group="' + groupId + '"]');
+                            groupRows.forEach(function(r) {
+                                r.classList.add('hover-highlight');
+                            });
+                        });
+                        row.addEventListener('mouseleave', function() {
+                            var groupId = this.getAttribute('data-rec-group');
+                            var groupRows = document.querySelectorAll('tr[data-rec-group="' + groupId + '"]');
+                            groupRows.forEach(function(r) {
+                                r.classList.remove('hover-highlight');
+                            });
+                        });
+                    });
+                    
+                    // Search functionality
+                    var searchInput = document.getElementById('searchInput');
+                    if (searchInput) {
+                        searchInput.addEventListener('keyup', function() {
+                            var filter = this.value.toLowerCase();
+                            var rows = document.querySelectorAll('tbody tr[data-rec-group]');
+                            var currentGroup = '';
+                            rows.forEach(function(row) {
+                                var group = row.getAttribute('data-rec-group');
+                                if (group !== currentGroup) {
+                                    currentGroup = group;
+                                    var text = row.textContent.toLowerCase();
+                                    var groupRows = document.querySelectorAll('tr[data-rec-group="' + group + '"]');
+                                    if (text.indexOf(filter) > -1) {
+                                        groupRows.forEach(function(r) {
+                                            r.style.display = '';
+                                        });
+                                    } else {
+                                        groupRows.forEach(function(r) {
+                                            r.style.display = 'none';
+                                        });
+                                    }
+                                }
+                            });
+                        });
+                    }
+                    
+                    // Filter buttons
+                    var filterBtns = document.querySelectorAll('.filter-btn');
+                    filterBtns.forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            var filterType = this.getAttribute('data-filter');
+                            
+                            // Toggle active state
+                            if (this.classList.contains('active')) {
+                                this.classList.remove('active');
+                                // Show all rows
+                                document.querySelectorAll('tbody tr').forEach(function(row) {
+                                    row.style.display = '';
+                                });
+                            } else {
+                                // Remove active from all buttons
+                                filterBtns.forEach(function(b) {
+                                    b.classList.remove('active');
+                                });
+                                this.classList.add('active');
+                                
+                                // Filter rows
+                                var rows = document.querySelectorAll('tbody tr[data-rec-group]');
+                                rows.forEach(function(row) {
+                                    if (row.classList.contains(filterType) || !row.classList.contains('full') && !row.classList.contains('conditional') && !row.classList.contains('partial')) {
+                                        row.style.display = '';
+                                    } else {
+                                        row.style.display = 'none';
+                                    }
+                                });
+                            }
+                        });
+                    });
+                    
+                    // Back to top button
+                    window.onscroll = function() {
+                        var backToTop = document.getElementById('backToTop');
+                        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                            backToTop.classList.add('show');
+                        } else {
+                            backToTop.classList.remove('show');
+                        }
+                    };
+                    
+                    // Animate progress bars on load
+                    setTimeout(function() {
+                        var progressFills = document.querySelectorAll('.progress-fill');
+                        progressFills.forEach(function(fill) {
+                            var width = fill.getAttribute('data-width');
+                            if (width) {
+                                fill.style.width = width;
+                            }
+                        });
+                    }, 100);
+                });
+                
+                function scrollToTop() {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
+            </script>
+        </head>
+        <body>
+        <div class="container">
+        
+
+        <div class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-graduation-cap"></i> Credit Transfer Analysis Report</h1>
+                <div class="header-info">
+                    <p><i class="fas fa-certificate"></i> VET Qualification: S334 - Bachelor of Cyber Security</p>
+                    <p><i class="fas fa-university"></i> University Program: LAT-CYS-DEG - Bachelor of Cybersecurity</p>
+                </div>
+            </div>
+        </div>
+        
+<div class="content">
+<h2><i class='fas fa-chart-bar'></i> Skill Extraction Summary</h2>
+<div class='stats-grid'>
+<div class='stat-card'>
+<i class='fas fa-tools' style='font-size: 2rem; color: #667eea; margin-bottom: 15px;'></i>
+<div class='stat-value'>241</div>
+<div class='stat-label'>VET Skills</div>
+</div>
+<div class='stat-card'>
+<i class='fas fa-book' style='font-size: 2rem; color: #764ba2; margin-bottom: 15px;'></i>
+<div class='stat-value'>283</div>
+<div class='stat-label'>University Skills</div>
+</div>
+<div class='stat-card'>
+<i class='fas fa-link' style='font-size: 2rem; color: #48bb78; margin-bottom: 15px;'></i>
+<div class='stat-value'>1</div>
+<div class='stat-label'>Common Skills</div>
+</div>
+</div>
+<div class='summary-box'>
+<h2><i class='fas fa-clipboard-list'></i> Executive Summary</h2>
+<p style='font-size: 1.1rem; margin-bottom: 20px;'><strong>Total Recommendations:</strong> 21</p>
+<p style='font-size: 1.1rem; margin-bottom: 30px;'><strong>Average Alignment Score:</strong> 19.4%</p>
+<h3>Recommendation Distribution</h3>
+<div class='progress-container'>
+<div class='progress-label'>
+<span><i class='fas fa-check-circle' style='color: #48bb78;'></i> Full Credit</span>
+<span><strong>0</strong> (0.0%)</span>
+</div>
+<div class='progress-bar'><div class='progress-fill' data-width='0.0%' style='width: 0;'></div></div>
+</div>
+<div class='progress-container'>
+<div class='progress-label'>
+<span><i class='fas fa-exclamation-circle' style='color: #ed8936;'></i> Partial</span>
+<span><strong>0</strong> (0.0%)</span>
+</div>
+<div class='progress-bar'><div class='progress-fill' data-width='0.0%' style='width: 0;'></div></div>
+</div>
+</div>
+<h2><i class='fas fa-search'></i> Credit Transfer Recommendations</h2>
+<div class='search-container'>
+<div class='search-box'>
+<input type='text' id='searchInput' placeholder='Search recommendations...' />
+<i class='fas fa-search'></i>
+</div>
+<button class='filter-btn' data-filter='full'><i class='fas fa-check-circle'></i> Full Only</button>
+<button class='filter-btn' data-filter='partial'><i class='fas fa-exclamation-circle'></i> Partial Only</button>
+</div>
+<table>
+<thead><tr>
+<th>Action</th>
+<th>VET Units</th>
+<th>Uni Course</th>
+<th>Study Level</th>
+<th>Skills</th>
+<th>Alignment</th>
+<th>Confidence</th>
+<th>Type</th>
+<th>Conditions</th>
+</tr></thead>
+<tbody>
+<tr class='none rec-group-odd' data-rec-group='rec-1'>
+<td rowspan='3'><button class='expand-btn' onclick='toggleExpand(this, 1)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT384: Cyber Security Analytics</td>
+<td rowspan='3'>CSE1PE: Programming Environment</td>
+<td rowspan='3'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='3'>40 → 12</td>
+<td rowspan='3'>
+<div class='tooltip'>38.1%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='3'>88.6%</td>
+<td rowspan='3'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='3'>None</td>
+</tr>
+<tr class='none rec-group-odd' data-rec-group='rec-1'>
+<td>SIT102: Introduction to Programming</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-1'>
+<td>SIT232: Object-Oriented Development</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-1'>
+<td colspan='9' class='expandable-content' id='expand-1'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>3</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>8</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT102</td>
+<td>
+<span class='skill-name'>
+Control Flow Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Uses conditional loops and branches in code to control program execution flow.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec1-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1PE</td>
+<td>
+<span class='skill-name'>
+Control Structure Application
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Designs algorithms by structuring code with sequences, conditionals, and loops to solve problems.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>96%</td>
+<td>High match (sem: 94%, lvl: 100%, ctx: 100%, cmb: 96%)</td>
+</tr>
+<tr id='rec1-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Control Flow Implementation</h4>
+<p class=''>Uses conditional loops and branches in code to control program execution flow.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Control Structure Application</h4>
+<p class=''>Designs algorithms by structuring code with sequences, conditionals, and loops to solve problems.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT102</td>
+<td>
+<span class='skill-name'>
+Structured Programming Learning
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Learns structured programming basics to produce clear, modular code in academic projects.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec1-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td>CSE1PE</td>
+<td>
+<span class='skill-name'>
+Programming Fundamentals Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Creates executable Python code by teaching basic syntax and constructs.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>90%</td>
+<td>High match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr id='rec1-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Structured Programming Learning</h4>
+<p class=''>Learns structured programming basics to produce clear, modular code in academic projects.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Programming Fundamentals Implementation</h4>
+<p class=''>Creates executable Python code by teaching basic syntax and constructs.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT232</td>
+<td>
+<span class='skill-name'>
+Object-oriented Software Development
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Designs and develops real-world software using OOP principles and best‑practice architecture.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec1-direct-2")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE1PE</td>
+<td>
+<span class='skill-name'>
+Software Solution Development
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Designs and creates software solutions for simple real-life problems using hybrid development approaches.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>90%</td>
+<td>High match (sem: 84%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr id='rec1-direct-2' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Object-oriented Software Development</h4>
+<p class=''>Designs and develops real-world software using OOP principles and best‑practice architecture.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Software Solution Development</h4>
+<p class=''>Designs and creates software solutions for simple real-life problems using hybrid development approaches.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT384</td>
+<td>
+<span class='skill-name'>
+Python Scripting Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Implements and tests Python scripts to process cybersecurity data for actionable insights.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec1-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1PE</td>
+<td>
+<span class='skill-name'>
+Python Code Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Implements Python scripts to automate computational tasks and solve problem sets.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>89%</td>
+<td>High match (sem: 91%, lvl: 75%, ctx: 100%, cmb: 89%)</td>
+</tr>
+<tr id='rec1-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Python Scripting Implementation</h4>
+<p class=''>Implements and tests Python scripts to process cybersecurity data for actionable insights.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Python Code Implementation</h4>
+<p class=''>Implements Python scripts to automate computational tasks and solve problem sets.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Computational Solution Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Basic Data Structures Utilisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Batch Data Problem Solving</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Computational Problem Solving</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Data Processing Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Flowchart Diagramming</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Problem Decomposition Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1PE</td>
+<td>Problem Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-even' data-rec-group='rec-2'>
+<td rowspan='3'><button class='expand-btn' onclick='toggleExpand(this, 2)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT327: Network Forensics</td>
+<td rowspan='3'>CSE1CPR: Cybersecurity in Practice</td>
+<td rowspan='3'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='3'>39 → 12</td>
+<td rowspan='3'>
+<div class='tooltip'>35.2%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='3'>90.6%</td>
+<td rowspan='3'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='3'>None</td>
+</tr>
+<tr class='none rec-group-even' data-rec-group='rec-2'>
+<td>SIT218: Secure Coding</td>
+</tr>
+<tr class='none rec-group-even rec-group-last' data-rec-group='rec-2'>
+<td>SIT182: Real World Practices for Cyber Security</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-2'>
+<td colspan='9' class='expandable-content' id='expand-2'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>2</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>2</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>7</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT218</td>
+<td>
+<span class='skill-name'>
+Secure Software Design
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Integrates security principles into architecture and code during design and development phases.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec2-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1CPR</td>
+<td>
+<span class='skill-name'>
+Secure Software Design
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Designs secure software collaboratively, integrating threat modeling and code reviews into team development cycles.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>89%</td>
+<td>High match (sem: 100%, lvl: 75%, ctx: 70%, cmb: 89%)</td>
+</tr>
+<tr id='rec2-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Secure Software Design</h4>
+<p class=''>Integrates security principles into architecture and code during design and development phases.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Secure Software Design</h4>
+<p class=''>Designs secure software collaboratively, integrating threat modeling and code reviews into team development cycles.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT182</td>
+<td>
+<span class='skill-name'>
+Network Risk Exploration
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Manages communication network risks using core risk concepts in hybrid environments.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec2-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE1CPR</td>
+<td>
+<span class='skill-name'>
+Threat Vulnerability Identification Description
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Describes hybrid threat identification, vulnerability assessment, and incident response processes in cybersecurity settings.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>88%</td>
+<td>High match (sem: 79%, lvl: 100%, ctx: 100%, cmb: 88%)</td>
+</tr>
+<tr id='rec2-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Network Risk Exploration</h4>
+<p class=''>Manages communication network risks using core risk concepts in hybrid environments.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Threat Vulnerability Identification Description</h4>
+<p class=''>Describes hybrid threat identification, vulnerability assessment, and incident response processes in cybersecurity settings.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT327</td>
+<td>
+<span class='skill-name'>
+Incident Response Reporting
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Compiles detailed incident response reports, attributing causes and recommending mitigation actions.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec2-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1CPR</td>
+<td>
+<span class='skill-name'>
+Incident Response Process Description
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Describes hybrid threat identification and incident response processes for cybersecurity operations.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>85%</td>
+<td>Moderate match (sem: 93%, lvl: 75%, ctx: 70%, cmb: 85%)</td>
+</tr>
+<tr id='rec2-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Incident Response Reporting</h4>
+<p class=''>Compiles detailed incident response reports, attributing causes and recommending mitigation actions.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Incident Response Process Description</h4>
+<p class=''>Describes hybrid threat identification and incident response processes for cybersecurity operations.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT327</td>
+<td>
+<span class='skill-name'>
+Intrusion Detection System Configuration
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Configures intrusion detection systems to develop protection against common network attacks.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec2-partial-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1CPR</td>
+<td>
+<span class='skill-name'>
+Intrusion Detection System Evaluation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Identifies IDS technologies in hybrid environments to mitigate threats.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>84%</td>
+<td>Moderate match (sem: 91%, lvl: 75%, ctx: 70%, cmb: 84%)</td>
+</tr>
+<tr id='rec2-partial-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Intrusion Detection System Configuration</h4>
+<p class=''>Configures intrusion detection systems to develop protection against common network attacks.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Intrusion Detection System Evaluation</h4>
+<p class=''>Identifies IDS technologies in hybrid environments to mitigate threats.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1CPR</td>
+<td>Collaborative Secure Coding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1CPR</td>
+<td>Cyber Defence Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1CPR</td>
+<td>Cybersecurity Technology Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1CPR</td>
+<td>Firewall Introduction</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1CPR</td>
+<td>Honeypot Deployment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1CPR</td>
+<td>Cybersecurity Technology Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1CPR</td>
+<td>Threat Vulnerability Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-odd' data-rec-group='rec-3'>
+<td rowspan='3'><button class='expand-btn' onclick='toggleExpand(this, 3)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT223: Professional Practice in Information Technology</td>
+<td rowspan='3'>CSE1OOF: Object-Oriented Programming Fundamentals</td>
+<td rowspan='3'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='3'>41 → 16</td>
+<td rowspan='3'>
+<div class='tooltip'>35.2%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='3'>88.1%</td>
+<td rowspan='3'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='3'>None</td>
+</tr>
+<tr class='none rec-group-odd' data-rec-group='rec-3'>
+<td>SIT102: Introduction to Programming</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-3'>
+<td>SIT232: Object-Oriented Development</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-3'>
+<td colspan='9' class='expandable-content' id='expand-3'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>3</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>2</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>11</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT102</td>
+<td>
+<span class='skill-name'>
+Control Flow Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Uses conditional loops and branches in code to control program execution flow.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec3-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1OOF</td>
+<td>
+<span class='skill-name'>
+Flow Control Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Designs program flow control structures to direct execution paths in software applications.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>91%</td>
+<td>High match (sem: 95%, lvl: 75%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr id='rec3-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Control Flow Implementation</h4>
+<p class=''>Uses conditional loops and branches in code to control program execution flow.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Flow Control Implementation</h4>
+<p class=''>Designs program flow control structures to direct execution paths in software applications.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT232</td>
+<td>
+<span class='skill-name'>
+Object-oriented Software Development
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Designs and develops real-world software using OOP principles and best‑practice architecture.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec3-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE1OOF</td>
+<td>
+<span class='skill-name'>
+Object-oriented Programming
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Teaches Java object-oriented programming by introducing concepts, syntax, and hands‑on coding in hybrid classes.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>95%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr id='rec3-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Object-oriented Software Development</h4>
+<p class=''>Designs and develops real-world software using OOP principles and best‑practice architecture.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Object-oriented Programming</h4>
+<p class=''>Teaches Java object-oriented programming by introducing concepts, syntax, and hands‑on coding in hybrid classes.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT223</td>
+<td>
+<span class='skill-name'>
+Version Control Management
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Engages with version control to handle code repositories, committing, branching, and merging for collaborative projects.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec3-direct-2")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1OOF</td>
+<td>
+<span class='skill-name'>
+Version Control Utilisation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Includes version control systems to track code changes.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>92%</td>
+<td>High match (sem: 98%, lvl: 75%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr id='rec3-direct-2' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Version Control Management</h4>
+<p class=''>Engages with version control to handle code repositories, committing, branching, and merging for collaborative projects.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Version Control Utilisation</h4>
+<p class=''>Includes version control systems to track code changes.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT232</td>
+<td>
+<span class='skill-name'>
+Object-oriented Principles Application
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Applies and explains OOP principles—abstraction, encapsulation, inheritance, polymorphism—in design documentation and code reviews.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec3-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td>CSE1OOF</td>
+<td>
+<span class='skill-name'>
+Object Modelling
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Class structures with attributes and methods to model domain concepts theoretically.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>85%</td>
+<td>Moderate match (sem: 85%, lvl: 75%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr id='rec3-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Object-oriented Principles Application</h4>
+<p class=''>Applies and explains OOP principles—abstraction, encapsulation, inheritance, polymorphism—in design documentation and code reviews.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Object Modelling</h4>
+<p class=''>Class structures with attributes and methods to model domain concepts theoretically.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT102</td>
+<td>
+<span class='skill-name'>
+Data Type Utilisation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Uses appropriate data types to optimize storage and processing in software implementations.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec3-partial-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1OOF</td>
+<td>
+<span class='skill-name'>
+Primitive Data Type Utilisation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Utilizes primitive data types to store and manipulate basic values in program logic.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>87%</td>
+<td>Moderate match (sem: 88%, lvl: 75%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr id='rec3-partial-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Data Type Utilisation</h4>
+<p class=''>Uses appropriate data types to optimize storage and processing in software implementations.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Primitive Data Type Utilisation</h4>
+<p class=''>Utilizes primitive data types to store and manipulate basic values in program logic.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Algorithm Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Array Handling</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Code Reuse Justification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Exception Handling</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Input/output Programming</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Analysis Method Comparison</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Object-oriented Problem Solving</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Software Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>Software Development Methodology Comparison</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1OOF</td>
+<td>UML Diagramming</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td></td>
+<td>ADT Encapsulation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-even' data-rec-group='rec-4'>
+<td rowspan='2'><button class='expand-btn' onclick='toggleExpand(this, 4)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT379: Ethical Hacking</td>
+<td rowspan='2'>CSE3002: Introduction to Penetration Testing</td>
+<td rowspan='2'><span class='skill-level-badge'>University_Year_3</span></td>
+<td rowspan='2'>22 → 15</td>
+<td rowspan='2'>
+<div class='tooltip'>32.3%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='2'>90.6%</td>
+<td rowspan='2'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='2'>None</td>
+</tr>
+<tr class='none rec-group-even rec-group-last' data-rec-group='rec-4'>
+<td>SIT282: Computer Forensics and Investigations</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-4'>
+<td colspan='9' class='expandable-content' id='expand-4'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>3</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>9</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT379</td>
+<td>
+<span class='skill-name'>
+Security Vulnerability Exploitation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Applies ethical hacking techniques to exploit system vulnerabilities in accordance with authorised procedures.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec4-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE3002</td>
+<td>
+<span class='skill-name'>
+Vulnerability Exploitation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Identifies and exploits common security flaws to strengthen system defenses.
+</span>
+</span>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>90%</td>
+<td>High match (sem: 90%, lvl: 100%, ctx: 70%, cmb: 90%)</td>
+</tr>
+<tr id='rec4-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Security Vulnerability Exploitation</h4>
+<p class=''>Applies ethical hacking techniques to exploit system vulnerabilities in accordance with authorised procedures.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Vulnerability Exploitation</h4>
+<p class=''>Identifies and exploits common security flaws to strengthen system defenses.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT379</td>
+<td>
+<span class='skill-name'>
+Penetration Testing Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Implements full‑scale penetration testing using hacker‑style tools and techniques to exploit identified network vulnerabilities.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec4-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE3002</td>
+<td>
+<span class='skill-name'>
+Penetration Testing Principles Review
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Tests hybrid systems with penetration testing principles and structured tests for vulnerabilities.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>91%</td>
+<td>High match (sem: 93%, lvl: 100%, ctx: 70%, cmb: 91%)</td>
+</tr>
+<tr id='rec4-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Penetration Testing Implementation</h4>
+<p class=''>Implements full‑scale penetration testing using hacker‑style tools and techniques to exploit identified network vulnerabilities.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Penetration Testing Principles Review</h4>
+<p class=''>Tests hybrid systems with penetration testing principles and structured tests for vulnerabilities.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT282</td>
+<td>
+<span class='skill-name'>
+Report Development
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Designs hybrid investigative methods, prepares data, reflects on findings, and reports results to stakeholders.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec4-direct-2")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3002</td>
+<td>
+<span class='skill-name'>
+Client Report Development
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Develops client reports and reports key findings to varied audiences across hybrid settings.
+</span>
+</span>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>87%</td>
+<td>High match (sem: 89%, lvl: 75%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr id='rec4-direct-2' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Report Development</h4>
+<p class=''>Designs hybrid investigative methods, prepares data, reflects on findings, and reports results to stakeholders.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Client Report Development</h4>
+<p class=''>Develops client reports and reports key findings to varied audiences across hybrid settings.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT379</td>
+<td>
+<span class='skill-name'>
+Security Countermeasure Explanation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Explains advanced network security countermeasures for hybrid environments.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec4-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3002</td>
+<td>
+<span class='skill-name'>
+Security Control Recommendation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Recommends tailored security controls for hybrid environments to mitigate identified risks.
+</span>
+</span>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>94%</td>
+<td>High match (sem: 91%, lvl: 100%, ctx: 100%, cmb: 94%)</td>
+</tr>
+<tr id='rec4-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Security Countermeasure Explanation</h4>
+<p class=''>Explains advanced network security countermeasures for hybrid environments.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Security Control Recommendation</h4>
+<p class=''>Recommends tailored security controls for hybrid environments to mitigate identified risks.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Penetration Testing Concepts Comparison</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Legal Obligations Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Legal Obligations Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Penetration Testing Methodology Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Penetration Testing Tool Utilisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Penetration Test Results Reporting</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Security Resilience Enhancement</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Penetration Testing Value Recognition</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3002</td>
+<td>Findings Communication</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-5'>
+<td rowspan='1'><button class='expand-btn' onclick='toggleExpand(this, 5)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT202: Computer Networks and Communication</td>
+<td rowspan='1'>CSE2NEF: Network Engineering Fundamentals</td>
+<td rowspan='1'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='1'>11 → 12</td>
+<td rowspan='1'>
+<div class='tooltip'>30.7%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='1'>87.5%</td>
+<td rowspan='1'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='1'>None</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-5'>
+<td colspan='9' class='expandable-content' id='expand-5'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>2</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>9</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT202</td>
+<td>
+<span class='skill-name'>
+Network Protocol Stack Explanation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Explains each protocol layer’s functions and interactions to model network behavior theoretically.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec5-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td>CSE2NEF</td>
+<td>
+<span class='skill-name'>
+OSI Model Description
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Describes OSI layers and their interactions with adjacent layers.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>91%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr id='rec5-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Network Protocol Stack Explanation</h4>
+<p class=''>Explains each protocol layer’s functions and interactions to model network behavior theoretically.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: OSI Model Description</h4>
+<p class=''>Describes OSI layers and their interactions with adjacent layers.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT202</td>
+<td>
+<span class='skill-name'>
+Network Solution Provision
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Provides networking solutions to address specific problem requirements.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec5-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE2NEF</td>
+<td>
+<span class='skill-name'>
+Network Topology Management
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Builds and manages basic network topologies, ensuring connectivity.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>90%</td>
+<td>High match (sem: 83%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr id='rec5-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Network Solution Provision</h4>
+<p class=''>Provides networking solutions to address specific problem requirements.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Network Topology Management</h4>
+<p class=''>Builds and manages basic network topologies, ensuring connectivity.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT202</td>
+<td>
+<span class='skill-name'>
+Network Data Flow Explanation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Explains how data traverses network devices and flows between machines.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec5-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td>CSE2NEF</td>
+<td>
+<span class='skill-name'>
+Packet Lifecycle Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Selects packet lifecycle stages by tracing data packets through network layers to manage performance.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>87%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr id='rec5-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Network Data Flow Explanation</h4>
+<p class=''>Explains how data traverses network devices and flows between machines.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Packet Lifecycle Analysis</h4>
+<p class=''>Selects packet lifecycle stages by tracing data packets through network layers to manage performance.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>Ethernet LAN Evolution</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>IP Addressing Principles Learning</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>OSI Layer Function Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>OSI Layer Interaction</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>Network Device Configuration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>Network Physical Standards Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>Network Topology Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>Static Routing Configuration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2NEF</td>
+<td>TCP/IP Protocol Suite Comparison</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-even' data-rec-group='rec-6'>
+<td rowspan='2'><button class='expand-btn' onclick='toggleExpand(this, 6)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT378: Team Project (B) - Execution and Delivery</td>
+<td rowspan='2'>CSE3PM: Project Management</td>
+<td rowspan='2'><span class='skill-level-badge'>University_Year_3</span></td>
+<td rowspan='2'>32 → 12</td>
+<td rowspan='2'>
+<div class='tooltip'>28.7%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='2'>90.7%</td>
+<td rowspan='2'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='2'>None</td>
+</tr>
+<tr class='none rec-group-even rec-group-last' data-rec-group='rec-6'>
+<td>SIT374: Team Project (A) - Project Management and Practices</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-6'>
+<td colspan='9' class='expandable-content' id='expand-6'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>2</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>9</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT378</td>
+<td>
+<span class='skill-name'>
+Project Deliverable Scheduling
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Identifies, prioritises and schedules hybrid project deliverables.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec6-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3PM</td>
+<td>
+<span class='skill-name'>
+Project Schedule Tracking
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Tracks activities across multiple timelines within integrated hybrid project schedules to ensure alignment.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>93%</td>
+<td>High match (sem: 88%, lvl: 100%, ctx: 100%, cmb: 93%)</td>
+</tr>
+<tr id='rec6-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Project Deliverable Scheduling</h4>
+<p class=''>Identifies, prioritises and schedules hybrid project deliverables.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Project Schedule Tracking</h4>
+<p class=''>Tracks activities across multiple timelines within integrated hybrid project schedules to ensure alignment.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT378</td>
+<td>
+<span class='skill-name'>
+Stakeholder Communication
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Conveys key project factors to stakeholders via hybrid meetings and digital updates.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec6-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3PM</td>
+<td>
+<span class='skill-name'>
+Stakeholder Reporting
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Tracks project schedules in hybrid environments and reports concise status updates to stakeholders.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>95%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 100%, cmb: 95%)</td>
+</tr>
+<tr id='rec6-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Stakeholder Communication</h4>
+<p class=''>Conveys key project factors to stakeholders via hybrid meetings and digital updates.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Stakeholder Reporting</h4>
+<p class=''>Tracks project schedules in hybrid environments and reports concise status updates to stakeholders.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT374</td>
+<td>
+<span class='skill-name'>
+Requirement Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Analyzes hybrid project requirements and designs tailored solutions to meet stakeholder needs.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec6-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3PM</td>
+<td>
+<span class='skill-name'>
+System Requirements Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Critically appraises, analyses, refines, and documents system requirements to address real-time problems in hybrid environments.
+</span>
+</span>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>81%</td>
+<td>Moderate match (sem: 79%, lvl: 75%, ctx: 100%, cmb: 81%)</td>
+</tr>
+<tr id='rec6-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Requirement Analysis</h4>
+<p class=''>Analyzes hybrid project requirements and designs tailored solutions to meet stakeholder needs.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: System Requirements Analysis</h4>
+<p class=''>Critically appraises, analyses, refines, and documents system requirements to address real-time problems in hybrid environments.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Cost Management</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>IT Project Framework Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Project Design Documentation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Project Design Documentation Development</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Project Risk Management</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Resource Allocation Planning</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Risk Mitigation Integration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Security Analysis Integration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PM</td>
+<td>Team Meeting Facilitation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-odd' data-rec-group='rec-7'>
+<td rowspan='2'><button class='expand-btn' onclick='toggleExpand(this, 7)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT327: Network Forensics</td>
+<td rowspan='2'>CSE3CFN: Introduction to Computer Forensics</td>
+<td rowspan='2'><span class='skill-level-badge'>University_Year_3</span></td>
+<td rowspan='2'>25 → 14</td>
+<td rowspan='2'>
+<div class='tooltip'>28.6%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='2'>91.7%</td>
+<td rowspan='2'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='2'>None</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-7'>
+<td>SIT282: Computer Forensics and Investigations</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-7'>
+<td colspan='9' class='expandable-content' id='expand-7'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>3</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>10</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT282</td>
+<td>
+<span class='skill-name'>
+Digital Evidence Preservation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Identifies, preserves, analyzes, and presents digital evidence using hybrid forensic tools and methodologies.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec7-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3CFN</td>
+<td>
+<span class='skill-name'>
+Digital Evidence Collection
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Critically appraises digital evidence collection methods in hybrid environments, aligning with key concepts.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>98%</td>
+<td>High match (sem: 96%, lvl: 100%, ctx: 100%, cmb: 98%)</td>
+</tr>
+<tr id='rec7-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Digital Evidence Preservation</h4>
+<p class=''>Identifies, preserves, analyzes, and presents digital evidence using hybrid forensic tools and methodologies.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Digital Evidence Collection</h4>
+<p class=''>Critically appraises digital evidence collection methods in hybrid environments, aligning with key concepts.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT282</td>
+<td>
+<span class='skill-name'>
+Digital Evidence Identification
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Identifies digital evidence in hybrid environments, using systematic collection and preservation methods per unit focus.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec7-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3CFN</td>
+<td>
+<span class='skill-name'>
+Digital Evidence Validation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Critically evaluates digital evidence using hybrid classroom methods to ensure authenticity and reliability.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>98%</td>
+<td>High match (sem: 96%, lvl: 100%, ctx: 100%, cmb: 98%)</td>
+</tr>
+<tr id='rec7-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Digital Evidence Identification</h4>
+<p class=''>Identifies digital evidence in hybrid environments, using systematic collection and preservation methods per unit focus.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Digital Evidence Validation</h4>
+<p class=''>Critically evaluates digital evidence using hybrid classroom methods to ensure authenticity and reliability.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT327</td>
+<td>
+<span class='skill-name'>
+Wireless Traffic Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Detects wireless network traffic anomalies using standard forensic tools in hybrid environments.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec7-direct-2")' title='Show full description'></i>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE3CFN</td>
+<td>
+<span class='skill-name'>
+Network Traffic Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Performs forensic analysis of traffic logs to uncover digital evidence.
+</span>
+</span>
+<span class='skill-level-badge'>L5</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>96%</td>
+<td>High match (sem: 93%, lvl: 100%, ctx: 100%, cmb: 96%)</td>
+</tr>
+<tr id='rec7-direct-2' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Wireless Traffic Analysis</h4>
+<p class=''>Detects wireless network traffic anomalies using standard forensic tools in hybrid environments.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Network Traffic Analysis</h4>
+<p class=''>Performs forensic analysis of traffic logs to uncover digital evidence.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Forensic Tools Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Forensic Concepts Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Digital Evidence Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Digital System Forensic Investigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Ethical Legal Summarisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Forensic Evidence Documentation Summarisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Forensic Investigation Procedure Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Forensic Tool Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Digital Forensic Phase Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3CFN</td>
+<td>Ethical Legal Considerations Summarization</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-even rec-group-last' data-rec-group='rec-8'>
+<td rowspan='1'><button class='expand-btn' onclick='toggleExpand(this, 8)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT218: Secure Coding</td>
+<td rowspan='1'>CSE3NSW: Network Systems and Web Security</td>
+<td rowspan='1'><span class='skill-level-badge'>University_Year_3</span></td>
+<td rowspan='1'>14 → 12</td>
+<td rowspan='1'>
+<div class='tooltip'>24.1%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='1'>89.5%</td>
+<td rowspan='1'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='1'>None</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-8'>
+<td colspan='9' class='expandable-content' id='expand-8'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>2</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>10</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT218</td>
+<td>
+<span class='skill-name'>
+Cloud API Security Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Designs robust cloud API security measures and protected databases to safeguard data.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec8-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE3NSW</td>
+<td>
+<span class='skill-name'>
+Cloud Security Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Selects cloud security controls, selects risk assessments, and selects compliance measures across cloud environments.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>96%</td>
+<td>High match (sem: 94%, lvl: 100%, ctx: 100%, cmb: 96%)</td>
+</tr>
+<tr id='rec8-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Cloud API Security Implementation</h4>
+<p class=''>Designs robust cloud API security measures and protected databases to safeguard data.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Cloud Security Implementation</h4>
+<p class=''>Selects cloud security controls, selects risk assessments, and selects compliance measures across cloud environments.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT218</td>
+<td>
+<span class='skill-name'>
+Web Application Vulnerability Assessment
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Adopts advanced security tools for web application vulnerability assessment and remediation.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec8-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE3NSW</td>
+<td>
+<span class='skill-name'>
+Web Security Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Selects web security assessments using vulnerability scanning and manual methods to remediate threats.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>92%</td>
+<td>High match (sem: 86%, lvl: 100%, ctx: 100%, cmb: 92%)</td>
+</tr>
+<tr id='rec8-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Web Application Vulnerability Assessment</h4>
+<p class=''>Adopts advanced security tools for web application vulnerability assessment and remediation.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Web Security Analysis</h4>
+<p class=''>Selects web security assessments using vulnerability scanning and manual methods to remediate threats.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Cryptographic Algorithm Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Cybersecurity Innovation Development</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Cybersecurity Research Investigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Ethical Legal Considerations Investigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Network Security Configuration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Security Paradigm Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Security Mechanisms Discussion</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Security Protocol Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>System Security Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3NSW</td>
+<td>Vulnerability Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-odd' data-rec-group='rec-9'>
+<td rowspan='2'><button class='expand-btn' onclick='toggleExpand(this, 9)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT378: Team Project (B) - Execution and Delivery</td>
+<td rowspan='2'>CSE2HUM: Human Factors in Cybersecurity</td>
+<td rowspan='2'><span class='skill-level-badge'>University_Year_2</span></td>
+<td rowspan='2'>29 → 12</td>
+<td rowspan='2'>
+<div class='tooltip'>23.7%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='2'>87.2%</td>
+<td rowspan='2'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='2'>None</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-9'>
+<td>SIT282: Computer Forensics and Investigations</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-9'>
+<td colspan='9' class='expandable-content' id='expand-9'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>2</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>10</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT282</td>
+<td>
+<span class='skill-name'>
+Report Development
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Designs hybrid investigative methods, prepares data, reflects on findings, and reports results to stakeholders.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec9-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE2HUM</td>
+<td>
+<span class='skill-name'>
+High‑level Communication
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Nuanced communication across hybrid, multicultural settings for teams and stakeholders.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>90%</td>
+<td>High match (sem: 83%, lvl: 100%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr id='rec9-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Report Development</h4>
+<p class=''>Designs hybrid investigative methods, prepares data, reflects on findings, and reports results to stakeholders.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: High‑level Communication</h4>
+<p class=''>Nuanced communication across hybrid, multicultural settings for teams and stakeholders.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-direct'>
+<td>SIT378</td>
+<td>
+<span class='skill-name'>
+Team Collaboration
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Manages hybrid project implementation and conducts tasks with cross‑functional peers to manage outcomes.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec9-direct-1")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE2HUM</td>
+<td>
+<span class='skill-name'>
+Team Building Facilitation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Delivers hybrid sessions, using evaluative judgement and communication to support members in developing human‑centred cybersecurity solutions.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>91%</td>
+<td>High match (sem: 85%, lvl: 100%, ctx: 100%, cmb: 91%)</td>
+</tr>
+<tr id='rec9-direct-1' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Team Collaboration</h4>
+<p class=''>Manages hybrid project implementation and conducts tasks with cross‑functional peers to manage outcomes.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Team Building Facilitation</h4>
+<p class=''>Delivers hybrid sessions, using evaluative judgement and communication to support members in developing human‑centred cybersecurity solutions.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Cybercrime Business Model Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Cybersecurity Culture Strategy Development</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Cybersecurity Policy Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Economic Impact Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Evaluative Judgement Execution</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Negotiation Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Psychological Factors Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Risk Management Strategy Development</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Security Behaviour Strategy Development</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2HUM</td>
+<td>Social Implications Investigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-even' data-rec-group='rec-10'>
+<td rowspan='2'><button class='expand-btn' onclick='toggleExpand(this, 10)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT182: Real World Practices for Cyber Security</td>
+<td rowspan='2'>CSE1ICB: Introduction to Cybersecurity</td>
+<td rowspan='2'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='2'>26 → 15</td>
+<td rowspan='2'>
+<div class='tooltip'>20.9%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='2'>90.5%</td>
+<td rowspan='2'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='2'>None</td>
+</tr>
+<tr class='none rec-group-even rec-group-last' data-rec-group='rec-10'>
+<td>SIT282: Computer Forensics and Investigations</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-10'>
+<td colspan='9' class='expandable-content' id='expand-10'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>13</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT282</td>
+<td>
+<span class='skill-name'>
+Forensic Technique Utilisation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Investigates and applies contemporary forensic techniques to access systems and recover computer crime data.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec10-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE1ICB</td>
+<td>
+<span class='skill-name'>
+Digital Forensics Investigation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Digital forensics against cyber threats.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>93%</td>
+<td>High match (sem: 89%, lvl: 100%, ctx: 100%, cmb: 93%)</td>
+</tr>
+<tr id='rec10-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Forensic Technique Utilisation</h4>
+<p class=''>Investigates and applies contemporary forensic techniques to access systems and recover computer crime data.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Digital Forensics Investigation</h4>
+<p class=''>Digital forensics against cyber threats.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-partial'>
+<td>SIT182</td>
+<td>
+<span class='skill-name'>
+Case Study Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Detects cyber‑attack indicators in hybrid case studies.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec10-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>CSE1ICB</td>
+<td>
+<span class='skill-name'>
+Incident Response Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Hybrid incident response to mitigate threats.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>87%</td>
+<td>Moderate match (sem: 78%, lvl: 100%, ctx: 100%, cmb: 87%)</td>
+</tr>
+<tr id='rec10-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Case Study Analysis</h4>
+<p class=''>Detects cyber‑attack indicators in hybrid case studies.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Incident Response Analysis</h4>
+<p class=''>Hybrid incident response to mitigate threats.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Application Security Hardening</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Cryptography Solution Investigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Cyber Risk Management</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Cyber Risk Management</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Cybersecurity Ethical Practice Enforcement</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Cybersecurity Standards Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Information Security Assuring</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Information Security Principles Familiarisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Malware Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Network Security Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Team Investigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Vulnerability Mitigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1ICB</td>
+<td>Web Security Investigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-11'>
+<td rowspan='1'><button class='expand-btn' onclick='toggleExpand(this, 11)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>DAI001: Academic Integrity and Respect at Deakin</td>
+<td rowspan='1'>LTU0AIM: Academic Integrity Module</td>
+<td rowspan='1'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='1'>14 → 10</td>
+<td rowspan='1'>
+<div class='tooltip'>17.7%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='1'>83.5%</td>
+<td rowspan='1'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='1'>None</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-11'>
+<td colspan='9' class='expandable-content' id='expand-11'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>9</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>DAI001</td>
+<td>
+<span class='skill-name'>
+Academic Integrity Identification
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Identifies permissible and prohibited student actions in hybrid settings related to academic integrity.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec11-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>LTU0AIM</td>
+<td>
+<span class='skill-name'>
+Academic Misconduct Recognition
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Completes four parts covering academic misconduct and academic integrity decisions.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>92%</td>
+<td>High match (sem: 93%, lvl: 100%, ctx: 70%, cmb: 92%)</td>
+</tr>
+<tr id='rec11-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Academic Integrity Identification</h4>
+<p class=''>Identifies permissible and prohibited student actions in hybrid settings related to academic integrity.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Academic Misconduct Recognition</h4>
+<p class=''>Completes four parts covering academic misconduct and academic integrity decisions.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Academic Integrity Responsibility Recognition</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Academic Integrity Information Utilisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Academic Integrity Decision‑making</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Academic Integrity Information Utilisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Plagiarism Avoidance</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Referencing Skill Development</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Source Referencing Understanding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Citation Management</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LTU0AIM</td>
+<td>Use of Plagiarism Detection</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-even rec-group-last' data-rec-group='rec-12'>
+<td rowspan='1'><button class='expand-btn' onclick='toggleExpand(this, 12)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT111: Computer Systems</td>
+<td rowspan='1'>CSE1IIT: Inside Information Technology</td>
+<td rowspan='1'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='1'>12 → 13</td>
+<td rowspan='1'>
+<div class='tooltip'>16.9%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='1'>85.0%</td>
+<td rowspan='1'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='1'>None</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-12'>
+<td colspan='9' class='expandable-content' id='expand-12'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>10</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-partial'>
+<td>SIT111</td>
+<td>
+<span class='skill-name'>
+Computer Systems Evolution Engagement
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Engages with computer system evolution, focusing on emerging technology trends for academic research.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec12-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td>CSE1IIT</td>
+<td>
+<span class='skill-name'>
+Computer System Operation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Computer systems with core operational principles in on‑site and remote environments.
+</span>
+</span>
+<span class='skill-level-badge'>L2</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>88%</td>
+<td>High match (sem: 88%, lvl: 100%, ctx: 70%, cmb: 88%)</td>
+</tr>
+<tr id='rec12-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Computer Systems Evolution Engagement</h4>
+<p class=''>Engages with computer system evolution, focusing on emerging technology trends for academic research.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Computer System Operation</h4>
+<p class=''>Computer systems with core operational principles in on‑site and remote environments.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>Cross‑disciplinary IT Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>Data Delivery Demonstration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>Data Processing Demonstration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>Database Learning</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>HTML Coding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>IT Component Interpretation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>IT Issue Addressing</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>Network Interpretation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>Web System Construction</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE1IIT</td>
+<td>Web Development Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-13'>
+<td rowspan='1'><button class='expand-btn' onclick='toggleExpand(this, 13)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT182: Real World Practices for Cyber Security</td>
+<td rowspan='1'>CSE2SIA: Data Security and Information Assurance</td>
+<td rowspan='1'><span class='skill-level-badge'>University_Year_2</span></td>
+<td rowspan='1'>13 → 15</td>
+<td rowspan='1'>
+<div class='tooltip'>15.4%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='1'>95.0%</td>
+<td rowspan='1'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='1'>None</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-13'>
+<td colspan='9' class='expandable-content' id='expand-13'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>14</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT182</td>
+<td>
+<span class='skill-name'>
+Security Controls Integration
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Implements and monitors access control, identity verification and authentication to minimise cyber attack impact.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec13-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td>CSE2SIA</td>
+<td>
+<span class='skill-name'>
+Security Control Implementation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Applies technical and security controls to safeguard organizational information systems.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge practical'>Practical</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>90%</td>
+<td>High match (sem: 93%, lvl: 75%, ctx: 100%, cmb: 90%)</td>
+</tr>
+<tr id='rec13-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Security Controls Integration</h4>
+<p class=''>Implements and monitors access control, identity verification and authentication to minimise cyber attack impact.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Security Control Implementation</h4>
+<p class=''>Applies technical and security controls to safeguard organizational information systems.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Information Availability Ensuring</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Information Protection</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Data Maintenance Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Data Security Concept Description</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Security Policy Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Information Asset Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Information Assurance Concept Description</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Information Security Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Risk Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Security Risk Mitigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Organisational Security Challenge Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Security Policy Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Security Risk Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2SIA</td>
+<td>Information System Risk Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-even rec-group-last' data-rec-group='rec-14'>
+<td rowspan='1'><button class='expand-btn' onclick='toggleExpand(this, 14)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT223: Professional Practice in Information Technology</td>
+<td rowspan='1'>CSE3PPE: Professional Practices and Entrepreneurship in Information Technology</td>
+<td rowspan='1'><span class='skill-level-badge'>University_Year_3</span></td>
+<td rowspan='1'>16 → 15</td>
+<td rowspan='1'>
+<div class='tooltip'>15.2%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='1'>90.0%</td>
+<td rowspan='1'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='1'>None</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-14'>
+<td colspan='9' class='expandable-content' id='expand-14'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>14</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-direct'>
+<td>SIT223</td>
+<td>
+<span class='skill-name'>
+Ethics Evaluation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Engages with ethical frameworks to ensure IT practices uphold professional standards.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec14-direct-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge theoretical'>Theoretical</span>
+</td>
+<td>CSE3PPE</td>
+<td>
+<span class='skill-name'>
+Ethical Issue Analysis
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Applies ethical theory to analyse IT and business dilemmas in hybrid debates.
+</span>
+</span>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-check-circle'></i> Direct</td>
+<td>90%</td>
+<td>High match (sem: 92%, lvl: 100%, ctx: 70%, cmb: 90%)</td>
+</tr>
+<tr id='rec14-direct-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Ethics Evaluation</h4>
+<p class=''>Engages with ethical frameworks to ensure IT practices uphold professional standards.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Ethical Issue Analysis</h4>
+<p class=''>Applies ethical theory to analyse IT and business dilemmas in hybrid debates.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Business Idea Development</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>IT Business Venture Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Case Study Interpretation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Funding Options Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Entrepreneurship Principles Outlining</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Ethical Dilemma Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Funding Options Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Global Entrepreneurship Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Legal Ethical Issues Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Reflection Development Presentation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Social Impact Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>IT Professional Responsibility Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Team-based Ethical Deliberation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3PPE</td>
+<td>Technology Commercialisation Planning</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='none rec-group-odd rec-group-last' data-rec-group='rec-15'>
+<td rowspan='1'><button class='expand-btn' onclick='toggleExpand(this, 15)'><i class='fas fa-chevron-down'></i> Mapped Skills</button></td>
+<td>SIT384: Cyber Security Analytics</td>
+<td rowspan='1'>STA1DCT: Data-Based Critical Thinking</td>
+<td rowspan='1'><span class='skill-level-badge'>University_Year_1</span></td>
+<td rowspan='1'>15 → 15</td>
+<td rowspan='1'>
+<div class='tooltip'>14.2%
+<span class='tooltiptext'>Based on skill coverage, quality, and level alignment</span>
+</div>
+</td>
+<td rowspan='1'>88.0%</td>
+<td rowspan='1'><i class='fas fa-ban' style='color: #718096; margin-right: 5px;'></i>NONE</td>
+<td rowspan='1'>None</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-15'>
+<td colspan='9' class='expandable-content' id='expand-15'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>1</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>12</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-partial'>
+<td>SIT384</td>
+<td>
+<span class='skill-name'>
+Critical Data Interpretation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>VET Skill Description:</span>
+Applies analytics principles to complex datasets, justifying outcomes with evidence in hybrid settings.
+</span>
+</span>
+<i class='fas fa-chevron-down skill-detail-toggle' onclick='toggleSkillDetail(this, "rec15-partial-0")' title='Show full description'></i>
+<span class='skill-level-badge'>L4</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td>STA1DCT</td>
+<td>
+<span class='skill-name'>
+Statistical Summary Interpretation
+<span class='skill-description-tooltip'>
+<span class='skill-description-label'>Uni Skill Description:</span>
+Interprets numeric and graphical statistical summaries of hybrid datasets to inform analysis decisions.
+</span>
+</span>
+<span class='skill-level-badge'>L3</span>
+<span class='skill-context-badge hybrid'>Hybrid</span>
+</td>
+<td><i class='fas fa-exclamation-circle'></i> Partial</td>
+<td>85%</td>
+<td>Moderate match (sem: 85%, lvl: 75%, ctx: 100%, cmb: 85%)</td>
+</tr>
+<tr id='rec15-partial-0' class='skill-detail-row'>
+<td colspan='7'>
+<div class='skill-detail-content'>
+<div class='skill-description-box'>
+<h4><i class='fas fa-tools'></i> VET Skill: Critical Data Interpretation</h4>
+<p class=''>Applies analytics principles to complex datasets, justifying outcomes with evidence in hybrid settings.</p>
+</div>
+<div class='skill-description-box'>
+<h4><i class='fas fa-book'></i> University Skill: Statistical Summary Interpretation</h4>
+<p class=''>Interprets numeric and graphical statistical summaries of hybrid datasets to inform analysis decisions.</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Data Collection</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Data Evidence Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Data-driven Critical Thinking</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Decision Making</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Data Information Transformation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Media Data Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Numeracy Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Numeracy Skill Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Probability Calculation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Probability Misconceptions Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Probability Scenario Calculation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>STA1DCT</td>
+<td>Group Data Interpretation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-16'>
+<td colspan='9' class='expandable-content' id='expand-16'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>18</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Cultural Attitudes Critical Reflection</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Critical Self Reflection</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Cultural Attitudes Reflection</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Cultural Literacy Valuation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous Perspective Respect Demonstration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous Perspective Appreciation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous Cultural Respect Demonstration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous Customs Understanding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous Perspective Appreciation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous History Recollection</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Intercultural Communication Understanding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Intercultural Communication Understanding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Intercultural Communication Understanding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous Country Appreciation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>ABS0WOM</td>
+<td>Indigenous Perspectives Respecting</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td></td>
+<td>Timetable Navigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td></td>
+<td>Fee Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td></td>
+<td>International Student Support</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-17'>
+<td colspan='9' class='expandable-content' id='expand-17'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>15</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Authentication Mechanism Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Authentication Context Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Cryptographic Fundamentals Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Cryptographic Methods Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Cryptographic Problem Solving</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Cryptographic Technique Summarization</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Cryptographic Technique Summarisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Cryptographic Mathematical Principles Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Private Key Cryptography Understanding</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Private Key System Summarisation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Public Key Cryptography Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Public Key System Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Secure Data Transmission Design</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Secure Transmission Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>MAT1003</td>
+<td>Cryptographic Technique Context Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-18'>
+<td colspan='9' class='expandable-content' id='expand-18'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>10</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Legal Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Cyberlaw Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Cyberlaw Identification</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Security Issue Description</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Cybersecurity Legal Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Cyberlaw Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Legal Application Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Law Effectiveness Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Cyber Law Application Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>LAW2CLP</td>
+<td>Multidisciplinary Perspective Consideration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-19'>
+<td colspan='9' class='expandable-content' id='expand-19'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>13</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Ad‑hoc Network Securing</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Broadcast Authentication</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>CIA Security Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>MAC Layer Security Mitigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>RADIUS Server Configuration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Secure Routing Protocol Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Security Professional Engagement</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Wireless Encryption Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Wireless Impairment Mitigation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Wireless Key Management</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Wireless Security Architecture Application</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Wireless Security Risk Reporting</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE2WIN</td>
+<td>Wireless Vulnerability Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='rec-group-even' data-rec-group='rec-20'>
+<td colspan='9' class='expandable-content' id='expand-20'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>12</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Blockchain Usecase Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Business Recommendation Formulation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Commercial Legal Environment Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Cryptocurrency Usecase Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Digital Transaction Securing</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Distributed Ledger Security Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Financial Transaction Innovation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Commercial Legal Environment Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Commercial Legal Environment Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Security Measures Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Security Measures Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3BCC</td>
+<td>Smart Contract Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+<tr class='rec-group-odd' data-rec-group='rec-21'>
+<td colspan='9' class='expandable-content' id='expand-21'>
+<div class='mapping-summary'>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Direct Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>0</div>
+<div class='mapping-stat-label'>Partial Matches</div>
+</div>
+<div class='mapping-stat'>
+<div class='mapping-stat-value'>15</div>
+<div class='mapping-stat-label'>Unmapped Skills</div>
+</div>
+</div>
+<table class='skill-mapping-inner-table'>
+<thead><tr>
+<th>VET Unit</th>
+<th>VET Skill</th>
+<th>Uni Course</th>
+<th>Uni Skill</th>
+<th>Type</th>
+<th>Match %</th>
+<th>Analysis</th>
+</tr></thead>
+<tbody>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Distance Vector Routing Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Dynamic Routing Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Ipng Addressing Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Ipng Addressing Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Link State Routing Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Multiprotocol Network Implementation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Protocol Performance Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Routing Protocol Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Router Configuration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Routing Concepts Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Routing Protocol Assessment</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Routing Table Analysis</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Static Routing Configuration</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>Subnetting Scheme Evaluation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class='mapping-unmapped'>
+<td>-</td>
+<td>-</td>
+<td>CSE3INE</td>
+<td>TCP UDP Scope Explanation</td>
+<td><i class='fas fa-times-circle'></i> Unmapped</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+<h2><i class='fas fa-star'></i> Top Extracted Skills</h2>
+<h3>VET Skills (Top 20)</h3>
+<div style='padding: 20px;'>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Skill Transfer Reflection</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Network Protocol Reverse Engineering</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Procedural Program Engineering</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Security Controls Integration</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Discrete Mathematics Foundations Exploration</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Problem Solving Strategy</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Network Understanding</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Network Design Critique</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Professional Relationship Evaluation</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Object-oriented Software Development</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Network Log Analysis</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Team Collaboration</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>IT Methods Application</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Penetration Testing Implementation</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Cyber Security Analytics Learning</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Network Program Development</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Object-oriented Principles Application</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Forensic Data Analysis</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Network Attack Detection</span>
+<span class='skill-badge'><i class='fas fa-tools' style='font-size: 0.8rem; margin-right: 4px;'></i>Network Forensic Investigation</span>
+</div>
+<h3>University Skills (Top 20)</h3>
+<div style='padding: 20px;'>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Timetable Navigation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Fee Explanation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Security Control Implementation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Digital Evidence Analysis</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Risk Analysis</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Security Risk Analysis</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Wireless Security Risk Reporting</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Digital Evidence Collection</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Cryptographic Algorithm Implementation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Secure Software Design</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Python Code Implementation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Information System Risk Assessment</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Risk Management Strategy Development</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Wireless Security Architecture Application</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Digital Evidence Validation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Academic Integrity Responsibility Recognition</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>International Student Support</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Cryptographic Mathematical Principles Explanation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Cybersecurity Technology Evaluation</span>
+<span class='skill-badge'><i class='fas fa-book' style='font-size: 0.8rem; margin-right: 4px;'></i>Object-oriented Programming</span>
+</div>
+</div>
+</div>
+
+        <button id="backToTop" class="back-to-top" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+
+        </body>
+        </html>
+        
