@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-23T01:33:18.652264",
+  "timestamp": "2026-06-26T00:30:57.343666",
   "config": {
     "depth": "balanced",
     "thresholds": {
@@ -11,43 +11,85 @@
   "recommendations": [
     {
       "vet_units": [
-        "SIT384: Cyber Security Analytics",
-        "SIT102: Introduction to Programming",
-        "SIT232: Object-Oriented Development"
+        "SIT282: Computer Forensics and Investigations",
+        "SIT182: Real World Practices for Cyber Security",
+        "SIT102: Introduction to Programming"
       ],
-      "uni_course": "CSE1PE",
-      "score": 0.3813948889970779,
-      "type": "none",
-      "confidence": 0.88625,
+      "uni_course": "CSE1ICB",
+      "score": 0.6453667912019624,
+      "type": "partial",
+      "confidence": 0.8961111111111113,
       "evidence": [
-        "Skill coverage: 33.3%",
-        "Match quality: 29.4%",
-        "Level alignment: 31.2%",
-        "Context alignment: 33.3%",
-        "Direct matching: 3 exact matches",
-        "12 skill clusters matched",
-        "Course level: University_Year_1"
+        "Skill coverage: 63.7%",
+        "Match quality: 54.8%",
+        "Level alignment: 64.3%",
+        "Context alignment: 62.1%",
+        "Direct matching: 7 exact matches",
+        "14 skill clusters matched",
+        "Course level: University_Year_1",
+        "Rationale: The source courses map strongly to core introductory cybersecurity outcomes, for example 'Cryptography Application Explanation' \u2194 'Cryptography Solution Investigation' (sim 0.91) and 'Security Controls Implementation' \u2194 'Network Security Implementation' (sim 0.90), covering cryptography, network security, digital forensics and risk management. However, five target outcomes have no corresponding source content, so only partial credit is appropriate."
       ],
       "gaps": []
     },
     {
       "vet_units": [
-        "SIT327: Network Forensics",
+        "SIT378: Team Project (B) - Execution and Delivery",
+        "SIT374: Team Project (A) - Project Management and Practices"
+      ],
+      "uni_course": "CSE3PM",
+      "score": 0.6377371353414324,
+      "type": "partial",
+      "confidence": 0.908,
+      "evidence": [
+        "Skill coverage: 56.0%",
+        "Match quality: 58.0%",
+        "Level alignment: 67.9%",
+        "Context alignment: 71.4%",
+        "Direct matching: 2 exact matches",
+        "7 skill clusters matched",
+        "Course level: University_Year_3",
+        "Rationale: The source courses map core project management outcomes such as 'Stakeholder Communication' \u2194 'Stakeholder Reporting' (sim 0.92) and 'Team Collaboration' \u2194 'Team Meeting Facilitation' (sim 0.83), providing solid coverage of stakeholder and team processes, but they omit the target's IT Project Framework Design and Security Analysis Integration components, justifying a partial credit decision."
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
         "SIT218: Secure Coding",
         "SIT182: Real World Practices for Cyber Security"
       ],
       "uni_course": "CSE1CPR",
-      "score": 0.35239840822639285,
-      "type": "none",
-      "confidence": 0.90625,
+      "score": 0.6143104046185812,
+      "type": "partial",
+      "confidence": 0.9066666666666666,
       "evidence": [
-        "Skill coverage: 28.7%",
-        "Match quality: 30.3%",
-        "Level alignment: 27.1%",
-        "Context alignment: 25.8%",
+        "Skill coverage: 60.0%",
+        "Match quality: 57.0%",
+        "Level alignment: 55.0%",
+        "Context alignment: 54.0%",
+        "Direct matching: 3 exact matches",
+        "5 skill clusters matched",
+        "Course level: University_Year_1",
+        "Rationale: The source courses map directly to key target outcomes such as 'Secure Software Design' \u2194 'Secure Software Design' (sim 1.00) and 'Threat Vulnerability Analysis' \u2194 'Threat Vulnerability Identification Description' (sim 0.99), providing solid coverage of secure coding and threat analysis. However, the target skills 'Cyber Defence Evaluation' and 'Honeypot Deployment' are not addressed, justifying a partial recommendation."
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "SIT282: Computer Forensics and Investigations"
+      ],
+      "uni_course": "CSE3CFN",
+      "score": 0.5068283546103372,
+      "type": "partial",
+      "confidence": 0.91,
+      "evidence": [
+        "Skill coverage: 44.1%",
+        "Match quality: 44.0%",
+        "Level alignment: 50.0%",
+        "Context alignment: 50.0%",
         "Direct matching: 2 exact matches",
-        "10 skill clusters matched",
-        "Course level: University_Year_1"
+        "6 skill clusters matched",
+        "Course level: University_Year_3",
+        "Rationale: The source course provides strong coverage of evidence handling, shown by the 'Digital Evidence Identification' \u2194 'Digital Evidence Validation' pairing (sim 0.96) and also maps forensic data analysis to network traffic analysis (sim 0.78). However, key target outcomes such as evidence analysis, tool application and legal/ethical summarisation are not addressed, supporting a partial recommendation."
       ],
       "gaps": []
     },
@@ -58,37 +100,39 @@
         "SIT232: Object-Oriented Development"
       ],
       "uni_course": "CSE1OOF",
-      "score": 0.3516684382662177,
-      "type": "none",
-      "confidence": 0.881,
+      "score": 0.5065704041145467,
+      "type": "partial",
+      "confidence": 0.89125,
       "evidence": [
-        "Skill coverage: 29.3%",
-        "Match quality: 28.6%",
-        "Level alignment: 25.0%",
-        "Context alignment: 31.2%",
-        "Direct matching: 3 exact matches",
-        "16 skill clusters matched",
-        "Course level: University_Year_1"
+        "Skill coverage: 42.6%",
+        "Match quality: 47.2%",
+        "Level alignment: 46.7%",
+        "Context alignment: 53.3%",
+        "Direct matching: 4 exact matches",
+        "15 skill clusters matched",
+        "Course level: University_Year_1",
+        "Rationale: The source courses map directly to core OO concepts, exemplified by the 'Object-oriented Programming' \u2194 'Object-oriented Programming' (sim 1.00) pairing, and also cover version control and flow control. However, key target outcomes such as algorithm design, array handling and software design are not addressed, justifying a partial credit decision."
       ],
       "gaps": []
     },
     {
       "vet_units": [
-        "SIT379: Ethical Hacking",
-        "SIT282: Computer Forensics and Investigations"
+        "SIT223: Professional Practice in Information Technology",
+        "SIT182: Real World Practices for Cyber Security"
       ],
-      "uni_course": "CSE3002",
-      "score": 0.322689542333285,
-      "type": "none",
-      "confidence": 0.90625,
+      "uni_course": "CSE2SIA",
+      "score": 0.49343747850921416,
+      "type": "partial",
+      "confidence": 0.9166666666666666,
       "evidence": [
-        "Skill coverage: 26.7%",
-        "Match quality: 24.2%",
-        "Level alignment: 25.0%",
-        "Context alignment: 22.7%",
-        "Direct matching: 3 exact matches",
-        "12 skill clusters matched",
-        "Course level: University_Year_3"
+        "Skill coverage: 43.1%",
+        "Match quality: 42.7%",
+        "Level alignment: 45.8%",
+        "Context alignment: 50.0%",
+        "Direct matching: 2 exact matches",
+        "6 skill clusters matched",
+        "Course level: University_Year_2",
+        "Rationale: The source courses partially meet the target unit, with a direct match of 'Security Controls Implementation' \u2194 'Security Control Implementation' (sim 0.99) and relevant risk\u2011assessment outcomes, but three target outcomes have no equivalent coverage."
       ],
       "gaps": []
     },
@@ -97,76 +141,115 @@
         "SIT202: Computer Networks and Communication"
       ],
       "uni_course": "CSE2NEF",
-      "score": 0.306570617551053,
-      "type": "none",
-      "confidence": 0.875,
+      "score": 0.45329363784819476,
+      "type": "partial",
+      "confidence": 0.88375,
       "evidence": [
-        "Skill coverage: 24.8%",
-        "Match quality: 20.5%",
-        "Level alignment: 25.0%",
-        "Context alignment: 25.0%",
+        "Skill coverage: 39.2%",
+        "Match quality: 36.4%",
+        "Level alignment: 44.4%",
+        "Context alignment: 44.4%",
+        "Direct matching: 3 exact matches",
+        "9 skill clusters matched",
+        "Course level: University_Year_1",
+        "Rationale: The source course provides solid coverage of core networking concepts, demonstrated by the 'Network Protocol Stack Explanation' \u2194 'OSI Model Description' pairing (sim 0.85), and also maps to network topology management and TCP/IP suite comparison. Several target outcomes, however, such as Ethernet LAN evolution and IP addressing principles, are not addressed, supporting a partial credit decision."
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "SIT102: Introduction to Programming"
+      ],
+      "uni_course": "CSE1PE",
+      "score": 0.42386154065529497,
+      "type": "none",
+      "confidence": 0.88625,
+      "evidence": [
+        "Skill coverage: 36.8%",
+        "Match quality: 34.2%",
+        "Level alignment: 40.0%",
+        "Context alignment: 37.0%",
         "Direct matching: 2 exact matches",
-        "12 skill clusters matched",
+        "10 skill clusters matched",
         "Course level: University_Year_1"
       ],
       "gaps": []
     },
     {
       "vet_units": [
-        "SIT378: Team Project (B) - Execution and Delivery",
-        "SIT374: Team Project (A) - Project Management and Practices"
+        "SIT379: Ethical Hacking"
       ],
-      "uni_course": "CSE3PM",
-      "score": 0.28721486668675034,
+      "uni_course": "CSE3002",
+      "score": 0.37077859830856325,
+      "type": "none",
+      "confidence": 0.915,
+      "evidence": [
+        "Skill coverage: 30.0%",
+        "Match quality: 30.0%",
+        "Level alignment: 33.3%",
+        "Context alignment: 30.0%",
+        "Direct matching: 3 exact matches",
+        "9 skill clusters matched",
+        "Course level: University_Year_3"
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "SIT218: Secure Coding",
+        "SIT182: Real World Practices for Cyber Security"
+      ],
+      "uni_course": "CSE3NSW",
+      "score": 0.307656569302082,
       "type": "none",
       "confidence": 0.9066666666666667,
       "evidence": [
-        "Skill coverage: 19.6%",
-        "Match quality: 21.6%",
-        "Level alignment: 22.9%",
+        "Skill coverage: 25.0%",
+        "Match quality: 22.4%",
+        "Level alignment: 20.8%",
         "Context alignment: 25.0%",
-        "Direct matching: 2 exact matches",
-        "12 skill clusters matched",
-        "Course level: University_Year_3"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "SIT327: Network Forensics",
-        "SIT282: Computer Forensics and Investigations"
-      ],
-      "uni_course": "CSE3CFN",
-      "score": 0.28611674975781215,
-      "type": "none",
-      "confidence": 0.9166666666666666,
-      "evidence": [
-        "Skill coverage: 21.4%",
-        "Match quality: 20.4%",
-        "Level alignment: 21.4%",
-        "Context alignment: 21.4%",
         "Direct matching: 3 exact matches",
-        "13 skill clusters matched",
+        "12 skill clusters matched",
         "Course level: University_Year_3"
       ],
       "gaps": []
     },
     {
       "vet_units": [
-        "SIT218: Secure Coding"
+        "SIT378: Team Project (B) - Execution and Delivery"
       ],
-      "uni_course": "CSE3NSW",
-      "score": 0.24059077671170237,
+      "uni_course": "CSE3PPE",
+      "score": 0.2864679339196947,
       "type": "none",
-      "confidence": 0.895,
+      "confidence": 0.8875,
       "evidence": [
-        "Skill coverage: 16.7%",
-        "Match quality: 15.0%",
-        "Level alignment: 16.7%",
-        "Context alignment: 16.7%",
+        "Skill coverage: 22.2%",
+        "Match quality: 19.1%",
+        "Level alignment: 22.2%",
+        "Context alignment: 22.2%",
         "Direct matching: 2 exact matches",
-        "12 skill clusters matched",
+        "9 skill clusters matched",
         "Course level: University_Year_3"
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "SIT378: Team Project (B) - Execution and Delivery",
+        "SIT111: Computer Systems"
+      ],
+      "uni_course": "CSE1IIT",
+      "score": 0.26953859169836397,
+      "type": "none",
+      "confidence": 0.8550000000000001,
+      "evidence": [
+        "Skill coverage: 19.9%",
+        "Match quality: 18.0%",
+        "Level alignment: 22.2%",
+        "Context alignment: 18.9%",
+        "Direct matching: 1 exact matches",
+        "9 skill clusters matched",
+        "Course level: University_Year_1"
       ],
       "gaps": []
     },
@@ -176,37 +259,17 @@
         "SIT282: Computer Forensics and Investigations"
       ],
       "uni_course": "CSE2HUM",
-      "score": 0.23702111828327177,
+      "score": 0.2500180785981092,
       "type": "none",
-      "confidence": 0.8725,
+      "confidence": 0.88,
       "evidence": [
-        "Skill coverage: 16.7%",
-        "Match quality: 14.0%",
-        "Level alignment: 16.7%",
-        "Context alignment: 16.7%",
+        "Skill coverage: 18.2%",
+        "Match quality: 15.1%",
+        "Level alignment: 18.2%",
+        "Context alignment: 18.2%",
         "Direct matching: 2 exact matches",
-        "12 skill clusters matched",
+        "11 skill clusters matched",
         "Course level: University_Year_2"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "SIT182: Real World Practices for Cyber Security",
-        "SIT282: Computer Forensics and Investigations"
-      ],
-      "uni_course": "CSE1ICB",
-      "score": 0.2091218506362703,
-      "type": "none",
-      "confidence": 0.905,
-      "evidence": [
-        "Skill coverage: 13.2%",
-        "Match quality: 11.1%",
-        "Level alignment: 13.3%",
-        "Context alignment: 13.3%",
-        "Direct matching: 1 exact matches",
-        "14 skill clusters matched",
-        "Course level: University_Year_1"
       ],
       "gaps": []
     },
@@ -215,55 +278,17 @@
         "DAI001: Academic Integrity and Respect at Deakin"
       ],
       "uni_course": "LTU0AIM",
-      "score": 0.17712457388639452,
+      "score": 0.2175411551679884,
       "type": "none",
-      "confidence": 0.835,
+      "confidence": 0.865,
       "evidence": [
-        "Skill coverage: 10.0%",
-        "Match quality: 9.3%",
-        "Level alignment: 10.0%",
-        "Context alignment: 7.0%",
+        "Skill coverage: 14.3%",
+        "Match quality: 12.6%",
+        "Level alignment: 14.3%",
+        "Context alignment: 14.3%",
         "Direct matching: 1 exact matches",
-        "9 skill clusters matched",
+        "7 skill clusters matched",
         "Course level: University_Year_1"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "SIT111: Computer Systems"
-      ],
-      "uni_course": "CSE1IIT",
-      "score": 0.16882117607376795,
-      "type": "none",
-      "confidence": 0.8500000000000001,
-      "evidence": [
-        "Skill coverage: 9.1%",
-        "Match quality: 8.0%",
-        "Level alignment: 9.1%",
-        "Context alignment: 6.4%",
-        "Direct matching: 0 exact matches",
-        "11 skill clusters matched",
-        "Course level: University_Year_1"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "SIT182: Real World Practices for Cyber Security"
-      ],
-      "uni_course": "CSE2SIA",
-      "score": 0.15385784387588503,
-      "type": "none",
-      "confidence": 0.95,
-      "evidence": [
-        "Skill coverage: 6.7%",
-        "Match quality: 6.2%",
-        "Level alignment: 5.0%",
-        "Context alignment: 6.7%",
-        "Direct matching: 1 exact matches",
-        "14 skill clusters matched",
-        "Course level: University_Year_2"
       ],
       "gaps": []
     },
@@ -271,37 +296,37 @@
       "vet_units": [
         "SIT223: Professional Practice in Information Technology"
       ],
-      "uni_course": "CSE3PPE",
-      "score": 0.15161005743344624,
+      "uni_course": "LAW2CLP",
+      "score": 0.20181011453270914,
       "type": "none",
       "confidence": 0.9,
       "evidence": [
-        "Skill coverage: 6.7%",
-        "Match quality: 6.1%",
-        "Level alignment: 6.7%",
-        "Context alignment: 4.7%",
+        "Skill coverage: 12.5%",
+        "Match quality: 10.2%",
+        "Level alignment: 12.5%",
+        "Context alignment: 12.5%",
         "Direct matching: 1 exact matches",
-        "14 skill clusters matched",
-        "Course level: University_Year_3"
+        "8 skill clusters matched",
+        "Course level: University_Year_2"
       ],
       "gaps": []
     },
     {
       "vet_units": [
-        "SIT384: Cyber Security Analytics"
+        "SIT327: Network Forensics"
       ],
-      "uni_course": "STA1DCT",
-      "score": 0.14202025033368004,
+      "uni_course": "CSE2WIN",
+      "score": 0.13680090240416704,
       "type": "none",
-      "confidence": 0.88,
+      "confidence": 0.905,
       "evidence": [
-        "Skill coverage: 4.9%",
-        "Match quality: 5.7%",
-        "Level alignment: 5.0%",
-        "Context alignment: 6.7%",
+        "Skill coverage: 1.9%",
+        "Match quality: 6.2%",
+        "Level alignment: 8.3%",
+        "Context alignment: 5.8%",
         "Direct matching: 0 exact matches",
-        "13 skill clusters matched",
-        "Course level: University_Year_1"
+        "12 skill clusters matched",
+        "Course level: University_Year_2"
       ],
       "gaps": []
     },
@@ -317,7 +342,7 @@
         "Level alignment: 0.0%",
         "Context alignment: 0.0%",
         "Direct matching: 0 exact matches",
-        "15 skill clusters matched",
+        "11 skill clusters matched",
         "Course level: University_Year_1"
       ],
       "gaps": []
@@ -334,14 +359,14 @@
         "Level alignment: 0.0%",
         "Context alignment: 0.0%",
         "Direct matching: 0 exact matches",
-        "15 skill clusters matched",
+        "9 skill clusters matched",
         "Course level: University_Year_1"
       ],
       "gaps": []
     },
     {
       "vet_units": [],
-      "uni_course": "LAW2CLP",
+      "uni_course": "STA1DCT",
       "score": 0.05,
       "type": "none",
       "confidence": 0.0,
@@ -351,25 +376,8 @@
         "Level alignment: 0.0%",
         "Context alignment: 0.0%",
         "Direct matching: 0 exact matches",
-        "9 skill clusters matched",
-        "Course level: University_Year_2"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [],
-      "uni_course": "CSE2WIN",
-      "score": 0.05,
-      "type": "none",
-      "confidence": 0.0,
-      "evidence": [
-        "Skill coverage: 0.0%",
-        "Match quality: 0.0%",
-        "Level alignment: 0.0%",
-        "Context alignment: 0.0%",
-        "Direct matching: 0 exact matches",
-        "13 skill clusters matched",
-        "Course level: University_Year_2"
+        "11 skill clusters matched",
+        "Course level: University_Year_1"
       ],
       "gaps": []
     },
@@ -385,7 +393,7 @@
         "Level alignment: 0.0%",
         "Context alignment: 0.0%",
         "Direct matching: 0 exact matches",
-        "9 skill clusters matched",
+        "5 skill clusters matched",
         "Course level: University_Year_3"
       ],
       "gaps": []
@@ -402,7 +410,7 @@
         "Level alignment: 0.0%",
         "Context alignment: 0.0%",
         "Direct matching: 0 exact matches",
-        "14 skill clusters matched",
+        "13 skill clusters matched",
         "Course level: University_Year_3"
       ],
       "gaps": []
