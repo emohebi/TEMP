@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-26T00:30:57.343666",
+  "timestamp": "2026-06-26T03:04:14.682124",
   "config": {
     "depth": "balanced",
     "thresholds": {
@@ -16,18 +16,63 @@
         "SIT102: Introduction to Programming"
       ],
       "uni_course": "CSE1ICB",
-      "score": 0.6453667912019624,
+      "score": 0.6986858962354205,
       "type": "partial",
-      "confidence": 0.8961111111111113,
+      "confidence": 0.8989999999999998,
       "evidence": [
-        "Skill coverage: 63.7%",
-        "Match quality: 54.8%",
-        "Level alignment: 64.3%",
-        "Context alignment: 62.1%",
-        "Direct matching: 7 exact matches",
+        "Skill coverage: 68.7%",
+        "Match quality: 60.9%",
+        "Level alignment: 71.4%",
+        "Context alignment: 69.3%",
+        "Direct matching: 8 exact matches",
         "14 skill clusters matched",
         "Course level: University_Year_1",
-        "Rationale: The source courses map strongly to core introductory cybersecurity outcomes, for example 'Cryptography Application Explanation' \u2194 'Cryptography Solution Investigation' (sim 0.91) and 'Security Controls Implementation' \u2194 'Network Security Implementation' (sim 0.90), covering cryptography, network security, digital forensics and risk management. However, five target outcomes have no corresponding source content, so only partial credit is appropriate."
+        "Rationale: The source courses provide substantial coverage of core cybersecurity concepts, as shown by the high\u2011similarity pairing 'Cryptography Application Explanation' \u2194 'Cryptography Solution Investigation' (sim 0.91) and other direct matches. However, four target outcomes \u2013 ethical practice enforcement, information security assurance, malware identification and team investigation \u2013 have no corresponding source skills, leading to a partial recommendation."
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "SIT218: Secure Coding",
+        "SIT202: Computer Networks and Communication",
+        "SIT182: Real World Practices for Cyber Security"
+      ],
+      "uni_course": "CSE1CPR",
+      "score": 0.6964109496275585,
+      "type": "partial",
+      "confidence": 0.90125,
+      "evidence": [
+        "Skill coverage: 60.2%",
+        "Match quality: 69.7%",
+        "Level alignment: 75.0%",
+        "Context alignment: 74.0%",
+        "Direct matching: 3 exact matches",
+        "5 skill clusters matched",
+        "Course level: University_Year_1",
+        "Rationale: The source courses map directly to key target outcomes such as 'Secure Software Design' \u2194 'Secure Software Design' (sim 1.00) and 'Threat Vulnerability Analysis' \u2194 'Threat Vulnerability Identification Description' (sim 0.99), providing solid coverage of software security and threat identification. However, the target skill 'Cyber Defence Evaluation' has no source equivalent and the 'Network Data Analysis' \u2194 'Honeypot Deployment' pairing is only partial (sim 0.63), leaving notable gaps, which supports a PARTIAL recommendation."
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "SIT378: Team Project (B) - Execution and Delivery",
+        "SIT111: Computer Systems",
+        "SIT202: Computer Networks and Communication",
+        "SIT102: Introduction to Programming"
+      ],
+      "uni_course": "CSE1IIT",
+      "score": 0.6441549915855314,
+      "type": "partial",
+      "confidence": 0.87,
+      "evidence": [
+        "Skill coverage: 63.8%",
+        "Match quality: 54.2%",
+        "Level alignment: 66.7%",
+        "Context alignment: 60.0%",
+        "Direct matching: 3 exact matches",
+        "9 skill clusters matched",
+        "Course level: University_Year_1",
+        "Rationale: The source courses map directly to several target outcomes, for example 'Computer System Evolution Engagement' \u2194 'Computer System Operation' (sim 0.89) and 'Procedural Application Development' \u2194 'Web Development Implementation' (sim 0.81), but they do not address key target skills such as Database Learning, HTML Coding and IT Issue Addressing, justifying a partial credit\u2011transfer."
       ],
       "gaps": []
     },
@@ -48,28 +93,50 @@
         "Direct matching: 2 exact matches",
         "7 skill clusters matched",
         "Course level: University_Year_3",
-        "Rationale: The source courses map core project management outcomes such as 'Stakeholder Communication' \u2194 'Stakeholder Reporting' (sim 0.92) and 'Team Collaboration' \u2194 'Team Meeting Facilitation' (sim 0.83), providing solid coverage of stakeholder and team processes, but they omit the target's IT Project Framework Design and Security Analysis Integration components, justifying a partial credit decision."
+        "Rationale: The source courses provide direct coverage of stakeholder reporting through the 'Stakeholder Communication' \u2194 'Stakeholder Reporting' pairing (sim 0.92) and team meeting facilitation via 'Team Collaboration' \u2194 'Team Meeting Facilitation' (sim 0.83). However, key target outcomes such as IT Project Framework Design and Security Analysis Integration are unmapped, and several matches are only partial, supporting a partial recommendation."
       ],
       "gaps": []
     },
     {
       "vet_units": [
+        "SIT202: Computer Networks and Communication"
+      ],
+      "uni_course": "CSE2NEF",
+      "score": 0.534590111057258,
+      "type": "partial",
+      "confidence": 0.883,
+      "evidence": [
+        "Skill coverage: 47.0%",
+        "Match quality: 45.4%",
+        "Level alignment: 55.6%",
+        "Context alignment: 55.6%",
+        "Direct matching: 4 exact matches",
+        "9 skill clusters matched",
+        "Course level: University_Year_1",
+        "Rationale: The source SIT202 provides solid coverage of core networking concepts, demonstrated by the 'Network Protocol Stack Explanation' \u2194 'OSI Model Description' (sim 0.85) and 'Network Solution Design' \u2194 'Network Topology Management' (sim 0.86) pairings, but it does not address several target outcomes such as Ethernet LAN evolution, IP addressing, device configuration and static routing, leading to a partial recommendation."
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [
+        "SIT379: Ethical Hacking",
         "SIT218: Secure Coding",
+        "SIT384: Cyber Security Analytics",
         "SIT182: Real World Practices for Cyber Security"
       ],
-      "uni_course": "CSE1CPR",
-      "score": 0.6143104046185812,
+      "uni_course": "CSE3NSW",
+      "score": 0.523026192009449,
       "type": "partial",
-      "confidence": 0.9066666666666666,
+      "confidence": 0.9025000000000002,
       "evidence": [
-        "Skill coverage: 60.0%",
-        "Match quality: 57.0%",
-        "Level alignment: 55.0%",
-        "Context alignment: 54.0%",
-        "Direct matching: 3 exact matches",
-        "5 skill clusters matched",
-        "Course level: University_Year_1",
-        "Rationale: The source courses map directly to key target outcomes such as 'Secure Software Design' \u2194 'Secure Software Design' (sim 1.00) and 'Threat Vulnerability Analysis' \u2194 'Threat Vulnerability Identification Description' (sim 0.99), providing solid coverage of secure coding and threat analysis. However, the target skills 'Cyber Defence Evaluation' and 'Honeypot Deployment' are not addressed, justifying a partial recommendation."
+        "Skill coverage: 50.0%",
+        "Match quality: 43.7%",
+        "Level alignment: 45.8%",
+        "Context alignment: 50.0%",
+        "Direct matching: 5 exact matches",
+        "12 skill clusters matched",
+        "Course level: University_Year_3",
+        "Rationale: The source courses map strongly to core security outcomes, exemplified by the 'Security Controls Implementation' \u2194 'System Security Implementation' pairing (sim 0.94), and also cover vulnerability analysis, web security and secure coding. However, key target competencies such as cloud security, cryptographic implementation and research/ethical components are not addressed, justifying a partial credit\u2011transfer."
       ],
       "gaps": []
     },
@@ -89,29 +156,7 @@
         "Direct matching: 2 exact matches",
         "6 skill clusters matched",
         "Course level: University_Year_3",
-        "Rationale: The source course provides strong coverage of evidence handling, shown by the 'Digital Evidence Identification' \u2194 'Digital Evidence Validation' pairing (sim 0.96) and also maps forensic data analysis to network traffic analysis (sim 0.78). However, key target outcomes such as evidence analysis, tool application and legal/ethical summarisation are not addressed, supporting a partial recommendation."
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
-        "SIT223: Professional Practice in Information Technology",
-        "SIT102: Introduction to Programming",
-        "SIT232: Object-Oriented Development"
-      ],
-      "uni_course": "CSE1OOF",
-      "score": 0.5065704041145467,
-      "type": "partial",
-      "confidence": 0.89125,
-      "evidence": [
-        "Skill coverage: 42.6%",
-        "Match quality: 47.2%",
-        "Level alignment: 46.7%",
-        "Context alignment: 53.3%",
-        "Direct matching: 4 exact matches",
-        "15 skill clusters matched",
-        "Course level: University_Year_1",
-        "Rationale: The source courses map directly to core OO concepts, exemplified by the 'Object-oriented Programming' \u2194 'Object-oriented Programming' (sim 1.00) pairing, and also cover version control and flow control. However, key target outcomes such as algorithm design, array handling and software design are not addressed, justifying a partial credit decision."
+        "Rationale: SIT282 supplies strong evidence\u2011handling outcomes, evident in the 'Digital Evidence Identification' \u2194 'Digital Evidence Validation' pairing (sim 0.96) and also maps to forensic phase identification (sim 0.90). The source only partially addresses network traffic analysis and omits core outcomes such as evidence analysis, tool application and legal/ethical summarisation, supporting a partial credit decision."
       ],
       "gaps": []
     },
@@ -132,27 +177,29 @@
         "Direct matching: 2 exact matches",
         "6 skill clusters matched",
         "Course level: University_Year_2",
-        "Rationale: The source courses partially meet the target unit, with a direct match of 'Security Controls Implementation' \u2194 'Security Control Implementation' (sim 0.99) and relevant risk\u2011assessment outcomes, but three target outcomes have no equivalent coverage."
+        "Rationale: The source courses provide strong coverage of security control implementation, evidenced by the direct match 'Security Controls Implementation' \u2194 'Security Control Implementation' (sim 0.99), and address organisational security challenges through risk assessment (sim 0.81). However, key target outcomes such as Information Assurance Concept Description, Risk Analysis and Security Policy Evaluation are not covered, supporting a partial recommendation."
       ],
       "gaps": []
     },
     {
       "vet_units": [
-        "SIT202: Computer Networks and Communication"
+        "SIT223: Professional Practice in Information Technology",
+        "SIT102: Introduction to Programming",
+        "SIT232: Object-Oriented Development"
       ],
-      "uni_course": "CSE2NEF",
-      "score": 0.45329363784819476,
+      "uni_course": "CSE1OOF",
+      "score": 0.46273894713606156,
       "type": "partial",
-      "confidence": 0.88375,
+      "confidence": 0.8942857142857141,
       "evidence": [
-        "Skill coverage: 39.2%",
-        "Match quality: 36.4%",
-        "Level alignment: 44.4%",
-        "Context alignment: 44.4%",
-        "Direct matching: 3 exact matches",
-        "9 skill clusters matched",
+        "Skill coverage: 38.9%",
+        "Match quality: 42.2%",
+        "Level alignment: 40.0%",
+        "Context alignment: 46.7%",
+        "Direct matching: 4 exact matches",
+        "15 skill clusters matched",
         "Course level: University_Year_1",
-        "Rationale: The source course provides solid coverage of core networking concepts, demonstrated by the 'Network Protocol Stack Explanation' \u2194 'OSI Model Description' pairing (sim 0.85), and also maps to network topology management and TCP/IP suite comparison. Several target outcomes, however, such as Ethernet LAN evolution and IP addressing principles, are not addressed, supporting a partial credit decision."
+        "Rationale: The source courses provide substantial coverage of core object\u2011oriented concepts, demonstrated by the direct match 'Object-oriented Programming' \u2194 'Object-oriented Programming' (sim 1.00) and related flow\u2011control and version\u2011control outcomes. However, several target competencies such as algorithm design, array handling and exception handling are not addressed, resulting in a partial recommendation."
       ],
       "gaps": []
     },
@@ -196,26 +243,6 @@
     },
     {
       "vet_units": [
-        "SIT218: Secure Coding",
-        "SIT182: Real World Practices for Cyber Security"
-      ],
-      "uni_course": "CSE3NSW",
-      "score": 0.307656569302082,
-      "type": "none",
-      "confidence": 0.9066666666666667,
-      "evidence": [
-        "Skill coverage: 25.0%",
-        "Match quality: 22.4%",
-        "Level alignment: 20.8%",
-        "Context alignment: 25.0%",
-        "Direct matching: 3 exact matches",
-        "12 skill clusters matched",
-        "Course level: University_Year_3"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
         "SIT378: Team Project (B) - Execution and Delivery"
       ],
       "uni_course": "CSE3PPE",
@@ -235,21 +262,22 @@
     },
     {
       "vet_units": [
-        "SIT378: Team Project (B) - Execution and Delivery",
-        "SIT111: Computer Systems"
+        "SIT327: Network Forensics",
+        "SIT223: Professional Practice in Information Technology",
+        "SIT218: Secure Coding"
       ],
-      "uni_course": "CSE1IIT",
-      "score": 0.26953859169836397,
+      "uni_course": "CSE2WIN",
+      "score": 0.2735728378748452,
       "type": "none",
-      "confidence": 0.8550000000000001,
+      "confidence": 0.8866666666666667,
       "evidence": [
-        "Skill coverage: 19.9%",
-        "Match quality: 18.0%",
-        "Level alignment: 22.2%",
-        "Context alignment: 18.9%",
-        "Direct matching: 1 exact matches",
-        "9 skill clusters matched",
-        "Course level: University_Year_1"
+        "Skill coverage: 18.1%",
+        "Match quality: 19.8%",
+        "Level alignment: 25.0%",
+        "Context alignment: 20.0%",
+        "Direct matching: 0 exact matches",
+        "12 skill clusters matched",
+        "Course level: University_Year_2"
       ],
       "gaps": []
     },
@@ -294,39 +322,20 @@
     },
     {
       "vet_units": [
-        "SIT223: Professional Practice in Information Technology"
-      ],
-      "uni_course": "LAW2CLP",
-      "score": 0.20181011453270914,
-      "type": "none",
-      "confidence": 0.9,
-      "evidence": [
-        "Skill coverage: 12.5%",
-        "Match quality: 10.2%",
-        "Level alignment: 12.5%",
-        "Context alignment: 12.5%",
-        "Direct matching: 1 exact matches",
-        "8 skill clusters matched",
-        "Course level: University_Year_2"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [
         "SIT327: Network Forensics"
       ],
-      "uni_course": "CSE2WIN",
-      "score": 0.13680090240416704,
+      "uni_course": "CSE3INE",
+      "score": 0.13678358674864483,
       "type": "none",
-      "confidence": 0.905,
+      "confidence": 0.91,
       "evidence": [
-        "Skill coverage: 1.9%",
-        "Match quality: 6.2%",
-        "Level alignment: 8.3%",
-        "Context alignment: 5.8%",
+        "Skill coverage: 2.3%",
+        "Match quality: 5.2%",
+        "Level alignment: 7.7%",
+        "Context alignment: 7.7%",
         "Direct matching: 0 exact matches",
-        "12 skill clusters matched",
-        "Course level: University_Year_2"
+        "13 skill clusters matched",
+        "Course level: University_Year_3"
       ],
       "gaps": []
     },
@@ -383,6 +392,23 @@
     },
     {
       "vet_units": [],
+      "uni_course": "LAW2CLP",
+      "score": 0.05,
+      "type": "none",
+      "confidence": 0.0,
+      "evidence": [
+        "Skill coverage: 0.0%",
+        "Match quality: 0.0%",
+        "Level alignment: 0.0%",
+        "Context alignment: 0.0%",
+        "Direct matching: 0 exact matches",
+        "8 skill clusters matched",
+        "Course level: University_Year_2"
+      ],
+      "gaps": []
+    },
+    {
+      "vet_units": [],
       "uni_course": "CSE3BCC",
       "score": 0.05,
       "type": "none",
@@ -394,23 +420,6 @@
         "Context alignment: 0.0%",
         "Direct matching: 0 exact matches",
         "5 skill clusters matched",
-        "Course level: University_Year_3"
-      ],
-      "gaps": []
-    },
-    {
-      "vet_units": [],
-      "uni_course": "CSE3INE",
-      "score": 0.05,
-      "type": "none",
-      "confidence": 0.0,
-      "evidence": [
-        "Skill coverage: 0.0%",
-        "Match quality: 0.0%",
-        "Level alignment: 0.0%",
-        "Context alignment: 0.0%",
-        "Direct matching: 0 exact matches",
-        "13 skill clusters matched",
         "Course level: University_Year_3"
       ],
       "gaps": []
